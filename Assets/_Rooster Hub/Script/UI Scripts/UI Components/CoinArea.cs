@@ -1,0 +1,31 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using RG.Core;
+using RG.Handlers;
+using TMPro;
+using UnityEngine;
+
+public class CoinArea : MonoBehaviour
+{
+    public TextMeshProUGUI coinText;
+
+    private void OnEnable()
+    {
+        coinText.text = GamePrefs.GameCoin.ToString();
+        RoosterEventHandler.OnUpdateCoinText += UpdateCoinText;
+    }
+
+    private void OnDisable()
+    {
+        RoosterEventHandler.OnUpdateCoinText -= UpdateCoinText;
+    }
+
+    private void UpdateCoinText()
+    {
+        GamePrefs.GameCoin += GamePrefs.CollectedCoin;
+        GamePrefs.CollectedCoin = 0;
+        coinText.text = GamePrefs.GameCoin.ToString();
+    }
+    
+}
