@@ -1,18 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
-public class DollyCartCompositionRoot : MonoBehaviour
+namespace JR
 {
-    // Start is called before the first frame update
-    void Start()
+    public class DollyCartCompositionRoot : MonoBehaviour
     {
-        
-    }
+        public void Init(InitParameters initParameters)
+        {
+            var dollyCart = initParameters.DollyCart;
+            var dollyCartController = initParameters.DollyCartController;
+            var dollyCartSettings = initParameters.DollyCartSettings;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+            var dollyCartControllerInitParameters = new DollyCartController.InitParameters();
+            dollyCartControllerInitParameters.Settings = dollyCartSettings;
+            dollyCartControllerInitParameters.DollyCart = dollyCart;
+
+            dollyCartController.Init(dollyCartControllerInitParameters);
+        }
+
+        public class InitParameters
+        {
+            public DollyCartController.Settings DollyCartSettings { get; set; }
+            public DollyCartController DollyCartController { get; set; }
+            public CinemachineDollyCart DollyCart { get; set; }
+        }
     }
 }

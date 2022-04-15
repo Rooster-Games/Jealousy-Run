@@ -1,18 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
-public class PlayerCompositionRoot : MonoBehaviour
+namespace JR
 {
-    // Start is called before the first frame update
-    void Start()
+    public class PlayerCompositionRoot : MonoBehaviour
     {
-        
-    }
+        [SerializeField] PlayerSettingsSO _playerSettings;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void Awake()
+        {
+            Init(new InitParameters());
+        }
+
+        public void Init(InitParameters initParameters)
+        {
+            // CompositionRoot
+            DollyCartCompositionRoot dollyCartCompositionRoot = GetComponent<DollyCartCompositionRoot>();
+
+            // Self
+            var dollyCart = GetComponent<CinemachineDollyCart>();
+
+            // Child
+            var dollyCartController = GetComponentInChildren<DollyCartController>();
+
+            // Creation of InitParameters
+            var dollyCartCompositionRootInitParameters = new DollyCartCompositionRoot.InitParameters();
+            dollyCartCompositionRootInitParameters.DollyCart = dollyCart;
+            dollyCartCompositionRootInitParameters.DollyCartController = dollyCartController;
+            dollyCartCompositionRootInitParameters.DollyCartSettings = _playerSettings.DollyCartSettings;
+
+            dollyCartCompositionRoot.Init(dollyCartCompositionRootInitParameters);
+
+        }
+
+        public class InitParameters
+        {
+
+        }
     }
 }
