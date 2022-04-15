@@ -25,7 +25,7 @@ namespace JR
 
             PMContainer.Instance.RegisterForIniting(dollyCartController);
             PMContainer.Instance.RegisterWhenInjecTo(_playerSettings.DollyCartSettings, dollyCartController);
-            PMContainer.Instance.RegisterWhenInjecTo(dollyCart, dollyCartController);
+            PMContainer.Instance.RegisterWhenInjecTo(dollyCart, dollyCartController, playerController);
 
 
             PMContainer.Instance.RegisterForIniting(playerController);

@@ -9,7 +9,7 @@ namespace JR
     public class MainCompositionRoot : MonoBehaviour
     {
         [SerializeField] GameManager _gameManager;
-
+        [SerializeField] InputManager _inputManager;
         [SerializeField] PlayerCompositionRoot _playerCompositionRoot;
 
         private void Awake()
@@ -27,6 +27,7 @@ namespace JR
 
             PMContainer.Instance.RegisterSingle(eventBus);
             PMContainer.Instance.RegisterSingle(assemblyInstanceCreator);
+            PMContainer.Instance.RegisterSingle(_inputManager);
 
             // for initing
             var coreEventBusCompositionRoot = new CoreEventBusCompositionRoot();
@@ -34,8 +35,8 @@ namespace JR
             // register for initing
             PMContainer.Instance.RegisterForIniting(_gameManager);
             PMContainer.Instance.RegisterForIniting(coreEventBusCompositionRoot);
-
             PMContainer.Instance.RegisterForIniting(_playerCompositionRoot);
+            PMContainer.Instance.RegisterForIniting(_inputManager);
 
             _playerCompositionRoot.RegisterToContainer();
 

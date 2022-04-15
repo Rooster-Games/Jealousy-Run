@@ -25,6 +25,7 @@ namespace JR
                 if (Input.GetMouseButtonDown(0))
                 {
                     _developmentMode = false;
+                    Debug.Log("Game has been started");
                     _eventbus.Fire<OnGameStarted>();
                 }
             }

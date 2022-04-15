@@ -19,7 +19,6 @@ namespace DI
 
                 return _instance;
             }
-                
         }
 
         Dictionary<Type, object> _typeToInstance;
@@ -61,20 +60,24 @@ namespace DI
             _typeToInstanceForIniting[t].Add(instance);
         }
 
-        public void RegisterWhenInjecTo<T>(T instance, object toObject)
+        public void RegisterWhenInjecTo<T>(T instance, params object[] toObjectCollection)
         {
             var t = typeof(T);
-            if (!_whenInjectTo.ContainsKey(toObject))
+            foreach (var toObject in toObjectCollection)
             {
-                _whenInjectTo.Add(toObject, new Dictionary<Type, object>());
-                _whenInjectTo[toObject].Add(t, instance);
-            }
-            else
-            {
-                if (_whenInjectTo[toObject].ContainsKey(t))
-                    return;
 
-                _whenInjectTo[toObject].Add(t, instance);
+                if (!_whenInjectTo.ContainsKey(toObject))
+                {
+                    _whenInjectTo.Add(toObject, new Dictionary<Type, object>());
+                    _whenInjectTo[toObject].Add(t, instance);
+                }
+                else
+                {
+                    if (_whenInjectTo[toObject].ContainsKey(t))
+                        return;
+
+                    _whenInjectTo[toObject].Add(t, instance);
+                }
             }
         }
 
