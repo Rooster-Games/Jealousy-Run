@@ -428,7 +428,7 @@ GameObject:
   - component: {fileID: 107074665}
   - component: {fileID: 107074664}
   m_Layer: 0
-  m_Name: Directional Light_01
+  m_Name: Directional Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -550,10 +550,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 141970326}
+  - component: {fileID: 141970327}
+  - component: {fileID: 141970331}
   - component: {fileID: 141970330}
   - component: {fileID: 141970329}
   - component: {fileID: 141970328}
-  - component: {fileID: 141970327}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -601,23 +602,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 141970325}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74ebe50789a0246078305578d9ec8ccb, type: 3}
+  m_Script: {fileID: 11500000, guid: 28a653e95fdbd4dd8abd8fcb093a1d52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _started: 0
-  _ended: 0
-  _clicked: 0
-  _sensivity: 1
-  _maxDeltaXClamp: 1
-  _maxDeltaYClamp: 1
-  _deltaX: 0
-  _deltaY: 0
-  _totaldeltaX: 0
-  _totaldeltaY: 0
-  _delta: {x: 0, y: 0, z: 0}
-  _smoothDelta: {x: 0, y: 0, z: 0}
-  xSensivity: 6
-  smoothingFactor: 0.6
+  _settings:
+    _speed: 0
 --- !u!114 &141970329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -627,16 +616,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 141970325}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10383bb92c57d44e0a9a8ef51f39c783, type: 3}
+  m_Script: {fileID: 11500000, guid: 778b239d70a564766907c58121c8081c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isStarted: 0
-  _isFinished: 0
-  _isStopped: 0
-  _characterControl: {fileID: 141970330}
-  _characterRB: {fileID: 141970327}
-  _speed: 5
-  _sideLimit: 3.5
 --- !u!114 &141970330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -646,11 +628,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 141970325}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01b6abb6b04624664ae12a213a6e14be, type: 3}
+  m_Script: {fileID: 11500000, guid: ff8e8630060394725b4b57b1628d6d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isStarted: 0
-  _isFinished: 0
+--- !u!136 &141970331
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141970325}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2.06
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.93, z: 0}
 --- !u!1 &177801288
 GameObject:
   m_ObjectHideFlags: 0
@@ -1561,7 +1555,6 @@ GameObject:
   m_Component:
   - component: {fileID: 950923359}
   - component: {fileID: 950923361}
-  - component: {fileID: 950923360}
   m_Layer: 0
   m_Name: LowChar
   m_TagString: Untagged
@@ -1585,21 +1578,6 @@ Transform:
   m_Father: {fileID: 141970326}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &950923360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 950923358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f39fd15979fc4631867a5dacee66232, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 950923361}
-  _isRunning: 0
-  _rotateAmount: 30
 --- !u!95 &950923361
 Animator:
   serializedVersion: 3
@@ -1663,7 +1641,7 @@ GameObject:
   - component: {fileID: 1077404302}
   - component: {fileID: 1077404301}
   m_Layer: 0
-  m_Name: Main Camera_01
+  m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4060,7 +4038,7 @@ GameObject:
   - component: {fileID: 1712635546}
   - component: {fileID: 1712635547}
   m_Layer: 0
-  m_Name: Level_01
+  m_Name: Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4354,9 +4332,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1957671800}
   - component: {fileID: 1957671802}
+  - component: {fileID: 1957671803}
   - component: {fileID: 1957671801}
   m_Layer: 0
-  m_Name: PlayerDollycart_01
+  m_Name: PlayerDollycart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4386,11 +4365,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1957671799}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c61ad56ced7f24cb69b5aeb0418c4de0, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e30ffdfb912047d6b62bccf031e2443, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 0
-  _isStopped: 0
 --- !u!114 &1957671802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4408,6 +4385,19 @@ MonoBehaviour:
   m_PositionUnits: 1
   m_Speed: 0
   m_Position: 0
+--- !u!114 &1957671803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957671799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d94f2f747fe624aa4a6e82845da8e740, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerSettings: {fileID: 11400000, guid: eead7a9a700f94550aabf1d0beacc901, type: 2}
 --- !u!1 &2040898965
 GameObject:
   m_ObjectHideFlags: 0
@@ -4514,7 +4504,7 @@ GameObject:
   - component: {fileID: 2092658359}
   - component: {fileID: 2092658358}
   m_Layer: 0
-  m_Name: CM vcam1_01
+  m_Name: CM vcam1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
