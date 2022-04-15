@@ -24,7 +24,10 @@ namespace JR
 
         public void StartMoving()
         {
+            Debug.Log((_dollyCart == null).ToString());
+            Debug.Log("speed:" + _settings.Speed);
             _dollyCart.m_Speed = _settings.Speed;
+            Debug.Log("DollycartS:" + _dollyCart.m_Speed);
         }
 
         public void StopMoving()
