@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace JR
+namespace DIContainer
 {
-    public class PersonController : MonoBehaviour
+    public class DIContainer : MonoBehaviour
     {
+
     }
 }

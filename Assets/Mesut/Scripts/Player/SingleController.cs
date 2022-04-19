@@ -6,7 +6,7 @@ using UnityEngine;
 namespace JR
 {
     public enum Gender { Male, Female }
-    public class SingleController : MonoBehaviour
+    public class SingleController : MonoBehaviour, IProtector
     {
         [SerializeField] GenderInfo _genderInfo;
         IAnimatorController _animatorController;
@@ -16,9 +16,16 @@ namespace JR
         bool _isSlapping;
         public bool IsSlapping => _isSlapping;
 
+        DoTweenSwapper _transformSwapper;
+
         public void Init(InitParameters initParameters)
         {
             _animatorController = initParameters.AnimatorController;
+
+            var swapperInitParameters = new DoTweenSwapper.InitParameters();
+            swapperInitParameters.TransformToSwap = transform;
+            swapperInitParameters.MoveSettings = initParameters.MoveSettings;
+            _transformSwapper = new DoTweenSwapper(swapperInitParameters);
         }
 
         public void Slap()
@@ -37,9 +44,27 @@ namespace JR
                 .OnComplete(() => _isSlapping = false);
         }
 
+        public void Protect()
+        {
+            _transformSwapper.Swap();
+        }
+
+        public void ReturnBack()
+        {
+            _transformSwapper.ReturnBack();
+        }
+
         public class InitParameters
         {
             public IAnimatorController AnimatorController { get; set; }
+            public DoTweenSwapper.MoveSettings MoveSettings { get; set; }
+            public bool IsProtector { get; set; }
         }
+    }
+
+    public interface IProtector
+    {
+        void Protect();
+        void ReturnBack();
     }
 }

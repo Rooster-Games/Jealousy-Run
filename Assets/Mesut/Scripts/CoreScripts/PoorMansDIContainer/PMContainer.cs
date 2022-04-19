@@ -247,7 +247,6 @@ namespace DI
                 {
                     Debug.Log($"Type of {typeof(T).Name} is null");
                 }
-
             }
 
             public void RegisterToContainer()
