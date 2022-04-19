@@ -40,7 +40,7 @@ namespace JR
 
             _playerCompositionRoot.RegisterToContainer();
 
-            PMContainer.Instance.Solve();
+            PMContainer.Instance.Resolve();
         }
     }
 }

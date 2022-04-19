@@ -4,7 +4,4 @@ using UnityEngine;
 
 namespace JR
 {
-    public class PlayerAnimatorController : MonoBehaviour
-    {
-    }
 }

@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using DI;
 using UnityEngine;
 
-public class TestDI : MonoBehaviour
+namespace JR
 {
+    public class PersonController : MonoBehaviour
+    {
+    }
 }

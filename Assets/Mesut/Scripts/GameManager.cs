@@ -4,12 +4,14 @@ using DI;
 using GameCores;
 using GameCores.CoreEvents;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace JR
 {
     public class GameManager : MonoBehaviour
     {
         [SerializeField] bool _developmentMode;
+        bool _isGameStarted;
 
         EventBus _eventbus;
 
@@ -22,13 +24,22 @@ namespace JR
         {
             if (_developmentMode)
             {
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0) && !_isGameStarted)
                 {
-                    _developmentMode = false;
-                    Debug.Log("Game has been started");
+                    _isGameStarted = true;
                     _eventbus.Fire<OnGameStarted>();
                 }
+
+                if(Input.GetKeyDown(KeyCode.R))
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                }
             }
+        }
+
+        private void OnDisable()
+        {
+            PMContainer.Reset();
         }
 
         public class InitParameters

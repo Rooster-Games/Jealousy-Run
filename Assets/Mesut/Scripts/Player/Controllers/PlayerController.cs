@@ -15,7 +15,7 @@ namespace JR
 
         Settings _settings;
         DollyCartController _dollyCartController;
-        PlayerAnimatorController _animatorController;
+        IAnimatorController _animatorController;
         EventBus _eventBus;
         InputManager _inputManager;
 
@@ -42,6 +42,7 @@ namespace JR
         private void EventBus_OnGameStarted(OnGameStarted eventData)
         {
             _dollyCartController.StartMoving();
+            _animatorController.SetTrigger("walk");
         }
 
         Tween[] _swapTweens = new Tween[4];
@@ -102,7 +103,6 @@ namespace JR
                     SwapPositions();
                 else if (_swapping)
                     FlipSwapTweens();
-
             }
 
             if(_inputManager.IsMouseButtonUp)
@@ -136,7 +136,7 @@ namespace JR
         public class InitParameters
         {
             public DollyCartController DollyCartController { get; set; }
-            public PlayerAnimatorController AnimatorController { get; set; }
+            public IAnimatorController AnimatorController { get; set; }
             public Settings Settings { get; set; }
             public EventBus EventBus { get; set; }
             public InputManager InputManager { get; set; }

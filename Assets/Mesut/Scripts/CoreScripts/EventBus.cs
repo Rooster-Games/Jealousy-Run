@@ -6,6 +6,11 @@ namespace GameCores
 {
     public class EventBus
     {
+        public EventBus()
+        {
+            Debug.Log("EventBus Created");
+        }
+
         Dictionary<Type, IActionData> _typeToActionMap = new Dictionary<Type, IActionData>();
         Dictionary<Type, IEventData> _typeToDataMap = new Dictionary<Type, IEventData>();
 

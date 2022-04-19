@@ -31,7 +31,6 @@ namespace JR
         private void Update()
         {
             if (!_isGameStarted) return;
-            
 
             IsMouseButtonDown = Input.GetMouseButtonDown(0);
             IsMouseButtonHold = Input.GetMouseButton(0);

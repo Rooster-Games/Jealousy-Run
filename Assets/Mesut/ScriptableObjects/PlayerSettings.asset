@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PlayerSettings
   m_EditorClassIdentifier: 
   _playerControllerSettings:
-    _swapDuration: 1
-    _moveForwardDistance: 1
+    _swapDuration: 0.5
+    _moveForwardDistance: 0.4
     _forwardCurve:
       serializedVersion: 2
       m_Curve:
@@ -59,4 +59,4 @@ MonoBehaviour:
       m_RotationOrder: 4
     _sideSwapEase: 1
   _dollyCartSettings:
-    _speed: 2
+    _speed: 10
