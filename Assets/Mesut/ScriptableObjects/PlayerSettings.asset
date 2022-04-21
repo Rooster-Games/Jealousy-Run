@@ -60,3 +60,6 @@ MonoBehaviour:
     _sideSwapEase: 1
   _dollyCartSettings:
     _speed: 10
+  _coupleTransformSettings:
+    _protectorStartingPosition: {x: 1, y: 0, z: 0}
+    _defendedStartingPosition: {x: -1, y: 0, z: 0}

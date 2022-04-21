@@ -357,5 +357,73 @@ namespace DI
                 }
             }
         }
+
+        public class GOComponentDependencyInjector
+        {
+            GameObject _gameObject;
+
+            Dictionary<Type, List<Component>> _typeToComponentListMap;
+            Dictionary<GameObject, Component> _gameObjectToComponentMap;
+            Dictionary<GameObject, Dictionary<Type, Component>> _gameObjectToTypeToComponentMap;
+
+            public GOComponentDependencyInjector(GameObject gameObject)
+            {
+                _gameObject = gameObject;
+
+                _gameObjectToComponentMap = new Dictionary<GameObject, Component>();
+                _typeToComponentListMap = new Dictionary<Type, List<Component>>();
+                _gameObjectToTypeToComponentMap = new Dictionary<GameObject, Dictionary<Type, Component>>();
+            }
+
+            public void RegisterSingle<T>() where T:Component
+            {
+                var component = FindComponentAtRoot<T>();
+
+                var t = typeof(T);
+
+                var go = component.gameObject;
+
+                if (!_gameObjectToComponentMap.ContainsKey(go))
+                    _gameObjectToComponentMap.Add(go, component);
+
+                if (!_typeToComponentListMap.ContainsKey(t))
+                    _typeToComponentListMap.Add(t, new List<Component>());
+
+                _typeToComponentListMap[t].Add(component);
+
+
+                if (!_gameObjectToTypeToComponentMap.ContainsKey(go))
+                {
+                    _gameObjectToTypeToComponentMap.Add(go, new Dictionary<Type, Component>());
+                    _gameObjectToTypeToComponentMap[go].Add(t, component);
+                }
+                else
+                    _gameObjectToTypeToComponentMap[go].Add(t, component);
+            }
+
+            private T FindComponentAtRoot<T>() where T:Component
+            {
+                var t = typeof(T);
+
+                var component = _gameObject.GetComponentInChildren<T>();
+
+                if (component == null)
+                    throw new Exception($"=== Root Name: {_gameObject.name} do not contains any {t.Name} named component on self or children ===");
+
+                return component;
+            }
+
+            private T[] FindComponentCollectionAtRoot<T>() where T: Component
+            {
+                var t = typeof(T);
+
+                var componentCollection = _gameObject.GetComponentsInChildren<T>();
+
+                if (componentCollection == null)
+                    throw new Exception($"=== Root Name: {_gameObject.name} do not contains any {t.Name} named component collection on self or children ===");
+
+                return componentCollection;
+            }
+        }
     }
 }
