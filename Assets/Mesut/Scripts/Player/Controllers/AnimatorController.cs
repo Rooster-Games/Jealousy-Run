@@ -36,7 +36,6 @@ namespace JR
         {
             public Animator Animator { get; set; }
         }
-
     }
 
     public interface IAnimatorController

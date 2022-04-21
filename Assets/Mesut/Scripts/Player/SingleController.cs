@@ -31,7 +31,7 @@ namespace JR
 
         public void Slap()
         {
-            Debug.Log("Slap");
+            if (_isSlapping) return;
             _isSlapping = true;
             _animatorController.SetLayerWeight(1, 1f);
             _animatorController.SetTrigger("slap");
