@@ -14,35 +14,38 @@ namespace JR
         [SerializeField] DoTweenSwapper.MoveSettings _moveSettings;
         //public void RegisterToContainer()
         //{
-        //    // CompositionRoot
-        //    //DollyCartCompositionRoot dollyCartCompositionRoot = GetComponent<DollyCartCompositionRoot>();
+            //    // CompositionRoot
+            //    //DollyCartCompositionRoot dollyCartCompositionRoot = GetComponent<DollyCartCompositionRoot>();
 
-        //    // Self
-        //    //var dollyCart = GetComponent<CinemachineDollyCart>();
+            //    // Self
+            //    //var dollyCart = GetComponent<CinemachineDollyCart>();
 
-        //    //// Child
-        //    var singleControllerCollection = GetComponentsInChildren<SingleController>();
-        //    //var dollyCartController = GetComponentInChildren<DollyCartController>();
-        //    //var playerController = GetComponentInChildren<PlayerController>();
-        //    var animators = GetComponentsInChildren<Animator>();
+            //    //// Child
+            //    var singleControllerCollection = GetComponentsInChildren<SingleController>();
+            //    //var dollyCartController = GetComponentInChildren<DollyCartController>();
+            //    //var playerController = GetComponentInChildren<PlayerController>();
+            //    var animators = GetComponentsInChildren<Animator>();
 
-        //    var animatorController = new AnimatorControllerFactory().Create(animators);
+            //    var animatorController = new AnimatorControllerFactory().Create(animators);
 
-        //    //PMContainer.Instance.RegisterForIniting(dollyCartController);
-        //    //PMContainer.Instance.RegisterWhenInjecTo(_playerSettings.DollyCartSettings, dollyCartController);
-        //    //PMContainer.Instance.RegisterWhenInjecTo(dollyCart, dollyCartController);
+            //    //PMContainer.Instance.RegisterForIniting(dollyCartController);
+            //    //PMContainer.Instance.RegisterWhenInjecTo(_playerSettings.DollyCartSettings, dollyCartController);
+            //    //PMContainer.Instance.RegisterWhenInjecTo(dollyCart, dollyCartController);
 
-        //    //PMContainer.Instance.RegisterForIniting(playerController);
-        //    //PMContainer.Instance.RegisterWhenInjecTo(dollyCartController, playerController);
-        //    //PMContainer.Instance.RegisterWhenInjecTo(_playerSettings.PlayerControllerSettings, playerController);
-        //    //PMContainer.Instance.RegisterWhenInjecTo(animatorController, playerController);
+            //    //PMContainer.Instance.RegisterForIniting(playerController);
+            //    //PMContainer.Instance.RegisterWhenInjecTo(dollyCartController, playerController);
+            //    //PMContainer.Instance.RegisterWhenInjecTo(_playerSettings.PlayerControllerSettings, playerController);
+            //    //PMContainer.Instance.RegisterWhenInjecTo(animatorController, playerController);
 
-           
 
-        //    PMContainer.Instance.RegisterSingle(_playerSettings.DollyCartSettings);
-        //    PMContainer.Instance.RegisterSingle(_playerSettings.PlayerControllerSettings);
 
-        //    PMContainer.Instance.RegisterGameobject(gameObject)
+            //    PMContainer.Instance.RegisterSingle(_playerSettings.DollyCartSettings);
+            //    PMContainer.Instance.RegisterSingle(_playerSettings.PlayerControllerSettings);
+
+
+            // PMContainer.Instance.RegisterRoot(gameObject);
+
+        //PMContainer.Instance.RegisterGameobject(gameObject)
         //        .RegisterComponent<CinemachineDollyCart>()
         //        .RegisterComponent<PlayerController>()
         //        .RegisterComponent<DollyCartController>()
@@ -63,7 +66,7 @@ namespace JR
 
         //    }
 
-        //}
+        // }
 
         public void Init(InitParameters initParameters)
         {
