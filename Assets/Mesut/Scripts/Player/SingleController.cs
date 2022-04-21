@@ -9,6 +9,7 @@ namespace JR
     public class SingleController : MonoBehaviour, IProtector
     {
         [SerializeField] GenderInfo _genderInfo;
+        [SerializeField] int _slapAnimationCount = 7;
         IAnimatorController _animatorController;
 
         public GenderInfo GenderInfo => _genderInfo;
@@ -30,9 +31,11 @@ namespace JR
 
         public void Slap()
         {
+            Debug.Log("Slap");
             _isSlapping = true;
             _animatorController.SetLayerWeight(1, 1f);
             _animatorController.SetTrigger("slap");
+            _animatorController.SetFloat("tokatIndex", Random.Range(0, _slapAnimationCount));
             StartCoroutine(RestartAnimatorWeight());
         }
 

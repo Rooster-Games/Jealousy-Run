@@ -27,6 +27,11 @@ namespace JR
             _animator.SetTrigger(triggerName);
         }
 
+        public void SetFloat(string parameterName, float value)
+        {
+            _animator.SetFloat(parameterName, value);
+        }
+
         public class InitParameters
         {
             public Animator Animator { get; set; }
@@ -37,6 +42,7 @@ namespace JR
     public interface IAnimatorController
     {
         void SetBool(string stateName, bool state);
+        void SetFloat(string parameterName, float value);
         void SetTrigger(string triggerName);
         void SetLayerWeight(int layerIndex, float weight);
     }
@@ -76,6 +82,14 @@ namespace JR
             foreach (var controller in _animationControllerList)
             {
                 controller.SetBool(stateName, state);
+            }
+        }
+
+        public void SetFloat(string parameterName, float value)
+        {
+            foreach (var controller in _animationControllerList)
+            {
+                controller.SetFloat(parameterName, value);
             }
         }
 
