@@ -13,6 +13,8 @@ namespace JR
         [SerializeField] PlayerCompositionRoot _playerCompositionRoot;
         [SerializeField] CrowdedControllerCompositionRoot _crowdedControllerCompositionRoot;
         [SerializeField] GameType _gameType;
+        [SerializeField] BarCompositionSettings _barCompositionSettings;
+
 
         private void Awake()
         {
@@ -57,6 +59,21 @@ namespace JR
             gmInitParameters.EventBus = eventBus;
 
             _gameManager.Init(gmInitParameters);
+
+            // BarController Init
+            var loveDataInitParameters = new LoveData.InitParameters();
+            loveDataInitParameters.StartingValue = _barCompositionSettings.StartingPercent;
+            _barCompositionSettings.LoveData.Init(loveDataInitParameters);
+
+            var barInitParameters = new BaseBar.InitParameters();
+            barInitParameters.StartingPercent = _barCompositionSettings.StartingPercent;
+            _barCompositionSettings.Bar.Init(barInitParameters);
+
+            var barControllerInitParameters = new BarController.InitParameters();
+            barControllerInitParameters.Bar = _barCompositionSettings.Bar;
+            barControllerInitParameters.LoveData = _barCompositionSettings.LoveData;
+            _barCompositionSettings.BarController.Init(barControllerInitParameters);
+
         }
         //public void Init()
         //{
