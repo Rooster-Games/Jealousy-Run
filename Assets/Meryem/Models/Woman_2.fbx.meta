@@ -1,8 +1,35 @@
 fileFormatVersion: 2
-guid: cb794663d1f6545418178b7577da813e
+guid: ef105d2b90923464b942686ba398c110
 ModelImporter:
   serializedVersion: 20200
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -4791504522942941401
+    second: Armature|Armature|mixamo.com|Layer0
+  - first:
+      74: 6165553400957861818
+    second: Armature|Armature|mixamo.com|Layer0.001
+  - first:
+      74: 3591740854655688942
+    second: Armature|Armature|mixamo.com|Layer0.002
+  - first:
+      74: 85483252243113165
+    second: Armature|Armature|mixamo.com|Layer0.003
+  - first:
+      74: -3874622737766231957
+    second: Armature|Armature|mixamo.com|Layer0.004
+  - first:
+      74: -1799482412581303042
+    second: Armature|Armature|mixamo.com|Layer0.005
+  - first:
+      74: -9099236766384010623
+    second: Armature|Armature|mixamo.com|Layer0.006
+  - first:
+      74: 5190646265559181537
+    second: Armature|Armature|mixamo.com|Layer0.007
+  - first:
+      74: -5544183783216047378
+    second: Armature|szkielet-0|Default Take|Layer0
   externalObjects: {}
   materials:
     materialImportMode: 2
