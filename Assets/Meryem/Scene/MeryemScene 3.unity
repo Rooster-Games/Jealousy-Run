@@ -999,11 +999,81 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _settings:
     _speed: 0
+  _debugMode: 0
 --- !u!4 &277966274 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5469749945857550346, guid: b13e407f7d6011f449f8357c3b71a460, type: 3}
   m_PrefabInstance: {fileID: 8737191508700059610}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &286997032
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 194055704293712580, guid: 1376c083795c6204dba83fac86de0930, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 194055704293712580, guid: 1376c083795c6204dba83fac86de0930, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 194055704293712580, guid: 1376c083795c6204dba83fac86de0930, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 194055704293712580, guid: 1376c083795c6204dba83fac86de0930, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 194055704293712580, guid: 1376c083795c6204dba83fac86de0930, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 194055704293712580, guid: 1376c083795c6204dba83fac86de0930, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 194055704293712580, guid: 1376c083795c6204dba83fac86de0930, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 194055704293712580, guid: 1376c083795c6204dba83fac86de0930, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 194055704293712580, guid: 1376c083795c6204dba83fac86de0930, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 194055704293712580, guid: 1376c083795c6204dba83fac86de0930, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 194055704293712580, guid: 1376c083795c6204dba83fac86de0930, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1071825723172677196, guid: 1376c083795c6204dba83fac86de0930, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 4050279807715960560, guid: 1376c083795c6204dba83fac86de0930, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4050279807715960560, guid: 1376c083795c6204dba83fac86de0930, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 6780513999700655658, guid: 1376c083795c6204dba83fac86de0930, type: 3}
+      propertyPath: m_Name
+      value: BARS
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1376c083795c6204dba83fac86de0930, type: 3}
 --- !u!1001 &290887718
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8960,7 +9030,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077404300}
-  m_LocalRotation: {x: 0.32617635, y: -0.000000015058461, z: 0.0000000051958815, w: 0.945309}
+  m_LocalRotation: {x: 0.32617638, y: -0.000000028172405, z: 0.000000009720814, w: 0.945309}
   m_LocalPosition: {x: 0, y: 6.85, z: -5.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -9635,6 +9705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _settings:
     _speed: 0
+  _debugMode: 0
 --- !u!114 &1319180615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23491,6 +23562,11 @@ MonoBehaviour:
   _playerCompositionRoot: {fileID: 139884787}
   _crowdedControllerCompositionRoot: {fileID: 266803308}
   _gameType: {fileID: 911691545}
+  _barCompositionSettings:
+    _barController: {fileID: 0}
+    _bar: {fileID: 0}
+    _loveData: {fileID: 0}
+    _startingPercent: 0.5
 --- !u!1001 &2078631146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23777,7 +23853,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2092658357}
-  m_LocalRotation: {x: 0.32617635, y: -0.000000015058461, z: 0.0000000051958815, w: 0.945309}
+  m_LocalRotation: {x: 0.32617638, y: -0.000000028172405, z: 0.000000009720814, w: 0.945309}
   m_LocalPosition: {x: 0, y: 6.85, z: -5.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
