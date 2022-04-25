@@ -11,7 +11,15 @@ namespace JR
 
         public float CurrentPercent => (_currentValue / _maxValue);
         public float MaxValue => _maxValue;
-        public float CurrentValue { get => _currentValue; set => _currentValue = value; }
+        public float CurrentValue
+        {
+            get => _currentValue;
+            set
+            {
+                _currentValue = value;
+                _currentValue = Mathf.Clamp(_currentValue, 0f, _maxValue);
+            }
+        }
 
         public void Init(InitParameters initParameters)
         {
