@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd20ddadb64804be88ec3fa730f3ce7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _barIncreaseAmount: 0.1
+  _barIncreaseAmount: 0.05
 --- !u!1001 &4180002812514212680
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -16,6 +16,7 @@ namespace JR
 
         [SerializeField] Button _showPanelButton;
         [SerializeField] Button[] _genderSelectionButtonCollection;
+        [SerializeField] GameObject[] _buttonGraphics;
 
         public event Action OnGenderSelected;
 
@@ -64,6 +65,7 @@ namespace JR
             {
                 button.gameObject.SetActive(state);
             }
+            ActivateGraphics(state);
         }
 
         public void SelectGender(int genderIndex)
@@ -84,6 +86,14 @@ namespace JR
 
             _isGenderSelected = true;
             OnGenderSelected?.Invoke();
+        }
+
+        private void ActivateGraphics(bool state)
+        {
+            foreach (var go in _buttonGraphics)
+            {
+                go.SetActive(state);
+            }
         }
     }
 }
