@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using DI;
+
 using GameCores;
 using GameCores.CoreEvents;
 using UnityEngine;
@@ -21,6 +19,15 @@ namespace JR
         {
             _eventbus = initParameters.EventBus;
             _isInitialized = true;
+
+            RoosterHub.Central.OnGameStartedHandler += StartGame;
+        }
+
+
+        private void StartGame()
+        {
+            _isGameStarted = true;
+            _eventbus.Fire<OnGameStarted>();
         }
 
         public void Update()
@@ -44,7 +51,8 @@ namespace JR
 
         private void OnDisable()
         {
-            PMContainer.Reset();
+            // PMContainer.Reset();
+            RoosterHub.Central.OnGameStartedHandler -= StartGame;
         }
 
         public class InitParameters

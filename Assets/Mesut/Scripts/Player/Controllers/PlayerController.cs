@@ -1,14 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using GameCores;
 using GameCores.CoreEvents;
-using System.Runtime;
 using DG.Tweening;
-using UnityEditor.ShaderGraph.Serialization;
-using System;
-using UnityEngine.Rendering;
-using System.Runtime.CompilerServices;
 
 namespace JR
 {

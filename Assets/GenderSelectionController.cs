@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -39,6 +36,7 @@ namespace JR
         private void CloseShowPanelButton()
         {
             _showPanelButton.gameObject.SetActive(false);
+            ActivateSelectionButtons(false);
         }
 
         private void ControlPlayerPrefs()
@@ -54,7 +52,7 @@ namespace JR
             ActivateSelectionButtons(!hasKey);
         }
 
-        private void ShowPanel()
+        public void ShowPanel()
         {
             _isPanelShowed = !_isPanelShowed;
             ActivateSelectionButtons(_isPanelShowed);
@@ -66,8 +64,6 @@ namespace JR
             {
                 button.gameObject.SetActive(state);
             }
-
-            _showPanelButton.gameObject.SetActive(!state);
         }
 
         public void SelectGender(int genderIndex)
@@ -84,6 +80,7 @@ namespace JR
             _gameTypeGender = (Gender)genderIndex;
 
             ActivateSelectionButtons(false);
+            _isPanelShowed = false;
 
             _isGenderSelected = true;
             OnGenderSelected?.Invoke();
