@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using DI;
+
 using GameCores;
 using UnityEngine;
 
@@ -14,11 +12,20 @@ namespace JR
         [SerializeField] CrowdedControllerCompositionRoot _crowdedControllerCompositionRoot;
         [SerializeField] GameType _gameType;
         [SerializeField] BarCompositionSettings _barCompositionSettings;
+        [SerializeField] GenderSelectionController _genderSelectionController;
 
 
         private void Awake()
         {
-            Init();
+            _genderSelectionController.Init();
+
+            if (_genderSelectionController.IsGenderSelected)
+            {
+                Init();
+            }
+            else
+                _genderSelectionController.OnGenderSelected += Init;
+            //Init();
         }
 
         public void Init()
@@ -39,6 +46,11 @@ namespace JR
             inputManagerInitParameters.EventBus = eventBus;
 
             _inputManager.Init(inputManagerInitParameters);
+
+            // Game Type Init
+            var gameTypeInitParameters = new GameType.InitParameters();
+            gameTypeInitParameters.ProtectorsGender = _genderSelectionController.GameTypeGender;
+            _gameType.Init(gameTypeInitParameters);
 
             // player composition root init
             var pcrInitParameters = new PlayerCompositionRoot.InitParameters();

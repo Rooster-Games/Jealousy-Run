@@ -500,9 +500,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainLevel:
-    levelScene: MainMenu
+    levelScene: MesutScene
   levelList:
-  - levelScene: GameScene
+  - levelScene: MesutScene
   loop: {fileID: 397083153}
 --- !u!114 &397083153
 MonoBehaviour:

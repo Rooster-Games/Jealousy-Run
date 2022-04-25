@@ -1,14 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using GameCores;
 using GameCores.CoreEvents;
-using System.Runtime;
 using DG.Tweening;
-using UnityEditor.ShaderGraph.Serialization;
-using System;
-using UnityEngine.Rendering;
-using System.Runtime.CompilerServices;
 
 namespace JR
 {
@@ -28,6 +22,7 @@ namespace JR
         private const int COUPLE_COUNTT = 2;
 
         Vector3[] _moveForwardPoses;
+        bool _isInitialized;
 
         public void Init(InitParameters initParameters)
         {
@@ -41,6 +36,7 @@ namespace JR
 
 
             _moveForwardPoses = new Vector3[COUPLE_COUNTT] { new Vector3(0f, 0f, -_settings.MoveForwardDistance), new Vector3(0f, 0f, _settings.MoveForwardDistance) };
+            _isInitialized = true;
         }
 
         private void EventBus_OnGameStarted(OnGameStarted eventData)
@@ -102,6 +98,8 @@ namespace JR
 
         private void Update()
         {
+            if (!_isInitialized) return;
+
             if(_inputManager.IsMouseButtonDown)
             {
                 _protector.Protect();
@@ -187,12 +185,12 @@ namespace JR
         {
             if (_isInitialized) return;
             _isInitialized = true;
-            _forwardMoveTween = _transformToSwap.DOLocalMoveX(_moveSettings.MoveSideDistance, _moveSettings.MoveDuration);
-            _sideMoveTween = _transformToSwap.DOLocalMoveZ(_moveSettings.MoveForwardDistance, _moveSettings.MoveDuration)
-                .SetEase(_moveSettings.ForwardMoveCurve)
-                .OnComplete(() => _isSwapping = false);
+            _forwardMoveTween = _transformToSwap.DOLocalMoveZ(_moveSettings.MoveForwardDistance, _moveSettings.MoveDuration)
+                .SetEase(_moveSettings.ForwardMoveCurve);
+            _sideMoveTween = _transformToSwap.DOLocalMoveX(_moveSettings.MoveSideDistance, _moveSettings.MoveDuration)
+                .OnComplete(() => {_isSwapping = false; });
 
-            _sideMoveTween.OnRewind(() => { Debug.Log("Init Complete"); _isSwapping = false;});
+            _sideMoveTween.OnRewind(() => {_isSwapping = false;});
 
             _forwardMoveTween.SetAutoKill(false);
             _sideMoveTween.SetAutoKill(false);
@@ -200,6 +198,7 @@ namespace JR
 
         public void Swap()
         {
+
             if (!_isInitialized)
             {
                 Init();
@@ -211,28 +210,33 @@ namespace JR
                 _isSwapping = true;
                 _forwardMoveTween.PlayForward();
                 _sideMoveTween.PlayForward();
-                
-                _sideMoveTween.OnComplete(() =>  _isSwapping = false);
+
+                _sideMoveTween.OnComplete(() => { _isSwapping = false; });
             }
             else
+            {
                 FlipTweens();
+            }
         }
 
         public void ReturnBack()
         {
             if (_isSwapping)
+            {
                 FlipTweens();
+            }
             else
+            {
                 PlayBackwardsTweens();
+            }
         }
 
         private void FlipTweens()
         {
-
             _forwardMoveTween.Flip();
             _sideMoveTween.Flip();
 
-            _sideMoveTween.OnRewind(() => _isSwapping = false);
+            _sideMoveTween.OnRewind(() => { _isSwapping = false; });
         }
 
         private void PlayBackwardsTweens()
@@ -241,7 +245,7 @@ namespace JR
             _forwardMoveTween.PlayBackwards();
             _sideMoveTween.PlayBackwards();
 
-            _sideMoveTween.OnRewind(() => _isSwapping = false);
+            _sideMoveTween.OnRewind(() => { _isSwapping = false; });
 
             _forwardMoveTween.SetAutoKill(false);
             _sideMoveTween.SetAutoKill(false);

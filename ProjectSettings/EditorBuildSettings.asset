@@ -24,6 +24,6 @@ EditorBuildSettings:
     path: Assets/_Rooster Hub/Scenes/GameScene 2.unity
     guid: e1226bf5145364aa9aa4dab0df34deab
   - enabled: 1
-    path: Assets/Can/Scene/CanScene 1.unity
-    guid: 7cebd982f48de4d33b0b4b2cd8e1275d
+    path: Assets/Mesut/MesutScene.unity
+    guid: aabab4b503590aa42afb1921db3f1dde
   m_configObjects: {}

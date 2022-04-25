@@ -1,5 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+
+
 using GameCores;
 using GameCores.CoreEvents;
 using UnityEngine;
@@ -15,6 +15,8 @@ namespace JR
         bool _isGameStarted;
 
         EventBus _eventBus;
+
+        bool _canMouseButtonUp;
 
         public void Init(InitParameters initParameters)
         {
@@ -32,10 +34,34 @@ namespace JR
         {
             if (!_isGameStarted) return;
 
-            IsMouseButtonDown = Input.GetMouseButtonDown(0);
-            IsMouseButtonHold = Input.GetMouseButton(0);
-            IsMouseButtonUp = Input.GetMouseButtonUp(0);
+            if(Input.GetMouseButtonDown(0))
+            {
+                IsMouseButtonDown = true;
+                _canMouseButtonUp = true;
+            }
+            else
+            {
+                IsMouseButtonDown = false;
+            }
 
+            if (!_canMouseButtonUp)
+            {
+                IsMouseButtonHold = false;
+                IsMouseButtonUp = false;
+                return;
+            }
+
+            IsMouseButtonHold = Input.GetMouseButton(0);
+
+            if(Input.GetMouseButtonUp(0))
+            {
+                IsMouseButtonUp = true;
+                _canMouseButtonUp = false;
+            }
+            else
+            {
+                IsMouseButtonUp = false;
+            }
         }
 
         public class InitParameters
