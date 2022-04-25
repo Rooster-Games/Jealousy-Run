@@ -25,5 +25,13 @@ namespace JR
         {
             public BarController BarController { get; set; }
         }
+
+        [System.Serializable]
+        public class OnCollectionSettings
+        {
+            [SerializeField] GameObject _heartExplosionPrefab;
+
+            public GameObject HeartExplosionPrefab => _heartExplosionPrefab;
+        }
     }
 }
