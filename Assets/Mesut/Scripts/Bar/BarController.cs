@@ -16,10 +16,9 @@ namespace JR
             _loveData = initParameters.LoveData;
         }
 
-        [Button("Change")]
-        public void ChangeAmount()
+        public void ChangeAmount(float amount)
         {
-            _loveData.CurrentValue += 0.1f;
+            _loveData.CurrentValue += amount;
             _bar.ChangeAmount(_loveData.CurrentPercent);
         }
 

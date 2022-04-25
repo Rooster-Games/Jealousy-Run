@@ -45,6 +45,7 @@ namespace JR
             pcrInitParameters.EventBus = eventBus;
             pcrInitParameters.InputManager = _inputManager;
             pcrInitParameters.GameType = _gameType;
+            pcrInitParameters.BarController = _barCompositionSettings.BarController;
 
             _playerCompositionRoot.Init(pcrInitParameters);
 

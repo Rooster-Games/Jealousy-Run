@@ -13,7 +13,7 @@ namespace JR
 
             // child
             var animator = GetComponentInChildren<Animator>();
-            var triggerDetector = GetComponentInChildren<TriggerDetector>();
+            var triggerDetector = GetComponentInChildren<EnemyDetector>();
 
             var animatorController = new AnimatorControllerFactory().Create(animator);
 
@@ -25,7 +25,7 @@ namespace JR
             singleController.Init(singleControllerInitParameters);
 
             // trigger detector init
-            var triggerDetectorInitParameters = new TriggerDetector.InitParameters();
+            var triggerDetectorInitParameters = new EnemyDetector.InitParameters();
             triggerDetectorInitParameters.SingleController = singleController;
 
             triggerDetector.Init(triggerDetectorInitParameters);

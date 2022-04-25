@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace JR
 {
-    public class TriggerDetector : MonoBehaviour
+    public class EnemyDetector : MonoBehaviour
     {
         SingleController _singleController;
 

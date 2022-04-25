@@ -12,10 +12,10 @@ TagManager:
   - Water
   - UI
   - Couple
-  - Test
-  - box
-  - 
-  - 
+  - Enemy
+  - Item
+  - Collector
+  - EnemyDetector
   - 
   - 
   - 
