@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a3c3e091a9b24f359ef066c3d5a1d93, type: 3}
+  m_Name: Main_crowdedSpawnData
+  m_EditorClassIdentifier: 
+  _prefabCollection:
+  - {fileID: 4657746983408988848, guid: b13e407f7d6011f449f8357c3b71a460, type: 3}
+  - {fileID: 7189676711941830754, guid: 2775c270b68292146b2e18fd43a0b6d7, type: 3}
+  - {fileID: 2013021392612693175, guid: ba19dde303fb07e4ea6b2d648160795b, type: 3}
+  - {fileID: 3647930200708131457, guid: e420ded771729084cb29c3780fb12aa3, type: 3}
+  _eulerRotation: {x: 0, y: 180, z: 0}
+  _cellSize: 0.65

@@ -59,7 +59,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     _sideSwapEase: 1
   _dollyCartSettings:
-    _speed: 10
+    _speed: 6
   _coupleTransformSettings:
-    _protectorStartingPosition: {x: 1, y: 0, z: 0}
-    _defendedStartingPosition: {x: -1, y: 0, z: 0}
+    _protectorStartingPosition: {x: 1.6, y: 0, z: 0}
+    _defendedStartingPosition: {x: -1.6, y: 0, z: 0}

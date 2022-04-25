@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace JR
 {
-    public class TriggerDetector : MonoBehaviour
+    public class EnemyDetector : MonoBehaviour
     {
         SingleController _singleController;
 
@@ -18,7 +18,9 @@ namespace JR
             var otherGenderInfo = other.GetComponent<GenderInfo>();
             if(otherGenderInfo.Gender == _singleController.GenderInfo.Gender)
             {
-                other.enabled = false;
+                if (other.isTrigger)
+                    other.enabled = false;
+
                 _singleController.Slap();
             }
         }

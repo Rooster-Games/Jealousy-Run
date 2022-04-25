@@ -128,6 +128,15 @@ namespace JR
 
             playerController.Init(playerControllerInitParameters);
 
+            // item trigger detectorInit
+            var itemTDInitParameters = new ItemTriggerDetector.InitParameters();
+            itemTDInitParameters.BarController = initParameters.BarController;
+
+            var itemTriggerDetectorCollection = GetComponentsInChildren<ItemTriggerDetector>();
+            foreach (var itemTD in itemTriggerDetectorCollection)
+            {
+                itemTD.Init(itemTDInitParameters);
+            }
 
         }
 
@@ -136,6 +145,7 @@ namespace JR
             public EventBus EventBus { get; set; }
             public InputManager InputManager { get; set; }
             public GameType GameType { get; set; }
+            public BarController BarController { get; set; }
         }
     }
 }
