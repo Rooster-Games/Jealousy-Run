@@ -80,11 +80,21 @@ namespace JR
 
             var barInitParameters = new BaseBar.InitParameters();
             barInitParameters.StartingPercent = _barCompositionSettings.StartingPercent;
-            _barCompositionSettings.Bar.Init(barInitParameters);
+
+            BaseBar gameTypeBar = null;
+
+            foreach (var bar in _barCompositionSettings.Bars)
+            {
+                bar.Init(barInitParameters);
+                bar.gameObject.SetActive(false);
+                if (_gameType.ProtectorGender == bar.BoundedGender)
+                    gameTypeBar = bar;
+            }
 
             var barControllerInitParameters = new BarController.InitParameters();
-            barControllerInitParameters.Bar = _barCompositionSettings.Bar;
+            barControllerInitParameters.Bar = gameTypeBar;
             barControllerInitParameters.LoveData = _barCompositionSettings.LoveData;
+            barControllerInitParameters.EventBus = eventBus;
             _barCompositionSettings.BarController.Init(barControllerInitParameters);
 
         }

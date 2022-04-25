@@ -9,12 +9,12 @@ namespace JR
     public class BarCompositionSettings
     {
         [SerializeField] BarController _barController;
-        [SerializeField] BaseBar _bar;
+        [SerializeField] BaseBar[] _bars;
         [SerializeField] LoveData _loveData;
         [SerializeField] float _startingPercent = 0.5f;
 
         public BarController BarController => _barController;
-        public BaseBar Bar => _bar;
+        public BaseBar[] Bars => _bars;
         public LoveData LoveData => _loveData;
         public float StartingPercent => _startingPercent;
     }

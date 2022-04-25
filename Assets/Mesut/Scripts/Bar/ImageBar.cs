@@ -8,6 +8,10 @@ namespace JR
 
     public abstract class BaseBar : MonoBehaviour
     {
+        [SerializeField] Gender _boundedGender;
+
+        public Gender BoundedGender => _boundedGender;
+
         public virtual void Init(InitParameters initParameters)
         {
             ChangeAmount(initParameters.StartingPercent);
