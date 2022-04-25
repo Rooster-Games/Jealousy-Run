@@ -15,13 +15,18 @@ namespace JR
 
         EventBus _eventbus;
 
+        bool _isInitialized;
+
         public void Init(InitParameters initParameters)
         {
             _eventbus = initParameters.EventBus;
+            _isInitialized = true;
         }
 
         public void Update()
         {
+            if (!_isInitialized) return;
+
             if (_developmentMode)
             {
                 if (Input.GetMouseButtonDown(0) && !_isGameStarted)
