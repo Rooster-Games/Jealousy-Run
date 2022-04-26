@@ -98,7 +98,7 @@ namespace JR
                     startingLocalPosition = _playerSettings.CoupleTransformSettings.ProtectorStartingPosition;
                     protector = singleController;
 
-                    singleController.GetComponentInChildren<EnemyDetector>(true).gameObject.SetActive(true);
+                    singleController.GetComponentInChildren<SlapEnemyDetector>(true).gameObject.SetActive(true);
                     singleController.GetComponentInChildren<ItemTriggerDetector>(true).gameObject.SetActive(true);
                 }
 

@@ -49,6 +49,8 @@ public class TestPush : MonoBehaviour
     bool _isTriggered;
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.name == "EnemyDetector") return;
+
         if (_isTriggered) return;
 
         _isTriggered = true;
@@ -57,8 +59,5 @@ public class TestPush : MonoBehaviour
         _lookAtTransform = other.transform;
         ForceTest(forceDir);
 
-        float timer = 0f;
-        DOTween.To(() => timer, (x) => timer = x, 1f, _duration)
-            .OnComplete(() => _otherEnemyDetector.gameObject.SetActive(true));
     }
 }
