@@ -25,10 +25,13 @@ namespace JR
             singleController.Init(singleControllerInitParameters);
 
             // trigger detector init
-            var triggerDetectorInitParameters = new EnemyDetector.InitParameters();
-            triggerDetectorInitParameters.SingleController = singleController;
+            if (triggerDetector != null)
+            {
+                var triggerDetectorInitParameters = new EnemyDetector.InitParameters();
+                triggerDetectorInitParameters.SingleController = singleController;
 
-            triggerDetector.Init(triggerDetectorInitParameters);
+                triggerDetector.Init(triggerDetectorInitParameters);
+            }
         }
 
         public class InitParameters
