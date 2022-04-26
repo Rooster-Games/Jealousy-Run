@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,10 +11,9 @@ namespace JR
     {
         [SerializeField] CrowdedCreatorSpawnSettingsSO _spawnSettings;
         [SerializeField] int _peopleCount = 5;
+        [SerializeField] Gender _creationGender;
 
         BoxCollider _boxCollider;
-
-        Vector3 _leftTopStarting;
         
         private void Awake()
         {
@@ -25,6 +25,7 @@ namespace JR
         [Button("Init")]
         public void Init()
         {
+            _creationCounter = 0;
             _createdPositions = new List<Vector3>();
             _boxCollider = GetComponent<BoxCollider>();
 
@@ -38,7 +39,10 @@ namespace JR
             Vector3 leftBottomPos = center + new Vector3(-width, 0f, -height);
             Vector3 rightTopPos = center + new Vector3(width, 0f, height);
 
-            while(transform.childCount > 0)
+            _boxCollider.size = transform.localScale;
+            transform.localScale = Vector3.one;
+
+            while (transform.childCount > 0)
             {
                 DestroyImmediate(transform.GetChild(0).gameObject);
             }
@@ -65,6 +69,7 @@ namespace JR
                 checkCounter = 0;
             }
 
+            Debug.Log($"Creation Counter: {_creationCounter}");
         }
 
         private Vector3 GetRandomPosition(Vector3 leftBottomPos, Vector3 rightTopPos)
@@ -75,12 +80,15 @@ namespace JR
             return new Vector3(xPos, 0f, yPos);
         }
 
+        private int _creationCounter;
         private void CreateGo(Vector3 pos)
         {
-            var go = Instantiate(_spawnSettings.GetRandomPrefab);
+            _creationCounter++;
+            var go = Instantiate(_spawnSettings.GetRandomPrefab(_creationGender));
             go.transform.SetParent(transform);
             go.transform.position = pos;
             go.transform.localEulerAngles = _spawnSettings.EulerRotation;
+            go.layer = gameObject.layer;
         }
 
         private bool CheckIfCanSpawn(Vector3 spawnPos)
