@@ -9389,7 +9389,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077404300}
-  m_LocalRotation: {x: 0.32617638, y: -0.00000001688589, z: 0.0000000058264313, w: 0.945309}
+  m_LocalRotation: {x: 0.32617635, y: 1.5018001e-15, z: -1.5778687e-16, w: 0.945309}
   m_LocalPosition: {x: 0, y: 6.85, z: -5.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -24322,7 +24322,7 @@ MonoBehaviour:
   _gameType: {fileID: 911691545}
   _barCompositionSettings:
     _barController: {fileID: 0}
-    _bar: {fileID: 0}
+    _bars: []
     _loveData: {fileID: 0}
     _startingPercent: 0.5
   _genderSelectionController: {fileID: 0}
@@ -24516,7 +24516,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2092658357}
-  m_LocalRotation: {x: 0.32617638, y: -0.00000001688589, z: 0.0000000058264313, w: 0.945309}
+  m_LocalRotation: {x: 0.32617635, y: 1.5018001e-15, z: -1.5778687e-16, w: 0.945309}
   m_LocalPosition: {x: 0, y: 6.85, z: -5.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -41001,7 +41001,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -45528,7 +45528,7 @@ ParticleSystemRenderer:
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
   m_VertexStreams: 00010304
-  m_Mesh: {fileID: 4300000, guid: f4e194ded78ac57479f329a6aa02a5fe, type: 3}
+  m_Mesh: {fileID: 4149754566907222135, guid: 951dddd75eb52b74bbf71365c9ceaaa7, type: 3}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
