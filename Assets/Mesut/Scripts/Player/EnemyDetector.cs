@@ -16,6 +16,11 @@ namespace JR
         private void OnTriggerEnter(Collider other)
         {
             var otherGenderInfo = other.GetComponent<GenderInfo>();
+            if(otherGenderInfo == null)
+            {
+                Debug.Log("GenderInfoBulunamadi");
+                return;
+            }
             if(otherGenderInfo.Gender == _singleController.GenderInfo.Gender)
             {
                 if (other.isTrigger)
