@@ -1,5 +1,6 @@
 
 
+using System.Collections.Generic;
 using Cinemachine;
 using GameCores;
 using UnityEngine;
@@ -89,17 +90,30 @@ namespace JR
             dollyCartCompositionRoot.Init(dollyCartCompositionRootInitParameters);
 
             IProtector protector = null;
+            IGuarded guarded = null;
+            Dictionary<GameObject, RuntimeAnimatorController> _singleToRuntimeAnimatorMap = new Dictionary<GameObject, RuntimeAnimatorController>();
             // GameType settings
             foreach (var singleController in singleControllerCollection)
             {
                 Vector3 startingLocalPosition = _playerSettings.CoupleTransformSettings.DefendedStartingPosition;
+                //var genderInfo = singleController.GetComponent<GenderInfo>();
+
                 if (initParameters.GameType.ProtectorGender == singleController.GenderInfo.Gender)
                 {
+                    var runTimeAnimatorController = SelectRuntimeAnimatorController(singleController.GenderInfo, true);
+                    _singleToRuntimeAnimatorMap.Add(singleController.gameObject, runTimeAnimatorController);
+
                     startingLocalPosition = _playerSettings.CoupleTransformSettings.ProtectorStartingPosition;
                     protector = singleController;
 
                     singleController.GetComponentInChildren<SlapEnemyDetector>(true).gameObject.SetActive(true);
                     singleController.GetComponentInChildren<ItemTriggerDetector>(true).gameObject.SetActive(true);
+                }
+                else
+                {
+                    var runTimeAnimatorController = SelectRuntimeAnimatorController(singleController.GenderInfo, false);
+                    _singleToRuntimeAnimatorMap.Add(singleController.gameObject, runTimeAnimatorController);
+                    guarded = singleController;
                 }
 
                 singleController.transform.localPosition = startingLocalPosition;
@@ -112,6 +126,10 @@ namespace JR
 
             foreach (var sccr in singleControllerCompositionRootCollection)
             {
+
+                Debug.Log(_singleToRuntimeAnimatorMap[sccr.gameObject].name);
+                scCRInitparameters.RuntimeAnimatorController = _singleToRuntimeAnimatorMap[sccr.gameObject];
+
                 sccr.Init(scCRInitparameters);
             }
 
@@ -133,6 +151,7 @@ namespace JR
             playerControllerInitParameters.InputManager = initParameters.InputManager;
             playerControllerInitParameters.AnimatorController = animatorController;
             playerControllerInitParameters.Protector = protector;
+            playerControllerInitParameters.Guarded = guarded;
             playerControllerInitParameters.SpeedChangerSettings = _playerSettings.SpeedChangerSettings;
             playerControllerInitParameters.CameraFovChanger = cameraFovChanger;
 
@@ -147,6 +166,27 @@ namespace JR
             {
                 itemTD.Init(itemTDInitParameters);
             }
+        }
+
+        private RuntimeAnimatorController SelectRuntimeAnimatorController(GenderInfo genderInfo, bool isProtector)
+        {
+            Debug.Log("IsProtector: " + isProtector);
+            foreach (var animatorSettings in _playerSettings.AnimatorGenderSettingsCollection)
+            {
+                if (animatorSettings.Gender == genderInfo.Gender)
+                {
+                    if (isProtector)
+                    {
+                        Debug.Log("Returning");
+                        Debug.Log(animatorSettings.ProtectorRunTimeAnimatorController.name);
+                        return animatorSettings.ProtectorRunTimeAnimatorController;
+                    }
+
+                    return animatorSettings.GuardedAnimatorController;
+                }
+            }
+
+            throw new System.Exception("Burada sorun var");
         }
 
         public class InitParameters

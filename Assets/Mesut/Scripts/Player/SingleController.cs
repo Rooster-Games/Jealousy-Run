@@ -7,7 +7,7 @@ using UnityEngine;
 namespace JR
 {
     public enum Gender { Male, Female }
-    public class SingleController : MonoBehaviour, IProtector
+    public class SingleController : MonoBehaviour, IProtector, IGuarded
     {
         [SerializeField] GenderInfo _genderInfo;
         [SerializeField] int _slapAnimationCount = 8;
@@ -70,6 +70,16 @@ namespace JR
             _exhaustChecker.CheckForExhaust();
         }
 
+        public void GetProtected()
+        {
+            _animatorController.SetTrigger("protectRun");
+        }
+
+        public void EndOfProtection()
+        {
+            _animatorController.SetTrigger("normalRun");
+        }
+
         public class InitParameters
         {
             public IAnimatorController AnimatorController { get; set; }
@@ -77,11 +87,29 @@ namespace JR
             public ExhaustChecker.Settings ExhaustCheckerSettings { get; set; }
             public bool IsProtector { get; set; }
         }
+
+        [System.Serializable]
+        public class AnimatorGenderSettings
+        {
+            [SerializeField] Gender _gender;
+            [SerializeField] RuntimeAnimatorController _guardedRuntimeAnimatorController;
+            [SerializeField] RuntimeAnimatorController _protecterRunTimeAnimatorController;
+
+            public Gender Gender => _gender;
+            public RuntimeAnimatorController GuardedAnimatorController => _guardedRuntimeAnimatorController;
+            public RuntimeAnimatorController ProtectorRunTimeAnimatorController => _protecterRunTimeAnimatorController;
+        }
     }
 
     public interface IProtector
     {
         void Protect();
         void ReturnBack();
+    }
+
+    public interface IGuarded
+    {
+        void GetProtected();
+        void EndOfProtection();
     }
 }
