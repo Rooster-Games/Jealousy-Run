@@ -13,7 +13,7 @@ namespace JR
 
             // child
             var animator = GetComponentInChildren<Animator>();
-            var triggerDetector = GetComponentInChildren<SlapEnemyDetector>();
+           // var triggerDetector = GetComponentInChildren<SlapEnemyDetector>();
 
             var animatorController = new AnimatorControllerFactory().Create(animator);
 
@@ -25,13 +25,13 @@ namespace JR
             singleController.Init(singleControllerInitParameters);
 
             // trigger detector init
-            if (triggerDetector != null)
-            {
-                var triggerDetectorInitParameters = new SlapEnemyDetector.InitParameters();
-                triggerDetectorInitParameters.SingleController = singleController;
+            //if (triggerDetector != null)
+            //{
+            //    var triggerDetectorInitParameters = new SlapEnemyDetector.InitParameters();
+            //    triggerDetectorInitParameters.SingleController = singleController;
 
-                triggerDetector.Init(triggerDetectorInitParameters);
-            }
+            //    triggerDetector.Init(triggerDetectorInitParameters);
+            //}
         }
 
         public class InitParameters
