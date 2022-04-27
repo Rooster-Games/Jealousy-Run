@@ -1,5 +1,6 @@
 using RG.Handlers;
 using RG.Loader;
+using RoosterHub;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,9 +18,23 @@ public class FailNormalPass : MonoBehaviour,IExtension
     }
     private void RestartGame()
     {
-        RoosterHaptic.Selection();
-        RoosterSound.PlayButtonSound();
-        
+        Haptic.Selection();
+        Sound.PlayButtonSound();
+
+        if (GetComponentInParent<UI_Loop>().useTransition)
+        {
+            RoosterEventHandler.OnShowTransition?.Invoke(true);
+            Invoke(nameof(TransitionTrigger),3f);
+        }
+        else
+        {
+            UI_Loop.OnChangeUI?.Invoke(true);
+            RoosterEventHandler.OnClickedNextLevelButton?.Invoke();    
+        }
+    }
+
+    void TransitionTrigger()
+    {
         UI_Loop.OnChangeUI?.Invoke(true);
         RoosterEventHandler.OnClickedRestartLevelButton?.Invoke();
     }
