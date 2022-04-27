@@ -230,7 +230,7 @@ namespace JR
         private void SpeedUpFrequently()
         {
             _speedChangeTween = DOTween.To(() => _currentSpeed, (x) => _currentSpeed = x, (_currentSpeed + _settings.AfterHalfSpeedUpValue), _settings.AfterHalfSeedpUpEverySeconds)
-                .OnUpdate(() => { Debug.Log("SpeedUpFrequenty"); ChangeCurrentSpeed(); })
+                .OnUpdate(() => { ChangeCurrentSpeed(); })
                 .SetLoops(-1, LoopType.Incremental);
 
         }

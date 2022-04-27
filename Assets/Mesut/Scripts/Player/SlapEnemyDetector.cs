@@ -45,9 +45,17 @@ namespace JR
                 DOTween.To(() => timer, (x) => timer = x, 1f, _slapDelayDuration)
                     .OnComplete(() => slapable.Slap(dir, _forceAmount, _forceMode));
 
-                _singleController.Slap();
+                _singleController.Slap(() => SlapAction(slapable, dir));
             }
         }
+
+        private void SlapAction(Slapable slapable, Vector3 dir)
+        {
+            //float timer = 0f;
+            //DOTween.To(() => timer, (x) => timer = x, 1f, _slapDelayDuration)
+            //    .OnComplete(() => slapable.Slap(dir, _forceAmount, _forceMode));
+        }
+
 
         public class InitParameters
         {

@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections;
 using DG.Tweening;
 using DI;
@@ -10,7 +11,7 @@ namespace JR
     public class SingleController : MonoBehaviour, IProtector, IGuarded
     {
         [SerializeField] GenderInfo _genderInfo;
-        [SerializeField] int _slapAnimationCount = 6;
+        [SerializeField] int _slapAnimationCount = 10;
         IAnimatorController _animatorController;
 
         public GenderInfo GenderInfo => _genderInfo;
@@ -39,26 +40,42 @@ namespace JR
         }
 
         int slapCounter = 0;
-        public void Slap()
+        public void Slap(Action action)
         {
-            Debug.Log("Slap");
-            if (_isSlapping) return;
+            if (_transitionTween != null)
+            {
+                _transitionTween.Kill();
+                _transitionTween = null;
+            }
             _animatorController.SetAnimatorSpeed(1.2f);
             _isSlapping = true;
             _animatorController.SetLayerWeight(1, 1f);
             _animatorController.SetTrigger("slap");
-            slapCounter = slapCounter % _slapAnimationCount;
-            _animatorController.SetFloat("tokatIndex", slapCounter++ );
-            StartCoroutine(RestartAnimatorWeight());
+            _animatorController.SetFloat("tokatIndex", slapCounter);
+            StartCoroutine(RestartAnimatorWeight(action));
+            if(!_isIncreasing)
+                StartCoroutine(IncreaseCounter());
         }
 
-        IEnumerator RestartAnimatorWeight()
+        Tween _transitionTween;
+        bool _isIncreasing;
+        IEnumerator IncreaseCounter()
         {
-            yield return new WaitForSeconds(0.25f);
+            _isIncreasing = true;
+            yield return new WaitForSeconds(1f);
+            slapCounter = slapCounter % _slapAnimationCount;
+            slapCounter++;
+            _isIncreasing = false;
+        }
+        IEnumerator RestartAnimatorWeight(Action action)
+        {
+            yield return new WaitForSeconds(0.1f);
+
+            action?.Invoke();
             float timer = 1f;
-            DOTween.To(() => timer, (x) => { timer = x; _animatorController.SetLayerWeight(1, x); }, 0f, 0.25f)
-                .OnComplete(() => _isSlapping = false);
-            _animatorController.SetAnimatorSpeed(1f);
+            _transitionTween = DOTween.To(() => timer, (x) => { timer = x; _animatorController.SetLayerWeight(1, x); }, 0f, 10f)
+                .OnComplete(() => { _isSlapping = false; _transitionTween = null; });
+            //_animatorController.SetAnimatorSpeed(1f);
         }
 
         public void Protect()

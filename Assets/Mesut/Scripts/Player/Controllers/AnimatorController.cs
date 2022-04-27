@@ -37,6 +37,11 @@ namespace JR
             _animator.speed = speed;
         }
 
+        public float TestLength(int layerIndex)
+        {
+            return _animator.GetCurrentAnimatorStateInfo(layerIndex).length;
+        }
+
         public class InitParameters
         {
             public Animator Animator { get; set; }
@@ -50,6 +55,7 @@ namespace JR
         void SetTrigger(string triggerName);
         void SetLayerWeight(int layerIndex, float weight);
         void SetAnimatorSpeed(float speed);
+        float TestLength(int layerIndex);
     }
 
     public class AnimatorControllerFactory
@@ -120,6 +126,11 @@ namespace JR
             {
                 controller.SetTrigger(triggerName);
             }
+        }
+
+        public float TestLength(int layerIndex)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using NaughtyAttributes;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,6 +29,12 @@ namespace JR
             _creationCounter = 0;
             _createdPositions = new List<Vector3>();
             _boxCollider = GetComponent<BoxCollider>();
+
+            if(_boxCollider.size != Vector3.one)
+            {
+                transform.localScale = _boxCollider.size;
+                _boxCollider.size = Vector3.one;
+            }
 
             Vector3 center = _boxCollider.bounds.center;
             Vector3 extents = _boxCollider.bounds.extents;
