@@ -21,6 +21,8 @@ namespace JR
 
         [SerializeField]Rigidbody[] _ragdollBodies;
 
+        float maxMass = 24f;
+
         private void Awake()
         {
             _anim = GetComponentInChildren<Animator>();
@@ -49,18 +51,31 @@ namespace JR
             _myBody.AddForce(dir * forceAmount, forceMode);
             _myBody.AddTorque(dir * forceAmount, forceMode);
 
-
-            foreach (var rb in _ragdollBodies)
-            {
-                rb.AddForce(dir * forceAmount, forceMode);
-                //rb.AddTorque(dir * forceAmount, forceMode);
-            }
+            StartCoroutine(AddFoceCO(dir, forceAmount, forceMode));
 
             float timer = 0f;
             DOTween.To(() => timer, (x) => timer = x, 1f, _otherDetectorOpenAfterSeconds)
                 .OnComplete(() => _slapDetector.gameObject.SetActive(true));
             _myBody.useGravity = true;
             _dynamicBone.m_Stiffness = 0.15f;
+        }
+
+        IEnumerator AddFoceCO(Vector3 dir, float forceAmount, ForceMode forceMode)
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                AddForce(dir, forceAmount, forceMode);
+                yield return null;
+            }
+        }
+
+        private void AddForce(Vector3 dir, float forceAmount, ForceMode forceMode)
+        {
+            foreach (var rb in _ragdollBodies)
+            {
+                rb.AddForce(dir * forceAmount * (rb.mass / maxMass), forceMode);
+                //rb.AddTorque(dir * forceAmount, forceMode);
+            }
         }
     }
 }

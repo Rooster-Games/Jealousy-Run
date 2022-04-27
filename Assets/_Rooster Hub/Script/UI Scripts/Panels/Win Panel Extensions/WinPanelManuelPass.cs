@@ -1,5 +1,6 @@
 using RG.Handlers;
 using RG.Loader;
+using RoosterHub;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,21 +23,47 @@ public class WinPanelManuelPass : MonoBehaviour, IExtension
 
     private void OnClickRewardedButton()
     {
-        RoosterHaptic.Selection();
-        RoosterSound.PlayButtonSound();
+        Haptic.Selection();
+        Sound.PlayButtonSound();
     }
 
     private void OnClickNextLevelButton()
     {
-        RoosterHaptic.Selection();
-        RoosterSound.PlayButtonSound();
+        Haptic.Selection();
+        Sound.PlayButtonSound();
         
         RoosterEventHandler.OnUpdateCoinText?.Invoke();
-        UI_Loop.OnChangeUI?.Invoke(true);
-        
-        RoosterEventHandler.OnClickedNextLevelButton?.Invoke();
+
+        if (LevelCompleteShow.OnLevelCompleteAnimation!=null)
+        {
+            LevelCompleteShow.OnLevelCompleteAnimation?.Invoke();
+            Invoke(nameof(OnClickAfterButtonDelay),1.3f);
+        }
+        else
+        {
+            OnClickAfterButtonDelay();
+        }
     }
 
+    private void OnClickAfterButtonDelay()
+    {
+        if (GetComponentInParent<UI_Loop>().useTransition)
+        {
+            RoosterEventHandler.OnShowTransition?.Invoke(true);
+            Invoke(nameof(TransitionTrigger),3f);
+        }
+        else
+        {
+            UI_Loop.OnChangeUI?.Invoke(true);
+            RoosterEventHandler.OnClickedNextLevelButton?.Invoke();    
+        }
+    }
+
+    private void TransitionTrigger()
+    {
+        UI_Loop.OnChangeUI?.Invoke(true);
+        RoosterEventHandler.OnClickedNextLevelButton?.Invoke();
+    }
 
     public void RunExtension()
     {

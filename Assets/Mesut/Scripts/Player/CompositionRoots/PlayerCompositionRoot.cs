@@ -98,7 +98,7 @@ namespace JR
                     startingLocalPosition = _playerSettings.CoupleTransformSettings.ProtectorStartingPosition;
                     protector = singleController;
 
-                    // singleController.GetComponentInChildren<SlapEnemyDetector>(true).gameObject.SetActive(true);
+                    singleController.GetComponentInChildren<SlapEnemyDetector>(true).gameObject.SetActive(true);
                     singleController.GetComponentInChildren<ItemTriggerDetector>(true).gameObject.SetActive(true);
                 }
 
@@ -108,6 +108,7 @@ namespace JR
             // SingleControllers composition root init
             var scCRInitparameters = new SingleControllerCompositionRoot.InitParameters();
             scCRInitparameters.MoveSettings = _playerSettings.SwapMoveSettings;
+            scCRInitparameters.ExhaustCheckerSettings = _playerSettings.ExhaustChecketSettings;
 
             foreach (var sccr in singleControllerCompositionRootCollection)
             {
@@ -146,8 +147,6 @@ namespace JR
             {
                 itemTD.Init(itemTDInitParameters);
             }
-
-
         }
 
         public class InitParameters

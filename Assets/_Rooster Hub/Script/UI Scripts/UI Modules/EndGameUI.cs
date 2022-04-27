@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using RG.Core;
 using RG.Handlers;
 using UnityEngine;
 
@@ -25,9 +26,19 @@ namespace RG.Loader
         void OpenPanel(bool status)
         {
             if (status)
-                WinPanel.SetActive(true);
+                Invoke(nameof(DelayedWinPanel), GameSettings.Instance.winPanelDelay);
             else
-                FailPanel.SetActive(true);
+                Invoke(nameof(DelayedFailPanel), GameSettings.Instance.failPanelDelay);
+        }
+
+        void DelayedWinPanel()
+        {
+            WinPanel.SetActive(true);
+        }
+
+        void DelayedFailPanel()
+        {
+            FailPanel.SetActive(true);
         }
 
         void ClosePanels()
@@ -35,7 +46,5 @@ namespace RG.Loader
             WinPanel.SetActive(false);
             FailPanel.SetActive(false);
         }
-
-    }    
+    }
 }
-

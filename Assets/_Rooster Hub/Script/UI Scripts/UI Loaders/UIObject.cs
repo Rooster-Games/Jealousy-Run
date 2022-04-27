@@ -15,8 +15,6 @@ namespace RG.Loader
         [ShowIf("useUnlockQueue")]
         public int[] unlockQueue;
 
-        public bool useTransition;
-        
         public void OpenMenu()
         {
             gameObject.SetActive(true);
