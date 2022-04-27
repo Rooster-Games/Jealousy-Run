@@ -743,6 +743,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbd00e64d6b5942ed9eb9baa19e8b0c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animatorSettings:
+  - _animator: {fileID: 9100000, guid: 35d0b69dcc3215444b8029563e1a29c2, type: 2}
+    _gender: 1
+  - _animator: {fileID: 9100000, guid: ed755df7632eb499ca5d551ebaeed501, type: 2}
+    _gender: 0
+  _animator: {fileID: 90126860}
 --- !u!114 &90126856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -795,6 +801,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gender: 0
+--- !u!95 &90126860 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: a8ba3da98dde9407a8637677fd84208e, type: 3}
+  m_PrefabInstance: {fileID: 90126849}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &107074663
 GameObject:
   m_ObjectHideFlags: 0
