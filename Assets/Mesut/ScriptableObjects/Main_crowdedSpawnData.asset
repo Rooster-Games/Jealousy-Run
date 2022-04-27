@@ -18,4 +18,5 @@ MonoBehaviour:
   - {fileID: 8563797722060622315, guid: 8ca14ddc75ca74771ad002c53ef6ea92, type: 3}
   - {fileID: 8563797722060622315, guid: 0a0dd005f67bd433a81497bf81331cda, type: 3}
   _eulerRotation: {x: 0, y: 180, z: 0}
-  _cellSize: 0.45
+  _cellSize: 0.5
+  _minMaxScale: {x: 0.85, y: 1.25}

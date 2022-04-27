@@ -32,6 +32,8 @@ namespace JR
             var crowdedController = GetComponent<CrowdedController>();
 
             //child
+            var crowdedCreatorCollection = GetComponentsInChildren<CrowdedCreator>();
+
 
             // dollycart controller init
             var dcInitParameters = new DollyCartController.InitParameters();
@@ -39,6 +41,11 @@ namespace JR
             dcInitParameters.Settings = _dollycartSettings;
 
             dollyCartController.Init(dcInitParameters);
+
+            foreach (var crowdedCreator in crowdedCreatorCollection)
+            {
+                crowdedCreator.Init();
+            }
 
             // crowded controller init
             var ccInitParameters = new CrowdedController.InitParameters();

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 namespace JR
@@ -11,6 +12,7 @@ namespace JR
         [SerializeField] float _forceAmount = 50f;
         [SerializeField] float _yDir = 10f;
         [SerializeField] Gender _gender;
+        [SerializeField] float _slapDelayDuration = 0.33f;
 
         SingleController _singleController;
 
@@ -29,8 +31,8 @@ namespace JR
                 return;
             }
 
-            //if(otherGenderInfo.Gender == _singleController.GenderInfo.Gender)
-            if(otherGenderInfo.Gender == _gender)
+            if(otherGenderInfo.Gender == _singleController.GenderInfo.Gender)
+            //if(otherGenderInfo.Gender == _gender)
             {
                 var slapable = other.GetComponent<Slapable>();
                 if (slapable == null) return;
@@ -38,13 +40,12 @@ namespace JR
                 var dir = (other.transform.position - transform.position).normalized;
                 dir.y = _yDir;
                 _forceAmount = Random.Range(_minMaxForceAmount.x, _minMaxForceAmount.y);
-                slapable.Slap(dir, _forceAmount, _forceMode);
-                
 
-                // if (other.isTrigger)
-                   // other.enabled = false;
+                float timer = 0f;
+                DOTween.To(() => timer, (x) => timer = x, 1f, _slapDelayDuration)
+                    .OnComplete(() => slapable.Slap(dir, _forceAmount, _forceMode));
 
-                // _singleController.Slap();
+                _singleController.Slap();
             }
         }
 

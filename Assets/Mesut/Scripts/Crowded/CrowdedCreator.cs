@@ -15,10 +15,10 @@ namespace JR
 
         BoxCollider _boxCollider;
         
-        private void Awake()
-        {
-            Init();
-        }
+        //private void Awake()
+        //{
+        //    Init();
+        //}
 
         List<Vector3> _createdPositions;
 
@@ -86,6 +86,7 @@ namespace JR
             _creationCounter++;
             var go = Instantiate(_spawnSettings.GetRandomPrefab(_creationGender));
             go.transform.SetParent(transform);
+            go.transform.localScale = Vector3.one * Random.Range(_spawnSettings.MinMaxScale.x, _spawnSettings.MinMaxScale.y);
             go.transform.position = pos;
             go.transform.localEulerAngles = _spawnSettings.EulerRotation;
             go.layer = gameObject.layer;
