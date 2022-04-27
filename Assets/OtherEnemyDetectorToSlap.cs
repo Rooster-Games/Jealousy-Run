@@ -4,24 +4,26 @@ using UnityEngine;
 
 namespace JR
 {
-    public class OtherEnemyDetector : MonoBehaviour
+    public class OtherEnemyDetectorToSlap : MonoBehaviour
     {
+        [SerializeField] float _forcePercent = 0.75f;
         ForceMode _forceMode;
         float _forceAmount;
 
         public void Init(InitParameters initParameters)
         {
             _forceMode = initParameters.ForceMode;
-            _forceAmount = initParameters.ForceAmount;
+            _forceAmount = initParameters.ForceAmount * _forcePercent;
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            var pushable = other.GetComponent<Pushable>();
-            if (pushable == null) return;
+            var slapable = other.GetComponent<Slapable>();
+            if (slapable == null) return;
 
             var dir = (other.transform.position - transform.position).normalized;
-            pushable.Push(dir, _forceAmount, _forceMode);
+
+            slapable.Slap(dir, _forceAmount, _forceMode);
         }
 
         public class InitParameters
