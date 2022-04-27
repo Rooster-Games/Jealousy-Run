@@ -5,7 +5,7 @@ using UnityEngine;
 public class WinPanelAutoPass : MonoBehaviour,IExtension
 {
     public float nextLevelPassTime;
-
+    
     public void RunExtension()
     {
         Invoke(nameof(AutoPass),nextLevelPassTime);

@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using NaughtyAttributes;
-using Unity.Collections;
+using RoosterHub;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,16 +27,16 @@ public class UIToggle : MonoBehaviour
 
     void ToogleButton()
     {
-        RoosterHaptic.Selection();
-        RoosterSound.PlayButtonSound();
+        Haptic.Selection();
+        Sound.PlayButtonSound();
         
         toggleGameObject.SetActive(true);
     }
 
     void CloseObject()
     {
-        RoosterHaptic.Selection();
-        RoosterSound.PlayButtonSound();
+        Haptic.Selection();
+        Sound.PlayButtonSound();
         
         toggleGameObject.SetActive(false);
     }
