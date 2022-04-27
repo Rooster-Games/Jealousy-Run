@@ -15,14 +15,14 @@ namespace JR
             _forceAmount = initParameters.ForceAmount;
         }
 
-        private void OnTriggerEnter(Collider other)
-        {
-            var pushable = other.GetComponent<Pushable>();
-            if (pushable == null) return;
+        //private void OnTriggerEnter(Collider other)
+        //{
+        //    var pushable = other.GetComponent<Pushable>();
+        //    if (pushable == null) return;
 
-            var dir = (other.transform.position - transform.position).normalized;
-            pushable.Push(dir, _forceAmount, _forceMode);
-        }
+        //    var dir = (other.transform.position - transform.position).normalized;
+        //    pushable.Push(dir, _forceAmount, _forceMode);
+        //}
 
         public class InitParameters
         {
