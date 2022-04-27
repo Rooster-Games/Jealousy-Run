@@ -4,6 +4,7 @@ using GameCores;
 using GameCores.CoreEvents;
 using DG.Tweening;
 using NaughtyAttributes;
+using DI;
 
 namespace JR
 {
@@ -46,7 +47,7 @@ namespace JR
         private void EventBus_OnGameStarted(OnGameStarted eventData)
         {
             _dollyCartController.StartMoving();
-            _animatorController.SetTrigger("walk");
+            _animatorController.SetTrigger("normalRun");
         }
 
         private void Update()
@@ -93,6 +94,77 @@ namespace JR
             public IProtector Protector { get; set; }
             public SpeedChanger.Settings SpeedChangerSettings { get; set; }
             public CameraFovChanger CameraFovChanger { get; set; }
+        }
+    }
+
+    public class ExhaustChecker
+    {
+        IAnimatorController _protectorController;
+        Settings _settings;
+
+        bool _isExhausted;
+
+        float _timer;
+        Tween _timerTween;
+        Tween _becomeExhaust;
+        public void Init(InitParameters initParameters)
+        {
+            _protectorController = initParameters.ProtectorController;
+            _settings = initParameters.Settings;
+        }
+
+        public void StartTimer()
+        {
+            if (_becomeExhaust != null)
+                _becomeExhaust.Kill();
+
+            float timer = _timer;
+            _timerTween = DOTween.To(() => timer, (x) => { timer = x; _timer = x; }, _settings.BecomeExhaustSeconds, _settings.BecomeExhaustSeconds)
+                .OnComplete(() => { _isExhausted = true;});
+        }
+
+        public void CheckForExhaust()
+        {
+            if (_isExhausted)
+                BecomeExhaust();
+            else
+            {
+                _protectorController.SetTrigger("turnRight");
+                _protectorController.SetTrigger("normalRun");
+                _timerTween.Kill();
+            }
+        }
+
+        private void BecomeExhaust()
+        {
+            _protectorController.SetTrigger("turnRight");
+            _protectorController.SetTrigger("yorgun");
+
+            float timer = _timer;
+            _becomeExhaust = DOTween.To(() => timer, (x) => { timer = x; _timer = x; }, 0f, _settings.ExhaustDuration)
+                .OnComplete(CoolDown);
+        }
+
+        private void CoolDown()
+        {
+            _isExhausted = false;
+            _protectorController.SetTrigger("normalRun");
+        }
+
+        public class InitParameters
+        {
+            public IAnimatorController ProtectorController { get; set; }
+            public Settings Settings { get; set; }
+        }
+
+        [System.Serializable]
+        public class Settings
+        {
+            [SerializeField] float _becomeExhaustSeconds = 5f;
+            [SerializeField] float _exhaustDuration = 1f;
+
+            public float BecomeExhaustSeconds => _becomeExhaustSeconds;
+            public float ExhaustDuration => _exhaustDuration;
         }
     }
 

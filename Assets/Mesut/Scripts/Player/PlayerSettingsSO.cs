@@ -13,6 +13,7 @@ namespace JR
         [SerializeField] DoTweenSwapper.MoveSettings _swapMoveSettings;
         [SerializeField] SpeedChanger.Settings _speedChangerSettings;
         [SerializeField] CameraFovChanger.Settings _cameraFovChangerSettings;
+        [SerializeField] ExhaustChecker.Settings _exhaustCheckerSettings;
 
         public DollyCartController.Settings DollyCartSettings => _dollyCartSettings;
         public DoTweenSwapper.MoveSettings SwapMoveSettings => _swapMoveSettings;
@@ -20,6 +21,7 @@ namespace JR
         //public PlayerController.Settings PlayerControllerSettings => _playerControllerSettings;
         public CoupleTransformSettings CoupleTransformSettings => _coupleTransformSettings;
         public CameraFovChanger.Settings CameraFovChangerSettings => _cameraFovChangerSettings;
+        public ExhaustChecker.Settings ExhaustChecketSettings => _exhaustCheckerSettings;
 
     }
 
