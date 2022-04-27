@@ -40,7 +40,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: b7a0a2f76e5ba3a44aad0dff93993192, type: 3}
-        m_Scale: {x: 2.61, y: 12.71}
+        m_Scale: {x: 2.61, y: 20.55}
         m_Offset: {x: 0.79, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
@@ -192,13 +192,13 @@ Material:
     - _RampBandsSmoothing: 0.1
     - _RampOffset: 0
     - _RampScale: 1
-    - _RampSmoothing: 0.838
+    - _RampSmoothing: 0.515
     - _RampSmoothingOtherLights: 0.5
     - _RampTextureOffset: 0.051
     - _RampTextureOffsetOtherLights: 0.022
     - _RampTextureSize: 0.32
     - _RampTextureSizeOtherLights: 0.37
-    - _RampThreshold: 0.565
+    - _RampThreshold: 1
     - _RampThresholdOtherLights: 0.5
     - _RampType: 0
     - _ReceiveShadows: 1
@@ -209,7 +209,7 @@ Material:
     - _RenderingMode: 0
     - _RimMax: 1.371
     - _RimMaxVert: 1
-    - _RimMin: 1.245
+    - _RimMin: 0.484
     - _RimMinVert: 0.5
     - _ShadowColorLightAtten: 1
     - _ShadowLineSmoothing: 0.015
@@ -225,7 +225,7 @@ Material:
     - _SpecularMapType: 0
     - _SpecularRoughness: 0.254
     - _SpecularShadowAttenuation: 0.25
-    - _SpecularToonSize: 0.284
+    - _SpecularToonSize: 0.454
     - _SpecularToonSmoothness: 1
     - _SpecularType: 1
     - _SrcBlend: 1
@@ -259,7 +259,7 @@ Material:
     - _blendOperation: 0
     m_Colors:
     - _Albedo: {r: 1, g: 1, b: 1, a: 1}
-    - _BaseColor: {r: 0.6226415, g: 0.61334234, b: 0.6020826, a: 1}
+    - _BaseColor: {r: 0.9150943, g: 0.9150943, b: 0.9150943, a: 1}
     - _Color: {r: 0.13975905, g: 0.13975905, b: 0.13975905, a: 1}
     - _CurvedWorldBendSettings: {r: 5, g: 1, b: 1, a: 0}
     - _Emission: {r: 0.054914784, g: 0, b: 0.11320752, a: 1}

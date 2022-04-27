@@ -1,4 +1,5 @@
 
+using Cinemachine;
 using GameCores;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ namespace JR
         [SerializeField] GameType _gameType;
         [SerializeField] BarCompositionSettings _barCompositionSettings;
         [SerializeField] GenderSelectionController _genderSelectionController;
+        [SerializeField] CinemachineVirtualCamera _cameraToChangeFov;
 
 
         private void Awake()
@@ -58,6 +60,7 @@ namespace JR
             pcrInitParameters.InputManager = _inputManager;
             pcrInitParameters.GameType = _gameType;
             pcrInitParameters.BarController = _barCompositionSettings.BarController;
+            pcrInitParameters.CameraToFovChange = _cameraToChangeFov;
 
             _playerCompositionRoot.Init(pcrInitParameters);
 
@@ -97,6 +100,16 @@ namespace JR
             barControllerInitParameters.EventBus = eventBus;
             _barCompositionSettings.BarController.Init(barControllerInitParameters);
 
+
+            // Item collection
+            var itemCRCollection= _gameType.GetComponentsInChildren<ItemCompositionRoot>();
+            var itemCRInitParameters = new ItemCompositionRoot.InitParameters();
+            itemCRInitParameters.WhoIsProtecting = _gameType.ProtectorGender;
+
+            foreach (var itemCR in itemCRCollection)
+            {
+                itemCR.Init(itemCRInitParameters);
+            }
         }
         //public void Init()
         //{

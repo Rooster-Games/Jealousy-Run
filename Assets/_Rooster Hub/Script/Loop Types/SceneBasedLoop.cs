@@ -1,9 +1,11 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using NaughtyAttributes;
 using RG.Core;
+using RG.Handlers;
 using RG.Loader;
 
 namespace RG.Looper
@@ -12,15 +14,27 @@ namespace RG.Looper
     {
         public Level mainLevel;
         public List<Level> levelList = new List<Level>();
-        public UI_Loop loop ;
+
 
         #region ILevelLoader Interface
 
         public void LoadLevel()
         {
-            SceneManager.LoadScene(levelList[GetLoopLevelNo()].levelScene);
+            StartCoroutine(LoadYourAsyncScene());
         }
-      
+
+        IEnumerator LoadYourAsyncScene()
+        {
+            var operation = SceneManager.LoadSceneAsync(levelList[GetLoopLevelNo()].levelScene);
+           
+            RoosterEventHandler.OnLoading?.Invoke();
+            while (!operation.isDone)
+            {
+                yield return null;
+            }
+            
+        }
+
         public void LoadMainMenu()
         {
             SceneManager.LoadScene(mainLevel.levelScene);
@@ -30,6 +44,11 @@ namespace RG.Looper
         {
             var sceneNo = GamePrefs.LevelNo % levelList.Count;
             return sceneNo;
+        }
+
+        public int GetRemoteLevelNo()
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

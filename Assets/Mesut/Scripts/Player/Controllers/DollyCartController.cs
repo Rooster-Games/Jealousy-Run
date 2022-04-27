@@ -10,6 +10,9 @@ namespace JR
         [SerializeField] Settings _settings;
         CinemachineDollyCart _dollyCart;
 
+        public float StartingSpeed => _settings.Speed;
+        public float CurrentSpeed => _dollyCart.m_Speed;
+
         float _maxLength;
         [SerializeField] bool _debugMode;
         public void Init(InitParameters initParameters)

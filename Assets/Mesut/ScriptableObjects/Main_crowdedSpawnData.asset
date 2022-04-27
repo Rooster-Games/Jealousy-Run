@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Main_crowdedSpawnData
   m_EditorClassIdentifier: 
   _prefabCollection:
-  - {fileID: 5186875458274926925, guid: 683c1ee489f6c1b43b74e742bc19fe98, type: 3}
-  - {fileID: 3824241658081883188, guid: d5e0efd55b58a3344ac98e1269ad250f, type: 3}
+  - {fileID: 3163940324243330838, guid: baa82b57db4a64657af5517a4904f4f2, type: 3}
+  - {fileID: 3163940324243330838, guid: 475d3f315760548e9bf7bae3fe27868f, type: 3}
+  - {fileID: 8563797722060622315, guid: 8ca14ddc75ca74771ad002c53ef6ea92, type: 3}
+  - {fileID: 8563797722060622315, guid: 0a0dd005f67bd433a81497bf81331cda, type: 3}
   _eulerRotation: {x: 0, y: 180, z: 0}
-  _cellSize: 0.65
+  _cellSize: 0.45

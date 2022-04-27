@@ -12,10 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 194a9edd5c3474cd788bb78b2d4bff93, type: 3}
   m_Name: PlayerSettings
   m_EditorClassIdentifier: 
-  _playerControllerSettings:
-    _swapDuration: 0.5
-    _moveForwardDistance: 0.4
-    _forwardCurve:
+  _dollyCartSettings:
+    _speed: 6
+  _coupleTransformSettings:
+    _protectorStartingPosition: {x: 1.6, y: 0, z: 0}
+    _defendedStartingPosition: {x: -1.6, y: 0, z: 0}
+  _swapMoveSettings:
+    _moveSideDistance: -1.6
+    _moveForwardDistance: 1.5
+    _moveDuration: 0.25
+    _sideMoveCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
@@ -26,19 +32,52 @@ MonoBehaviour:
         tangentMode: 0
         weightedMode: 0
         inWeight: 0
-        outWeight: 0.18333334
+        outWeight: 0
       - serializedVersion: 3
-        time: 0.4
+        time: 1
         value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    _forwardMoveCurve:
+      serializedVersion: 2
+      m_Curve:
       - serializedVersion: 3
-        time: 0.6
+        time: 0
+        value: 0
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
         value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  _speedChangerSettings:
+    _speedUpPercent: 0.75
+    _speedUpDuration: 1
+    _speedUpCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -47,19 +86,128 @@ MonoBehaviour:
         outWeight: 0
       - serializedVersion: 3
         time: 1
+        value: 1
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    _afterHalfSpeedUpEverySeconds: 1
+    _afterHalfSpeedUpValue: 0.1
+    _returnBackDuration: 1
+    _returnBackCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
         value: 0
+        inSlope: 1
+        outSlope: 1
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 1
+        outSlope: 1
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  _cameraFovChangerSettings:
+    _minMaxFov: {x: 78, y: 100}
+    _toMaxDuration: 1
+    _toMaxCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.061111134
-        outWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    _sideSwapEase: 1
-  _dollyCartSettings:
-    _speed: 6
-  _coupleTransformSettings:
-    _protectorStartingPosition: {x: 1.6, y: 0, z: 0}
-    _defendedStartingPosition: {x: -1.6, y: 0, z: 0}
+    _toReturnBackDuration: 1
+    _toReturnBackCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 1
+        outSlope: 1
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 1
+        outSlope: 1
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    _targetXOffset: -1.6
+    _reachToTargetOffsetDuration: 2
+    _sideMovementCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  _exhaustCheckerSettings:
+    _becomeExhaustSeconds: 5
+    _exhaustDuration: 1
+  _animatorGenderSettingsCollection:
+  - _gender: 1
+    _guardedRuntimeAnimatorController: {fileID: 9100000, guid: c8d0ef5ca1a3a4845b00baaa95293e1e, type: 2}
+    _protecterRunTimeAnimatorController: {fileID: 9100000, guid: c9425b49e360248f6846485e76e8a241, type: 2}
+  - _gender: 0
+    _guardedRuntimeAnimatorController: {fileID: 9100000, guid: ee520832f98f34f718b5e6cafbadaec5, type: 2}
+    _protecterRunTimeAnimatorController: {fileID: 9100000, guid: 7f8dd00b066dd44b9bfbe4d2361cab25, type: 2}

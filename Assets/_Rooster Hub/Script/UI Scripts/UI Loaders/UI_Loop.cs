@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DG.Tweening;
+using NaughtyAttributes;
 using UnityEngine;
 using static RG.Handlers.RoosterEventHandler;
 
@@ -8,8 +9,12 @@ namespace RG.Loader
 {
     public class UI_Loop : MonoBehaviour
     {
-        public GameObject openTransition;
-        public GameObject closeTransition;
+        [SerializeField] [BoxGroup("Transition Panel")]
+        public GameObject transitionPanel;
+
+        [BoxGroup("Transition Panel")] public bool useTransition;
+
+
         public List<UIObject> uILoop = new List<UIObject>();
 
         [HideInInspector] public int _uiIndex = -1;
@@ -19,7 +24,7 @@ namespace RG.Loader
         private void OnEnable()
         {
             RoosterHub.Central.OnGameStartedHandler += OnGameStarted;
-            //OnShowTransition += TransitionAction;
+            OnShowTransition += TransitionAction;
             OnChangeUI += ChangeUIMenu;
         }
 
@@ -27,7 +32,7 @@ namespace RG.Loader
         {
             RoosterHub.Central.OnGameStartedHandler -= OnGameStarted;
             if (OnChangeUI != null) OnChangeUI -= ChangeUIMenu;
-            //  if (OnShowTransition != null) OnShowTransition -= TransitionAction;
+            if (OnShowTransition != null) OnShowTransition -= TransitionAction;
         }
 
         void Start()
@@ -45,24 +50,32 @@ namespace RG.Loader
 
         private void TransitionAction(bool status)
         {
-            if (status)
+            transitionPanel.SetActive(true);
+            ITransition trans = transitionPanel.GetComponent<ITransition>();
+            
+            if (trans == null)
             {
-                closeTransition.SetActive(true);
-                openTransition.SetActive(false);
+                Debug.LogError("TRANSITION PANEL BULUNAMADI");
             }
             else
             {
-                openTransition.SetActive(true);
-                closeTransition.SetActive(false);
+                if (status)
+                {
+                    trans.CloseAction();
+                }
+                else
+                {
+                    trans.OpenAction();
+                }
+                
             }
-            
-          //  
         }
 
         private void OnTrasectionComplete()
         {
             uILoop[GetCurrentUIIndex()].OpenMenu();
-            TransitionAction(false);
+            ITransition trans = transitionPanel.GetComponent<ITransition>();
+            trans.OpenAction();
         }
 
         private void ChangeUIMenu(bool closeOthers)
@@ -90,15 +103,7 @@ namespace RG.Loader
             }
             else
             {
-                if (uILoop[GetCurrentUIIndex()].useTransition)
-                {
-                    TransitionAction(true);
-                    Invoke(nameof(OnTrasectionComplete),0.5f);
-                }
-                else
-                {
-                    uILoop[GetCurrentUIIndex()].OpenMenu();
-                }
+                uILoop[GetCurrentUIIndex()].OpenMenu();
             }
         }
 

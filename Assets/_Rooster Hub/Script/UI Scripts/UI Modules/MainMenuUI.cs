@@ -1,10 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using RG.Handlers;
-using UnityEngine.EventSystems;
+using RoosterHub;
+using UnityEngine.UI;
 
 namespace RG.Loader
 {
@@ -14,6 +10,10 @@ namespace RG.Loader
 
         public void OnEnable()
         {
+            if (GetComponentInParent<UI_Loop>().useTransition)
+            {
+                RoosterEventHandler.OnShowTransition?.Invoke(false);
+            }
             
             if (TryGetComponent(out IExtension extension))
             {
@@ -27,11 +27,11 @@ namespace RG.Loader
         }
         internal void OnClickStartGameButton()
         {
-            RoosterSound.PlayButtonSound();
-            RoosterHaptic.Selection();
+            Sound.PlayButtonSound();
+            Haptic.Selection();
             
             RoosterAnalyticSender.SendStartEvent();
-            RoosterHub.Central.OnGameStartedHandler?.Invoke();
+            Central.OnGameStartedHandler?.Invoke();
         }
     }
 }
