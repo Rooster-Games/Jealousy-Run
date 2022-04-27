@@ -19,7 +19,7 @@ MonoBehaviour:
     _defendedStartingPosition: {x: -1.6, y: 0, z: 0}
   _swapMoveSettings:
     _moveSideDistance: -1.6
-    _moveForwardDistance: 1
+    _moveForwardDistance: 1.5
     _moveDuration: 0.25
     _sideMoveCurve:
       serializedVersion: 2
@@ -204,3 +204,10 @@ MonoBehaviour:
   _exhaustCheckerSettings:
     _becomeExhaustSeconds: 5
     _exhaustDuration: 1
+  _animatorGenderSettingsCollection:
+  - _gender: 1
+    _guardedRuntimeAnimatorController: {fileID: 9100000, guid: c8d0ef5ca1a3a4845b00baaa95293e1e, type: 2}
+    _protecterRunTimeAnimatorController: {fileID: 9100000, guid: c9425b49e360248f6846485e76e8a241, type: 2}
+  - _gender: 0
+    _guardedRuntimeAnimatorController: {fileID: 9100000, guid: ee520832f98f34f718b5e6cafbadaec5, type: 2}
+    _protecterRunTimeAnimatorController: {fileID: 9100000, guid: 7f8dd00b066dd44b9bfbe4d2361cab25, type: 2}

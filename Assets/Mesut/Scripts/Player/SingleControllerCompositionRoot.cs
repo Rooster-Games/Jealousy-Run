@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace JR
@@ -33,6 +34,8 @@ namespace JR
 
                 triggerDetector.Init(triggerDetectorInitParameters);
             }
+
+            animator.runtimeAnimatorController = initParameters.RuntimeAnimatorController;
         }
 
         public class InitParameters
@@ -40,6 +43,7 @@ namespace JR
             public GameType GameType { get; set; }
             public DoTweenSwapper.MoveSettings MoveSettings { get; set; }
             public ExhaustChecker.Settings ExhaustCheckerSettings { get; set; }
+            public RuntimeAnimatorController RuntimeAnimatorController { get; set; }
         }
     }
 }
