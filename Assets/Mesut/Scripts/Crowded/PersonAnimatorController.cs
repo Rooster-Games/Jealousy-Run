@@ -22,6 +22,11 @@ namespace JR
             _animator.SetTrigger(triggerName);
         }
 
+        public void SetFloat(string name, float value)
+        {
+            _animator.SetFloat(name, value);
+        }
+
         public class InitParameters
         {
 

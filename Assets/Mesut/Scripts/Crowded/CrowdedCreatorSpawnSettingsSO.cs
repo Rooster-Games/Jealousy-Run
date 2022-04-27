@@ -11,6 +11,7 @@ namespace JR
         [SerializeField] GameObject[] _prefabCollection;
         [SerializeField] Vector3 _eulerRotation;
         [SerializeField] float _cellSize = 0.25f;
+        [SerializeField] Vector2 _minMaxScale = Vector2.one;
 
         public Vector3 EulerRotation => _eulerRotation;
         public float CellSize => _cellSize;
@@ -20,5 +21,7 @@ namespace JR
             int randomIndex = Random.Range(0, genderTypeCollection.Count);
             return genderTypeCollection[randomIndex];
         }
+
+        public Vector2 MinMaxScale => _minMaxScale;
     }
 }

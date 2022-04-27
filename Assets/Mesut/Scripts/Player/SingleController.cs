@@ -10,7 +10,7 @@ namespace JR
     public class SingleController : MonoBehaviour, IProtector, IGuarded
     {
         [SerializeField] GenderInfo _genderInfo;
-        [SerializeField] int _slapAnimationCount = 8;
+        [SerializeField] int _slapAnimationCount = 6;
         IAnimatorController _animatorController;
 
         public GenderInfo GenderInfo => _genderInfo;
@@ -38,14 +38,17 @@ namespace JR
             _exhaustChecker.Init(exhaustCheckerInitParameters);
         }
 
+        int slapCounter = 0;
         public void Slap()
         {
             Debug.Log("Slap");
             if (_isSlapping) return;
+            _animatorController.SetAnimatorSpeed(1.2f);
             _isSlapping = true;
             _animatorController.SetLayerWeight(1, 1f);
             _animatorController.SetTrigger("slap");
-            _animatorController.SetFloat("tokatIndex", Random.Range(0, _slapAnimationCount));
+            slapCounter = slapCounter % _slapAnimationCount;
+            _animatorController.SetFloat("tokatIndex", slapCounter++ );
             StartCoroutine(RestartAnimatorWeight());
         }
 
@@ -55,6 +58,7 @@ namespace JR
             float timer = 1f;
             DOTween.To(() => timer, (x) => { timer = x; _animatorController.SetLayerWeight(1, x); }, 0f, 0.25f)
                 .OnComplete(() => _isSlapping = false);
+            _animatorController.SetAnimatorSpeed(1f);
         }
 
         public void Protect()

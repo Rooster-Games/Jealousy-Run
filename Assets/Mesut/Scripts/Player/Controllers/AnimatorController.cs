@@ -32,6 +32,11 @@ namespace JR
             _animator.SetFloat(parameterName, value);
         }
 
+        public void SetAnimatorSpeed(float speed)
+        {
+            _animator.speed = speed;
+        }
+
         public class InitParameters
         {
             public Animator Animator { get; set; }
@@ -44,6 +49,7 @@ namespace JR
         void SetFloat(string parameterName, float value);
         void SetTrigger(string triggerName);
         void SetLayerWeight(int layerIndex, float weight);
+        void SetAnimatorSpeed(float speed);
     }
 
     public class AnimatorControllerFactory
@@ -74,6 +80,14 @@ namespace JR
         public void Add(IAnimatorController controller)
         {
             _animationControllerList.Add(controller);
+        }
+
+        public void SetAnimatorSpeed(float speed)
+        {
+            foreach (var controller in _animationControllerList)
+            {
+                controller.SetAnimatorSpeed(speed);
+            }
         }
 
         public void SetBool(string stateName, bool state)

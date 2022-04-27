@@ -11,15 +11,15 @@ namespace JR
         [SerializeField] Vector3 _torqueDir;
         [SerializeField] float _otherDetectorOpenAfterSeconds = 0.25f;
 
-        [SerializeField] GameObject _closeObject;
-        [SerializeField] GameObject _ragdoll;
+        public GameObject _closeObject;
+        public GameObject _ragdoll;
         [SerializeField] OtherEnemyDetectorToSlap _slapDetector;
         Animator _anim;
 
         DynamicBone _dynamicBone;
         BoxCollider _boxCollider;
 
-        [SerializeField]Rigidbody[] _ragdollBodies;
+        public Rigidbody[] _ragdollBodies;
 
         float maxMass = 24f;
 
