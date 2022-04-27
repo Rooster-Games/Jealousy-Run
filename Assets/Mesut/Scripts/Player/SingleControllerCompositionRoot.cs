@@ -13,7 +13,7 @@ namespace JR
 
             // child
             var animator = GetComponentInChildren<Animator>();
-           // var triggerDetector = GetComponentInChildren<SlapEnemyDetector>();
+            var triggerDetector = GetComponentInChildren<SlapEnemyDetector>();
 
             var animatorController = new AnimatorControllerFactory().Create(animator);
 
@@ -21,23 +21,25 @@ namespace JR
             var singleControllerInitParameters = new SingleController.InitParameters();
             singleControllerInitParameters.AnimatorController = animatorController;
             singleControllerInitParameters.MoveSettings = initParameters.MoveSettings;
+            singleControllerInitParameters.ExhaustCheckerSettings = initParameters.ExhaustCheckerSettings;
 
             singleController.Init(singleControllerInitParameters);
 
             // trigger detector init
-            //if (triggerDetector != null)
-            //{
-            //    var triggerDetectorInitParameters = new SlapEnemyDetector.InitParameters();
-            //    triggerDetectorInitParameters.SingleController = singleController;
+            if (triggerDetector != null)
+            {
+                var triggerDetectorInitParameters = new SlapEnemyDetector.InitParameters();
+                triggerDetectorInitParameters.SingleController = singleController;
 
-            //    triggerDetector.Init(triggerDetectorInitParameters);
-            //}
+                triggerDetector.Init(triggerDetectorInitParameters);
+            }
         }
 
         public class InitParameters
         {
             public GameType GameType { get; set; }
             public DoTweenSwapper.MoveSettings MoveSettings { get; set; }
+            public ExhaustChecker.Settings ExhaustCheckerSettings { get; set; }
         }
     }
 }

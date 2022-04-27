@@ -1,6 +1,7 @@
 
 using System.Collections;
 using DG.Tweening;
+using DI;
 using UnityEngine;
 
 namespace JR
@@ -18,6 +19,7 @@ namespace JR
         public bool IsSlapping => _isSlapping;
 
         DoTweenSwapper _transformSwapper;
+        ExhaustChecker _exhaustChecker;
 
         public void Init(InitParameters initParameters)
         {
@@ -27,6 +29,13 @@ namespace JR
             swapperInitParameters.TransformToSwap = transform;
             swapperInitParameters.MoveSettings = initParameters.MoveSettings;
             _transformSwapper = new DoTweenSwapper(swapperInitParameters);
+
+            var exhaustCheckerInitParameters = new ExhaustChecker.InitParameters();
+            exhaustCheckerInitParameters.ProtectorController = initParameters.AnimatorController;
+            exhaustCheckerInitParameters.Settings = initParameters.ExhaustCheckerSettings;
+
+            _exhaustChecker = new ExhaustChecker();
+            _exhaustChecker.Init(exhaustCheckerInitParameters);
         }
 
         public void Slap()
@@ -51,17 +60,21 @@ namespace JR
         public void Protect()
         {
             _transformSwapper.Swap();
+            _exhaustChecker.StartTimer();
+            _animatorController.SetTrigger("protectRun");
         }
 
         public void ReturnBack()
         {
             _transformSwapper.ReturnBack();
+            _exhaustChecker.CheckForExhaust();
         }
 
         public class InitParameters
         {
             public IAnimatorController AnimatorController { get; set; }
             public DoTweenSwapper.MoveSettings MoveSettings { get; set; }
+            public ExhaustChecker.Settings ExhaustCheckerSettings { get; set; }
             public bool IsProtector { get; set; }
         }
     }
