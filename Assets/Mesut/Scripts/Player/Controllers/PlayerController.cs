@@ -17,6 +17,7 @@ namespace JR
         InputManager _inputManager;
 
         IProtector _protector;
+        IGuarded _guarded;
         SpeedChanger _speedChanger;
         CameraFovChanger _cameraFovChanger;
         // bool _swapping;
@@ -30,6 +31,7 @@ namespace JR
             _eventBus = initParameters.EventBus;
             _inputManager = initParameters.InputManager;
             _protector = initParameters.Protector;
+            _guarded = initParameters.Guarded;
             _cameraFovChanger = initParameters.CameraFovChanger;
 
             _isInitialized = true;
@@ -57,6 +59,7 @@ namespace JR
             if(_inputManager.IsMouseButtonDown)
             {
                 _protector.Protect();
+                _guarded.GetProtected();
                 _speedChanger.SpeedUp();
                 _cameraFovChanger.ChangeFovToMax();
             }
@@ -64,6 +67,7 @@ namespace JR
             if(_inputManager.IsMouseButtonUp)
             {
                 _protector.ReturnBack();
+                _guarded.EndOfProtection();
                 _speedChanger.SpeedDown();
                 _cameraFovChanger.ChangeFovToReturnBack();
             }
@@ -92,6 +96,7 @@ namespace JR
             public EventBus EventBus { get; set; }
             public InputManager InputManager { get; set; }
             public IProtector Protector { get; set; }
+            public IGuarded Guarded { get; set; }
             public SpeedChanger.Settings SpeedChangerSettings { get; set; }
             public CameraFovChanger CameraFovChanger { get; set; }
         }

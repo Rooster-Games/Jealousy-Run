@@ -14,6 +14,7 @@ namespace JR
         [SerializeField] SpeedChanger.Settings _speedChangerSettings;
         [SerializeField] CameraFovChanger.Settings _cameraFovChangerSettings;
         [SerializeField] ExhaustChecker.Settings _exhaustCheckerSettings;
+        [SerializeField] SingleController.AnimatorGenderSettings[] _animatorGenderSettingsCollection;
 
         public DollyCartController.Settings DollyCartSettings => _dollyCartSettings;
         public DoTweenSwapper.MoveSettings SwapMoveSettings => _swapMoveSettings;
@@ -22,6 +23,7 @@ namespace JR
         public CoupleTransformSettings CoupleTransformSettings => _coupleTransformSettings;
         public CameraFovChanger.Settings CameraFovChangerSettings => _cameraFovChangerSettings;
         public ExhaustChecker.Settings ExhaustChecketSettings => _exhaustCheckerSettings;
+        public SingleController.AnimatorGenderSettings[] AnimatorGenderSettingsCollection => _animatorGenderSettingsCollection;
 
     }
 
