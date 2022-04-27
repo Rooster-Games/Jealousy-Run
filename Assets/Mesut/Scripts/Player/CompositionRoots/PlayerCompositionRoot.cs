@@ -9,7 +9,6 @@ namespace JR
     public class PlayerCompositionRoot : MonoBehaviour
     {
         [SerializeField] PlayerSettingsSO _playerSettings;
-        [SerializeField] DoTweenSwapper.MoveSettings _moveSettings;
         //public void RegisterToContainer()
         //{
             //    // CompositionRoot
@@ -89,16 +88,6 @@ namespace JR
 
             dollyCartCompositionRoot.Init(dollyCartCompositionRootInitParameters);
 
-
-            // SingleControllers composition root init
-            var scCRInitparameters = new SingleControllerCompositionRoot.InitParameters();
-            scCRInitparameters.MoveSettings = _moveSettings;
-
-            foreach (var sccr in singleControllerCompositionRootCollection)
-            {
-                sccr.Init(scCRInitparameters);
-            }
-
             IProtector protector = null;
             // GameType settings
             foreach (var singleController in singleControllerCollection)
@@ -108,10 +97,31 @@ namespace JR
                 {
                     startingLocalPosition = _playerSettings.CoupleTransformSettings.ProtectorStartingPosition;
                     protector = singleController;
+
+                    // singleController.GetComponentInChildren<SlapEnemyDetector>(true).gameObject.SetActive(true);
+                    singleController.GetComponentInChildren<ItemTriggerDetector>(true).gameObject.SetActive(true);
                 }
 
                 singleController.transform.localPosition = startingLocalPosition;
             }
+
+            // SingleControllers composition root init
+            var scCRInitparameters = new SingleControllerCompositionRoot.InitParameters();
+            scCRInitparameters.MoveSettings = _playerSettings.SwapMoveSettings;
+
+            foreach (var sccr in singleControllerCompositionRootCollection)
+            {
+                sccr.Init(scCRInitparameters);
+            }
+
+
+            // camera Fov Changer
+            var fovChangerInitParameters = new CameraFovChanger.InitParameters();
+            fovChangerInitParameters.Camera = initParameters.CameraToFovChange;
+            fovChangerInitParameters.Settings = _playerSettings.CameraFovChangerSettings;
+
+            var cameraFovChanger = new CameraFovChanger();
+            cameraFovChanger.Init(fovChangerInitParameters);
 
             // Player Init
             var animatorController = new AnimatorControllerFactory().Create(animatorCollection);
@@ -120,9 +130,10 @@ namespace JR
             playerControllerInitParameters.DollyCartController = dollyCartController;
             playerControllerInitParameters.EventBus = initParameters.EventBus;
             playerControllerInitParameters.InputManager = initParameters.InputManager;
-            playerControllerInitParameters.Settings = _playerSettings.PlayerControllerSettings;
             playerControllerInitParameters.AnimatorController = animatorController;
             playerControllerInitParameters.Protector = protector;
+            playerControllerInitParameters.SpeedChangerSettings = _playerSettings.SpeedChangerSettings;
+            playerControllerInitParameters.CameraFovChanger = cameraFovChanger;
 
             playerController.Init(playerControllerInitParameters);
 
@@ -136,6 +147,7 @@ namespace JR
                 itemTD.Init(itemTDInitParameters);
             }
 
+
         }
 
         public class InitParameters
@@ -144,6 +156,7 @@ namespace JR
             public InputManager InputManager { get; set; }
             public GameType GameType { get; set; }
             public BarController BarController { get; set; }
+            public CinemachineVirtualCamera CameraToFovChange { get; set; }
         }
     }
 }

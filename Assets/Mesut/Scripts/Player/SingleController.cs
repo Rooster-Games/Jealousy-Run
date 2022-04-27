@@ -9,7 +9,7 @@ namespace JR
     public class SingleController : MonoBehaviour, IProtector
     {
         [SerializeField] GenderInfo _genderInfo;
-        [SerializeField] int _slapAnimationCount = 7;
+        [SerializeField] int _slapAnimationCount = 8;
         IAnimatorController _animatorController;
 
         public GenderInfo GenderInfo => _genderInfo;
@@ -31,6 +31,7 @@ namespace JR
 
         public void Slap()
         {
+            Debug.Log("Slap");
             if (_isSlapping) return;
             _isSlapping = true;
             _animatorController.SetLayerWeight(1, 1f);
@@ -41,7 +42,7 @@ namespace JR
 
         IEnumerator RestartAnimatorWeight()
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.25f);
             float timer = 1f;
             DOTween.To(() => timer, (x) => { timer = x; _animatorController.SetLayerWeight(1, x); }, 0f, 0.25f)
                 .OnComplete(() => _isSlapping = false);

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace JR
@@ -13,13 +14,11 @@ namespace JR
 
         public Vector3 EulerRotation => _eulerRotation;
         public float CellSize => _cellSize;
-        public GameObject GetRandomPrefab
+        public GameObject GetRandomPrefab(Gender genderType)
         {
-            get
-            {
-                int randomIndex = Random.Range(0, _prefabCollection.Length);
-                return _prefabCollection[randomIndex];
-            }
+            var genderTypeCollection = _prefabCollection.ToList().Where(x => x.GetComponent<GenderInfo>().Gender == genderType).ToList();
+            int randomIndex = Random.Range(0, genderTypeCollection.Count);
+            return genderTypeCollection[randomIndex];
         }
     }
 }

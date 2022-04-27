@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Main_crowdedSpawnData
   m_EditorClassIdentifier: 
   _prefabCollection:
-  - {fileID: 5186875458274926925, guid: 683c1ee489f6c1b43b74e742bc19fe98, type: 3}
-  - {fileID: 3824241658081883188, guid: d5e0efd55b58a3344ac98e1269ad250f, type: 3}
+  - {fileID: 3715810002678120777, guid: 96b6a31e1970244c7aadaeeeeb9a5b7a, type: 3}
   _eulerRotation: {x: 0, y: 180, z: 0}
-  _cellSize: 0.65
+  _cellSize: 0.45
