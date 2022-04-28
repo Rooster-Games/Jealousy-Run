@@ -33,7 +33,7 @@ namespace JR
             _isPushed = true;
             _myBody.AddForce(direction * force, forceMode);
 
-            _anim.SetFloat("hitIndex", Random.Range(0, 3));
+            _anim.SetFloat("hitIndex", Random.Range(0, 4));
             _anim.SetTrigger("hit");
 
             float timer = 0f;
