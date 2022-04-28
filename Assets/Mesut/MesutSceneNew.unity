@@ -3409,7 +3409,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &302516032
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4511,6 +4511,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MoneyTrail
       objectReference: {fileID: 0}
+    - target: {fileID: 2250233700611272399, guid: bae1f70d07e861b45a52d1e8adb4ebc6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2250233700629501233, guid: bae1f70d07e861b45a52d1e8adb4ebc6, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -5168,6 +5172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _genderInfo: {fileID: 457546309}
   _slapAnimationCount: 6
+  _whileProtectedParticle: {fileID: 1146832114}
   _slapParticlePefabList:
   - {fileID: 2881655981692621550, guid: a89af0335f8c2de48903173d259c05f1, type: 3}
   - {fileID: 1171628881558895778, guid: cc2bae3c786424288b28590468a0fe53, type: 3}
@@ -9358,7 +9363,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &848342058
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12339,6 +12344,11 @@ Transform:
   m_Father: {fileID: 1461763266}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1146832114 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4836144761414623584, guid: 99dfae7085ac7084186fe0bc3c086f69, type: 3}
+  m_PrefabInstance: {fileID: 1317431372}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1153410281 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1408105103739961243, guid: a2df5b3325f584283bd24ea77aedd2f5, type: 3}
@@ -21787,6 +21797,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _genderInfo: {fileID: 1983401956}
   _slapAnimationCount: 10
+  _whileProtectedParticle: {fileID: 2250233700924628377}
   _slapParticlePefabList:
   - {fileID: 2881655981692621550, guid: a89af0335f8c2de48903173d259c05f1, type: 3}
   - {fileID: 1171628881558895778, guid: cc2bae3c786424288b28590468a0fe53, type: 3}
@@ -23531,3 +23542,8 @@ Transform:
   m_Father: {fileID: 456844121}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2250233700924628377 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2250233700611272399, guid: bae1f70d07e861b45a52d1e8adb4ebc6, type: 3}
+  m_PrefabInstance: {fileID: 397783894}
+  m_PrefabAsset: {fileID: 0}

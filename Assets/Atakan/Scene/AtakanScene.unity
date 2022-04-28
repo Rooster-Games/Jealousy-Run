@@ -3409,7 +3409,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &302516032
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5168,6 +5168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _genderInfo: {fileID: 457546309}
   _slapAnimationCount: 6
+  _whileProtectedParticle: {fileID: 0}
   _slapParticlePefabList: []
   _slapParticleRootMarker: []
 --- !u!54 &457546311
@@ -9350,7 +9351,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &848342058
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10041,6 +10042,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a4bee559198e4282b71443b6b98189a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collectionSettings:
+    _heartExplosionPrefab: {fileID: 0}
 --- !u!65 &928121734
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21672,6 +21675,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _genderInfo: {fileID: 1983401956}
   _slapAnimationCount: 10
+  _whileProtectedParticle: {fileID: 0}
   _slapParticlePefabList:
   - {fileID: 2881655981692621550, guid: a89af0335f8c2de48903173d259c05f1, type: 3}
   - {fileID: 1171628881558895778, guid: cc2bae3c786424288b28590468a0fe53, type: 3}
@@ -21918,6 +21922,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a4bee559198e4282b71443b6b98189a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collectionSettings:
+    _heartExplosionPrefab: {fileID: 0}
 --- !u!65 &2021075446
 BoxCollider:
   m_ObjectHideFlags: 0
