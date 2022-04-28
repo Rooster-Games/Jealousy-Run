@@ -25,6 +25,7 @@ namespace JR
         // 0.1 degisti, current 0.8 oldu, 
         public void Init(InitParameters initParameters)
         {
+            Debug.Log("IsBarNull: " + _bar == null);
             _bar = initParameters.Bar;
             _loveData = initParameters.LoveData;
             _eventBus = initParameters.EventBus;

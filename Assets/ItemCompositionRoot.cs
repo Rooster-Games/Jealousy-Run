@@ -8,10 +8,11 @@ namespace JR
     {
         public void Init(InitParameters initParameters)
         {
-            var itemGraphicCollection = GetComponentsInChildren<ItemGraphics>();
+            var itemGraphicCollection = GetComponentsInChildren<ItemGraphics>(true);
 
             foreach (var itemGraphic in itemGraphicCollection)
             {
+                Debug.Log("item composition root:" + initParameters.WhoIsProtecting);
                 itemGraphic.CheckGameType(initParameters.WhoIsProtecting);
             }
         }

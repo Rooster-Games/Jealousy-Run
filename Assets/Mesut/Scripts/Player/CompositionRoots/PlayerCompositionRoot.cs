@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Cinemachine;
 using GameCores;
 using UnityEngine;
+using System.Linq;
 
 namespace JR
 {
@@ -106,7 +107,7 @@ namespace JR
                     startingLocalPosition = _playerSettings.CoupleTransformSettings.ProtectorStartingPosition;
                     protector = singleController;
 
-                    singleController.GetComponentInChildren<SlapEnemyDetector>(true).gameObject.SetActive(true);
+                    singleController.GetComponentsInChildren<SlapEnemyDetector>(true).ToList().ForEach((x) => x.gameObject.SetActive(true));
                     singleController.GetComponentInChildren<ItemTriggerDetector>(true).gameObject.SetActive(true);
                 }
                 else

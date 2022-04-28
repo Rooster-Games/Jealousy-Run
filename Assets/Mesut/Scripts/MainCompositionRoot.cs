@@ -91,7 +91,10 @@ namespace JR
                 bar.Init(barInitParameters);
                 bar.gameObject.SetActive(false);
                 if (_gameType.ProtectorGender == bar.BoundedGender)
+                {
+                    Debug.Log("BarSelected");
                     gameTypeBar = bar;
+                }
             }
 
             var barControllerInitParameters = new BarController.InitParameters();
