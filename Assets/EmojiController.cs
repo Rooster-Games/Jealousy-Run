@@ -40,7 +40,6 @@ namespace JR
                 _crowdedCollection.RemoveAt(randomIndex);
 
                 var emojiRootMarker = col.gameObject.GetComponentInChildren<EmojiRootMarker>();
-                Debug.Log("EmojiRootMarker Is Null: " + emojiRootMarker == null);
                 CreateEmoji(type, emojiRootMarker);
             }
         }

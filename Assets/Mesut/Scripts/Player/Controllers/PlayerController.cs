@@ -45,6 +45,8 @@ namespace JR
             _speedChanger.Init(speedChangerInitParameters);
 
             _eventBus.Register<OnGameStarted>(EventBus_OnGameStarted);
+
+            _protector.MakeHandsBigger();
         }
 
         private void EventBus_OnGameStarted(OnGameStarted eventData)

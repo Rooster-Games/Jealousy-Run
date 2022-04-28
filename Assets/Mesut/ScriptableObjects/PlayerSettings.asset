@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: PlayerSettings
   m_EditorClassIdentifier: 
   _dollyCartSettings:
-    _speed: 8
+    _speed: 7
   _coupleTransformSettings:
     _protectorStartingPosition: {x: 1.6, y: 0, z: 0}
     _defendedStartingPosition: {x: -1.6, y: 0, z: 0}
   _swapMoveSettings:
     _moveSideDistance: -1.6
-    _moveForwardDistance: 1.5
-    _moveDuration: 0.25
+    _moveForwardDistance: 2.5
+    _moveDuration: 0.45
     _sideMoveCurve:
       serializedVersion: 2
       m_Curve:
@@ -51,8 +51,8 @@ MonoBehaviour:
       - serializedVersion: 3
         time: 0
         value: 0
-        inSlope: 2
-        outSlope: 2
+        inSlope: 0
+        outSlope: 0
         tangentMode: 0
         weightedMode: 0
         inWeight: 0
@@ -60,8 +60,8 @@ MonoBehaviour:
       - serializedVersion: 3
         time: 1
         value: 1
-        inSlope: 0
-        outSlope: 0
+        inSlope: 2
+        outSlope: 2
         tangentMode: 0
         weightedMode: 0
         inWeight: 0
@@ -175,8 +175,8 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    _targetXOffset: -1.6
-    _reachToTargetOffsetDuration: 2
+    _sideOffset: {x: -1.6, y: 1.2, z: 3}
+    _reachToTargetOffsetDuration: 1.5
     _sideMovementCurve:
       serializedVersion: 2
       m_Curve:
@@ -207,7 +207,7 @@ MonoBehaviour:
   _animatorGenderSettingsCollection:
   - _gender: 1
     _guardedRuntimeAnimatorController: {fileID: 9100000, guid: c8d0ef5ca1a3a4845b00baaa95293e1e, type: 2}
-    _protecterRunTimeAnimatorController: {fileID: 9100000, guid: c9425b49e360248f6846485e76e8a241, type: 2}
+    _protecterRunTimeAnimatorController: {fileID: 9100000, guid: 0e1af4e199adc4a90ac14ac83888dbe5, type: 2}
   - _gender: 0
-    _guardedRuntimeAnimatorController: {fileID: 9100000, guid: ee520832f98f34f718b5e6cafbadaec5, type: 2}
+    _guardedRuntimeAnimatorController: {fileID: 9100000, guid: d0cfb6aaf46c84699be6f6d88bbaf84a, type: 2}
     _protecterRunTimeAnimatorController: {fileID: 9100000, guid: 7f8dd00b066dd44b9bfbe4d2361cab25, type: 2}
