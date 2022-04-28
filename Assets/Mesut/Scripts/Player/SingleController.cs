@@ -16,6 +16,7 @@ namespace JR
         IAnimatorController _animatorController;
         PlayerAnimationEvents _animationEvents;
 
+        [SerializeField] GameObject _whileProtectedParticle;
         [SerializeField] List<GameObject> _slapParticlePefabList;
 
         public GenderInfo GenderInfo => _genderInfo;
@@ -132,11 +133,14 @@ namespace JR
         public void GetProtected()
         {
             _animatorController.SetTrigger("protectRun");
+            _whileProtectedParticle.SetActive(true);
+
         }
 
         public void EndOfProtection()
         {
             _animatorController.SetTrigger("normalRun");
+            _whileProtectedParticle.SetActive(false);
         }
 
         public class InitParameters
