@@ -15,8 +15,12 @@ namespace JR
         [SerializeField] int _slapAnimationCount = 10;
         IAnimatorController _animatorController;
         PlayerAnimationEvents _animationEvents;
+        [SerializeField] Transform[] _handTransformCollection;
+        [SerializeField] Vector3 _handScale;
 
         [SerializeField] GameObject _whileProtectedParticle;
+        [SerializeField] GameObject _pushDetector;
+
         [SerializeField] List<GameObject> _slapParticlePefabList;
 
         public GenderInfo GenderInfo => _genderInfo;
@@ -134,6 +138,7 @@ namespace JR
         {
             _animatorController.SetTrigger("protectRun");
             _whileProtectedParticle.SetActive(true);
+            _pushDetector.SetActive(false);
 
         }
 
@@ -141,6 +146,15 @@ namespace JR
         {
             _animatorController.SetTrigger("normalRun");
             _whileProtectedParticle.SetActive(false);
+            _pushDetector.SetActive(true);
+        }
+
+        public void MakeHandsBigger()
+        {
+            foreach (var handTransform in _handTransformCollection)
+            {
+                handTransform.localScale = _handScale;
+            }
         }
 
         public class InitParameters
@@ -169,6 +183,7 @@ namespace JR
     {
         void Protect();
         void ReturnBack();
+        void MakeHandsBigger();
     }
 
     public interface IGuarded

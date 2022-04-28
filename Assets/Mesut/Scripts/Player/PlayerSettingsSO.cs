@@ -35,5 +35,5 @@ namespace JR
 
         public Vector3 ProtectorStartingPosition => _protectorStartingPosition;
         public Vector3 DefendedStartingPosition => _defendedStartingPosition;
-    }
+    } 
 }

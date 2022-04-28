@@ -76,7 +76,7 @@ namespace JR
                 checkCounter = 0;
             }
 
-            Debug.Log($"Creation Counter: {_creationCounter}");
+            //Debug.Log($"Creation Counter: {_creationCounter}");
         }
 
         private Vector3 GetRandomPosition(Vector3 leftBottomPos, Vector3 rightTopPos)

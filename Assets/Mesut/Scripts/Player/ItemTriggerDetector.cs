@@ -22,6 +22,7 @@ namespace JR
             go.transform.position = other.transform.position;
 
             Destroy(go, 2f);
+
             other.gameObject.SetActive(false);
             _barController.ChangeAmount(itemCollectionData.BarIncreaseAmount);
         }
