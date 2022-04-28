@@ -18,11 +18,19 @@ namespace JR
 
             var animatorController = new AnimatorControllerFactory().Create(animator);
 
+            // animation evetns init
+
+            var pAEInitParameters = new PlayerAnimationEvents.InitParameters();
+            pAEInitParameters.AnimatorController = animatorController;
+            var playerAnimationEvents = GetComponentInChildren<PlayerAnimationEvents>();
+            playerAnimationEvents.Init(pAEInitParameters);
+
             // singlecontroller init
             var singleControllerInitParameters = new SingleController.InitParameters();
             singleControllerInitParameters.AnimatorController = animatorController;
             singleControllerInitParameters.MoveSettings = initParameters.MoveSettings;
             singleControllerInitParameters.ExhaustCheckerSettings = initParameters.ExhaustCheckerSettings;
+            singleControllerInitParameters.AnimationEvents = playerAnimationEvents;
 
             singleController.Init(singleControllerInitParameters);
 
@@ -36,6 +44,7 @@ namespace JR
             }
 
             animator.runtimeAnimatorController = initParameters.RuntimeAnimatorController;
+
         }
 
         public class InitParameters

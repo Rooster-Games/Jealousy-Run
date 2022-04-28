@@ -104,6 +104,14 @@ namespace JR
             _barCompositionSettings.BarController.Init(barControllerInitParameters);
 
 
+            // item creator
+            var collectCreatorCollection = _gameType.GetComponentsInChildren<CollectableCreator>();
+            foreach (var collectCreator in collectCreatorCollection)
+            {
+                collectCreator.Init();
+            }
+
+
             // Item collection
             var itemCRCollection= _gameType.GetComponentsInChildren<ItemCompositionRoot>();
             var itemCRInitParameters = new ItemCompositionRoot.InitParameters();

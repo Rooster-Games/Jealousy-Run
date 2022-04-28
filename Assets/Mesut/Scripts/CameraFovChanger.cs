@@ -56,7 +56,7 @@ namespace JR
             if (_sideChangerTween != null)
                 _sideChangerTween.Kill();
 
-            var targetOffset = _transposerInitialOffset + new Vector3(_settings.TargetXOffset, -_settings.TargetXOffset * 0f, 0f);
+            var targetOffset = _transposerInitialOffset + new Vector3(_settings.TargetXOffset, -_settings.TargetXOffset * 0.75f, 0f);
             _sideChangerTween = DOTween.To(() => _transposer.m_FollowOffset, (x) => _transposer.m_FollowOffset = x, targetOffset, _settings.ReachToTargetOffsetDuration)
                 .SetEase(_settings.SideMovementCurve);
         }

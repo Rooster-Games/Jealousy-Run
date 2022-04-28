@@ -11,6 +11,7 @@ namespace JR
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] Transform[] _coupleTransform;
+        [SerializeField] GameObject _speedUpParticle;
         DollyCartController _dollyCartController;
         IAnimatorController _animatorController;
         EventBus _eventBus;
@@ -62,6 +63,7 @@ namespace JR
                 _guarded.GetProtected();
                 _speedChanger.SpeedUp();
                 _cameraFovChanger.ChangeFovToMax();
+                _speedUpParticle.SetActive(true);
             }
 
             if(_inputManager.IsMouseButtonUp)
@@ -70,6 +72,7 @@ namespace JR
                 _guarded.EndOfProtection();
                 _speedChanger.SpeedDown();
                 _cameraFovChanger.ChangeFovToReturnBack();
+                _speedUpParticle.SetActive(false);
             }
         }
 

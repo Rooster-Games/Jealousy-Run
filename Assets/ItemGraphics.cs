@@ -10,10 +10,7 @@ namespace JR
 
         public void CheckGameType(Gender whoIsProtecting)
         {
-            if(_whoIsCollecting != whoIsProtecting)
-            {
-                gameObject.SetActive(false);
-            }
+            gameObject.SetActive(_whoIsCollecting == whoIsProtecting);
         }
     }
 }
