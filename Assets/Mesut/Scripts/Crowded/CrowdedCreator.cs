@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using NaughtyAttributes;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,10 +16,10 @@ namespace JR
 
         BoxCollider _boxCollider;
         
-        private void Awake()
-        {
-            Init();
-        }
+        //private void Awake()
+        //{
+        //    Init();
+        //}
 
         List<Vector3> _createdPositions;
 
@@ -28,6 +29,12 @@ namespace JR
             _creationCounter = 0;
             _createdPositions = new List<Vector3>();
             _boxCollider = GetComponent<BoxCollider>();
+
+            if(_boxCollider.size != Vector3.one)
+            {
+                transform.localScale = _boxCollider.size;
+                _boxCollider.size = Vector3.one;
+            }
 
             Vector3 center = _boxCollider.bounds.center;
             Vector3 extents = _boxCollider.bounds.extents;
@@ -69,7 +76,7 @@ namespace JR
                 checkCounter = 0;
             }
 
-            Debug.Log($"Creation Counter: {_creationCounter}");
+            //Debug.Log($"Creation Counter: {_creationCounter}");
         }
 
         private Vector3 GetRandomPosition(Vector3 leftBottomPos, Vector3 rightTopPos)
@@ -86,6 +93,7 @@ namespace JR
             _creationCounter++;
             var go = Instantiate(_spawnSettings.GetRandomPrefab(_creationGender));
             go.transform.SetParent(transform);
+            go.transform.localScale = Vector3.one * Random.Range(_spawnSettings.MinMaxScale.x, _spawnSettings.MinMaxScale.y);
             go.transform.position = pos;
             go.transform.localEulerAngles = _spawnSettings.EulerRotation;
             go.layer = gameObject.layer;

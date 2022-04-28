@@ -19,6 +19,7 @@ namespace JR
 
         public void Walk()
         {
+            _animatorController.SetFloat("walkIndex", Random.Range(0, 7));
             _animatorController.SetTrigger("walk");
         }
 

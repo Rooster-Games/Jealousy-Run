@@ -13,9 +13,26 @@ MonoBehaviour:
   m_Name: Main_crowdedSpawnData
   m_EditorClassIdentifier: 
   _prefabCollection:
-  - {fileID: 3163940324243330838, guid: baa82b57db4a64657af5517a4904f4f2, type: 3}
-  - {fileID: 3163940324243330838, guid: 475d3f315760548e9bf7bae3fe27868f, type: 3}
-  - {fileID: 8563797722060622315, guid: 8ca14ddc75ca74771ad002c53ef6ea92, type: 3}
-  - {fileID: 8563797722060622315, guid: 0a0dd005f67bd433a81497bf81331cda, type: 3}
+  - {fileID: 3519562505353537881, guid: 253d7343405694819bb896f2a5eb1d87, type: 3}
+  - {fileID: 5528712673691975231, guid: dc13fe44ddb3d410fa2547eb6f161256, type: 3}
+  - {fileID: 5055754090085334976, guid: 5d6931a184fdf49beb8b5543e97b0277, type: 3}
+  - {fileID: 6441474529236458822, guid: c0f2f0403e2a34e1ba26bb76cd749688, type: 3}
+  - {fileID: 7873396761236124014, guid: da450ac4bdcca457c917935287254ef5, type: 3}
+  - {fileID: 7084276780476542128, guid: 7d0f4e0fe764a46099d7b6abc5431996, type: 3}
+  - {fileID: 1497236471285345922, guid: 12f8cb195a06a4e388b63e08c4b1858a, type: 3}
+  - {fileID: 279170986476949722, guid: a10615ef9b1e64407bd5299d2bc767ed, type: 3}
+  - {fileID: 487892722288686797, guid: c86604308263d486ab33f21dfbaa455e, type: 3}
+  - {fileID: 5888956723972022860, guid: ec6d37f15f2e54b0e9566b33bd7cfc9a, type: 3}
+  - {fileID: 4034634223247824922, guid: 912ecc9ef61614f27b1830f4cff2a153, type: 3}
+  - {fileID: 6063658901977229504, guid: 47b43c23e659f4b6c8748d2873ab2816, type: 3}
+  - {fileID: 4472942484989448890, guid: f0af830585ba9496eace1f1d27d3b1d9, type: 3}
+  - {fileID: 8566113396292203292, guid: 0f318e4dcbefd436ab89b6307f84ffc1, type: 3}
+  - {fileID: 8495147154154131361, guid: 61f3a06c48ff840a4a9be5d842f843cf, type: 3}
+  - {fileID: 8752354507112652548, guid: 933d6be5eb2b84369889059fb07058d5, type: 3}
+  - {fileID: 1701965556776441756, guid: 321030cfa5f98406b92d94d17f35eac1, type: 3}
+  - {fileID: 4126348145229106187, guid: 5db6593d7e2c44066b6e27cdd019a7f8, type: 3}
+  - {fileID: 220403351495549231, guid: 17bc9fe2f054d47049a56f13f65f454d, type: 3}
+  - {fileID: 6147345797554846714, guid: df73bfd86054b4da78cc53ee7cf8ebb3, type: 3}
   _eulerRotation: {x: 0, y: 180, z: 0}
-  _cellSize: 0.45
+  _cellSize: 0.6
+  _minMaxScale: {x: 1.05, y: 1.25}

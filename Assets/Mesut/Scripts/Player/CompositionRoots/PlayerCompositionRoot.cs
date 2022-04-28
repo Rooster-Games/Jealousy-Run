@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Cinemachine;
 using GameCores;
 using UnityEngine;
+using System.Linq;
 
 namespace JR
 {
@@ -106,7 +107,7 @@ namespace JR
                     startingLocalPosition = _playerSettings.CoupleTransformSettings.ProtectorStartingPosition;
                     protector = singleController;
 
-                    singleController.GetComponentInChildren<SlapEnemyDetector>(true).gameObject.SetActive(true);
+                    singleController.GetComponentsInChildren<SlapEnemyDetector>(true).ToList().ForEach((x) => x.gameObject.SetActive(true));
                     singleController.GetComponentInChildren<ItemTriggerDetector>(true).gameObject.SetActive(true);
                 }
                 else
@@ -127,7 +128,6 @@ namespace JR
             foreach (var sccr in singleControllerCompositionRootCollection)
             {
 
-                Debug.Log(_singleToRuntimeAnimatorMap[sccr.gameObject].name);
                 scCRInitparameters.RuntimeAnimatorController = _singleToRuntimeAnimatorMap[sccr.gameObject];
 
                 sccr.Init(scCRInitparameters);
@@ -170,14 +170,12 @@ namespace JR
 
         private RuntimeAnimatorController SelectRuntimeAnimatorController(GenderInfo genderInfo, bool isProtector)
         {
-            Debug.Log("IsProtector: " + isProtector);
             foreach (var animatorSettings in _playerSettings.AnimatorGenderSettingsCollection)
             {
                 if (animatorSettings.Gender == genderInfo.Gender)
                 {
                     if (isProtector)
                     {
-                        Debug.Log("Returning");
                         Debug.Log(animatorSettings.ProtectorRunTimeAnimatorController.name);
                         return animatorSettings.ProtectorRunTimeAnimatorController;
                     }

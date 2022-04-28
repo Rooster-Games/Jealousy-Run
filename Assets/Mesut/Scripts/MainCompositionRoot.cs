@@ -91,7 +91,9 @@ namespace JR
                 bar.Init(barInitParameters);
                 bar.gameObject.SetActive(false);
                 if (_gameType.ProtectorGender == bar.BoundedGender)
+                {
                     gameTypeBar = bar;
+                }
             }
 
             var barControllerInitParameters = new BarController.InitParameters();
@@ -99,6 +101,14 @@ namespace JR
             barControllerInitParameters.LoveData = _barCompositionSettings.LoveData;
             barControllerInitParameters.EventBus = eventBus;
             _barCompositionSettings.BarController.Init(barControllerInitParameters);
+
+
+            // item creator
+            var collectCreatorCollection = _gameType.GetComponentsInChildren<CollectableCreator>();
+            foreach (var collectCreator in collectCreatorCollection)
+            {
+                collectCreator.Init();
+            }
 
 
             // Item collection

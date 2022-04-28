@@ -5,6 +5,8 @@ namespace JR
 {
     public class ItemTriggerDetector : MonoBehaviour
     {
+        [SerializeField] OnCollectionSettings _collectionSettings;
+
         BarController _barController;
 
         public void Init(InitParameters initParameters)
@@ -15,6 +17,11 @@ namespace JR
         private void OnTriggerEnter(Collider other)
         {
             var itemCollectionData = other.GetComponent<ItemCollectionSettings>();
+
+            var go = Instantiate(_collectionSettings.HeartExplosionPrefab);
+            go.transform.position = other.transform.position;
+
+            Destroy(go, 2f);
 
             other.gameObject.SetActive(false);
             _barController.ChangeAmount(itemCollectionData.BarIncreaseAmount);

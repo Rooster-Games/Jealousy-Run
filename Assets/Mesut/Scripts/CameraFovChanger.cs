@@ -56,7 +56,7 @@ namespace JR
             if (_sideChangerTween != null)
                 _sideChangerTween.Kill();
 
-            var targetOffset = _transposerInitialOffset + new Vector3(_settings.TargetXOffset, 0f, 0f);
+            var targetOffset = _transposerInitialOffset + _settings.SideOffset;
             _sideChangerTween = DOTween.To(() => _transposer.m_FollowOffset, (x) => _transposer.m_FollowOffset = x, targetOffset, _settings.ReachToTargetOffsetDuration)
                 .SetEase(_settings.SideMovementCurve);
         }
@@ -90,7 +90,7 @@ namespace JR
             [SerializeField] AnimationCurve _toReturnBackCurve;
 
             [Header("=== Side Movement Settings ===")]
-            [SerializeField] float _targetXOffset = -1.6f;
+            [SerializeField] Vector3 _sideOffset = new Vector3(-1.6f, 1.6f * 0.75f, 0f);
             [SerializeField] float _reachToTargetOffsetDuration = 1f;
             [SerializeField] AnimationCurve _sideMovementCurve;
 
@@ -100,7 +100,7 @@ namespace JR
             public AnimationCurve ToMaxCurve => _toMaxCurve;
             public AnimationCurve ToReturnBackCurve => _toReturnBackCurve;
 
-            public float TargetXOffset => _targetXOffset;
+            public Vector3 SideOffset => _sideOffset;
             public float ReachToTargetOffsetDuration => _reachToTargetOffsetDuration;
             public AnimationCurve SideMovementCurve => _sideMovementCurve;
         }

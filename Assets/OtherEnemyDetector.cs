@@ -8,6 +8,12 @@ namespace JR
     {
         ForceMode _forceMode;
         float _forceAmount;
+        EmojiController _emojiController;
+
+        private void Awake()
+        {
+            _emojiController = FindObjectOfType<EmojiController>();
+        }
 
         public void Init(InitParameters initParameters)
         {
@@ -22,6 +28,8 @@ namespace JR
 
             var dir = (other.transform.position - transform.position).normalized;
             pushable.Push(dir, _forceAmount, _forceMode);
+            var emojiMarker = other.transform.GetComponentInChildren<EmojiRootMarker>();
+            _emojiController.CreateEmoji(EmojiType.Medium, emojiMarker);
         }
 
         public class InitParameters
