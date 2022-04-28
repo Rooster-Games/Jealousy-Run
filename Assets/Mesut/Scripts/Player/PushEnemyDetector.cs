@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using DG.Tweening;
 using UnityEngine;
@@ -15,6 +16,10 @@ namespace JR
         [SerializeField] float _waitSeconds = 0.45f;
         [SerializeField] float _returnBackDuration = 0.25f;
         [SerializeField] float _indexChangeSeconds = 0.8f;
+        [SerializeField] float _dotTreshold = 0.75f;
+
+        [SerializeField] EmojiController _emojiController;
+        [SerializeField] LayerMask _emojiMask;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -31,6 +36,24 @@ namespace JR
             other.transform.LookAt(otherLookAt);
 
             var dir = (otherPos - myPos).normalized;
+
+            var dot = Vector3.Dot(dir, transform.forward);
+
+            if(dot >= _dotTreshold)
+            {
+                float signX = Mathf.Sign(dir.x);
+                dir = new Vector3(dir.z * signX, 0, dir.x * signX);
+            }
+
+            List<Collider> colliders = Physics.OverlapSphere(myPos, 2f, _emojiMask).ToList();
+
+            if (colliders.Contains(other))
+                colliders.Remove(other);
+
+            var emojiRootMarker = other.gameObject.GetComponentInChildren<EmojiRootMarker>();
+            _emojiController.CreateEmoji(EmojiType.Medium, emojiRootMarker);
+            _emojiController.CreateEmojiAtCrowded(EmojiType.Low, colliders);
+
             pushable.Push(dir, _forceAmount, _forceMode);
 
             _anim.SetLayerWeight(1, _weight);
