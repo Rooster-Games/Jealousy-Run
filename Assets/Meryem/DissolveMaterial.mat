@@ -32,7 +32,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _CutoffHeight: -3.34
+    - _CutoffHeight: -3.33
     m_Colors:
     - Color_8d4c3fedb94d43b7bed426c5b371b1d0: {r: 1, g: 0.8117647, b: 0.59607846, a: 0}
   m_BuildTextureStacks: []

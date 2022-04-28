@@ -388,5 +388,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3590989980063810165, guid: cafe40d54132148f18738f07dd72b272, type: 3}
+      propertyPath: mainLevel.levelScene
+      value: MesutScene 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3590989980063810165, guid: cafe40d54132148f18738f07dd72b272, type: 3}
+      propertyPath: levelList.Array.data[0].levelScene
+      value: MesutScene 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cafe40d54132148f18738f07dd72b272, type: 3}

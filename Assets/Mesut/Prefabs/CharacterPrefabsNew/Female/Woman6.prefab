@@ -178,7 +178,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 317918926940216065}
   m_LocalRotation: {x: 0.00000013219879, y: 0.00000040623834, z: -0.000014856846, w: 1}
-  m_LocalPosition: {x: 0, y: 0.92875624, z: 0.0010114115}
+  m_LocalPosition: {x: 0, y: 0.92875624, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6369020697352988284}
@@ -3306,7 +3306,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4503995786523901228}
   m_LocalRotation: {x: 0.00000013219879, y: 0.00000040623834, z: -0.000014856846, w: 1}
-  m_LocalPosition: {x: 0, y: 0.92875624, z: 0.0010114115}
+  m_LocalPosition: {x: 0, y: 0.92875624, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2358005683760150119}
@@ -4976,6 +4976,49 @@ Transform:
   m_Father: {fileID: 487027060830270137}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7188730162077770121
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6652077189041680390}
+  - component: {fileID: 8613788078118531471}
+  m_Layer: 7
+  m_Name: EmojiRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6652077189041680390
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7188730162077770121}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.68, z: 0.21}
+  m_LocalScale: {x: 0.8864395, y: 0.8864395, z: 0.8864395}
+  m_Children: []
+  m_Father: {fileID: 179121731028107405}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8613788078118531471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7188730162077770121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87f10ec932a234361b652734bff8cd25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7214007847058184577
 GameObject:
   m_ObjectHideFlags: 0
@@ -6025,6 +6068,7 @@ Transform:
   - {fileID: 5981334524985563819}
   - {fileID: 6740904244962394096}
   - {fileID: 1167669465097670857}
+  - {fileID: 6652077189041680390}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
