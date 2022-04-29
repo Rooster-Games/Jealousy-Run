@@ -1,6 +1,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using DG.Tweening;
 using DI;
 using UnityEngine;
@@ -13,6 +14,14 @@ namespace JR
         [SerializeField] GenderInfo _genderInfo;
         [SerializeField] int _slapAnimationCount = 10;
         IAnimatorController _animatorController;
+        PlayerAnimationEvents _animationEvents;
+        [SerializeField] Transform[] _handTransformCollection;
+        [SerializeField] Vector3 _handScale;
+
+        [SerializeField] GameObject _whileProtectedParticle;
+        [SerializeField] GameObject _pushDetector;
+
+        [SerializeField] List<GameObject> _slapParticlePefabList;
 
         public GenderInfo GenderInfo => _genderInfo;
 
@@ -22,9 +31,12 @@ namespace JR
         DoTweenSwapper _transformSwapper;
         ExhaustChecker _exhaustChecker;
 
+        [SerializeField] SlapParticleRootMarker[] _slapParticleRootMarker;
+
         public void Init(InitParameters initParameters)
         {
             _animatorController = initParameters.AnimatorController;
+            _animationEvents = initParameters.AnimationEvents;
 
             var swapperInitParameters = new DoTweenSwapper.InitParameters();
             swapperInitParameters.TransformToSwap = transform;
@@ -37,11 +49,39 @@ namespace JR
 
             _exhaustChecker = new ExhaustChecker();
             _exhaustChecker.Init(exhaustCheckerInitParameters);
+
+            _animationEvents.RegisterOnAnimationEnd(AnimationEvents_OnSlapAnimationEnd);
+            _animationEvents.RgisterOnSlap(AnimationEvents_OnSlap);
         }
+
+        bool _isAnimationEnded = true;
+        private void AnimationEvents_OnSlapAnimationEnd()
+        {
+            _animatorController.SetLayerWeight(1, 0f);
+            _isAnimationEnded = true;
+        }
+
+        int _particleCounter;
+        private void AnimationEvents_OnSlap()
+        {
+            int randomIndex = UnityEngine.Random.Range(0, _slapParticlePefabList.Count);
+            var prefab = _slapParticlePefabList[randomIndex];
+            var go = Instantiate(prefab);
+
+            //go.transform.SetParent(_slapParticleRootMarker.transform);
+            go.transform.position = _slapParticleRootMarker[_particleCounter++ % 2].transform.position + transform.forward * 3f;
+            go.transform.localScale = Vector3.one * 2f;
+
+            Destroy(go, 3f);
+        }
+
 
         int slapCounter = 0;
         public void Slap(Action action)
         {
+            if (!_isAnimationEnded) return;
+
+            _isAnimationEnded = false;
             if (_transitionTween != null)
             {
                 _transitionTween.Kill();
@@ -51,21 +91,24 @@ namespace JR
             _isSlapping = true;
             _animatorController.SetLayerWeight(1, 1f);
             _animatorController.SetTrigger("slap");
-            _animatorController.SetFloat("tokatIndex", slapCounter);
-            StartCoroutine(RestartAnimatorWeight(action));
-            if(!_isIncreasing)
-                StartCoroutine(IncreaseCounter());
+            //_animatorController.SetFloat("tokatIndex", slapCounter);
+            //StartCoroutine(RestartAnimatorWeight(action));
+               StartCoroutine(IncreaseCounter(action));
         }
 
+
+
         Tween _transitionTween;
-        bool _isIncreasing;
-        IEnumerator IncreaseCounter()
+        //bool _isIncreasing;
+        IEnumerator IncreaseCounter(Action action)
         {
-            _isIncreasing = true;
-            yield return new WaitForSeconds(1f);
-            slapCounter = slapCounter % _slapAnimationCount;
-            slapCounter++;
-            _isIncreasing = false;
+            yield return new WaitForSeconds(0.25f);
+            action?.Invoke();
+            //_isIncreasing = true;
+            //yield return new WaitForSeconds(0.5f);
+            //slapCounter = slapCounter % _slapAnimationCount;
+            //slapCounter++;
+            //_isIncreasing = false;
         }
         IEnumerator RestartAnimatorWeight(Action action)
         {
@@ -73,7 +116,7 @@ namespace JR
 
             action?.Invoke();
             float timer = 1f;
-            _transitionTween = DOTween.To(() => timer, (x) => { timer = x; _animatorController.SetLayerWeight(1, x); }, 0f, 10f)
+            _transitionTween = DOTween.To(() => timer, (x) => { timer = x; _animatorController.SetLayerWeight(1, x); }, 0f, 0.25f)
                 .OnComplete(() => { _isSlapping = false; _transitionTween = null; });
             //_animatorController.SetAnimatorSpeed(1f);
         }
@@ -94,11 +137,24 @@ namespace JR
         public void GetProtected()
         {
             _animatorController.SetTrigger("protectRun");
+            _whileProtectedParticle.SetActive(true);
+            _pushDetector.SetActive(false);
+
         }
 
         public void EndOfProtection()
         {
             _animatorController.SetTrigger("normalRun");
+            _whileProtectedParticle.SetActive(false);
+            _pushDetector.SetActive(true);
+        }
+
+        public void MakeHandsBigger()
+        {
+            foreach (var handTransform in _handTransformCollection)
+            {
+                handTransform.localScale = _handScale;
+            }
         }
 
         public class InitParameters
@@ -106,6 +162,7 @@ namespace JR
             public IAnimatorController AnimatorController { get; set; }
             public DoTweenSwapper.MoveSettings MoveSettings { get; set; }
             public ExhaustChecker.Settings ExhaustCheckerSettings { get; set; }
+            public PlayerAnimationEvents AnimationEvents { get; set; }
             public bool IsProtector { get; set; }
         }
 
@@ -126,6 +183,7 @@ namespace JR
     {
         void Protect();
         void ReturnBack();
+        void MakeHandsBigger();
     }
 
     public interface IGuarded

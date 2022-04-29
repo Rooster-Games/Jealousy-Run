@@ -20,11 +20,18 @@ namespace JR
 
         [SerializeField] EmojiController _emojiController;
         [SerializeField] LayerMask _emojiMask;
+        [SerializeField] BarController _barController;
+        [SerializeField] float _barChangeValue = 0.033f;
+        [SerializeField] Gender _gender;
 
         private void OnTriggerEnter(Collider other)
         {
             var pushable = other.GetComponent<Pushable>();
+            var genderInfo = other.GetComponent<GenderInfo>();
             if (pushable == null) return;
+
+            if (_gender != genderInfo.Gender)
+                _barController.ChangeAmount(-_barChangeValue);
 
             var otherPos = other.transform.position;
             var myPos = transform.position;

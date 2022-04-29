@@ -13,6 +13,8 @@ namespace JR
         [SerializeField] float _yDir = 10f;
         [SerializeField] Gender _gender;
         [SerializeField] float _slapDelayDuration = 0.33f;
+        [SerializeField] BarController _barController;
+        [SerializeField] float _barChangeAmount = 0.1f;
 
         SingleController _singleController;
 
@@ -51,6 +53,7 @@ namespace JR
 
         private void SlapAction(Slapable slapable, Vector3 dir)
         {
+            _barController.ChangeAmount(_barChangeAmount);
             //float timer = 0f;
             //DOTween.To(() => timer, (x) => timer = x, 1f, _slapDelayDuration)
             //    .OnComplete(() => slapable.Slap(dir, _forceAmount, _forceMode));

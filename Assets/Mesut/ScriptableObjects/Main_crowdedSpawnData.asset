@@ -35,4 +35,4 @@ MonoBehaviour:
   - {fileID: 6147345797554846714, guid: df73bfd86054b4da78cc53ee7cf8ebb3, type: 3}
   _eulerRotation: {x: 0, y: 180, z: 0}
   _cellSize: 0.6
-  _minMaxScale: {x: 0.85, y: 1.25}
+  _minMaxScale: {x: 1.05, y: 1.25}

@@ -128,7 +128,6 @@ namespace JR
             foreach (var sccr in singleControllerCompositionRootCollection)
             {
 
-                Debug.Log(_singleToRuntimeAnimatorMap[sccr.gameObject].name);
                 scCRInitparameters.RuntimeAnimatorController = _singleToRuntimeAnimatorMap[sccr.gameObject];
 
                 sccr.Init(scCRInitparameters);
@@ -171,14 +170,12 @@ namespace JR
 
         private RuntimeAnimatorController SelectRuntimeAnimatorController(GenderInfo genderInfo, bool isProtector)
         {
-            Debug.Log("IsProtector: " + isProtector);
             foreach (var animatorSettings in _playerSettings.AnimatorGenderSettingsCollection)
             {
                 if (animatorSettings.Gender == genderInfo.Gender)
                 {
                     if (isProtector)
                     {
-                        Debug.Log("Returning");
                         Debug.Log(animatorSettings.ProtectorRunTimeAnimatorController.name);
                         return animatorSettings.ProtectorRunTimeAnimatorController;
                     }

@@ -20,6 +20,7 @@ namespace JR
         Tween _increaseTween;
         float _totalIncreaseAmount;
         float _prevIncreaseAmount;
+        BarAnimation _barAnimation;
         // 1
         // 0.1 degisti, current 0.9 oldu,
         // 0.1 degisti, current 0.8 oldu, 
@@ -30,6 +31,7 @@ namespace JR
             _loveData = initParameters.LoveData;
             _eventBus = initParameters.EventBus;
             _eventBus.Register<OnGameStarted>(EventBus_OnGameStarted);
+            _barAnimation = _bar.GetComponent<BarAnimation>();
         }
 
         private void EventBus_OnGameStarted(OnGameStarted eventData)
@@ -45,6 +47,9 @@ namespace JR
 
         public void ChangeAmount(float amount)
         {
+            if (amount > 0f)
+                _barAnimation.PlayAnimation();
+
             _totalIncreaseAmount += amount;
             _prevIncreaseAmount = _totalIncreaseAmount;
 
@@ -57,6 +62,7 @@ namespace JR
             _increaseTween = DOTween.To(() => _totalIncreaseAmount, (x) => ChangeTotalIncreaseAmount(x), 0f, _barChangeSettings.ChangeDuration * (Mathf.Abs(_totalIncreaseAmount) / 0.1f))
                 .OnComplete(() => _increaseTween = null)
                 .SetEase(_barChangeSettings.ChangeCurve);
+
         }
 
         private void ChangeTotalIncreaseAmount(float value)
@@ -85,4 +91,6 @@ namespace JR
             public AnimationCurve ChangeCurve => _changeCurve;
         }
     }
+
+   
 }
