@@ -6610,10 +6610,10 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ba00f55a272ee7c4cacbb93a96302935, type: 2}
-  - {fileID: 2100000, guid: 4100ae4d378f0da4db9ef23dc212211a, type: 2}
-  - {fileID: 2100000, guid: 5253545ee2bb1bb469629dfdd10c15f5, type: 2}
-  - {fileID: 2100000, guid: 4e9aa3f75b4abd244be75619da6bb63f, type: 2}
+  - {fileID: 2100000, guid: 549e9380d5f1f8d4792fdeca7310e233, type: 2}
+  - {fileID: 2100000, guid: f61c9d2ae1e1ae642afdfdeffe713b28, type: 2}
+  - {fileID: 2100000, guid: 549e9380d5f1f8d4792fdeca7310e233, type: 2}
+  - {fileID: 2100000, guid: 322ecdb4b4ded2442bbe473305db2e44, type: 2}
   - {fileID: 2100000, guid: 50bb78625e542bc4d882e8e3eea92b78, type: 2}
   - {fileID: 2100000, guid: ec5bf22a9246ac24c91272e39ed6fabb, type: 2}
   m_StaticBatchInfo:
