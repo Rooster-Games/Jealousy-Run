@@ -1289,7 +1289,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0, g: 1, b: 0.023826122, a: 1}
+        key0: {r: 1, g: 0, b: 1, a: 1}
         key1: {r: 0.3254902, g: 0, b: 1, a: 0}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -4814,7 +4814,7 @@ GameObject:
   - component: {fileID: 8357065299829379649}
   - component: {fileID: 8357065299828995953}
   m_Layer: 0
-  m_Name: MoneyExplosion
+  m_Name: MoneyExplosion_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10949,8 +10949,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.5587519, g: 1, b: 0.52156866, a: 1}
-        key1: {r: 0, g: 1, b: 0.08712435, a: 1}
+        key0: {r: 1, g: 0.52156866, b: 1, a: 1}
+        key1: {r: 1, g: 0, b: 1, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
