@@ -2356,6 +2356,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e24b03dd4643499c8f1b763c5910c2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _genderEmojiSettings:
+  - _myGender: 1
+    _otherGender: 0
+    _reactionToGenderEmojiCollection:
+    - {fileID: 8159870903229943304, guid: 3ccd3d536bfe60b42a10a927f8f5e4dc, type: 3}
+    - {fileID: 1491145884227253794, guid: f571fbcf2bf1ad947987fc69d3d96f8a, type: 3}
+    - {fileID: 1335500762791344636, guid: 35569cc54d4c0554885667770633c84c, type: 3}
+    - {fileID: 3608815463002847788, guid: 5d4b08ce3e5e4a842ba483abb64439e7, type: 3}
+    - {fileID: 8995229172416444948, guid: 9913ab4812afb5c4f851d3039b8b1a76, type: 3}
+    - {fileID: 6299777800418987201, guid: ff8cea19ed9e35948b1ea2a05d277050, type: 3}
   _hardCollection:
   - {fileID: 9145080891995210943, guid: 0f1bd26d3bf187149ba2a55ddbc57380, type: 3}
   - {fileID: 9153375811779704993, guid: 848b2f88810200c43a039d73213c4a67, type: 3}
