@@ -27,10 +27,10 @@ namespace JR
         private void OnTriggerEnter(Collider other)
         {
             var pushable = other.GetComponent<Pushable>();
-            var genderInfo = other.GetComponent<GenderInfo>();
+            var otherGenderInfo = other.GetComponent<GenderInfo>();
             if (pushable == null) return;
 
-            if (_gender != genderInfo.Gender)
+            if (_gender != otherGenderInfo.Gender)
                 _barController.ChangeAmount(-_barChangeValue);
 
             var otherPos = other.transform.position;
@@ -58,14 +58,14 @@ namespace JR
                 colliders.Remove(other);
 
             var emojiRootMarker = other.gameObject.GetComponentInChildren<EmojiRootMarker>();
-            _emojiController.CreateEmoji(EmojiType.Medium, emojiRootMarker);
-            _emojiController.CreateEmojiAtCrowded(EmojiType.Low, colliders);
+            _emojiController.CreateEmoji(EmojiType.Medium, emojiRootMarker, _gender, otherGenderInfo.Gender);
+            _emojiController.CreateEmojiAtCrowded(EmojiType.Low, colliders, _gender, otherGenderInfo.Gender);
 
-            pushable.Push(dir, _forceAmount, _forceMode);
+            pushable.Push(dir, _forceAmount, _forceMode, _gender, otherGenderInfo.Gender);
 
-            _anim.SetLayerWeight(1, _weight);
-            _anim.ResetTrigger("hit");
-            _anim.SetTrigger("hit");
+            //_anim.SetLayerWeight(1, _weight);
+            //_anim.ResetTrigger("hit");
+            //_anim.SetTrigger("hit");
             if(!_isReturning)
                 StartCoroutine(ReturnBackWeight());
 

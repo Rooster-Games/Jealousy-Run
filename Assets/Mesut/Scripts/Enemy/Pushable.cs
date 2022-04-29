@@ -21,13 +21,15 @@ namespace JR
             _otherEnemyDetector = GetComponentInChildren<OtherEnemyDetector>(true);
         }
 
-        public void Push(Vector3 direction, float force, ForceMode forceMode)
+        public void Push(Vector3 direction, float force, ForceMode forceMode, Gender playerGender, Gender enemyGender)
         {
             if (_isPushed) return;
 
             var oedInitParameters = new OtherEnemyDetector.InitParameters();
             oedInitParameters.ForceAmount = force;
             oedInitParameters.ForceMode = forceMode;
+            oedInitParameters.PlayerGender = playerGender;
+            oedInitParameters.EnemyGender = enemyGender;
             _otherEnemyDetector.Init(oedInitParameters);
 
             _isPushed = true;
