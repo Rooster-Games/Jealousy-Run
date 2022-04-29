@@ -26,7 +26,7 @@ namespace JR
         // 0.1 degisti, current 0.8 oldu, 
         public void Init(InitParameters initParameters)
         {
-            Debug.Log("IsBarNull: " + _bar == null);
+            //Debug.Log("IsBarNull: " + _bar == null);
             _bar = initParameters.Bar;
             _loveData = initParameters.LoveData;
             _eventBus = initParameters.EventBus;
@@ -50,18 +50,21 @@ namespace JR
             if (amount > 0f)
                 _barAnimation.PlayAnimation();
 
-            _totalIncreaseAmount += amount;
-            _prevIncreaseAmount = _totalIncreaseAmount;
+            _loveData.CurrentValue += amount;
+            _bar.ChangeAmount(_loveData.CurrentPercent);
 
-            if (_increaseTween != null)
-            {
-                _increaseTween.Kill();
-                _increaseTween = null;
-            }
+            //_totalIncreaseAmount += amount;
+            //_prevIncreaseAmount = _totalIncreaseAmount;
 
-            _increaseTween = DOTween.To(() => _totalIncreaseAmount, (x) => ChangeTotalIncreaseAmount(x), 0f, _barChangeSettings.ChangeDuration * (Mathf.Abs(_totalIncreaseAmount) / 0.1f))
-                .OnComplete(() => _increaseTween = null)
-                .SetEase(_barChangeSettings.ChangeCurve);
+            //if (_increaseTween != null)
+            //{
+            //    _increaseTween.Kill();
+            //    _increaseTween = null;
+            //}
+
+            //_increaseTween = DOTween.To(() => _totalIncreaseAmount, (x) => ChangeTotalIncreaseAmount(x), 0f, _barChangeSettings.ChangeDuration * (Mathf.Abs(_totalIncreaseAmount) / 0.1f))
+            //    .OnComplete(() => _increaseTween = null)
+            //    .SetEase(_barChangeSettings.ChangeCurve);
 
         }
 

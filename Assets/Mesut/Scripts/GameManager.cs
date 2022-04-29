@@ -34,6 +34,9 @@ namespace JR
         {
             if (!_isInitialized) return;
 
+            if (Input.GetKeyDown(KeyCode.P))
+                _developmentMode = !_developmentMode;
+
             if (_developmentMode)
             {
                 if (Input.GetMouseButtonDown(0) && !_isGameStarted)

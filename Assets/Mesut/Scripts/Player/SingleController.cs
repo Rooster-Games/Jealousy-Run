@@ -20,6 +20,7 @@ namespace JR
 
         [SerializeField] GameObject _whileProtectedParticle;
         [SerializeField] GameObject _pushDetector;
+        [SerializeField] GameObject _slapDetector;
 
         [SerializeField] List<GameObject> _slapParticlePefabList;
 
@@ -28,7 +29,7 @@ namespace JR
         bool _isSlapping;
         public bool IsSlapping => _isSlapping;
 
-        DoTweenSwapper _transformSwapper;
+        ISwapper _positionSwapper;
         ExhaustChecker _exhaustChecker;
 
         [SerializeField] SlapParticleRootMarker[] _slapParticleRootMarker;
@@ -38,10 +39,8 @@ namespace JR
             _animatorController = initParameters.AnimatorController;
             _animationEvents = initParameters.AnimationEvents;
 
-            var swapperInitParameters = new DoTweenSwapper.InitParameters();
-            swapperInitParameters.TransformToSwap = transform;
-            swapperInitParameters.MoveSettings = initParameters.MoveSettings;
-            _transformSwapper = new DoTweenSwapper(swapperInitParameters);
+            _positionSwapper = initParameters.Swapper;
+
 
             var exhaustCheckerInitParameters = new ExhaustChecker.InitParameters();
             exhaustCheckerInitParameters.ProtectorController = initParameters.AnimatorController;
@@ -123,14 +122,16 @@ namespace JR
 
         public void Protect()
         {
-            _transformSwapper.Swap();
+            _slapDetector.SetActive(true);
+            _positionSwapper.Swap();
             _exhaustChecker.StartTimer();
             _animatorController.SetTrigger("protectRun");
         }
 
         public void ReturnBack()
         {
-            _transformSwapper.ReturnBack();
+            _slapDetector.SetActive(false);
+            _positionSwapper.ReturnBack();
             _exhaustChecker.CheckForExhaust();
         }
 
@@ -163,6 +164,7 @@ namespace JR
             public DoTweenSwapper.MoveSettings MoveSettings { get; set; }
             public ExhaustChecker.Settings ExhaustCheckerSettings { get; set; }
             public PlayerAnimationEvents AnimationEvents { get; set; }
+            public ISwapper Swapper { get; set; }
             public bool IsProtector { get; set; }
         }
 

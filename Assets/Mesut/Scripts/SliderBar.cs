@@ -17,6 +17,7 @@ namespace JR
 
         public override void ChangeAmount(float percent)
         {
+            percent = Mathf.Clamp(percent, 0f, 1f);
             _mySlider.value = percent;
         }
     }

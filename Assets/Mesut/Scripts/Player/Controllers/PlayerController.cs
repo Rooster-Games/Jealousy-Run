@@ -5,6 +5,9 @@ using GameCores.CoreEvents;
 using DG.Tweening;
 using NaughtyAttributes;
 using DI;
+using System.Collections;
+using Unity.Profiling.LowLevel;
+using System;
 
 namespace JR
 {
@@ -280,7 +283,7 @@ namespace JR
         }
     }
 
-    public class DoTweenSwapper
+    public class DoTweenSwapper : ISwapper
     {
         Transform _transformToSwap;
         MoveSettings _moveSettings;
@@ -293,25 +296,26 @@ namespace JR
         public Tween SideMoveTween => _sideMoveTween;
         public Tween ForwardMoveTween => _forwardMoveTween;
 
-        public DoTweenSwapper(InitParameters initParameters)
+        public void Init(ISwapper.InitParameters initParameters)
         {
             _transformToSwap = initParameters.TransformToSwap;
             _moveSettings = initParameters.MoveSettings;
-
         }
 
         bool _isInitialized;
-        private void Init()
+        private void LocalInit()
         {
             if (_isInitialized) return;
+            Debug.Log("Init");
             _isInitialized = true;
+            _isSwapping = true;
             _forwardMoveTween = _transformToSwap.DOLocalMoveZ(_moveSettings.MoveForwardDistance, _moveSettings.MoveDuration)
                 .SetEase(_moveSettings.ForwardMoveCurve);
             _sideMoveTween = _transformToSwap.DOLocalMoveX(_moveSettings.MoveSideDistance, _moveSettings.MoveDuration)
                 .SetEase(_moveSettings.SideMoveCurve)
-                .OnComplete(() => {_isSwapping = false; });
+                .OnComplete(() => { Debug.Log("OnComplete - Init"); _isSwapping = false; });
 
-            _sideMoveTween.OnRewind(() => {_isSwapping = false;});
+            _sideMoveTween.OnRewind(() => { Debug.Log("Rewind - Init"); _isSwapping = false;});
 
             _forwardMoveTween.SetAutoKill(false);
             _sideMoveTween.SetAutoKill(false);
@@ -321,56 +325,65 @@ namespace JR
         bool _isSwapStarted;
         public void Swap()
         {
+            Debug.Log("Swap");
             _isSwapStarted = true;
             if (!_isInitialized)
             {
-                Init();
+                LocalInit();
                 return;
             }
 
             if (!_isSwapping)
             {
+                Debug.Log("Swap - PlayForward");
                 _isSwapping = true;
                 _forwardMoveTween.PlayForward();
                 _sideMoveTween.PlayForward();
 
-                _sideMoveTween.OnComplete(() => { _isSwapping = false; });
+                _sideMoveTween.OnComplete(() => { Debug.Log("OnComplete - PlayForward");  _isSwapping = false; });
             }
             else
             {
+                Debug.Log("Swap - Flip");
                 FlipTweens();
             }
         }
 
         public void ReturnBack()
         {
+            Debug.Log("ReturnBack");
             if (!_isSwapStarted) return;
 
             if (_isSwapping)
             {
+                Debug.Log("Return Back - Flip");
                 FlipTweens();
             }
             else
             {
+                Debug.Log("Return Back - PlayBackWards");
                 PlayBackwardsTweens();
             }
         }
 
         private void FlipTweens()
         {
+            Debug.Log("Flip");
             _forwardMoveTween.Flip();
             _sideMoveTween.Flip();
 
-            _sideMoveTween.OnRewind(() => { _isSwapping = false; });
+            _sideMoveTween.OnUpdate(() => Debug.Log("FlipTweens - OnUpdate"));
+            _sideMoveTween.OnRewind(() => { Debug.Log("OnRewind - Flip"); _isSwapping = false; });
         }
 
         private void PlayBackwardsTweens()
         {
+            Debug.Log("PlayBackwards");
             _isSwapping = true;
             _forwardMoveTween.PlayBackwards();
             _sideMoveTween.PlayBackwards();
 
-            _sideMoveTween.OnRewind(() => { _isSwapping = false; });
+            _sideMoveTween.OnRewind(() => { Debug.Log("PlayBackWards - OnRewind"); _isSwapping = false; });
 
             _forwardMoveTween.SetAutoKill(false);
             _sideMoveTween.SetAutoKill(false);
@@ -396,6 +409,20 @@ namespace JR
             public float MoveDuration => _moveDuration;
             public AnimationCurve SideMoveCurve => _sideMoveCurve;
             public AnimationCurve ForwardMoveCurve => _forwardMoveCurve;
+        }
+    }
+
+    
+    public interface ISwapper
+    {
+        void Init(InitParameters initParameters);
+        void Swap();
+        void ReturnBack();
+
+        public class InitParameters
+        {
+            public Transform TransformToSwap { get; set; }
+            public DoTweenSwapper.MoveSettings MoveSettings { get; set; }
         }
     }
 }

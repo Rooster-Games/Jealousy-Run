@@ -28,8 +28,8 @@ namespace JR
             var otherGenderInfo = other.GetComponent<GenderInfo>();
             if(otherGenderInfo == null)
             {
-                Debug.Log(other.gameObject.name);
-                Debug.Log("GenderInfoBulunamadi");
+                //Debug.Log(other.gameObject.name);
+                //Debug.Log("GenderInfoBulunamadi");
                 return;
             }
 

@@ -12,7 +12,7 @@ namespace JR
 
             foreach (var itemGraphic in itemGraphicCollection)
             {
-                Debug.Log("item composition root:" + initParameters.WhoIsProtecting);
+                // Debug.Log("item composition root:" + initParameters.WhoIsProtecting);
                 itemGraphic.CheckGameType(initParameters.WhoIsProtecting);
             }
         }

@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Main_crowdedSpawnData
   m_EditorClassIdentifier: 
   _prefabCollection:
-  - {fileID: 3519562505353537881, guid: 253d7343405694819bb896f2a5eb1d87, type: 3}
   - {fileID: 5528712673691975231, guid: dc13fe44ddb3d410fa2547eb6f161256, type: 3}
   - {fileID: 5055754090085334976, guid: 5d6931a184fdf49beb8b5543e97b0277, type: 3}
   - {fileID: 6441474529236458822, guid: c0f2f0403e2a34e1ba26bb76cd749688, type: 3}
@@ -23,7 +22,6 @@ MonoBehaviour:
   - {fileID: 279170986476949722, guid: a10615ef9b1e64407bd5299d2bc767ed, type: 3}
   - {fileID: 487892722288686797, guid: c86604308263d486ab33f21dfbaa455e, type: 3}
   - {fileID: 5888956723972022860, guid: ec6d37f15f2e54b0e9566b33bd7cfc9a, type: 3}
-  - {fileID: 4034634223247824922, guid: 912ecc9ef61614f27b1830f4cff2a153, type: 3}
   - {fileID: 6063658901977229504, guid: 47b43c23e659f4b6c8748d2873ab2816, type: 3}
   - {fileID: 4472942484989448890, guid: f0af830585ba9496eace1f1d27d3b1d9, type: 3}
   - {fileID: 8566113396292203292, guid: 0f318e4dcbefd436ab89b6307f84ffc1, type: 3}
