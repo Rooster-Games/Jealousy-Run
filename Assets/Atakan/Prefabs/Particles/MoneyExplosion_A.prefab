@@ -4814,7 +4814,7 @@ GameObject:
   - component: {fileID: 8357065299829379649}
   - component: {fileID: 8357065299828995953}
   m_Layer: 0
-  m_Name: MoneyExplosion
+  m_Name: MoneyExplosion_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
