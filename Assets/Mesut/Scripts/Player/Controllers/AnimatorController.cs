@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace JR
@@ -22,8 +23,10 @@ namespace JR
             _animator.SetLayerWeight(layerIndex, weight);
         }
 
-        public void SetTrigger(string triggerName)
+        public void SetTrigger(string triggerName, [CallerMemberName] string callerName = "")
         {
+            if(triggerName == "normalRun")
+                Debug.Log("Caller Name: " + callerName);
             _animator.SetTrigger(triggerName);
         }
 
@@ -57,7 +60,7 @@ namespace JR
     {
         void SetBool(string stateName, bool state);
         void SetFloat(string parameterName, float value);
-        void SetTrigger(string triggerName);
+        void SetTrigger(string triggerName, [CallerMemberName] string CallerName = "");
         void SetLayerWeight(int layerIndex, float weight);
         void SetAnimatorSpeed(float speed);
         float TestLength(int layerIndex);
@@ -134,8 +137,10 @@ namespace JR
             }
         }
 
-        public void SetTrigger(string triggerName)
+        public void SetTrigger(string triggerName, [CallerMemberName] string callerName = "")
         {
+            if (triggerName == "normalRun")
+                Debug.Log("CallerName: " + callerName);
             foreach (var controller in _animationControllerList)
             {
                 controller.SetTrigger(triggerName);

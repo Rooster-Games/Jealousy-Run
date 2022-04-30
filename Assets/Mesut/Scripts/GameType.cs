@@ -11,6 +11,7 @@ namespace JR
         [SerializeField] Transform _endPlatformTransform;
         [SerializeField] Transform _peopleTransform;
         [SerializeField] CinemachineSmoothPath _smoothpath;
+        [SerializeField] CinemachineDollyCart _dollyCart;
 
         public Gender ProtectorGender => _protectorsGender;
 
@@ -26,6 +27,7 @@ namespace JR
             roadSetterInitParameters.RoadTransform = _roadTransform;
             roadSetterInitParameters.EndPlatformTransform = _endPlatformTransform;
             roadSetterInitParameters.CinemachineSmoothPath = _smoothpath;
+            roadSetterInitParameters.DollyCart = _dollyCart;
             roadSetter.Init(roadSetterInitParameters);
         }
 

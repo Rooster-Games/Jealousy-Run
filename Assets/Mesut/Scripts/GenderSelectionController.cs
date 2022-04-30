@@ -17,6 +17,9 @@ namespace JR
         [SerializeField] Button _showPanelButton;
         [SerializeField] Button[] _genderSelectionButtonCollection;
         [SerializeField] GameObject[] _buttonGraphics;
+        [SerializeField] GameObject _xButton;
+        [SerializeField] GameObject _xOutLine;
+        [SerializeField] GameObject _xImageObject;
 
         public event Action OnGenderSelected;
 
@@ -48,14 +51,23 @@ namespace JR
                 _selectedGenderINT = PlayerPrefs.GetInt(GENDER_SELECTION_STR);
                 _gameTypeGender = (Gender)_selectedGenderINT;
                 _isGenderSelected = true;
-                _showPanelButton.gameObject.SetActive(true);
             }
+
+            _showPanelButton.gameObject.SetActive(hasKey);
             ActivateSelectionButtons(!hasKey);
+
+            if(!hasKey)
+            {
+                _xButton.gameObject.SetActive(hasKey);
+                _xImageObject.gameObject.SetActive(hasKey);
+                _xOutLine.gameObject.SetActive(hasKey);
+            }
         }
 
         public void ShowPanel()
         {
             _isPanelShowed = !_isPanelShowed;
+            _showPanelButton.gameObject.SetActive(!_isPanelShowed);
             ActivateSelectionButtons(_isPanelShowed);
         }
 
@@ -85,7 +97,15 @@ namespace JR
             _isPanelShowed = false;
 
             _isGenderSelected = true;
-            OnGenderSelected?.Invoke();
+            try
+            {
+
+                OnGenderSelected?.Invoke();
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e);
+            }
         }
 
         private void ActivateGraphics(bool state)

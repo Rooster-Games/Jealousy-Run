@@ -15,7 +15,8 @@ namespace JR
             StartCoroutine(BackToIdle(animator));
             other.GetComponentInParent<SingleController>().ReturnBack();
 
-            _inputManager.gameObject.SetActive(false);
+            _inputManager.IsMouseButtonUp = true;
+            _inputManager.enabled = false;
 
             if (_isFinished) return;
             _isFinished = true;
@@ -25,7 +26,11 @@ namespace JR
 
         IEnumerator BackToIdle(Animator animator)
         {
-            yield return new WaitForSeconds(0.5f);
+            Debug.Log("BackToIdle");
+            yield return new WaitForSeconds(0.1f);
+            _inputManager.ResetMe();
+            animator.ResetTrigger("normalRun");
+            animator.ResetTrigger("protectRun");
             animator.SetTrigger("idle");
         }
     }

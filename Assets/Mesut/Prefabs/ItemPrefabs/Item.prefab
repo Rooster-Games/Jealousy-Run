@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd20ddadb64804be88ec3fa730f3ce7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _barIncreaseAmount: 0.05
+  _barIncreaseAmount: 0.01
 --- !u!114 &5125307491024737422
 MonoBehaviour:
   m_ObjectHideFlags: 0

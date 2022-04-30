@@ -18,6 +18,7 @@ public class RoadSetter : MonoBehaviour
         initParameters.EndPlatformTransform.localPosition = _settings.EndPosition;
         var lastIndexOfPath = initParameters.CinemachineSmoothPath.m_Waypoints.Length - 1;
         initParameters.CinemachineSmoothPath.m_Waypoints[lastIndexOfPath].position = _settings.EndPosition;
+        initParameters.DollyCart.m_Position = _settings.EndPosition.z;
 
         var renderer = _roadTransform.GetComponent<MeshRenderer>();
         var materials = renderer.materials;
@@ -30,6 +31,7 @@ public class RoadSetter : MonoBehaviour
         public Transform RoadTransform { get; set; }
         public Transform EndPlatformTransform { get; set; }
         public CinemachineSmoothPath CinemachineSmoothPath { get; set; }
+        public CinemachineDollyCart DollyCart { get; set; }
     }
 
     [System.Serializable]

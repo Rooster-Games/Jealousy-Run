@@ -135,9 +135,11 @@ namespace JR
 
             if (animator != null)
             {
-                animator.SetLayerWeight(1, 0f);
+                float timer = 1f;
+                DOTween.To(() => timer, (x) => { timer = x; animator.SetLayerWeight(1, x); }, 0f, 0.15f);
                 animator.ResetTrigger("slap");
             }
         }
+
     }
 }

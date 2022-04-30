@@ -21,6 +21,8 @@ namespace JR
         [SerializeField] GameObject _whileProtectedParticle;
         [SerializeField] GameObject _pushDetector;
         [SerializeField] GameObject _slapDetector;
+        [SerializeField] BarController _barController;
+        [SerializeField] float _whileProtectingGainLoveDataPerSeconds;
 
         [SerializeField] List<GameObject> _slapParticlePefabList;
 
@@ -34,6 +36,7 @@ namespace JR
 
         [SerializeField] SlapParticleRootMarker[] _slapParticleRootMarker;
 
+        WaitForSeconds _gainLoveWaitForSeconds;
         public void Init(InitParameters initParameters)
         {
             _animatorController = initParameters.AnimatorController;
@@ -51,6 +54,8 @@ namespace JR
 
             _animationEvents.RegisterOnAnimationEnd(AnimationEvents_OnSlapAnimationEnd);
             _animationEvents.RgisterOnSlap(AnimationEvents_OnSlap);
+
+            _gainLoveWaitForSeconds = new WaitForSeconds(1f);
         }
 
         bool _isAnimationEnded = true;
@@ -137,12 +142,32 @@ namespace JR
             //_animatorController.SetAnimatorSpeed(1f);
         }
 
+        bool _isProtecting;
+        IEnumerator GainLove()
+        {
+            _isProtecting = true;
+            float timer = 0f;
+            while(_isProtecting)
+            {
+                timer += Time.deltaTime;
+                if (timer >= 1f)
+                {
+                    _barController.ChangeAmount(_whileProtectingGainLoveDataPerSeconds);
+                    timer = 0f;
+                }
+                yield return null;
+            }
+
+            _barController.ChangeAmount(_whileProtectingGainLoveDataPerSeconds * timer);
+        }
+
         public void Protect()
         {
             _slapDetector.SetActive(true);
             _positionSwapper.Swap();
             _exhaustChecker.StartTimer();
             _animatorController.SetTrigger("protectRun");
+            StartCoroutine(GainLove());
         }
 
         public void ReturnBack()
@@ -150,6 +175,7 @@ namespace JR
             _slapDetector.SetActive(false);
             _positionSwapper.ReturnBack();
             _exhaustChecker.CheckForExhaust();
+            _isProtecting = false;
             
         }
 
