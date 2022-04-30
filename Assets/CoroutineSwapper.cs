@@ -23,7 +23,7 @@ namespace JR
             _transformToSwap = initParameters.TransformToSwap;
             _moveSettings = initParameters.MoveSettings;
 
-            _initialPosition = _transformToSwap.localPosition;
+            _initialPosition = initParameters.ProtectorLocalStartingPosition;
 
             _targetPosition = new Vector3(_moveSettings.MoveSideDistance, _transformToSwap.localPosition.y, _moveSettings.MoveForwardDistance);
         }

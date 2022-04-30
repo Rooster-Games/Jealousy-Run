@@ -111,10 +111,12 @@ namespace JR
                     var swapperInitParameters = new ISwapper.InitParameters();
                     swapperInitParameters.TransformToSwap = singleController.transform;
                     swapperInitParameters.MoveSettings = _playerSettings.SwapMoveSettings;
+                    swapperInitParameters.ProtectorLocalStartingPosition = _playerSettings.CoupleTransformSettings.ProtectorStartingPosition;
                     _coroutineSwapper.Init(swapperInitParameters);
 
                     protector = singleController;
 
+                    //singleController.GetComponentInChildren<PushEnemyDetector>(true).SetProtector(true);
                     singleController.GetComponentsInChildren<SlapEnemyDetector>(true).ToList().ForEach((x) => x.gameObject.SetActive(true));
                     singleController.GetComponentInChildren<ItemTriggerDetector>(true).gameObject.SetActive(true);
                 }

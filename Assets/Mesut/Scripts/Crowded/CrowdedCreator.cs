@@ -11,7 +11,7 @@ namespace JR
     public class CrowdedCreator : MonoBehaviour
     {
         [SerializeField] CrowdedCreatorSpawnSettingsSO _spawnSettings;
-        [SerializeField] int _peopleCount = 5;
+        [SerializeField] Vector2Int _minMaxPeopleCount;
         [SerializeField] Gender _creationGender;
 
         BoxCollider _boxCollider;
@@ -22,6 +22,12 @@ namespace JR
         //}
 
         List<Vector3> _createdPositions;
+
+        public void Init(InitParameters initParameters)
+        {
+            _creationGender = initParameters.GenderToCreate;
+            Init();
+        }
 
         [Button("Init")]
         public void Init()
@@ -36,7 +42,8 @@ namespace JR
                 _boxCollider.size = Vector3.one;
             }
 
-            Vector3 center = _boxCollider.bounds.center;
+            //Vector3 center = _boxCollider.bounds.center;
+            Vector3 center = transform.position;
             Vector3 extents = _boxCollider.bounds.extents;
 
             float width = extents.x - _spawnSettings.CellSize;
@@ -55,7 +62,8 @@ namespace JR
             }
 
             int checkCounter = 0;
-            for(int i = 0; i < _peopleCount; i++)
+            int peopleCount = Random.Range(_minMaxPeopleCount.x, _minMaxPeopleCount.y + 1);
+            for(int i = 0; i < peopleCount; i++)
             {
                 Vector3 randomPos = GetRandomPosition(leftBottomPos, rightTopPos);
                 bool canSpawn = CheckIfCanSpawn(randomPos);
@@ -114,6 +122,22 @@ namespace JR
 
             _createdPositions.Add(spawnPos);
             return true;
-        }   
+        }
+
+        public class InitParameters
+        {
+            public Gender GenderToCreate { get; set; }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            var animator = other.GetComponentInChildren<Animator>();
+
+            if (animator != null)
+            {
+                animator.SetLayerWeight(1, 0f);
+                animator.ResetTrigger("slap");
+            }
+        }
     }
 }

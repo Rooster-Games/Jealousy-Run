@@ -423,6 +423,7 @@ namespace JR
         {
             public Transform TransformToSwap { get; set; }
             public DoTweenSwapper.MoveSettings MoveSettings { get; set; }
+            public Vector3 ProtectorLocalStartingPosition { get; set; }
         }
     }
 }

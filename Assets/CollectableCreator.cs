@@ -36,7 +36,8 @@ namespace JR
                 _boxCollider.size = Vector3.one;
             }
 
-            Vector3 center = _boxCollider.bounds.center;
+            //Vector3 center = _boxCollider.bounds.center;
+            Vector3 center = transform.position;
             Vector3 extents = _boxCollider.bounds.extents;
 
             float width = extents.x - _spawnSettings.CellSize;

@@ -66,8 +66,8 @@ namespace JR
             //_anim.SetLayerWeight(1, _weight);
             //_anim.ResetTrigger("hit");
             //_anim.SetTrigger("hit");
-            if(!_isReturning)
-                StartCoroutine(ReturnBackWeight());
+            //if(!_isReturning)
+            //    StartCoroutine(ReturnBackWeight());
 
             if (!_isChanging)
                 StartCoroutine(IndexChange());

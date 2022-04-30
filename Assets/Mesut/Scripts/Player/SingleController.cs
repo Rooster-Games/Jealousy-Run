@@ -56,8 +56,12 @@ namespace JR
         bool _isAnimationEnded = true;
         private void AnimationEvents_OnSlapAnimationEnd()
         {
-            _animatorController.SetLayerWeight(1, 0f);
+            Debug.Log("Anim Ended");
+            //_animatorController.SetLayerWeight(1, 0f);
             _isAnimationEnded = true;
+            _isAnimStarted = false;
+
+            //_slapDetector.SetActive(true);
         }
 
         int _particleCounter;
@@ -76,23 +80,36 @@ namespace JR
 
 
         int slapCounter = 0;
+
+        bool _isAnimStarted;
         public void Slap(Action action)
         {
-            if (!_isAnimationEnded) return;
+            //if (!_isAnimStarted)
+            //{
+            //    _isAnimStarted = true;
+            //    Debug.Log("Anim Started");
+            //}
 
+            //if (!_isAnimationEnded)
+            //{
+            //    Debug.Log("Not Ended returned");
+            //    return;
+            //}
+
+            //_slapDetector.SetActive(false);
             _isAnimationEnded = false;
-            if (_transitionTween != null)
-            {
-                _transitionTween.Kill();
-                _transitionTween = null;
-            }
-            _animatorController.SetAnimatorSpeed(1.2f);
+            //if (_transitionTween != null)
+            //{
+            //    _transitionTween.Kill();
+            //    _transitionTween = null;
+            //}
+            //_animatorController.SetAnimatorSpeed(1.2f);
             _isSlapping = true;
             _animatorController.SetLayerWeight(1, 1f);
             _animatorController.SetTrigger("slap");
             //_animatorController.SetFloat("tokatIndex", slapCounter);
             //StartCoroutine(RestartAnimatorWeight(action));
-               StartCoroutine(IncreaseCounter(action));
+               //StartCoroutine(IncreaseCounter(action));
         }
 
 
@@ -133,6 +150,7 @@ namespace JR
             _slapDetector.SetActive(false);
             _positionSwapper.ReturnBack();
             _exhaustChecker.CheckForExhaust();
+            
         }
 
         public void GetProtected()

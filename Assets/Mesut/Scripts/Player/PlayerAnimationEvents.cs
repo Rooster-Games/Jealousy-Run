@@ -20,8 +20,9 @@ namespace JR
 
         public void SlapAnimationEnd()
         {
+            Debug.Log("Slap index: " + _slapCounter);
             _slapCounter++;
-            _animatorController.SetFloat("tokatIndex", _slapCounter % 12);
+            _animatorController.SetFloat("tokatIndex", _slapCounter % 8);
             OnAnimationEnd?.Invoke();
         }
 
