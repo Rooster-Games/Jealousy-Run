@@ -3398,10 +3398,10 @@ SkinnedMeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: acfb653cc0cbbae45bc75140003ca0b5, type: 2}
   - {fileID: 2100000, guid: 3a6cdadba8f78724fbd4aac6b44a4580, type: 2}
-  - {fileID: 2100000, guid: 1613acfc49282b04497df193894214df, type: 2}
-  - {fileID: 2100000, guid: ee7ad8d1f093eb24cb3d58c1b8793390, type: 2}
-  - {fileID: 2100000, guid: 0b3af6e0a55b66b4aa599c800a4c75da, type: 2}
-  - {fileID: 2100000, guid: f8ebc23138eb51840abe863ccb3c74f0, type: 2}
+  - {fileID: 2100000, guid: d94e1523e7c03664baf6411cdf9bdf28, type: 2}
+  - {fileID: 2100000, guid: 8a004e7f83ca0c74494aa4dec1a220fc, type: 2}
+  - {fileID: 2100000, guid: 8a004e7f83ca0c74494aa4dec1a220fc, type: 2}
+  - {fileID: 2100000, guid: 6aa1815a0e9484c4aa5558488bd075d8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6361,6 +6361,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381007382802702377}
+  - component: {fileID: 5211355368730659185}
   m_Layer: 0
   m_Name: Woman10(Clone)
   m_TagString: Untagged
@@ -6384,6 +6385,18 @@ Transform:
   m_Father: {fileID: 630444682294054783}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5211355368730659185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8219209562335377155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6140532dde9d4f67a160a8ac5c79b3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8225293249704499964
 GameObject:
   m_ObjectHideFlags: 0
@@ -6659,7 +6672,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8944645424530106050}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9ac8d30c6a0d9642a11e5be4c440740, type: 3}
   m_Name: 

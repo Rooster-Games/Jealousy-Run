@@ -291,7 +291,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 643962978156419554}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9ac8d30c6a0d9642a11e5be4c440740, type: 3}
   m_Name: 
@@ -1553,10 +1553,10 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7b8fe52deddb686439d297ee96f6ab49, type: 2}
-  - {fileID: 2100000, guid: feb395b0a07ece54d99c3523caf38c08, type: 2}
-  - {fileID: 2100000, guid: 0b3af6e0a55b66b4aa599c800a4c75da, type: 2}
-  - {fileID: 2100000, guid: ab5d870e1c3f78b40bd6f0c6ec62a84f, type: 2}
+  - {fileID: 2100000, guid: fcb0658fe0e5726418b6d750fcb1dbb6, type: 2}
+  - {fileID: 2100000, guid: d94e1523e7c03664baf6411cdf9bdf28, type: 2}
+  - {fileID: 2100000, guid: d7833154d4809254d9f422d21a307be7, type: 2}
+  - {fileID: 2100000, guid: fcb0658fe0e5726418b6d750fcb1dbb6, type: 2}
   - {fileID: 2100000, guid: e58c30f8180e27f43801118892853d2e, type: 2}
   - {fileID: 2100000, guid: ba00f55a272ee7c4cacbb93a96302935, type: 2}
   m_StaticBatchInfo:
@@ -2454,6 +2454,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2745373834181461350}
   - component: {fileID: 5408692653387955337}
+  - component: {fileID: 6684155174758159980}
   m_Layer: 0
   m_Name: Woman8(Clone)
   m_TagString: Untagged
@@ -2487,6 +2488,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0508b21839419413a9b1787cd255c342, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6684155174758159980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3716392834191295739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6140532dde9d4f67a160a8ac5c79b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3741981242807374845

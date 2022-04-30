@@ -31,6 +31,7 @@ namespace JR
             singleControllerInitParameters.MoveSettings = initParameters.MoveSettings;
             singleControllerInitParameters.ExhaustCheckerSettings = initParameters.ExhaustCheckerSettings;
             singleControllerInitParameters.AnimationEvents = playerAnimationEvents;
+            singleControllerInitParameters.Swapper = initParameters.Swapper;
 
             singleController.Init(singleControllerInitParameters);
 
@@ -53,6 +54,7 @@ namespace JR
             public DoTweenSwapper.MoveSettings MoveSettings { get; set; }
             public ExhaustChecker.Settings ExhaustCheckerSettings { get; set; }
             public RuntimeAnimatorController RuntimeAnimatorController { get; set; }
+            public ISwapper Swapper { get; set; }
         }
     }
 }

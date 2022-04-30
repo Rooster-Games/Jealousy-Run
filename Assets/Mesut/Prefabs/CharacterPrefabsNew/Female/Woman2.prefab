@@ -2247,7 +2247,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3555470103841131722}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9ac8d30c6a0d9642a11e5be4c440740, type: 3}
   m_Name: 
@@ -2672,6 +2672,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7433080227120859093}
+  - component: {fileID: 7492100350146796077}
   m_Layer: 0
   m_Name: Woman2(Clone)
   m_TagString: Untagged
@@ -2695,6 +2696,18 @@ Transform:
   m_Father: {fileID: 2582873603712698047}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7492100350146796077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4257626509130377436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6140532dde9d4f67a160a8ac5c79b3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4292178414833858389
 GameObject:
   m_ObjectHideFlags: 0
@@ -3322,9 +3335,9 @@ SkinnedMeshRenderer:
   - {fileID: 2100000, guid: ce924c0b71099524483f860d7392d424, type: 2}
   - {fileID: 2100000, guid: 3a6cdadba8f78724fbd4aac6b44a4580, type: 2}
   - {fileID: 2100000, guid: ec5bf22a9246ac24c91272e39ed6fabb, type: 2}
-  - {fileID: 2100000, guid: f8ebc23138eb51840abe863ccb3c74f0, type: 2}
-  - {fileID: 2100000, guid: ba00f55a272ee7c4cacbb93a96302935, type: 2}
-  - {fileID: 2100000, guid: ee7ad8d1f093eb24cb3d58c1b8793390, type: 2}
+  - {fileID: 2100000, guid: bd6d49528916b934b8d6165278894bf3, type: 2}
+  - {fileID: 2100000, guid: bd6d49528916b934b8d6165278894bf3, type: 2}
+  - {fileID: 2100000, guid: 0ed8c3b993ac1f942bfe5ab9dc250963, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

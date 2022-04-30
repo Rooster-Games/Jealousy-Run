@@ -12,6 +12,9 @@ namespace JR
         [SerializeField] float _otherDetectorOpenAfterSeconds = 0.25f;
         [SerializeField] OtherEnemyDetector _otherEnemyDetector;
 
+        // TODO:
+        // Buradan kaldirilmasi gerek Awake renderer
+
         bool _isPushed;
 
         private void Awake()
@@ -19,15 +22,23 @@ namespace JR
             _myBody = GetComponent<Rigidbody>();
             _anim = GetComponentInChildren<Animator>();
             _otherEnemyDetector = GetComponentInChildren<OtherEnemyDetector>(true);
+
+            var animatorGO = GetComponentInChildren<Animator>().gameObject;
+            var animatorRenderer = animatorGO.GetComponentInChildren<Renderer>();
+
+            var ragdollGO = GetComponentInChildren<RagdollMarker>(true).gameObject;
+            ragdollGO.GetComponentInChildren<Renderer>(true).materials = animatorRenderer.materials;
         }
 
-        public void Push(Vector3 direction, float force, ForceMode forceMode)
+        public void Push(Vector3 direction, float force, ForceMode forceMode, Gender playerGender, Gender enemyGender)
         {
             if (_isPushed) return;
 
             var oedInitParameters = new OtherEnemyDetector.InitParameters();
             oedInitParameters.ForceAmount = force;
             oedInitParameters.ForceMode = forceMode;
+            oedInitParameters.PlayerGender = playerGender;
+            oedInitParameters.EnemyGender = enemyGender;
             _otherEnemyDetector.Init(oedInitParameters);
 
             _isPushed = true;

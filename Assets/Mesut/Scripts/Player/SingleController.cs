@@ -20,6 +20,9 @@ namespace JR
 
         [SerializeField] GameObject _whileProtectedParticle;
         [SerializeField] GameObject _pushDetector;
+        [SerializeField] GameObject _slapDetector;
+        [SerializeField] BarController _barController;
+        [SerializeField] float _whileProtectingGainLoveDataPerSeconds;
 
         [SerializeField] List<GameObject> _slapParticlePefabList;
 
@@ -28,20 +31,19 @@ namespace JR
         bool _isSlapping;
         public bool IsSlapping => _isSlapping;
 
-        DoTweenSwapper _transformSwapper;
+        ISwapper _positionSwapper;
         ExhaustChecker _exhaustChecker;
 
         [SerializeField] SlapParticleRootMarker[] _slapParticleRootMarker;
 
+        WaitForSeconds _gainLoveWaitForSeconds;
         public void Init(InitParameters initParameters)
         {
             _animatorController = initParameters.AnimatorController;
             _animationEvents = initParameters.AnimationEvents;
 
-            var swapperInitParameters = new DoTweenSwapper.InitParameters();
-            swapperInitParameters.TransformToSwap = transform;
-            swapperInitParameters.MoveSettings = initParameters.MoveSettings;
-            _transformSwapper = new DoTweenSwapper(swapperInitParameters);
+            _positionSwapper = initParameters.Swapper;
+
 
             var exhaustCheckerInitParameters = new ExhaustChecker.InitParameters();
             exhaustCheckerInitParameters.ProtectorController = initParameters.AnimatorController;
@@ -52,13 +54,19 @@ namespace JR
 
             _animationEvents.RegisterOnAnimationEnd(AnimationEvents_OnSlapAnimationEnd);
             _animationEvents.RgisterOnSlap(AnimationEvents_OnSlap);
+
+            _gainLoveWaitForSeconds = new WaitForSeconds(1f);
         }
 
         bool _isAnimationEnded = true;
         private void AnimationEvents_OnSlapAnimationEnd()
         {
-            _animatorController.SetLayerWeight(1, 0f);
+            Debug.Log("Anim Ended");
+            //_animatorController.SetLayerWeight(1, 0f);
             _isAnimationEnded = true;
+            _isAnimStarted = false;
+
+            //_slapDetector.SetActive(true);
         }
 
         int _particleCounter;
@@ -77,23 +85,36 @@ namespace JR
 
 
         int slapCounter = 0;
+
+        bool _isAnimStarted;
         public void Slap(Action action)
         {
-            if (!_isAnimationEnded) return;
+            //if (!_isAnimStarted)
+            //{
+            //    _isAnimStarted = true;
+            //    Debug.Log("Anim Started");
+            //}
 
+            //if (!_isAnimationEnded)
+            //{
+            //    Debug.Log("Not Ended returned");
+            //    return;
+            //}
+
+            //_slapDetector.SetActive(false);
             _isAnimationEnded = false;
-            if (_transitionTween != null)
-            {
-                _transitionTween.Kill();
-                _transitionTween = null;
-            }
-            _animatorController.SetAnimatorSpeed(1.2f);
+            //if (_transitionTween != null)
+            //{
+            //    _transitionTween.Kill();
+            //    _transitionTween = null;
+            //}
+            //_animatorController.SetAnimatorSpeed(1.2f);
             _isSlapping = true;
             _animatorController.SetLayerWeight(1, 1f);
             _animatorController.SetTrigger("slap");
             //_animatorController.SetFloat("tokatIndex", slapCounter);
             //StartCoroutine(RestartAnimatorWeight(action));
-               StartCoroutine(IncreaseCounter(action));
+               //StartCoroutine(IncreaseCounter(action));
         }
 
 
@@ -121,17 +142,41 @@ namespace JR
             //_animatorController.SetAnimatorSpeed(1f);
         }
 
+        bool _isProtecting;
+        IEnumerator GainLove()
+        {
+            _isProtecting = true;
+            float timer = 0f;
+            while(_isProtecting)
+            {
+                timer += Time.deltaTime;
+                if (timer >= 1f)
+                {
+                    _barController.ChangeAmount(_whileProtectingGainLoveDataPerSeconds);
+                    timer = 0f;
+                }
+                yield return null;
+            }
+
+            _barController.ChangeAmount(_whileProtectingGainLoveDataPerSeconds * timer);
+        }
+
         public void Protect()
         {
-            _transformSwapper.Swap();
+            _slapDetector.SetActive(true);
+            _positionSwapper.Swap();
             _exhaustChecker.StartTimer();
             _animatorController.SetTrigger("protectRun");
+            StartCoroutine(GainLove());
         }
 
         public void ReturnBack()
         {
-            _transformSwapper.ReturnBack();
+            _slapDetector.SetActive(false);
+            _positionSwapper.ReturnBack();
             _exhaustChecker.CheckForExhaust();
+            _isProtecting = false;
+            
         }
 
         public void GetProtected()
@@ -163,6 +208,7 @@ namespace JR
             public DoTweenSwapper.MoveSettings MoveSettings { get; set; }
             public ExhaustChecker.Settings ExhaustCheckerSettings { get; set; }
             public PlayerAnimationEvents AnimationEvents { get; set; }
+            public ISwapper Swapper { get; set; }
             public bool IsProtector { get; set; }
         }
 

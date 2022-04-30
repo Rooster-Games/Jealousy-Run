@@ -2701,6 +2701,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8738514807898874018}
   - component: {fileID: 4180966294896203452}
+  - component: {fileID: 4465808997817086084}
   m_Layer: 0
   m_Name: Man9(Clone)
   m_TagString: Untagged
@@ -2734,6 +2735,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0508b21839419413a9b1787cd255c342, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4465808997817086084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3978931279194174023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6140532dde9d4f67a160a8ac5c79b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3989075900599807223
@@ -3503,7 +3516,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4907401801079308883}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9ac8d30c6a0d9642a11e5be4c440740, type: 3}
   m_Name: 
@@ -6610,10 +6623,10 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ba00f55a272ee7c4cacbb93a96302935, type: 2}
-  - {fileID: 2100000, guid: 4100ae4d378f0da4db9ef23dc212211a, type: 2}
-  - {fileID: 2100000, guid: 5253545ee2bb1bb469629dfdd10c15f5, type: 2}
-  - {fileID: 2100000, guid: 4e9aa3f75b4abd244be75619da6bb63f, type: 2}
+  - {fileID: 2100000, guid: 549e9380d5f1f8d4792fdeca7310e233, type: 2}
+  - {fileID: 2100000, guid: f61c9d2ae1e1ae642afdfdeffe713b28, type: 2}
+  - {fileID: 2100000, guid: 549e9380d5f1f8d4792fdeca7310e233, type: 2}
+  - {fileID: 2100000, guid: 322ecdb4b4ded2442bbe473305db2e44, type: 2}
   - {fileID: 2100000, guid: 50bb78625e542bc4d882e8e3eea92b78, type: 2}
   - {fileID: 2100000, guid: ec5bf22a9246ac24c91272e39ed6fabb, type: 2}
   m_StaticBatchInfo:

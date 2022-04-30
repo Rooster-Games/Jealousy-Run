@@ -11,6 +11,7 @@ namespace JR
     public class PlayerCompositionRoot : MonoBehaviour
     {
         [SerializeField] PlayerSettingsSO _playerSettings;
+        [SerializeField] CoroutineSwapper _coroutineSwapper;
         //public void RegisterToContainer()
         //{
             //    // CompositionRoot
@@ -105,8 +106,17 @@ namespace JR
                     _singleToRuntimeAnimatorMap.Add(singleController.gameObject, runTimeAnimatorController);
 
                     startingLocalPosition = _playerSettings.CoupleTransformSettings.ProtectorStartingPosition;
+                    Debug.Log(singleController.gameObject.name);
+
+                    var swapperInitParameters = new ISwapper.InitParameters();
+                    swapperInitParameters.TransformToSwap = singleController.transform;
+                    swapperInitParameters.MoveSettings = _playerSettings.SwapMoveSettings;
+                    swapperInitParameters.ProtectorLocalStartingPosition = _playerSettings.CoupleTransformSettings.ProtectorStartingPosition;
+                    _coroutineSwapper.Init(swapperInitParameters);
+
                     protector = singleController;
 
+                    //singleController.GetComponentInChildren<PushEnemyDetector>(true).SetProtector(true);
                     singleController.GetComponentsInChildren<SlapEnemyDetector>(true).ToList().ForEach((x) => x.gameObject.SetActive(true));
                     singleController.GetComponentInChildren<ItemTriggerDetector>(true).gameObject.SetActive(true);
                 }
@@ -124,6 +134,7 @@ namespace JR
             var scCRInitparameters = new SingleControllerCompositionRoot.InitParameters();
             scCRInitparameters.MoveSettings = _playerSettings.SwapMoveSettings;
             scCRInitparameters.ExhaustCheckerSettings = _playerSettings.ExhaustChecketSettings;
+            scCRInitparameters.Swapper = _coroutineSwapper;
 
             foreach (var sccr in singleControllerCompositionRootCollection)
             {
@@ -176,7 +187,7 @@ namespace JR
                 {
                     if (isProtector)
                     {
-                        Debug.Log(animatorSettings.ProtectorRunTimeAnimatorController.name);
+                        //Debug.Log(animatorSettings.ProtectorRunTimeAnimatorController.name);
                         return animatorSettings.ProtectorRunTimeAnimatorController;
                     }
 

@@ -3406,7 +3406,7 @@ MonoBehaviour:
   mainLevel:
     levelScene: MainMenu
   levelList:
-  - levelScene: GameScene
+  - levelScene: elephant_scene
 --- !u!114 &3590989980063810166
 MonoBehaviour:
   m_ObjectHideFlags: 0

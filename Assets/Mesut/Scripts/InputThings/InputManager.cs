@@ -64,6 +64,13 @@ namespace JR
             }
         }
 
+        public void ResetMe()
+        {
+            IsMouseButtonUp = false;
+            IsMouseButtonDown = false;
+            IsMouseButtonHold = false;
+        }
+
         public class InitParameters
         {
             public EventBus EventBus { get; set; }

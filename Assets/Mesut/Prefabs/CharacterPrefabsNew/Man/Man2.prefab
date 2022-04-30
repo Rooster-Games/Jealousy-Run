@@ -373,7 +373,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686789073983094387}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9ac8d30c6a0d9642a11e5be4c440740, type: 3}
   m_Name: 
@@ -1109,11 +1109,11 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ee7ad8d1f093eb24cb3d58c1b8793390, type: 2}
-  - {fileID: 2100000, guid: 4e9aa3f75b4abd244be75619da6bb63f, type: 2}
+  - {fileID: 2100000, guid: 476130ec1d3dc5b44828fe59686bd43e, type: 2}
+  - {fileID: 2100000, guid: 8d24f5b14ca509b4a8b825db55f19602, type: 2}
   - {fileID: 2100000, guid: 50bb78625e542bc4d882e8e3eea92b78, type: 2}
   - {fileID: 2100000, guid: ec5bf22a9246ac24c91272e39ed6fabb, type: 2}
-  - {fileID: 2100000, guid: ee506cb9e7377924e9a31cac196181e1, type: 2}
+  - {fileID: 2100000, guid: ec5bf22a9246ac24c91272e39ed6fabb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5526,6 +5526,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3268738108093069146}
+  - component: {fileID: 916468778645812373}
   m_Layer: 0
   m_Name: Man2(Clone)
   m_TagString: Untagged
@@ -5549,6 +5550,18 @@ Transform:
   m_Father: {fileID: 6235988240558830295}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &916468778645812373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8074623209056660142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6140532dde9d4f67a160a8ac5c79b3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8132678298929302907
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,6 +16,7 @@ namespace JR
         [SerializeField] GenderSelectionController _genderSelectionController;
         [SerializeField] CinemachineVirtualCamera _cameraToChangeFov;
 
+        [SerializeField] GameObject[] _levelCollection;
 
         private void Awake()
         {
@@ -49,9 +50,14 @@ namespace JR
 
             _inputManager.Init(inputManagerInitParameters);
 
+            // level settings
+            var levelIndex = RoosterHub.Central.GetLevelNo() % _levelCollection.Length;
+            var levelPefab = _levelCollection[levelIndex];
+
             // Game Type Init
             var gameTypeInitParameters = new GameType.InitParameters();
             gameTypeInitParameters.ProtectorsGender = _genderSelectionController.GameTypeGender;
+            gameTypeInitParameters.LevelPrefab = levelPefab;
             _gameType.Init(gameTypeInitParameters);
 
             // player composition root init

@@ -723,7 +723,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 536761178689043347}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9ac8d30c6a0d9642a11e5be4c440740, type: 3}
   m_Name: 
@@ -1528,6 +1528,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3320793396737140023}
+  - component: {fileID: 1106264224658353959}
   m_Layer: 0
   m_Name: Man4(Clone)
   m_TagString: Untagged
@@ -1551,6 +1552,18 @@ Transform:
   m_Father: {fileID: 7632980977573633785}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1106264224658353959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708893104721010059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6140532dde9d4f67a160a8ac5c79b3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1758611114767256157
 GameObject:
   m_ObjectHideFlags: 0
@@ -6144,11 +6157,11 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ba00f55a272ee7c4cacbb93a96302935, type: 2}
-  - {fileID: 2100000, guid: ec5bf22a9246ac24c91272e39ed6fabb, type: 2}
+  - {fileID: 2100000, guid: 55266d770da9a774899388c04c67a10a, type: 2}
+  - {fileID: 2100000, guid: c76f87dd8bd711d459bb2458cbe5564e, type: 2}
   - {fileID: 2100000, guid: ce924c0b71099524483f860d7392d424, type: 2}
   - {fileID: 2100000, guid: ec5bf22a9246ac24c91272e39ed6fabb, type: 2}
-  - {fileID: 2100000, guid: f8ebc23138eb51840abe863ccb3c74f0, type: 2}
+  - {fileID: 2100000, guid: 3a6cdadba8f78724fbd4aac6b44a4580, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

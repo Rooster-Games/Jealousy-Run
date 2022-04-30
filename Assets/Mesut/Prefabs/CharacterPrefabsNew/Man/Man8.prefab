@@ -1215,10 +1215,10 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1e2c1daa1f2bbc541928d2d8f4a81024, type: 2}
-  - {fileID: 2100000, guid: ba00f55a272ee7c4cacbb93a96302935, type: 2}
-  - {fileID: 2100000, guid: ee7ad8d1f093eb24cb3d58c1b8793390, type: 2}
-  - {fileID: 2100000, guid: ac30b0bd42d54b847ba9902fa672fcee, type: 2}
+  - {fileID: 2100000, guid: 046089c2d91f4ba459068b6466bca6e5, type: 2}
+  - {fileID: 2100000, guid: 6f8e45218e0911941bd532609101a153, type: 2}
+  - {fileID: 2100000, guid: 046089c2d91f4ba459068b6466bca6e5, type: 2}
+  - {fileID: 2100000, guid: cc577d10410cc56458faae874eadf364, type: 2}
   - {fileID: 2100000, guid: fb1e74007ba2139408d6fdffd9fd862a, type: 2}
   - {fileID: 2100000, guid: ec5bf22a9246ac24c91272e39ed6fabb, type: 2}
   m_StaticBatchInfo:
@@ -4027,6 +4027,7 @@ GameObject:
   m_Component:
   - component: {fileID: 478013688708342311}
   - component: {fileID: 4052239522847792200}
+  - component: {fileID: 6961336300737781054}
   m_Layer: 0
   m_Name: Man8(Clone)
   m_TagString: Untagged
@@ -4060,6 +4061,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0508b21839419413a9b1787cd255c342, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6961336300737781054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6068525473115267390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6140532dde9d4f67a160a8ac5c79b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6226969151494199043
@@ -4742,7 +4755,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6755746039234611796}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9ac8d30c6a0d9642a11e5be4c440740, type: 3}
   m_Name: 
