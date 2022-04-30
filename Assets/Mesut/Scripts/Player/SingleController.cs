@@ -176,7 +176,8 @@ namespace JR
             _positionSwapper.ReturnBack();
             _exhaustChecker.CheckForExhaust();
             _isProtecting = false;
-            
+
+            _animatorController.SetLayerWeight(1, 0f);
         }
 
         public void GetProtected()
