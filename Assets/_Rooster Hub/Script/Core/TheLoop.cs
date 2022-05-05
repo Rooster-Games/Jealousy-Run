@@ -29,6 +29,7 @@ namespace RG.Core
             RoosterEventHandler.OnFailGame += FailLevel;
         }
 
+       
         private void OnDisable()
         {
             RoosterEventHandler.OnClickedNextLevelButton -= LoadNewLevel;
@@ -37,6 +38,7 @@ namespace RG.Core
             RoosterEventHandler.OnWinGame -= WinLevel;
             RoosterEventHandler.OnFailGame -= FailLevel;
         }
+        
         
         private void Update()
         {

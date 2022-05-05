@@ -11,6 +11,8 @@ public class WinPanelManuelPass : MonoBehaviour, IExtension
 
     private void OnEnable()
     {
+        nextButton.interactable = true;
+        rwNextButton.interactable = true;
         nextButton.onClick.AddListener(OnClickNextLevelButton);
         rwNextButton.onClick.AddListener(OnClickRewardedButton);
     }
@@ -25,6 +27,9 @@ public class WinPanelManuelPass : MonoBehaviour, IExtension
     {
         Haptic.Selection();
         Sound.PlayButtonSound();
+        
+        rwNextButton.interactable = false;
+        nextButton.interactable = false;
     }
 
     private void OnClickNextLevelButton()
@@ -43,6 +48,9 @@ public class WinPanelManuelPass : MonoBehaviour, IExtension
         {
             OnClickAfterButtonDelay();
         }
+
+        nextButton.interactable = false;
+        rwNextButton.interactable = false;
     }
 
     private void OnClickAfterButtonDelay()

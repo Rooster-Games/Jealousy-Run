@@ -18,6 +18,8 @@ namespace JR
         Vector3 _targetPosition;
         float _percent;
         float _timer;
+
+
         public void Init(ISwapper.InitParameters initParameters)
         {
             _transformToSwap = initParameters.TransformToSwap;
@@ -29,6 +31,8 @@ namespace JR
         }
 
         Coroutine _swap;
+
+        public float WayPercent => _percent;
 
         public void Swap()
         {

@@ -31,6 +31,11 @@ namespace JR
             _inputManager.ResetMe();
             animator.ResetTrigger("normalRun");
             animator.ResetTrigger("protectRun");
+            animator.ResetTrigger("yorgun");
+            animator.ResetTrigger("panicRun");
+            animator.ResetTrigger("turnLeft");
+            animator.ResetTrigger("truenRight");
+            animator.ResetTrigger("protectRun");
             animator.SetTrigger("idle");
         }
     }

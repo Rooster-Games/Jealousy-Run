@@ -25,8 +25,6 @@ namespace JR
 
         public void SetTrigger(string triggerName, [CallerMemberName] string callerName = "")
         {
-            if(triggerName == "normalRun")
-                Debug.Log("Caller Name: " + callerName);
             _animator.SetTrigger(triggerName);
         }
 

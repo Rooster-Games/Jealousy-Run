@@ -18,6 +18,7 @@ namespace RG.Handlers
         public static Action<bool> OnShowTransition;
         public static Action<int,bool> OnCollectCoin;
         public static Action OnUpdateCoinText;
+        public static Action OnGameCoinChanged;
 
         public static Action OnLoading;
 

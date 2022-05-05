@@ -131,6 +131,9 @@ namespace JR
             if (_becomeExhaust != null)
                 _becomeExhaust.Kill();
 
+            if (_timerTween != null)
+                _timerTween.Kill();
+
             float timer = _timer;
             _timerTween = DOTween.To(() => timer, (x) => { timer = x; _timer = x; }, _settings.BecomeExhaustSeconds, _settings.BecomeExhaustSeconds)
                 .OnComplete(() => { _isExhausted = true;});
@@ -142,7 +145,6 @@ namespace JR
                 BecomeExhaust();
             else
             {
-                _protectorController.SetTrigger("turnRight");
                 _protectorController.SetTrigger("normalRun");
                 _timerTween.Kill();
             }
@@ -152,6 +154,7 @@ namespace JR
         {
             _protectorController.SetTrigger("turnRight");
             _protectorController.SetTrigger("yorgun");
+            _protectorController.ResetTrigger("normalRun");
 
             float timer = _timer;
             _becomeExhaust = DOTween.To(() => timer, (x) => { timer = x; _timer = x; }, 0f, _settings.ExhaustDuration)
@@ -296,6 +299,8 @@ namespace JR
         public Tween SideMoveTween => _sideMoveTween;
         public Tween ForwardMoveTween => _forwardMoveTween;
 
+        public float WayPercent => throw new NotImplementedException();
+
         public void Init(ISwapper.InitParameters initParameters)
         {
             _transformToSwap = initParameters.TransformToSwap;
@@ -418,6 +423,7 @@ namespace JR
         void Init(InitParameters initParameters);
         void Swap();
         void ReturnBack();
+        float WayPercent { get; }
 
         public class InitParameters
         {

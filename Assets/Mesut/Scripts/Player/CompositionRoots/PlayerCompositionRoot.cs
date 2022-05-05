@@ -5,6 +5,7 @@ using Cinemachine;
 using GameCores;
 using UnityEngine;
 using System.Linq;
+using DI;
 
 namespace JR
 {
@@ -106,8 +107,7 @@ namespace JR
                     _singleToRuntimeAnimatorMap.Add(singleController.gameObject, runTimeAnimatorController);
 
                     startingLocalPosition = _playerSettings.CoupleTransformSettings.ProtectorStartingPosition;
-                    Debug.Log(singleController.gameObject.name);
-
+                    
                     var swapperInitParameters = new ISwapper.InitParameters();
                     swapperInitParameters.TransformToSwap = singleController.transform;
                     swapperInitParameters.MoveSettings = _playerSettings.SwapMoveSettings;

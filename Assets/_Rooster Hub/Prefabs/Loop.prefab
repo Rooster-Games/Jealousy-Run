@@ -472,7 +472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3590989978604271362
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3046,7 +3046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab06c3f448a9a40e9acff63ac2456e22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RestartButton: {fileID: 3590989979179273228}
+  restartButton: {fileID: 0}
 --- !u!1 &3590989979890204700
 GameObject:
   m_ObjectHideFlags: 0
@@ -3371,7 +3371,7 @@ MonoBehaviour:
   failPanelDelay: 0.96
   gameFont: {fileID: 11400000, guid: 75fde72bc4dd440fa9be94b88dc6a481, type: 2}
   transitionLogo: {fileID: 21300000, guid: 86c040cf1aaa14c68afff2382a3572fc, type: 3}
-  showLogs: 0
+  showLogs: 1
 --- !u!114 &3590989980063810164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3406,7 +3406,7 @@ MonoBehaviour:
   mainLevel:
     levelScene: MainMenu
   levelList:
-  - levelScene: elephant_scene
+  - levelScene: GameScene
 --- !u!114 &3590989980063810166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3827,7 +3827,7 @@ PrefabInstance:
     - target: {fileID: 3825334902976090156, guid: 7fb9acdf1e09c42dc91a38e128a885f9, type: 3}
       propertyPath: soundButton
       value: 
-      objectReference: {fileID: 237342826279258599}
+      objectReference: {fileID: 0}
     - target: {fileID: 3825334902976090156, guid: 7fb9acdf1e09c42dc91a38e128a885f9, type: 3}
       propertyPath: hapticButton
       value: 
@@ -3975,17 +3975,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &237342826279258599 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 856978099528751177, guid: 7fb9acdf1e09c42dc91a38e128a885f9, type: 3}
-  m_PrefabInstance: {fileID: 625911294220800430}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8376844696728019499 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9002459118513501061, guid: 7fb9acdf1e09c42dc91a38e128a885f9, type: 3}
@@ -4094,11 +4083,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3e4220088fd649cca7752eb9152a3e8, type: 3}
---- !u!1 &1905151064599879737 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3145120647235618812, guid: a3e4220088fd649cca7752eb9152a3e8, type: 3}
-  m_PrefabInstance: {fileID: 3590989978472490949}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6807409591883282182 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8047093232776843459, guid: a3e4220088fd649cca7752eb9152a3e8, type: 3}
@@ -4135,6 +4119,11 @@ MonoBehaviour:
 --- !u!224 &1905151064835785904 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3145120647133897589, guid: a3e4220088fd649cca7752eb9152a3e8, type: 3}
+  m_PrefabInstance: {fileID: 3590989978472490949}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1905151064599879737 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3145120647235618812, guid: a3e4220088fd649cca7752eb9152a3e8, type: 3}
   m_PrefabInstance: {fileID: 3590989978472490949}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3590989978699160798
@@ -4257,7 +4246,7 @@ PrefabInstance:
     - target: {fileID: 3825334902976090156, guid: 7fb9acdf1e09c42dc91a38e128a885f9, type: 3}
       propertyPath: soundButton
       value: 
-      objectReference: {fileID: 4193233155600026022}
+      objectReference: {fileID: 0}
     - target: {fileID: 3825334902976090156, guid: 7fb9acdf1e09c42dc91a38e128a885f9, type: 3}
       propertyPath: hapticButton
       value: 
@@ -4369,17 +4358,6 @@ RectTransform:
 --- !u!114 &3805226821900334849 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 367927369068259054, guid: 7fb9acdf1e09c42dc91a38e128a885f9, type: 3}
-  m_PrefabInstance: {fileID: 3590989978716164591}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4193233155600026022 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 856978099528751177, guid: 7fb9acdf1e09c42dc91a38e128a885f9, type: 3}
   m_PrefabInstance: {fileID: 3590989978716164591}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

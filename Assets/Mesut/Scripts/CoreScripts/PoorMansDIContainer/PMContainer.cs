@@ -224,7 +224,7 @@ namespace DI
             {
                 if (component != null)
                 {
-                    CheckForIniting(component);
+                    CheckFI(component);
 
                     var componentGO = component.gameObject;
 
@@ -341,7 +341,7 @@ namespace DI
                 return this;
             }
 
-            private void CheckForIniting<T>(T component) where T: Component
+            private void CheckFI<T>(T component) where T: Component
             {
                 var t = typeof(T);
                 var initInfo = t.GetMethod("Init");

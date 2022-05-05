@@ -61,7 +61,6 @@ namespace JR
         bool _isAnimationEnded = true;
         private void AnimationEvents_OnSlapAnimationEnd()
         {
-            Debug.Log("Anim Ended");
             //_animatorController.SetLayerWeight(1, 0f);
             _isAnimationEnded = true;
             _isAnimStarted = false;
@@ -166,18 +165,57 @@ namespace JR
             _slapDetector.SetActive(true);
             _positionSwapper.Swap();
             _exhaustChecker.StartTimer();
-            _animatorController.SetTrigger("protectRun");
+            _animatorController.SetTrigger("turnLeft");
             StartCoroutine(GainLove());
+
+            if (_checkWayPercentCO != null)
+                StopCoroutine(_checkWayPercentCO);
+            _checkWayPercentCO = StartCoroutine(CheckWayPercent(_positionSwapper, 0.75f, () => _animatorController.SetTrigger("protectRun")));
+        }
+        Coroutine _checkWayPercentCO;
+        IEnumerator CheckWayPercent(ISwapper swapper, float checkThreshold, Action action)
+        {
+            float timer = 0f;
+            while(swapper.WayPercent < checkThreshold)
+            {
+                timer += Time.deltaTime;
+                if (timer > 1.5f && _checkWayPercentCO != null)
+                    StopCoroutine(_checkWayPercentCO);
+
+                yield return null;
+            }
+
+            action?.Invoke();
         }
 
+        bool _exhausted;
         public void ReturnBack()
         {
+            _animatorController.ResetTrigger("turnLeft");
+            _animatorController.ResetTrigger("protectRun");
+
+            _exhausted = false;
+            if (_checkWayPercentCO != null)
+                StopCoroutine(_checkWayPercentCO);
+            _checkWayPercentCO = StartCoroutine(CheckWayPercent(_positionSwapper, 1f, () => { _exhausted = true; _exhaustChecker.CheckForExhaust(); }));
+
             _slapDetector.SetActive(false);
             _positionSwapper.ReturnBack();
-            _exhaustChecker.CheckForExhaust();
+            //_exhaustChecker.CheckForExhaust();
             _isProtecting = false;
 
             _animatorController.SetLayerWeight(1, 0f);
+
+
+            if(_positionSwapper.WayPercent > 0.75f)
+            {
+                _animatorController.SetTrigger("turnRight");
+            }
+            if(!_exhausted)
+                _animatorController.SetTrigger("normalRun");
+
+            _animatorController.SetLayerWeight(1, 0f);
+            _animatorController.SetTrigger("slapEnd");
         }
 
         public void GetProtected()
