@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace JR
 {
-    public class CameraFovChanger : MonoBehaviour
+    public class CameraFovChanger
     {
         CinemachineVirtualCamera _camera;
         Settings _settings;

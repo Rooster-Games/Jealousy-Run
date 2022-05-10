@@ -14,7 +14,7 @@ namespace JR
 
         bool _isGameStarted;
 
-        EventBus _eventBus;
+        IEventBus _eventBus;
 
         bool _canMouseButtonUp;
 
@@ -23,11 +23,17 @@ namespace JR
             _eventBus = initParameters.EventBus;
 
             _eventBus.Register<OnGameStarted>(EventBus_OnGameStarted);
+            _eventBus.Register<OnBarEmpty>(EventBus_OnBarEmpty);
         }
 
         private void EventBus_OnGameStarted(OnGameStarted eventData)
         {
             _isGameStarted = true;
+        }
+
+        private void EventBus_OnBarEmpty(OnBarEmpty eventData)
+        {
+            _isGameStarted = false;
         }
 
         private void Update()
@@ -73,7 +79,7 @@ namespace JR
 
         public class InitParameters
         {
-            public EventBus EventBus { get; set; }
+            public IEventBus EventBus { get; set; }
         }
     }
 }

@@ -25,7 +25,7 @@ namespace JR
             _transformToSwap = initParameters.TransformToSwap;
             _moveSettings = initParameters.MoveSettings;
 
-            _initialPosition = initParameters.ProtectorLocalStartingPosition;
+            _initialPosition = initParameters.CoupleTransformSettings.ProtectorStartingPosition;
 
             _targetPosition = new Vector3(_moveSettings.MoveSideDistance, _transformToSwap.localPosition.y, _moveSettings.MoveForwardDistance);
         }

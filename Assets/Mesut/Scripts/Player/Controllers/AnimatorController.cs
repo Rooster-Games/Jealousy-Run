@@ -67,22 +67,26 @@ namespace JR
 
     public class AnimatorControllerFactory
     {
-        public IAnimatorController Create(params Animator[] _animators)
+        public IAnimatorController Create(FactoryCreateParameters createParameters)
         {
-            CompositeAnimatorController _compositeController = new CompositeAnimatorController();
-            for(int i = 0; i < _animators.Length; i++)
-            {
-                var animControllerInitParameters = new AnimatorController.InitParameters();
-                animControllerInitParameters.Animator = _animators[i];
-                var animController = new AnimatorController();
-                animController.Init(animControllerInitParameters);
-                if (_animators.Length == 1)
-                    return animController;
+            var animControllerInitParameters = new AnimatorController.InitParameters();
 
-                _compositeController.Add(animController);
-            }
+            //Debug.Log("Is Animator Null: " + (createParameters.Animator == null));
+            // Debug.Log("Is RunTimeAnimatorcontroller Null: " + (createParameters.RuntimeAnimatorController == null));
 
-            return _compositeController;
+            animControllerInitParameters.Animator = createParameters.Animator;
+            // createParameters.Animator.runtimeAnimatorController = createParameters.RuntimeAnimatorController;
+
+            var animController = new AnimatorController();
+            animController.Init(animControllerInitParameters);
+
+            return animController;
+        }
+
+        public class FactoryCreateParameters
+        {
+            public Animator Animator { get; set; }
+            // public RuntimeAnimatorController RuntimeAnimatorController { get; set; }
         }
     }
 

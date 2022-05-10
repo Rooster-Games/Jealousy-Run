@@ -16,7 +16,7 @@ namespace JR
 
         [SerializeField] float _testingValue = 0.1f;
 
-        EventBus _eventBus;
+        IEventBus _eventBus;
         Tween _increaseTween;
         float _totalIncreaseAmount;
         float _prevIncreaseAmount;
@@ -53,6 +53,9 @@ namespace JR
             _loveData.CurrentValue += amount;
             _bar.ChangeAmount(_loveData.CurrentPercent);
 
+            if (_loveData.CurrentValue <= 0f)
+                _eventBus.Fire<OnBarEmpty>();
+
             //_totalIncreaseAmount += amount;
             //_prevIncreaseAmount = _totalIncreaseAmount;
 
@@ -81,7 +84,7 @@ namespace JR
         {
             public BaseBar Bar { get; set; }
             public LoveData LoveData { get; set; }
-            public EventBus EventBus { get; set; }
+            public IEventBus EventBus { get; set; }
         }
 
         [System.Serializable]

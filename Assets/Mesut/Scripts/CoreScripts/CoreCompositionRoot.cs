@@ -21,7 +21,7 @@ namespace GameCores
 
         public class InitParameters
         {
-            public EventBus EventBus { get; set; }
+            public IEventBus EventBus { get; set; }
             public AssemblyInstanceCreator AssemblyInstanceCreator { get; set; }
         }
     }

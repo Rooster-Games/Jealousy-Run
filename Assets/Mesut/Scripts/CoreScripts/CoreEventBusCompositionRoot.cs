@@ -9,7 +9,7 @@ namespace GameCores
     {
         public void Init(InitParameters initParameters)
         {
-            EventBus eventBus = initParameters.EventBus;
+            IEventBus eventBus = initParameters.EventBus;
             AssemblyInstanceCreator assemblyInstanceCreator = initParameters.AssemblyInstanceCreator;
             // TODO: bir kere cekebilirim assembly bilgisini
             Type type = typeof(IEventBusCompositionRoot);
@@ -29,13 +29,13 @@ namespace GameCores
 
         public class InitParameters
         {
-            public EventBus EventBus { get; set; }
+            public IEventBus EventBus { get; set; }
             public AssemblyInstanceCreator AssemblyInstanceCreator { get; set; }
         }
     }
 
     public interface IEventBusCompositionRoot
     {
-        void Init(EventBus eventBus);
+        void Init(IEventBus eventBus);
     }
 }

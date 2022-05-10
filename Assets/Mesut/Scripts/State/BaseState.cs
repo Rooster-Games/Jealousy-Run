@@ -8,6 +8,7 @@ namespace JR
     public abstract class BaseState : IState
     {
         protected IAnimatorController _animatorController;
+
         public void Init(InitParameters initParameters)
         {
             _animatorController = initParameters.AnimatorController;

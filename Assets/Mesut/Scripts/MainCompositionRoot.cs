@@ -1,5 +1,6 @@
 
 using Cinemachine;
+using DIC;
 using GameCores;
 using UnityEngine;
 
@@ -9,12 +10,10 @@ namespace JR
     {
         [SerializeField] GameManager _gameManager;
         [SerializeField] InputManager _inputManager;
-        [SerializeField] PlayerCompositionRoot _playerCompositionRoot;
-        [SerializeField] CrowdedControllerCompositionRoot _crowdedControllerCompositionRoot;
         [SerializeField] GameType _gameType;
-        [SerializeField] BarCompositionSettings _barCompositionSettings;
         [SerializeField] GenderSelectionController _genderSelectionController;
         [SerializeField] CinemachineVirtualCamera _cameraToChangeFov;
+        [SerializeField] RoleSelector _roleSelector;
 
         [SerializeField] GameObject[] _levelCollection;
 
@@ -24,134 +23,46 @@ namespace JR
 
             if (_genderSelectionController.IsGenderSelected)
             {
-                Init();
+                RegisterToContainer();
             }
             else
-                _genderSelectionController.OnGenderSelected += Init;
+                _genderSelectionController.OnGenderSelected += RegisterToContainer;
             //Init();
         }
 
-        public void Init()
+        public void RegisterToContainer()
         {
             var assemblyInstanceCreator = new AssemblyInstanceCreator(typeof(MainCompositionRoot));
-            var eventBus = new EventBus();
-
-            // eventBus composition root initing
+            var eventBus = new DebugEventBus(new EventBus());
             var coreEventBusCompositionRoot = new CoreEventBusCompositionRoot();
-            var coreEventBusCompositionRootInitParameters = new CoreEventBusCompositionRoot.InitParameters();
-            coreEventBusCompositionRootInitParameters.EventBus = eventBus;
-            coreEventBusCompositionRootInitParameters.AssemblyInstanceCreator = assemblyInstanceCreator;
 
-            coreEventBusCompositionRoot.Init(coreEventBusCompositionRootInitParameters);
 
-            // input manager Initing
-            var inputManagerInitParameters = new InputManager.InitParameters();
-            inputManagerInitParameters.EventBus = eventBus;
+            DIContainer.Instance.RegisterSingle<IEventBus>(eventBus, sortingIndex: -100);
+            DIContainer.Instance.RegisterSingle(assemblyInstanceCreator, sortingIndex: -100);
+            DIContainer.Instance.RegisterSingle(coreEventBusCompositionRoot, sortingIndex: -100);
+            DIContainer.Instance.RegisterSingle(_inputManager, sortingIndex: -100);
 
-            _inputManager.Init(inputManagerInitParameters);
 
-            // level settings
             var levelIndex = RoosterHub.Central.GetLevelNo() % _levelCollection.Length;
             var levelPefab = _levelCollection[levelIndex];
 
-            // Game Type Init
-            var gameTypeInitParameters = new GameType.InitParameters();
-            gameTypeInitParameters.ProtectorsGender = _genderSelectionController.GameTypeGender;
-            gameTypeInitParameters.LevelPrefab = levelPefab;
-            _gameType.Init(gameTypeInitParameters);
+            DIContainer.Instance.RegisterSingle(_genderSelectionController.GameTypeGender, sortingIndex: -100);
+            DIContainer.Instance.RegisterWhenInjectTo(_gameType, levelPefab);
+            DIContainer.Instance.RegisterSingle(_gameManager, sortingIndex: -100);
 
-            // player composition root init
-            var pcrInitParameters = new PlayerCompositionRoot.InitParameters();
-            pcrInitParameters.EventBus = eventBus;
-            pcrInitParameters.InputManager = _inputManager;
-            pcrInitParameters.GameType = _gameType;
-            pcrInitParameters.BarController = _barCompositionSettings.BarController;
-            pcrInitParameters.CameraToFovChange = _cameraToChangeFov;
+            DIContainer.Instance.RegisterSingle(_gameType, sortingIndex: -100);
+            DIContainer.Instance.RegisterSingle(_roleSelector, sortingIndex: -100);
 
-            _playerCompositionRoot.Init(pcrInitParameters);
+            // Buradan sonrasi degistirilecek
+            DIContainer.Instance.RegisterSingle(_cameraToChangeFov, sortingIndex: -100);
 
-            // crowded composition root init
-            var ccrInitparameters = new CrowdedControllerCompositionRoot.InitParameters();
-            ccrInitparameters.EventBus = eventBus;
-            _crowdedControllerCompositionRoot.Init(ccrInitparameters);
+            _roleSelector.RegisterToContainer(_genderSelectionController.GameTypeGender);
 
+            var compRootCollection = FindObjectsOfType<BaseCompRootGO>();
+            for (int i = 0; i < compRootCollection.Length; i++)
+                compRootCollection[i].RegisterToContainer();
 
-            // game manager init
-            var gmInitParameters = new GameManager.InitParameters();
-            gmInitParameters.EventBus = eventBus;
-
-            _gameManager.Init(gmInitParameters);
-
-            // BarController Init
-            var loveDataInitParameters = new LoveData.InitParameters();
-            loveDataInitParameters.StartingValue = _barCompositionSettings.StartingPercent;
-            _barCompositionSettings.LoveData.Init(loveDataInitParameters);
-
-            var barInitParameters = new BaseBar.InitParameters();
-            barInitParameters.StartingPercent = _barCompositionSettings.StartingPercent;
-
-            BaseBar gameTypeBar = null;
-
-            foreach (var bar in _barCompositionSettings.Bars)
-            {
-                bar.Init(barInitParameters);
-                bar.gameObject.SetActive(false);
-                if (_gameType.ProtectorGender == bar.BoundedGender)
-                {
-                    gameTypeBar = bar;
-                }
-            }
-
-            var barControllerInitParameters = new BarController.InitParameters();
-            barControllerInitParameters.Bar = gameTypeBar;
-            barControllerInitParameters.LoveData = _barCompositionSettings.LoveData;
-            barControllerInitParameters.EventBus = eventBus;
-            _barCompositionSettings.BarController.Init(barControllerInitParameters);
-
-
-            // item creator
-            var collectCreatorCollection = _gameType.GetComponentsInChildren<CollectableCreator>();
-            foreach (var collectCreator in collectCreatorCollection)
-            {
-                collectCreator.Init();
-            }
-
-
-            // Item collection
-            var itemCRCollection= _gameType.GetComponentsInChildren<ItemCompositionRoot>();
-            var itemCRInitParameters = new ItemCompositionRoot.InitParameters();
-            itemCRInitParameters.WhoIsProtecting = _gameType.ProtectorGender;
-
-            foreach (var itemCR in itemCRCollection)
-            {
-                itemCR.Init(itemCRInitParameters);
-            }
+            DIContainer.Instance.Resolve();
         }
-        //public void Init()
-        //{
-        //    // singletons
-        //    var assemblyInstanceCreator = new AssemblyInstanceCreator(typeof(MainCompositionRoot));
-        //    var eventBus = new EventBus();
-
-        //    // register singletons
-
-        //    PMContainer.Instance.RegisterSingle(eventBus);
-        //    PMContainer.Instance.RegisterSingle(assemblyInstanceCreator);
-        //    PMContainer.Instance.RegisterSingle(_inputManager);
-
-        //    // for initing
-        //    var coreEventBusCompositionRoot = new CoreEventBusCompositionRoot();
-
-        //    // register for initing
-        //    PMContainer.Instance.RegisterForIniting(_gameManager);
-        //    PMContainer.Instance.RegisterForIniting(coreEventBusCompositionRoot);
-        //    PMContainer.Instance.RegisterForIniting(_playerCompositionRoot);
-        //    PMContainer.Instance.RegisterForIniting(_inputManager);
-
-        //    _playerCompositionRoot.RegisterToContainer();
-        //    _crowdedControllerCompositionRoot.RegisterToContainer();
-
-        //    PMContainer.Instance.Resolve();
-        //}
     }
 }

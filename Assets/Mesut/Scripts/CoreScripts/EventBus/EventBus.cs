@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace GameCores
 {
-    public class EventBus
+    public class EventBus : IEventBus
     {
         public EventBus()
         {

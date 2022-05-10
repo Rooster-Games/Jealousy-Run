@@ -20,6 +20,7 @@ namespace JR
             _settings = initParameters.Settings;
             _dollyCart = initParameters.DollyCart;
             _maxLength = _dollyCart.m_Path.PathLength;
+
         }
 
         private void Update()

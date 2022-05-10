@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using DI;
+using GameCores;
+using GameCores.CoreEvents;
 using UnityEngine;
 
 namespace JR
@@ -33,6 +35,7 @@ namespace JR
 
         ISwapper _positionSwapper;
         ExhaustChecker _exhaustChecker;
+        IEventBus _eventBus;
 
         [SerializeField] SlapParticleRootMarker[] _slapParticleRootMarker;
 
@@ -43,19 +46,23 @@ namespace JR
             _animationEvents = initParameters.AnimationEvents;
 
             _positionSwapper = initParameters.Swapper;
-
-
-            var exhaustCheckerInitParameters = new ExhaustChecker.InitParameters();
-            exhaustCheckerInitParameters.ProtectorController = initParameters.AnimatorController;
-            exhaustCheckerInitParameters.Settings = initParameters.ExhaustCheckerSettings;
-
-            _exhaustChecker = new ExhaustChecker();
-            _exhaustChecker.Init(exhaustCheckerInitParameters);
+            _exhaustChecker = initParameters.ExhaustChecker;
+            _eventBus = initParameters.EventBus;
+            _genderInfo = initParameters.GenderInfo;
 
             _animationEvents.RegisterOnAnimationEnd(AnimationEvents_OnSlapAnimationEnd);
             _animationEvents.RgisterOnSlap(AnimationEvents_OnSlap);
 
             _gainLoveWaitForSeconds = new WaitForSeconds(1f);
+
+            _eventBus.Register<OnGameStarted>(EventBus_OnGameStarted);
+
+            initParameters.CheckNullField();
+        }
+
+        private void EventBus_OnGameStarted(OnGameStarted eventData)
+        {
+            _animatorController.SetTrigger("normalRun");
         }
 
         bool _isAnimationEnded = true;
@@ -63,7 +70,6 @@ namespace JR
         {
             //_animatorController.SetLayerWeight(1, 0f);
             _isAnimationEnded = true;
-            _isAnimStarted = false;
 
             //_slapDetector.SetActive(true);
         }
@@ -82,63 +88,12 @@ namespace JR
             Destroy(go, 3f);
         }
 
-
-        int slapCounter = 0;
-
-        bool _isAnimStarted;
-        public void Slap(Action action)
+        public void Slap()
         {
-            //if (!_isAnimStarted)
-            //{
-            //    _isAnimStarted = true;
-            //    Debug.Log("Anim Started");
-            //}
-
-            //if (!_isAnimationEnded)
-            //{
-            //    Debug.Log("Not Ended returned");
-            //    return;
-            //}
-
-            //_slapDetector.SetActive(false);
             _isAnimationEnded = false;
-            //if (_transitionTween != null)
-            //{
-            //    _transitionTween.Kill();
-            //    _transitionTween = null;
-            //}
-            //_animatorController.SetAnimatorSpeed(1.2f);
             _isSlapping = true;
             _animatorController.SetLayerWeight(1, 1f);
             _animatorController.SetTrigger("slap");
-            //_animatorController.SetFloat("tokatIndex", slapCounter);
-            //StartCoroutine(RestartAnimatorWeight(action));
-               //StartCoroutine(IncreaseCounter(action));
-        }
-
-
-
-        Tween _transitionTween;
-        //bool _isIncreasing;
-        IEnumerator IncreaseCounter(Action action)
-        {
-            yield return new WaitForSeconds(0.25f);
-            action?.Invoke();
-            //_isIncreasing = true;
-            //yield return new WaitForSeconds(0.5f);
-            //slapCounter = slapCounter % _slapAnimationCount;
-            //slapCounter++;
-            //_isIncreasing = false;
-        }
-        IEnumerator RestartAnimatorWeight(Action action)
-        {
-            yield return new WaitForSeconds(0.1f);
-
-            action?.Invoke();
-            float timer = 1f;
-            _transitionTween = DOTween.To(() => timer, (x) => { timer = x; _animatorController.SetLayerWeight(1, x); }, 0f, 0.25f)
-                .OnComplete(() => { _isSlapping = false; _transitionTween = null; });
-            //_animatorController.SetAnimatorSpeed(1f);
         }
 
         bool _isProtecting;
@@ -244,11 +199,11 @@ namespace JR
         public class InitParameters
         {
             public IAnimatorController AnimatorController { get; set; }
-            public DoTweenSwapper.MoveSettings MoveSettings { get; set; }
-            public ExhaustChecker.Settings ExhaustCheckerSettings { get; set; }
             public PlayerAnimationEvents AnimationEvents { get; set; }
             public ISwapper Swapper { get; set; }
-            public bool IsProtector { get; set; }
+            public IEventBus EventBus { get; set; }
+            public GenderInfo GenderInfo { get; set; }
+            public ExhaustChecker ExhaustChecker { get; set; }
         }
 
         [System.Serializable]
@@ -266,6 +221,7 @@ namespace JR
 
     public interface IProtector
     {
+        void Slap();
         void Protect();
         void ReturnBack();
         void MakeHandsBigger();

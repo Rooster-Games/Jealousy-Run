@@ -16,11 +16,16 @@ namespace JR
         [SerializeField] BarController _barController;
         [SerializeField] float _barChangeAmount = 0.1f;
 
-        SingleController _singleController;
+        // SingleController _singleController;
+
+        Gender _protectorGender;
+        IProtector _protector;
 
         public void Init(InitParameters initParameters)
         {
-            _singleController = initParameters.SingleController;
+            _protectorGender = initParameters.ProtectorGender;
+            _protector = initParameters.Protector;
+               //_singleController = initParameters.SingleController;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -33,7 +38,7 @@ namespace JR
                 return;
             }
 
-            if(otherGenderInfo.Gender == _singleController.GenderInfo.Gender)
+            if(otherGenderInfo.Gender == _protectorGender)
             //if(otherGenderInfo.Gender == _gender)
             {
                 var slapable = other.GetComponent<Slapable>();
@@ -47,22 +52,16 @@ namespace JR
                 DOTween.To(() => timer, (x) => timer = x, 1f, _slapDelayDuration)
                     .OnComplete(() => slapable.Slap(dir, _forceAmount, _forceMode));
 
-                _singleController.Slap(() => SlapAction(slapable, dir));
+                _protector.Slap();
             }
-        }
-
-        private void SlapAction(Slapable slapable, Vector3 dir)
-        {
-            _barController.ChangeAmount(_barChangeAmount);
-            //float timer = 0f;
-            //DOTween.To(() => timer, (x) => timer = x, 1f, _slapDelayDuration)
-            //    .OnComplete(() => slapable.Slap(dir, _forceAmount, _forceMode));
         }
 
 
         public class InitParameters
         {
-            public SingleController SingleController { get; set; }
+            // public SingleController SingleController { get; set; }
+            public Gender ProtectorGender { get; set; }
+            public IProtector Protector { get; set; }
         }
     }
 }

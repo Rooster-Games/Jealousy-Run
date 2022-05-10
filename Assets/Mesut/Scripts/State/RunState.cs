@@ -8,7 +8,12 @@ namespace JR
     {
         public void Init(InitParameters initParameters)
         {
+            base.Init(initParameters);
+        }
 
+        public override void OnEnter()
+        {
+            _animatorController.SetTrigger("normalRun");
         }
 
         public new class InitParameters: BaseState.InitParameters

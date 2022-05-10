@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IdleState : MonoBehaviour
+namespace JR
 {
-    // Start is called before the first frame update
-    void Start()
+    public class IdleState : BaseState
     {
-        
-    }
+        public void Init(InitParameters initParameters)
+        {
+            base.Init(initParameters);
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public new class InitParameters : BaseState.InitParameters
+        {
+
+        }
     }
 }

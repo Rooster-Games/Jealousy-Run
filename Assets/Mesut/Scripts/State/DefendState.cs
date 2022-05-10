@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DefendState : MonoBehaviour
+namespace JR
 {
-    // Start is called before the first frame update
-    void Start()
+    public class DefendState : BaseState
     {
-        
-    }
+        public void Init(InitParameters initParameters)
+        {
+            base.Init(initParameters);
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public override void OnEnter()
+        {
+            _animatorController.SetTrigger("protectRun");
+        }
+
+        public new class InitParameters : BaseState.InitParameters
+        {
+
+        }
     }
 }

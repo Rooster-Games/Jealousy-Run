@@ -1,18 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using GameCores;
 using UnityEngine;
 
-public class ProjectEvents : MonoBehaviour
+namespace JR
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public class OnBarEmpty : IEventData { }
+    public class OnLevelEnd : IEventData { }
 }

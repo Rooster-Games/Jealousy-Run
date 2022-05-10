@@ -7,9 +7,12 @@ namespace JR
 {
     public class JREventsCompositionRoot : IEventBusCompositionRoot
     {
-        public void Init(EventBus eventBus)
+        public void Init(IEventBus eventBus)
         {
             Debug.Log("JREventsCompositionRoot - Init");
+
+            eventBus.Raise<OnBarEmpty>();
+            eventBus.Raise<OnLevelEnd>();
         }
     }
 }

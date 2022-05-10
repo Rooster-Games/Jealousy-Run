@@ -20,7 +20,7 @@ public class DynamicBoneActivator : MonoBehaviour
     {
         var db = other.GetComponentInChildren<DynamicBone>();
         if (db != null)
-            db.enabled = true;
+            db.enabled = state;
     }
 
     private void FindAndEnableRagDool(Collider other, bool state)
