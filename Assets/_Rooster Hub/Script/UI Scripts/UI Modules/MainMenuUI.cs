@@ -38,6 +38,5 @@ namespace RG.Loader
             RoosterAnalyticSender.SendStartEvent();
             Central.OnGameStartedHandler?.Invoke();
         }
-
     }
 }

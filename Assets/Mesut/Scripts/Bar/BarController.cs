@@ -20,6 +20,7 @@ namespace JR
         Tween _increaseTween;
         float _totalIncreaseAmount;
         float _prevIncreaseAmount;
+        bool _isBarEmpty;
         BarAnimation _barAnimation;
         // 1
         // 0.1 degisti, current 0.9 oldu,
@@ -53,8 +54,11 @@ namespace JR
             _loveData.CurrentValue += amount;
             _bar.ChangeAmount(_loveData.CurrentPercent);
 
-            if (_loveData.CurrentValue <= 0f)
+            if (_loveData.CurrentValue <= 0f && !_isBarEmpty)
+            {
+                _isBarEmpty = true;
                 _eventBus.Fire<OnBarEmpty>();
+            }
 
             //_totalIncreaseAmount += amount;
             //_prevIncreaseAmount = _totalIncreaseAmount;

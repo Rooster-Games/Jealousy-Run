@@ -29,7 +29,6 @@ public class CoinArea : MonoBehaviour
         coinText.text = GamePrefs.GameCoin.ToString();
         
         RoosterEventHandler.OnGameCoinChanged?.Invoke();
-        RoosterLogger.Log(Central.GetIncome().ToString(),Color.cyan);
     }
     
 }

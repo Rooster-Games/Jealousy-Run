@@ -17,17 +17,22 @@ public class StartingUpgradeArea : MonoBehaviour
     public TextMeshProUGUI costText;
     public TextMeshProUGUI currentUpgradeNoText;
     public GameObject notEnoughMoneyImage;
-    
+
     private const string _UGVALUE = "_UPGRADE_COST_";
     private const string _UGNO = "_UPGRADE_NO_";
     private Button myUpgradeButton => GetComponent<Button>();
-    
+
 
     private void Awake()
     {
         if (GetUpgradeValues(_UGNO) == 0)
         {
             SetUpgradeValues(_UGNO, 1);
+        }
+
+        if (GetFloatUpgradeValues(_UGVALUE) == 0)
+        {
+            SetUpgradeValues(_UGVALUE, 1f);
         }
     }
 
@@ -47,7 +52,7 @@ public class StartingUpgradeArea : MonoBehaviour
 
     private void CheckPurchase()
     {
-        if (upgradeArea.startingCost + GetUpgradeValues(_UGVALUE) <= RoosterHub.Central.GetIncome())
+        if (upgradeArea.startingCost * GetFloatUpgradeValues(_UGVALUE) <= RoosterHub.Central.GetIncome())
         {
             notEnoughMoneyImage.SetActive(false);
             myUpgradeButton.interactable = true;
@@ -64,11 +69,12 @@ public class StartingUpgradeArea : MonoBehaviour
         var compResult = string.Equals(upgradeArea.upgradeName, upgradeNameText.text);
         if (!compResult) return;
 
-        if (!RoosterHub.Central.SpendIncome(upgradeArea.startingCost + GetUpgradeValues(_UGVALUE))) return;
-        
+        if (!RoosterHub.Central.SpendIncome(Mathf.RoundToInt(upgradeArea.startingCost * GetFloatUpgradeValues(_UGVALUE)))) return;
+
         RoosterHub.Haptic.Selection();
         SetUpgradeValues(_UGNO, GetUpgradeValues(_UGNO) + 1);
-        SetUpgradeValues(_UGVALUE, GetUpgradeValues(_UGVALUE) + upgradeArea.costPerUpgrade);
+
+        SetUpgradeValues(_UGVALUE, GetFloatUpgradeValues(_UGVALUE) * upgradeArea.upgradeCostMultipier);
         InitUpgradeArea();
 
         SendDTO(upgradeArea.upgradeName, GetUpgradeValues(_UGNO));
@@ -79,7 +85,8 @@ public class StartingUpgradeArea : MonoBehaviour
     {
         upgradeImage.sprite = upgradeArea.upgradeImage;
         upgradeNameText.text = upgradeArea.upgradeName;
-        costText.text = (upgradeArea.startingCost + GetUpgradeValues(_UGVALUE)).ToString();
+
+        costText.text = Mathf.RoundToInt(upgradeArea.startingCost * GetFloatUpgradeValues(_UGVALUE)).ToString();
         currentUpgradeNoText.text = GetUpgradeValues(_UGNO).ToString();
     }
 
@@ -89,9 +96,19 @@ public class StartingUpgradeArea : MonoBehaviour
         PlayerPrefs.SetInt(saveName + upgradeArea.upgradeName, value);
     }
 
+    private void SetUpgradeValues(string saveName, float value)
+    {
+        PlayerPrefs.SetFloat(saveName + upgradeArea.upgradeName, value);
+    }
+
     private int GetUpgradeValues(string saveName)
     {
         return PlayerPrefs.GetInt(saveName + upgradeArea.upgradeName);
+    }
+
+    private float GetFloatUpgradeValues(string saveName)
+    {
+        return PlayerPrefs.GetFloat(saveName + upgradeArea.upgradeName);
     }
 
     private void SendDTO(string upgradeName, int upgradeNo)
@@ -101,7 +118,12 @@ public class StartingUpgradeArea : MonoBehaviour
             upgradeName = upgradeName,
             upgradeNo = upgradeNo
         };
-        StartUpgrades.OnUpgradePurchased?.Invoke(data);
+        RoosterHub.StartUpgrades.OnUpgradePurchased?.Invoke(data);
+    }
+
+    public int GetUpgradeLevel()
+    {
+        return GetUpgradeValues(_UGNO);
     }
 
     public class DTO
@@ -117,5 +139,5 @@ public class UpgradeArea
     public string upgradeName;
     public Sprite upgradeImage;
     public int startingCost;
-    public int costPerUpgrade;
+    public float upgradeCostMultipier;
 }

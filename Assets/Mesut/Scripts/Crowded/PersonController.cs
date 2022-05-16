@@ -1,4 +1,5 @@
 
+using GameCores;
 using UnityEngine;
 
 namespace JR
@@ -7,14 +8,19 @@ namespace JR
     {
         PersonAnimatorController _animatorController;
 
-        private void Awake()
-        {
-            Init(null);
-        }
+        IEventBus _eventBus;
 
         public void Init(InitParameters initParameters)
         {
             _animatorController = GetComponentInChildren<PersonAnimatorController>();
+            _eventBus = initParameters.EventBus;
+            _eventBus.Register<OnBarEmpty>(EventBus_OnBarEmpty);
+
+        }
+
+        private void EventBus_OnBarEmpty(OnBarEmpty eventData)
+        {
+            _animatorController.SetTrigger("Idle");
         }
 
         public void Walk()
@@ -25,7 +31,7 @@ namespace JR
 
         public class InitParameters
         {
-
+            public IEventBus EventBus { get; set; }
         }
     }
 }

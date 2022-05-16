@@ -3,6 +3,7 @@ using System.Collections;
 using Coffee.UIEffects;
 using DG.Tweening;
 using RG.Core;
+using RoosterHub;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -39,12 +40,14 @@ public class Transition : MonoBehaviour, ITransition
         Image bg = GetComponent<Image>();
         if (status)
         {
+            RoosterHub.Central.OnTransectionStart?.Invoke();
+            
             bg.DOFade(0, 0f);
             bg.DOFade(1, .4f).OnComplete(() => LogoMovement(status));
         }
         else
         {
-            bg.DOFade(0, 1f).OnComplete((() => {gameObject.SetActive(false);}));
+            bg.DOFade(0, 1f).SetDelay(.5f);//.OnComplete((() => {gameObject.SetActive(false);}));
         }
     }
 
@@ -59,7 +62,11 @@ public class Transition : MonoBehaviour, ITransition
         }
         else
         {
-            logo.transform.DOScale(8f, 1f).SetEase(Ease.InQuart);
+            logo.transform.DOScale(5f, 1f).SetEase(Ease.InQuart).OnComplete(() =>
+            {
+                Central.OnTransectionComplete?.Invoke();
+                gameObject.SetActive(false);
+            });
         }
     }
 

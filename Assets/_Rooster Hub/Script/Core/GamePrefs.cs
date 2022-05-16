@@ -33,5 +33,17 @@ namespace RG.Core
             get => PlayerPrefs.GetInt("HapticStatus-RG");
             set => PlayerPrefs.SetInt("HapticStatus-RG", value);
         }
+
+        public static int GameScore
+        {
+            get => PlayerPrefs.GetInt("GameScore-RG");
+            set => PlayerPrefs.SetInt("GameScore-RG", value);
+        }
+
+        public static int ScoreboardIndex
+        {
+            get => PlayerPrefs.GetInt("ScoreboardIndex-RG");
+            set => PlayerPrefs.SetInt("ScoreboardIndex-RG", value);
+        }
     }
 }

@@ -340,10 +340,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3590989979835156725, guid: cafe40d54132148f18738f07dd72b272, type: 3}
-      propertyPath: restartButton
-      value: 
-      objectReference: {fileID: 3590989980406366310}
     - target: {fileID: 3590989980063810154, guid: cafe40d54132148f18738f07dd72b272, type: 3}
       propertyPath: m_Name
       value: Loop
@@ -402,14 +398,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cafe40d54132148f18738f07dd72b272, type: 3}
---- !u!114 &3590989980406366310 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3590989979179273228, guid: cafe40d54132148f18738f07dd72b272, type: 3}
-  m_PrefabInstance: {fileID: 3590989980406366309}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

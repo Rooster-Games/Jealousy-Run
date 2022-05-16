@@ -154,7 +154,6 @@ namespace DIC
             foreach (var checker in _checkerList)
             {
                 var checkerType = checker.GetType();
-                Debug.Log("CheckerType: " + checkerType.Name);
                 var methodInfo = checkerType.GetMethod("Init");
 
                 var methodParameterType = methodInfo.GetParameters()[0].ParameterType;

@@ -58,7 +58,7 @@ public class WinPanelManuelPass : MonoBehaviour, IExtension
         if (GetComponentInParent<UI_Loop>().useTransition)
         {
             RoosterEventHandler.OnShowTransition?.Invoke(true);
-            Invoke(nameof(TransitionTrigger),3f);
+            Invoke(nameof(TransitionTrigger),2.5f);
         }
         else
         {

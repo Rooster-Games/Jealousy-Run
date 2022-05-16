@@ -21,8 +21,14 @@ namespace JR
         [SerializeField] EmojiController _emojiController;
         [SerializeField] LayerMask _emojiMask;
         [SerializeField] BarController _barController;
-        [SerializeField] float _barChangeValue = 0.033f;
         [SerializeField] Gender _gender;
+
+        float _barChangeValue = 0.033f;
+
+        public void Init(InitParameters initParameters)
+        {
+            _barChangeValue = initParameters.BarChangingSettings.DecreaseSettings.OnEncounterWithOppsiteGenderDecreaseValue;
+        }
 
         private void OnTriggerEnter(Collider other)
         {
@@ -97,6 +103,11 @@ namespace JR
             float timer = _weight;
             _backTween = DOTween.To(() => timer, (x) => { timer = x; _anim.SetLayerWeight(1, x); }, 0f, _returnBackDuration);
             _isReturning = false;
+        }
+
+        public class InitParameters
+        {
+            public BarChangingSettings BarChangingSettings { get; set; }
         }
     }
 }

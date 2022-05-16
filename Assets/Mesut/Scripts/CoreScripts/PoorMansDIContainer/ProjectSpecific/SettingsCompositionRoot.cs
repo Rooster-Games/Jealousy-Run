@@ -9,10 +9,12 @@ namespace JR
     public class SettingsCompositionRoot :BaseCompRootGO
     {
         [SerializeField] PlayerSettingsSO _playerSettings;
+        [SerializeField] GameSettingsSO _gameSettings;
 
         public override void RegisterToContainer()
         {
             RegisterSettings(_playerSettings);
+            RegisterSettings(_gameSettings);
         }
 
         private void RegisterSettings<T>(T settingsObject)

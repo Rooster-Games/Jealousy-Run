@@ -42,6 +42,7 @@ namespace JR
             _otherEnemyDetector.Init(oedInitParameters);
 
             _isPushed = true;
+            direction.y = 0f;
             _myBody.AddForce(direction * force, forceMode);
 
             _anim.SetFloat("hitIndex", Random.Range(0, 4));

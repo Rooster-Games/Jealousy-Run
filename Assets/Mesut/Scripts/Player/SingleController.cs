@@ -24,7 +24,8 @@ namespace JR
         [SerializeField] GameObject _pushDetector;
         [SerializeField] GameObject _slapDetector;
         [SerializeField] BarController _barController;
-        [SerializeField] float _whileProtectingGainLoveDataPerSeconds;
+
+        float _whileProtectingGainLoveDataPerSeconds;
 
         [SerializeField] List<GameObject> _slapParticlePefabList;
 
@@ -49,6 +50,7 @@ namespace JR
             _exhaustChecker = initParameters.ExhaustChecker;
             _eventBus = initParameters.EventBus;
             _genderInfo = initParameters.GenderInfo;
+            _whileProtectingGainLoveDataPerSeconds = initParameters.BarChangingSettings.IncreaseSettings.WhileProtectingGainPerSeconds;
 
             _animationEvents.RegisterOnAnimationEnd(AnimationEvents_OnSlapAnimationEnd);
             _animationEvents.RgisterOnSlap(AnimationEvents_OnSlap);
@@ -56,8 +58,16 @@ namespace JR
             _gainLoveWaitForSeconds = new WaitForSeconds(1f);
 
             _eventBus.Register<OnGameStarted>(EventBus_OnGameStarted);
+            _eventBus.Register<OnBarEmpty>(EventBus_OnBarEmpty);
 
             initParameters.CheckNullField();
+        }
+
+        private void EventBus_OnBarEmpty(OnBarEmpty eventData)
+        {
+            _animatorController.SetTrigger("lose");
+            _animatorController.SetLayerWeight(1, 0f);
+            StopAllCoroutines();
         }
 
         private void EventBus_OnGameStarted(OnGameStarted eventData)
@@ -204,6 +214,7 @@ namespace JR
             public IEventBus EventBus { get; set; }
             public GenderInfo GenderInfo { get; set; }
             public ExhaustChecker ExhaustChecker { get; set; }
+            public BarChangingSettings BarChangingSettings { get; set; }
         }
 
         [System.Serializable]

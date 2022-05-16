@@ -534,7 +534,7 @@ MonoBehaviour:
     upgradeName: _UPGRADE NAME_
     upgradeImage: {fileID: 0}
     startingCost: 0
-    costPerUpgrade: 0
+    upgradeCostMultipier: 0
   upgradeImage: {fileID: 945850136069832883}
   upgradeNameText: {fileID: 2728172166240538263}
   costText: {fileID: 7044515620745468006}
@@ -1571,6 +1571,7 @@ GameObject:
   - component: {fileID: 4983107734430977893}
   - component: {fileID: 4983107734430977892}
   - component: {fileID: 4983107734430977899}
+  - component: {fileID: 4623035679542951034}
   m_Layer: 5
   m_Name: Upgrade Panel
   m_TagString: Untagged
@@ -1664,6 +1665,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &4623035679542951034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4983107734430977897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 777640148c3d04ef79886d391fb32ea6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4983107734467363909
 GameObject:
   m_ObjectHideFlags: 0
@@ -2045,7 +2058,7 @@ MonoBehaviour:
     upgradeName: _UPGRADE NAME_
     upgradeImage: {fileID: 0}
     startingCost: 0
-    costPerUpgrade: 0
+    upgradeCostMultipier: 0
   upgradeImage: {fileID: 4983107734467363911}
   upgradeNameText: {fileID: 4983107734923064451}
   costText: {fileID: 4983107733698864328}
@@ -2898,7 +2911,7 @@ MonoBehaviour:
     upgradeName: _UPGRADE NAME_
     upgradeImage: {fileID: 0}
     startingCost: 0
-    costPerUpgrade: 0
+    upgradeCostMultipier: 0
   upgradeImage: {fileID: 5422769841573655310}
   upgradeNameText: {fileID: 5312808378378763054}
   costText: {fileID: 9073776668745297725}

@@ -2,9 +2,12 @@ using UnityEngine;
 
 public class WinPanelControl : MonoBehaviour
 {
-    private IExtension passType=>GetComponent<IExtension>();
+    private IExtension[] extensions=>GetComponents<IExtension>();
     void OnEnable()
     {
-        passType.RunExtension();
+        foreach (var exts in extensions)
+        {
+            exts.RunExtension();
+        }
     }
 }

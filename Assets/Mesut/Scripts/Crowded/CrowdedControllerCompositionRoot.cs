@@ -30,11 +30,20 @@ namespace JR
             {
                 crowdedCreator.Init();
             }
+
+            var personControllerCollection = GetComponentsInChildren<PersonController>();
+
+            var pcInitParameters = new PersonController.InitParameters();
+            pcInitParameters.EventBus = initParameters.EventBus;
+            foreach (var personController in personControllerCollection)
+            {
+                personController.Init(pcInitParameters);
+            }
         }
 
         public class InitParameters
         {
-
+            public IEventBus EventBus { get; set; }
         }
     }
 }

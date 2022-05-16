@@ -1,5 +1,6 @@
 using System;
 using System.Data.Common;
+using Packages.Rider.Editor.UnitTesting;
 using RG.Handlers;
 using RG.Loader;
 using RoosterHub;
@@ -17,7 +18,7 @@ namespace RG.Core
 
         private void Start()
         {
-           
+            
         }
 
         private void OnEnable()
@@ -27,9 +28,13 @@ namespace RG.Core
             RoosterEventHandler.OnCollectCoin += CollectCoin;
             RoosterEventHandler.OnWinGame += WinLevel;
             RoosterEventHandler.OnFailGame += FailLevel;
+
         }
 
-       
+        void Test()
+        {
+          RoosterHub.Scoreboard.SetScore(500);
+        }
         private void OnDisable()
         {
             RoosterEventHandler.OnClickedNextLevelButton -= LoadNewLevel;
@@ -61,6 +66,15 @@ namespace RG.Core
             {
                 Debug.LogError(Central.SpendIncome(30));
             }
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                Test();
+            }
+            
+            
+           
+            
+            
         }
 
         void WinLevel()

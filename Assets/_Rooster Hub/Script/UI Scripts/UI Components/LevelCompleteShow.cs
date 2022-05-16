@@ -21,7 +21,6 @@ public class LevelCompleteShow : MonoBehaviour
 
     private void OnEnable()
     {
-       
         OnLevelCompleteAnimation += LevelCompleteAnimation;
         textsList[4].text = (Central.GetLevelNo()).ToString();
         textsList[5].text = (Central.GetLevelNo() + 1).ToString();
@@ -57,6 +56,7 @@ public class LevelCompleteShow : MonoBehaviour
 
     void SetDefault()
     {
+        if (textsList.Count == 0) return;
         for (int i = 0; i < textsList.Count; i++)
         {
             textsList[i].transform.parent.position = posList[i];
@@ -73,15 +73,10 @@ public class LevelCompleteShow : MonoBehaviour
         SetDefault();
         ClearLists();
         OnLevelCompleteAnimation -= LevelCompleteAnimation;
+        
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            OnLevelCompleteAnimation?.Invoke();
-        }
-    }
+   
 
     private void LevelCompleteAnimation()
     {
@@ -95,8 +90,6 @@ public class LevelCompleteShow : MonoBehaviour
             SetFade(textsList[i], textFadeLists[i - 1]);
             SetColor(textsList[i], textColorLists[i - 1]);
         }
-
-        
     }
 
     void ClearLists()
@@ -110,6 +103,7 @@ public class LevelCompleteShow : MonoBehaviour
             textColorLists.Clear();
         }
     }
+
     private void MovePositions(Transform trns, Vector3 destination)
     {
         trns.DOMove(destination, 1f);

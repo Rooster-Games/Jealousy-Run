@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using GameCores;
 using UnityEngine;
 
 namespace JR
@@ -20,6 +21,7 @@ namespace JR
 
         Gender _protectorGender;
         IProtector _protector;
+
 
         public void Init(InitParameters initParameters)
         {

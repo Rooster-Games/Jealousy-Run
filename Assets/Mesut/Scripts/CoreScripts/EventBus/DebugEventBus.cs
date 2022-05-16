@@ -27,7 +27,6 @@ namespace GameCores
 
         public void Register<T>(Action<T> action) where T : IEventData
         {
-            UnityEngine.Debug.Log("Action Target ToString: " + action.Target.ToString());
 
             var targetStr = action.Target.ToString();
             string className = targetStr;

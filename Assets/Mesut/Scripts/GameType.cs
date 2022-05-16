@@ -1,6 +1,7 @@
 
 using UnityEngine;
 using Cinemachine;
+using GameCores;
 
 namespace JR
 {
@@ -47,12 +48,15 @@ namespace JR
             {
                 itemCR.Init(itemCRInitParameters);
             }
+
+            
         }
 
         public class InitParameters
         {
             public Gender ProtectorsGender { get; set; }
             public GameObject LevelPrefab { get; set; }
+            public IEventBus EventBus { get; set; }
         }
     }
 }

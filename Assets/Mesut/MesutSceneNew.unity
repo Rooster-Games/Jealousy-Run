@@ -979,6 +979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerSettings: {fileID: 11400000, guid: eead7a9a700f94550aabf1d0beacc901, type: 2}
+  _gameSettings: {fileID: 11400000, guid: ef8429b6ce93846248774ae841257992, type: 2}
 --- !u!1001 &187217004
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3075,7 +3076,6 @@ MonoBehaviour:
   _pushDetector: {fileID: 617617851}
   _slapDetector: {fileID: 463009325}
   _barController: {fileID: 1835804910}
-  _whileProtectingGainLoveDataPerSeconds: 0.05
   _slapParticlePefabList:
   - {fileID: 2881655981692621550, guid: a89af0335f8c2de48903173d259c05f1, type: 3}
   - {fileID: 1171628881558895778, guid: cc2bae3c786424288b28590468a0fe53, type: 3}
@@ -4355,7 +4355,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _barController: {fileID: 1835804910}
-  _barChangeValue: 0.075
   _gender: 1
 --- !u!65 &617617854
 BoxCollider:
@@ -6484,7 +6483,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _barController: {fileID: 1835804910}
-  _barChangeValue: 0.075
   _gender: 0
 --- !u!65 &978270318
 BoxCollider:
@@ -11712,7 +11710,6 @@ MonoBehaviour:
   _pushDetector: {fileID: 978270315}
   _slapDetector: {fileID: 1617162498}
   _barController: {fileID: 1835804910}
-  _whileProtectingGainLoveDataPerSeconds: 0.05
   _slapParticlePefabList:
   - {fileID: 2881655981692621550, guid: a89af0335f8c2de48903173d259c05f1, type: 3}
   - {fileID: 1171628881558895778, guid: cc2bae3c786424288b28590468a0fe53, type: 3}

@@ -59,7 +59,6 @@ namespace DIC
         {
             _checkerToDependentToDependencyMap.Add(checker, (typeof(DependentType), typeof(DependencyType)));
 
-            Debug.Log("Checking");
             var t = typeof(CheckerType);
 
             var methodInfo = t.GetMethod("Init");
