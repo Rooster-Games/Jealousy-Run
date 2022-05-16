@@ -37,7 +37,6 @@ namespace JR
 
         public void Init(InitParameters initParameters)
         {
-            Debug.Log("Checker Init");
             _gameType = initParameters.GameType;
             _genderInfo = initParameters.GenderInfo;
         }

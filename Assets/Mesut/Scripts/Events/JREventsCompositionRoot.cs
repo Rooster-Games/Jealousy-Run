@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using GameCores;
 using UnityEngine;
+using System.Linq;
 
 namespace JR
 {
@@ -11,8 +12,10 @@ namespace JR
         {
             Debug.Log("JREventsCompositionRoot - Init");
 
-            eventBus.Raise<OnBarEmpty>();
-            eventBus.Raise<OnLevelEnd>();
+            //eventBus.Raise<OnBarEmpty>();
+            //eventBus.Raise<OnItemCollected>();
+            //eventBus.Raise<OnSlap>();
+
         }
     }
 }

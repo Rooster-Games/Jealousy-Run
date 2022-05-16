@@ -23,6 +23,7 @@ namespace JR
 
             RoosterHub.Central.OnGameStartedHandler += StartGame;
             _eventbus.Register<OnBarEmpty>(EventBus_OnBarEmpty);
+            _eventbus.Register<OnGameWin>(EventBus_OnGameWin);
         }
 
         private void EventBus_OnBarEmpty(OnBarEmpty eventData)
@@ -36,6 +37,11 @@ namespace JR
             RoosterHub.Central.Fail();
         }
 
+
+        private void EventBus_OnGameWin(OnGameWin eventData)
+        {
+            RoosterHub.Central.Win();
+        }
 
         private void StartGame()
         {

@@ -6,5 +6,7 @@ using UnityEngine;
 namespace JR
 {
     public class OnBarEmpty : IEventData { }
-    public class OnLevelEnd : IEventData { }
+    public class OnItemCollected : IEventData { }
+    public class OnSlap : IEventData { }
+    public class OnEncounterOppositeGender : IEventData { }
 }

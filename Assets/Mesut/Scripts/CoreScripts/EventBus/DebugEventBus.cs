@@ -27,13 +27,12 @@ namespace GameCores
 
         public void Register<T>(Action<T> action) where T : IEventData
         {
-
             var targetStr = action.Target.ToString();
             string className = targetStr;
             if (targetStr.Contains("("))
             {
-                var startIndex = targetStr.IndexOf('(') + 1;
-                var endIndex = targetStr.IndexOf(')');
+                var startIndex = targetStr.LastIndexOf('(') + 1;
+                var endIndex = targetStr.LastIndexOf(')');
                 className = targetStr.Substring(startIndex, endIndex - startIndex);
             }
             

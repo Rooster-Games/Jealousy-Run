@@ -96,6 +96,8 @@ namespace JR
             go.transform.localScale = Vector3.one * 2f;
 
             Destroy(go, 3f);
+
+            _eventBus.Fire<OnSlap>();
         }
 
         public void Slap()

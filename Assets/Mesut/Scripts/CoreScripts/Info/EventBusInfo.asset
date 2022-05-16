@@ -17,7 +17,9 @@ MonoBehaviour:
   - OnGameWin
   - OnGameFail
   - OnBarEmpty
-  - OnLevelEnd
+  - OnItemCollected
+  - OnSlap
+  - OnEncounterOppositeGender
   _eventRegisterInfo:
   - _eventName: OnGameStarted
     _classAndMethodName:
@@ -28,14 +30,14 @@ MonoBehaviour:
     - 'Class: JR.BarController, Method:EventBus_OnGameStarted'
   - _eventName: OnBarEmpty
     _classAndMethodName:
-    - 'Class: JR.PlayerController, Method:EventBus_OnBarEmpty'
     - 'Class: JR.InputManager, Method:EventBus_OnBarEmpty'
     - 'Class: JR.GameManager, Method:EventBus_OnBarEmpty'
+    - 'Class: JR.SingleController, Method:EventBus_OnBarEmpty'
     - 'Class: JR.CrowdedController, Method:EventBus_OnBarEmpty'
-  _eventFireInfo:
-  - _eventName: OnGameStarted
+    - 'Class: JR.PersonController, Method:EventBus_OnBarEmpty'
+    - 'Class: JR.PlayerController, Method:EventBus_OnBarEmpty'
+    - 'Class: JR.SpeedChanger, Method:EventBus_OnBarEmpty'
+  - _eventName: OnGameWin
     _classAndMethodName:
-    - 'Class: JR.GameManager'
-  - _eventName: OnBarEmpty
-    _classAndMethodName:
-    - 'Class: JR.BarController'
+    - 'Class: JR.GameManager, Method:EventBus_OnGameWin'
+  _eventFireInfo: []

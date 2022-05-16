@@ -1,4 +1,5 @@
 
+using System;
 using Cinemachine;
 using DIC;
 using GameCores;
@@ -14,6 +15,7 @@ namespace JR
         [SerializeField] GenderSelectionController _genderSelectionController;
         [SerializeField] CinemachineVirtualCamera _cameraToChangeFov;
         [SerializeField] RoleSelector _roleSelector;
+        [SerializeField] EndTrigger _endTrigger;
 
         [SerializeField] GameObject[] _levelCollection;
 
@@ -32,13 +34,15 @@ namespace JR
 
         public void RegisterToContainer()
         {
-            var assemblyInstanceCreator = new AssemblyInstanceCreator(typeof(MainCompositionRoot));
+            var start = DateTime.Now;
+
+            //var assemblyInstanceCreator = new AssemblyInstanceCreator(typeof(MainCompositionRoot));
             var eventBus = new DebugEventBus(new EventBus());
             var coreEventBusCompositionRoot = new CoreEventBusCompositionRoot();
 
 
             DIContainer.Instance.RegisterSingle<IEventBus>(eventBus, sortingIndex: -100);
-            DIContainer.Instance.RegisterSingle(assemblyInstanceCreator, sortingIndex: -100);
+            //DIContainer.Instance.RegisterSingle(assemblyInstanceCreator, sortingIndex: -100);
             DIContainer.Instance.RegisterSingle(coreEventBusCompositionRoot, sortingIndex: -100);
             DIContainer.Instance.RegisterSingle(_inputManager, sortingIndex: -100);
 
@@ -56,6 +60,8 @@ namespace JR
             // Buradan sonrasi degistirilecek
             DIContainer.Instance.RegisterSingle(_cameraToChangeFov, sortingIndex: -100);
 
+            DIContainer.Instance.RegisterSingle(_endTrigger);
+
             _roleSelector.RegisterToContainer(_genderSelectionController.GameTypeGender);
 
             var compRootCollection = FindObjectsOfType<BaseCompRootGO>();
@@ -63,6 +69,12 @@ namespace JR
                 compRootCollection[i].RegisterToContainer();
 
             DIContainer.Instance.Resolve();
+
+            var end = DateTime.Now;
+            var diff = end.Subtract(start);
+
+            Debug.Log("Seconds: " + diff.Seconds.ToString());
+            Debug.Log("MiliSeconds: " + diff.Milliseconds.ToString());
         }
     }
 }

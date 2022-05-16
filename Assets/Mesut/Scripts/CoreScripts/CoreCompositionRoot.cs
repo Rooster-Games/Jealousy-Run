@@ -10,19 +10,19 @@ namespace GameCores
         public void Init(InitParameters initParameters)
         {
             var eventBus = initParameters.EventBus;
-            var assemlyInstanceCreator = initParameters.AssemblyInstanceCreator;
+            // var assemlyInstanceCreator = initParameters.AssemblyInstanceCreator;
 
             CoreEventBusCompositionRoot eventBusCompositionRoot = new CoreEventBusCompositionRoot();
             var eventBusCompositionRootInitPameters = new CoreEventBusCompositionRoot.InitParameters();
             eventBusCompositionRootInitPameters.EventBus = eventBus;
-            eventBusCompositionRootInitPameters.AssemblyInstanceCreator = assemlyInstanceCreator;
+            // eventBusCompositionRootInitPameters.AssemblyInstanceCreator = assemlyInstanceCreator;
             eventBusCompositionRoot.Init(eventBusCompositionRootInitPameters);
         }
 
         public class InitParameters
         {
             public IEventBus EventBus { get; set; }
-            public AssemblyInstanceCreator AssemblyInstanceCreator { get; set; }
+            // public AssemblyInstanceCreator AssemblyInstanceCreator { get; set; }
         }
     }
 }
