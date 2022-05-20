@@ -111,6 +111,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &1189225117936245298
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +223,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &1189225117965049368
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,6 +779,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &3288850029187995723
 GameObject:
   m_ObjectHideFlags: 0
@@ -999,6 +1002,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &3288850029895861256
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,6 +1114,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &3288850030119406413
 GameObject:
   m_ObjectHideFlags: 0
@@ -1221,6 +1226,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &3496715753245990311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1499,6 +1505,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3496715753931144673}
   - component: {fileID: 3496715753931144672}
+  - component: {fileID: 5674247560688018975}
   m_Layer: 0
   m_Name: Level_05
   m_TagString: Untagged
@@ -1553,6 +1560,19 @@ MonoBehaviour:
     _endLocalPosition: {x: 0, y: 0, z: 310.8}
     _pathEndPosition: {x: 0, y: 0, z: 310.8}
     _roadMaterial: {fileID: 2100000, guid: ea72f3daaba3f46b3a672edd165b29a6, type: 2}
+--- !u!114 &5674247560688018975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3496715753931144670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5912f03cf3c15428e86ecbcc298326db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <TestThisLevel>k__BackingField: 0
 --- !u!1 &3496715754034572672
 GameObject:
   m_ObjectHideFlags: 0
@@ -1664,6 +1684,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &3496715754182282071
 GameObject:
   m_ObjectHideFlags: 0
@@ -1775,6 +1796,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &3496715754246494544
 GameObject:
   m_ObjectHideFlags: 0
@@ -1886,6 +1908,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &3496715754492858433
 GameObject:
   m_ObjectHideFlags: 0
@@ -2108,6 +2131,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &3496715754795182126
 GameObject:
   m_ObjectHideFlags: 0
@@ -2330,6 +2354,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &3496715754991817995
 GameObject:
   m_ObjectHideFlags: 0
@@ -2663,6 +2688,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &7142475198080062153
 GameObject:
   m_ObjectHideFlags: 0
@@ -2774,6 +2800,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &7142475198823578819
 GameObject:
   m_ObjectHideFlags: 0
@@ -2885,6 +2912,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &7142475199469793138
 GameObject:
   m_ObjectHideFlags: 0
@@ -3107,6 +3135,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &7862673540954789144
 GameObject:
   m_ObjectHideFlags: 0
@@ -3329,6 +3358,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &7862673541451787898
 GameObject:
   m_ObjectHideFlags: 0
