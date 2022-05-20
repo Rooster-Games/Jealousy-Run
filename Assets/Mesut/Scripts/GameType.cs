@@ -23,6 +23,7 @@ namespace JR
             var roadSetterGO = Instantiate(initParameters.LevelPrefab);
             roadSetterGO.transform.position = _peopleTransform.position;
             roadSetterGO.transform.SetParent(_peopleTransform);
+            roadSetterGO.SetActive(true);
             var roadSetter = roadSetterGO.GetComponent<RoadSetter>();
             var roadSetterInitParameters = new RoadSetter.InitParameters();
             roadSetterInitParameters.RoadTransform = _roadTransform;

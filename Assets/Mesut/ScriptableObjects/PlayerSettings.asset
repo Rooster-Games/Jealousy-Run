@@ -206,8 +206,8 @@ MonoBehaviour:
     _exhaustDuration: 1
   _animatorGenderSettingsCollection:
   - _gender: 1
-    _guardedRuntimeAnimatorController: {fileID: 9100000, guid: c8d0ef5ca1a3a4845b00baaa95293e1e, type: 2}
-    _protecterRunTimeAnimatorController: {fileID: 9100000, guid: 4f1d3780e16284177aa62fd5a5bfc6f0, type: 2}
+    _guardedRuntimeAnimatorController: {fileID: 9100000, guid: 70e72e2e5362d4a2891c8bf1332c5f60, type: 2}
+    _protecterRunTimeAnimatorController: {fileID: 9100000, guid: 92436a20be14648238aac414381c714a, type: 2}
   - _gender: 0
     _guardedRuntimeAnimatorController: {fileID: 9100000, guid: d0cfb6aaf46c84699be6f6d88bbaf84a, type: 2}
     _protecterRunTimeAnimatorController: {fileID: 9100000, guid: 7f8dd00b066dd44b9bfbe4d2361cab25, type: 2}
