@@ -20,7 +20,6 @@ namespace JR
                 .RegisterComponent<PushEnemyDetector>(true)
                 .RegisterComponent<ItemTriggerDetector>(true)
                 .RegisterFactoryFor<IAnimatorController, AnimatorControllerFactory>()
-                .RegisterWhenInjectTo<ExhaustChecker, IAnimatorController>()
                 .RegisterWithCheck<ExhaustChecker, IAnimatorController, ProtectorChecker>(new ProtectorChecker());
         }
     }
@@ -32,25 +31,27 @@ namespace JR
 
     public class ProtectorChecker : IChecker
     {
-        GameType _gameType;
+        Gender _protectorGender;
         GenderInfo _genderInfo;
 
         public void Init(InitParameters initParameters)
         {
-            _gameType = initParameters.GameType;
+            _protectorGender = initParameters.ProtectorGender;
             _genderInfo = initParameters.GenderInfo;
         }
 
         public bool Check()
         {
-            return _gameType.ProtectorGender == _genderInfo.Gender;
+            bool check = _protectorGender == _genderInfo.Gender;
+
+            return _protectorGender == _genderInfo.Gender;
         }
 
 
         public class InitParameters 
         {
             public GenderInfo GenderInfo { get; set; }
-            public GameType GameType { get; set; }
+            public Gender ProtectorGender { get; set; }
         }
     }
 

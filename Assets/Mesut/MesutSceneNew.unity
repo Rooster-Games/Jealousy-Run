@@ -2991,7 +2991,6 @@ GameObject:
   - component: {fileID: 457546310}
   - component: {fileID: 457546309}
   - component: {fileID: 457546308}
-  - component: {fileID: 457546307}
   m_Layer: 6
   m_Name: Female
   m_TagString: Player
@@ -3016,19 +3015,6 @@ Transform:
   m_Father: {fileID: 1992015715}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &457546307
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 457546305}
-  m_Material: {fileID: 13400000, guid: 99a7592b583d54e7d9d859496266a379, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 3.56, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &457546308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3067,7 +3053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _genderInfo: {fileID: 457546309}
-  _slapAnimationCount: 6
+  _slapAnimationCount: 10
   _handTransformCollection:
   - {fileID: 267669728}
   - {fileID: 1178946804}
@@ -3120,7 +3106,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &458290168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3323,7 +3309,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 463009325}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.41}
+  m_LocalPosition: {x: 0, y: 0, z: 4.01}
   m_LocalScale: {x: 1.9031, y: 4.1454, z: 1.8265791}
   m_Children: []
   m_Father: {fileID: 1900729020}
@@ -9523,7 +9509,7 @@ Animator:
   m_GameObject: {fileID: 1566368766}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: a8ba3da98dde9407a8637677fd84208e, type: 3}
-  m_Controller: {fileID: 9100000, guid: 4f1d3780e16284177aa62fd5a5bfc6f0, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2e18316ffaf7d49aba13ebf4ce0922d1, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1

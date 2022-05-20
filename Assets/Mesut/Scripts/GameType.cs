@@ -7,7 +7,7 @@ namespace JR
 {
     public class GameType : MonoBehaviour
     {
-        [SerializeField] Gender _protectorsGender;
+        Gender _protectorsGender;
         [SerializeField] Transform _roadTransform;
         [SerializeField] Transform _endPlatformTransform;
         [SerializeField] Transform _peopleTransform;
@@ -23,6 +23,7 @@ namespace JR
             var roadSetterGO = Instantiate(initParameters.LevelPrefab);
             roadSetterGO.transform.position = _peopleTransform.position;
             roadSetterGO.transform.SetParent(_peopleTransform);
+            roadSetterGO.SetActive(true);
             var roadSetter = roadSetterGO.GetComponent<RoadSetter>();
             var roadSetterInitParameters = new RoadSetter.InitParameters();
             roadSetterInitParameters.RoadTransform = _roadTransform;
