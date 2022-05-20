@@ -64,7 +64,7 @@ ModelImporter:
           curve:
           - serializedVersion: 3
             time: 0
-            value: 1
+            value: 2.5
             inSlope: 0
             outSlope: 0
             tangentMode: 0
@@ -73,7 +73,7 @@ ModelImporter:
             outWeight: 0
           - serializedVersion: 3
             time: 0.18832597
-            value: 2
+            value: 2.5
             inSlope: 0
             outSlope: 0
             tangentMode: 0

@@ -1,9 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using System.Reflection;
-using DI;
 using JR;
 using UnityEngine;
 
@@ -340,7 +337,7 @@ namespace DIC
             if (component == null)
                 throw new System.Exception($"=== Couldn't find {typeof(T).Name}'s Component at {_gameObject.name}'s hierarchy! ===");
 
-            component.CheckForIniting();
+            //component.CheckForIniting();
             return component;
         }
 
@@ -353,7 +350,7 @@ namespace DIC
 
             foreach (var component in componentCollection)
             {
-                component.CheckForIniting();
+                //component.CheckForIniting();
             }
 
             return componentCollection;

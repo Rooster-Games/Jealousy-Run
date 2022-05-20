@@ -39,7 +39,7 @@ ModelImporter:
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 157
+      lastFrame: 123
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -64,7 +64,7 @@ ModelImporter:
           curve:
           - serializedVersion: 3
             time: 0.0022010803
-            value: 2.5
+            value: 3.5
             inSlope: 0
             outSlope: 0
             tangentMode: 0
@@ -73,7 +73,7 @@ ModelImporter:
             outWeight: 0
           - serializedVersion: 3
             time: 0.20924577
-            value: 2.0176468
+            value: 3.5
             inSlope: 0
             outSlope: 0
             tangentMode: 0

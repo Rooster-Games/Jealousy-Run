@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using Cinemachine;
-using DI;
 using DIC;
 using GameCores;
 using UnityEngine;

@@ -34,7 +34,7 @@ namespace JR
             foreach (var animator in _animators)
             {
                 float timer = 1f;
-                DOTween.To(() => timer, (x) => { timer = x; animator.SetLayerWeight(1, x); }, 0f, 0.25f);
+                // DOTween.To(() => timer, (x) => { timer = x; animator.SetLayerWeight(1, x); }, 0f, 0.25f);
             }
         }
     }

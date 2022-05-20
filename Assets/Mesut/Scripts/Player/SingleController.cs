@@ -2,8 +2,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
-using DI;
 using GameCores;
 using GameCores.CoreEvents;
 using UnityEngine;

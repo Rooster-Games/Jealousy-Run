@@ -21,13 +21,16 @@ namespace JR
 
         Gender _protectorGender;
         IProtector _protector;
-
+        //PlayerAnimationEvents _playerAnimationEvents;
 
         public void Init(InitParameters initParameters)
         {
             _protectorGender = initParameters.ProtectorGender;
             _protector = initParameters.Protector;
-               //_singleController = initParameters.SingleController;
+            // _playerAnimationEvents = initParameters.PlayerAnimationEvents;
+            //_singleController = initParameters.SingleController;
+
+            //_playerAnimationEvents.RgisterOnSlap(Slap);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -46,10 +49,14 @@ namespace JR
                 var slapable = other.GetComponent<Slapable>();
                 if (slapable == null) return;
 
+                other.enabled = false;
+
                 var dir = (other.transform.position - transform.position).normalized;
                 dir.y = _yDir;
                 _forceAmount = Random.Range(_minMaxForceAmount.x, _minMaxForceAmount.y);
 
+                _slapableList.Add(slapable);
+                _slapableToSlapDataMap.Add(slapable, (Dir: dir, ForceAmount: _forceAmount));
                 float timer = 0f;
                 DOTween.To(() => timer, (x) => timer = x, 1f, _slapDelayDuration)
                     .OnComplete(() => slapable.Slap(dir, _forceAmount, _forceMode));
@@ -59,11 +66,30 @@ namespace JR
         }
 
 
+        Dictionary<Slapable, (Vector3 Dir, float ForceAmount)> _slapableToSlapDataMap = new Dictionary<Slapable, (Vector3 Dir, float ForceAmount)>();
+        List<Slapable> _slapableList = new List<Slapable>();
+
+        private void Slap()
+        {
+            foreach (var slapable in _slapableList)
+            {
+                var data = _slapableToSlapDataMap[slapable];
+                var dir = data.Dir;
+                var forceAmount = data.ForceAmount;
+
+                slapable.Slap(dir, forceAmount, _forceMode);
+            }
+
+            _slapableList.Clear();
+            _slapableToSlapDataMap.Clear();
+        }
+
         public class InitParameters
         {
             // public SingleController SingleController { get; set; }
             public Gender ProtectorGender { get; set; }
             public IProtector Protector { get; set; }
+            //public PlayerAnimationEvents PlayerAnimationEvents { get; set; }
         }
     }
 }

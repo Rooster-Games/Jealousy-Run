@@ -124,7 +124,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   _cameraFovChangerSettings:
-    _minMaxFov: {x: 78, y: 100}
+    _minMaxFov: {x: 58, y: 78}
     _toMaxDuration: 1
     _toMaxCurve:
       serializedVersion: 2
@@ -175,7 +175,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    _sideOffset: {x: -1.6, y: 1.2, z: 3}
+    _sideOffset: {x: -1.6, y: 0.75, z: 1.5}
     _reachToTargetOffsetDuration: 1.5
     _sideMovementCurve:
       serializedVersion: 2

@@ -3,12 +3,7 @@ using UnityEngine;
 using GameCores;
 using GameCores.CoreEvents;
 using DG.Tweening;
-using NaughtyAttributes;
-using DI;
-using System.Collections;
-using Unity.Profiling.LowLevel;
 using System;
-using DIC;
 
 namespace JR
 {

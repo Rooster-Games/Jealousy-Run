@@ -13,6 +13,7 @@ namespace JR
         [SerializeField] CrowdedCreatorSpawnSettingsSO _spawnSettings;
         [SerializeField] int _peopleCount = 5;
         [SerializeField] GameObject _collectablePrefab;
+        [SerializeField] float _itemRadius = 0.75f;
 
         BoxCollider _boxCollider;
 
@@ -43,9 +44,14 @@ namespace JR
             float width = extents.x - _spawnSettings.CellSize;
             float height = extents.z - _spawnSettings.CellSize;
 
+            int itemCount = (int)((2f * height) / _itemRadius);
+
             // world pos
             Vector3 leftBottomPos = center + new Vector3(-width, 0f, -height);
             Vector3 rightTopPos = center + new Vector3(width, 0f, height);
+
+            Vector3 bottom = center + new Vector3(0f, 0f, -height);
+            Vector3 top = center + new Vector3(0f, 0f, height);
 
             _boxCollider.size = transform.localScale;
             transform.localScale = Vector3.one;
@@ -56,26 +62,30 @@ namespace JR
             }
 
             int checkCounter = 0;
-            for (int i = 0; i < _peopleCount; i++)
+            for (int i = 0; i < itemCount; i++)
             {
-                Vector3 randomPos = GetRandomPosition(leftBottomPos, rightTopPos);
-                bool canSpawn = CheckIfCanSpawn(randomPos);
-                while (!canSpawn)
-                {
-                    checkCounter++;
-                    if (checkCounter == 10)
-                        break;
+                //Vector3 randomPos = GetRandomPosition(leftBottomPos, rightTopPos);
+                float percent = (float)i / (itemCount - 1);
+                Vector3 randomPos = Vector3.Lerp(bottom, top, percent);
 
-                    randomPos = GetRandomPosition(leftBottomPos, rightTopPos);
-                    canSpawn = CheckIfCanSpawn(randomPos);
-                }
+                CreateGo(randomPos);
+                //bool canSpawn = CheckIfCanSpawn(randomPos);
+                //while (!canSpawn)
+                //{
+                //    checkCounter++;
+                //    if (checkCounter == 10)
+                //        break;
 
-                if (canSpawn)
-                {
-                    randomPos.x = center.x;
-                    CreateGo(randomPos);
-                }
-                checkCounter = 0;
+                //    randomPos = GetRandomPosition(leftBottomPos, rightTopPos);
+                //    canSpawn = CheckIfCanSpawn(randomPos);
+                //}
+
+                //if (canSpawn)
+                //{
+                //    randomPos.x = center.x;
+                //    CreateGo(randomPos);
+                //}
+                //checkCounter = 0;
             }
 
             // Debug.Log($"Creation Counter: {_creationCounter}");

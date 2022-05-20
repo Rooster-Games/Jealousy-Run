@@ -129,17 +129,16 @@ namespace JR
             public Gender GenderToCreate { get; set; }
         }
 
-        private void OnTriggerExit(Collider other)
-        {
-            var animator = other.GetComponentInChildren<Animator>();
+        //private void OnTriggerExit(Collider other)
+        //{
+        //    var animator = other.GetComponentInChildren<Animator>();
 
-            if (animator != null)
-            {
-                float timer = 1f;
-                DOTween.To(() => timer, (x) => { timer = x; animator.SetLayerWeight(1, x); }, 0f, 0.15f);
-                animator.ResetTrigger("slap");
-            }
-        }
-
+        //    if (animator != null)
+        //    {
+        //        float timer = 1f;
+        //        // DOTween.To(() => timer, (x) => { timer = x; animator.SetLayerWeight(1, x); }, 0f, 0.15f);
+        //        animator.ResetTrigger("slap");
+        //    }
+        //}
     }
 }
