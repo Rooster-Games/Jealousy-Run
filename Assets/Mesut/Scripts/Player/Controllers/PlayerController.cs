@@ -141,7 +141,7 @@ namespace JR
                 .OnComplete(() => { _isExhausted = true;});
         }
 
-        public void CheckForExhaust()
+        public bool CheckForExhaust()
         {
             if (_isExhausted)
                 BecomeExhaust();
@@ -150,6 +150,8 @@ namespace JR
                 _protectorController.SetTrigger("normalRun");
                 _timerTween.Kill();
             }
+
+            return _isExhausted;
         }
 
         private void BecomeExhaust()
@@ -158,8 +160,8 @@ namespace JR
             _protectorController.SetTrigger("yorgun");
             _protectorController.ResetTrigger("normalRun");
 
-            float timer = _timer;
-            _becomeExhaust = DOTween.To(() => timer, (x) => { timer = x; _timer = x; }, 0f, _settings.ExhaustDuration)
+            float timer2 = _timer;
+            _becomeExhaust = DOTween.To(() => timer2, (x) => { timer2 = x; _timer = x; }, 0f, _settings.ExhaustDuration)
                 .OnComplete(CoolDown);
         }
 

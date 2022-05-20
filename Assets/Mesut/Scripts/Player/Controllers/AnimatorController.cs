@@ -23,7 +23,7 @@ namespace JR
             _animator.SetLayerWeight(layerIndex, weight);
         }
 
-        public void SetTrigger(string triggerName)
+        public void SetTrigger(string triggerName, [CallerMemberName] string calerName ="")
         {
             _animator.SetTrigger(triggerName);
         }
@@ -43,7 +43,7 @@ namespace JR
             return _animator.GetCurrentAnimatorStateInfo(layerIndex).length;
         }
 
-        public void ResetTrigger(string stateName)
+        public void ResetTrigger(string stateName, [CallerMemberName] string calerName = "")
         {
             _animator.ResetTrigger(stateName);
         }
@@ -64,11 +64,11 @@ namespace JR
         void SetBool(string stateName, bool state);
         void SetFloat(string parameterName, float value);
         float GetFloat(string parameterName);
-        void SetTrigger(string triggerName);
+        void SetTrigger(string triggerName, [CallerMemberName] string callerName ="");
         void SetLayerWeight(int layerIndex, float weight);
         void SetAnimatorSpeed(float speed);
         float TestLength(int layerIndex);
-        void ResetTrigger(string stateName);
+        void ResetTrigger(string stateName, [CallerMemberName] string calerName = "");
     }
 
     public class AnimatorControllerFactory
@@ -110,7 +110,7 @@ namespace JR
             throw new System.NotImplementedException();
         }
 
-        public void ResetTrigger(string stateName)
+        public void ResetTrigger(string stateName, [CallerMemberName] string calerName = "")
         {
             foreach (var controller in _animationControllerList)
             {
@@ -150,7 +150,7 @@ namespace JR
             }
         }
 
-        public void SetTrigger(string triggerName)
+        public void SetTrigger(string triggerName, [CallerMemberName] string calerName = "")
         {
             foreach (var controller in _animationControllerList)
             {

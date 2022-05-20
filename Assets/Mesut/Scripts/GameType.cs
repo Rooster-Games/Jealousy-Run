@@ -7,7 +7,7 @@ namespace JR
 {
     public class GameType : MonoBehaviour
     {
-        [SerializeField] Gender _protectorsGender;
+        Gender _protectorsGender;
         [SerializeField] Transform _roadTransform;
         [SerializeField] Transform _endPlatformTransform;
         [SerializeField] Transform _peopleTransform;
