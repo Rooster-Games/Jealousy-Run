@@ -54,6 +54,7 @@ namespace JR
                 if (!levelTestingSettings.TestThisLevel) continue;
 
                 levelPrefab = prefab;
+                break;
             }
 
             if(levelPrefab == null)

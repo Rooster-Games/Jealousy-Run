@@ -24,9 +24,12 @@ namespace JR
         {
             var crowdedCreatorCollection = GetComponentsInChildren<CrowdedCreator>();
 
+            var crowdedCreatorInitParameters = new CrowdedCreator.InitParameters();
+            crowdedCreatorInitParameters.GenderToCreate = initParameters.ProtectorGender;
+
             foreach (var crowdedCreator in crowdedCreatorCollection)
             {
-                crowdedCreator.Init();
+                crowdedCreator.Init(crowdedCreatorInitParameters);
                 crowdedCreator.GetComponent<MeshRenderer>().enabled = false;
             }
 
@@ -43,6 +46,7 @@ namespace JR
         public class InitParameters
         {
             public IEventBus EventBus { get; set; }
+            public Gender ProtectorGender { get; set; }
         }
     }
 }

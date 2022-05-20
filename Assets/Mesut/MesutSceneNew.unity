@@ -621,7 +621,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bf2e91e3e1334338a51e721123c8d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _protectorsGender: 0
   _roadTransform: {fileID: 543450651920749211}
   _endPlatformTransform: {fileID: 662052203}
   _peopleTransform: {fileID: 459936836}
@@ -6361,6 +6360,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4611243186712932704, guid: c5b454e2f3e484bba963208fd82f5b53, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5420106553413376131, guid: c5b454e2f3e484bba963208fd82f5b53, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6586096494727223011, guid: c5b454e2f3e484bba963208fd82f5b53, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6586096495310328745, guid: c5b454e2f3e484bba963208fd82f5b53, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6586096495612783582, guid: c5b454e2f3e484bba963208fd82f5b53, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6586096495822781965, guid: c5b454e2f3e484bba963208fd82f5b53, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -6408,6 +6427,18 @@ PrefabInstance:
     - target: {fileID: 6586096495822782002, guid: c5b454e2f3e484bba963208fd82f5b53, type: 3}
       propertyPath: m_Name
       value: Level_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6586096496206716487, guid: c5b454e2f3e484bba963208fd82f5b53, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6586096496697893206, guid: c5b454e2f3e484bba963208fd82f5b53, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248840797097962014, guid: c5b454e2f3e484bba963208fd82f5b53, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5b454e2f3e484bba963208fd82f5b53, type: 3}
