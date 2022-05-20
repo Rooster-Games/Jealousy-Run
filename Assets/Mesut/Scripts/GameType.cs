@@ -37,6 +37,7 @@ namespace JR
             foreach (var collectCreator in collectCreatorCollection)
             {
                 collectCreator.Init();
+                collectCreator.GetComponent<MeshRenderer>().enabled = false;
             }
 
             // Item collection

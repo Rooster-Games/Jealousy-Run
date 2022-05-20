@@ -111,7 +111,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
-  _radius: 0.5
+  _itemRadius: 0.75
 --- !u!1 &1620318679709404257
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +223,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
-  _radius: 0.5
+  _itemRadius: 0.75
 --- !u!1 &1620318679967756332
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,7 +557,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
-  _radius: 0.5
+  _itemRadius: 0.75
 --- !u!1 &5036564159258940927
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,7 +669,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
-  _radius: 0.5
+  _itemRadius: 0.75
 --- !u!1 &5036564159337334776
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,7 +781,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
-  _radius: 0.5
+  _itemRadius: 0.75
 --- !u!1 &5036564159509570422
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,6 +792,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5036564159509570377}
   - component: {fileID: 5036564159509570376}
+  - component: {fileID: 4139500736755624823}
   m_Layer: 0
   m_Name: Level_03
   m_TagString: Untagged
@@ -842,6 +843,18 @@ MonoBehaviour:
     _endLocalPosition: {x: 0, y: 0, z: 236.9}
     _pathEndPosition: {x: 0, y: 0, z: 236.9}
     _roadMaterial: {fileID: 2100000, guid: 8d038dd31174e4b37826a4909b6595ca, type: 2}
+--- !u!114 &4139500736755624823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5036564159509570422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5912f03cf3c15428e86ecbcc298326db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5036564159612187432
 GameObject:
   m_ObjectHideFlags: 0
@@ -953,7 +966,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
-  _radius: 0.5
+  _itemRadius: 0.75
 --- !u!1 &5036564159909690398
 GameObject:
   m_ObjectHideFlags: 0
@@ -1549,7 +1562,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
-  _radius: 0.5
+  _itemRadius: 0.75
 --- !u!1 &5036564161162956521
 GameObject:
   m_ObjectHideFlags: 0
@@ -1772,7 +1785,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
-  _radius: 0.5
+  _itemRadius: 0.75
 --- !u!1 &7341806277046305946
 GameObject:
   m_ObjectHideFlags: 0
@@ -1884,7 +1897,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
-  _radius: 0.5
+  _itemRadius: 0.75
 --- !u!1 &7341806277092999344
 GameObject:
   m_ObjectHideFlags: 0
@@ -2107,7 +2120,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
-  _radius: 0.5
+  _itemRadius: 0.75
 --- !u!1 &7341806278376224599
 GameObject:
   m_ObjectHideFlags: 0

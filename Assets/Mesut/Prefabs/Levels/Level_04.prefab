@@ -111,6 +111,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &466069712610411553
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,6 +445,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &466069713834755455
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,6 +557,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &609454191409449630
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,6 +669,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &609454191424947497
 GameObject:
   m_ObjectHideFlags: 0
@@ -999,6 +1003,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &6191940160495371133
 GameObject:
   m_ObjectHideFlags: 0
@@ -1221,6 +1226,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &6191940160763804757
 GameObject:
   m_ObjectHideFlags: 0
@@ -1332,6 +1338,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &6191940160865073938
 GameObject:
   m_ObjectHideFlags: 0
@@ -1929,6 +1936,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &6191940162182012932
 GameObject:
   m_ObjectHideFlags: 0
@@ -2040,6 +2048,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &6191940162401289939
 GameObject:
   m_ObjectHideFlags: 0
@@ -2151,6 +2160,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &6191940162432964237
 GameObject:
   m_ObjectHideFlags: 0
@@ -2161,6 +2171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6191940162432964274}
   - component: {fileID: 6191940162432964275}
+  - component: {fileID: -4558424427685604244}
   m_Layer: 0
   m_Name: Level_04
   m_TagString: Untagged
@@ -2213,6 +2224,18 @@ MonoBehaviour:
     _endLocalPosition: {x: 0, y: 0, z: 282.54}
     _pathEndPosition: {x: 0, y: 0, z: 282.54}
     _roadMaterial: {fileID: 2100000, guid: f42735af9c1844621b23eeec7dfcd2b8, type: 2}
+--- !u!114 &-4558424427685604244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6191940162432964237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5912f03cf3c15428e86ecbcc298326db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8496072888017371820
 GameObject:
   m_ObjectHideFlags: 0
@@ -2546,6 +2569,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &8496072889917157729
 GameObject:
   m_ObjectHideFlags: 0
@@ -2657,6 +2681,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &8496072889955398987
 GameObject:
   m_ObjectHideFlags: 0

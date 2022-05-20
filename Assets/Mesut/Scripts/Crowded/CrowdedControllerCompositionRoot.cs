@@ -27,6 +27,7 @@ namespace JR
             foreach (var crowdedCreator in crowdedCreatorCollection)
             {
                 crowdedCreator.Init();
+                crowdedCreator.GetComponent<MeshRenderer>().enabled = false;
             }
 
             var personControllerCollection = GetComponentsInChildren<PersonController>();

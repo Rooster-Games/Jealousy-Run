@@ -333,6 +333,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 10
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &6586096495612783554
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,6 +556,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 10
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &6586096495822782002
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,6 +567,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6586096495822781965}
   - component: {fileID: 6586096495822781964}
+  - component: {fileID: 8010025567711751245}
   m_Layer: 0
   m_Name: Level_1
   m_TagString: Untagged
@@ -610,6 +613,18 @@ MonoBehaviour:
     _endLocalPosition: {x: 0, y: 0, z: 125.4}
     _pathEndPosition: {x: 0, y: 0, z: 125.4}
     _roadMaterial: {fileID: 2100000, guid: 0b82c55b3fb6140f2a6781854e25023c, type: 2}
+--- !u!114 &8010025567711751245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6586096495822782002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5912f03cf3c15428e86ecbcc298326db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6586096495921720940
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,6 +736,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 10
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &6586096496073623739
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,6 +848,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 10
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &6586096496129219260
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,6 +960,7 @@ MonoBehaviour:
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
   _peopleCount: 10
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
+  _itemRadius: 1
 --- !u!1 &6586096496206716491
 GameObject:
   m_ObjectHideFlags: 0
