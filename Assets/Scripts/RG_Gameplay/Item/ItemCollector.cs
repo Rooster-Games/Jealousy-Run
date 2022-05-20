@@ -2,15 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using GameCores;
+using JR;
 
 public class ItemCollector : MonoBehaviour, ICollector<Item>
 {
-    public event Action<Item> OnItemCollected;
+    IEventBus _eventBus;
+    public void Init(InitParameters initParameters)
+    {
+        _eventBus = initParameters.EventBus;
+    }
 
     public void Collect(Item item)
     {
         item.Execute();
-        OnItemCollected?.Invoke(item);
+        _eventBus.Fire<OnItemCollected>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -19,5 +25,10 @@ public class ItemCollector : MonoBehaviour, ICollector<Item>
         {
             Collect(collectable);
         }
+    }
+
+    public class InitParameters
+    {
+        public IEventBus EventBus { get; set; }
     }
 }

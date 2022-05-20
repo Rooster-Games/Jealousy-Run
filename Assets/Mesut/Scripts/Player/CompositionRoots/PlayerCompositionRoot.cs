@@ -1,43 +1,26 @@
-using System.Collections;
+
+
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
+using System.Linq;
+using DIC;
+using GameCores;
 
 namespace JR
 {
-    public class PlayerCompositionRoot : MonoBehaviour
+    public class PlayerCompositionRoot : BaseCompRootGO
     {
         [SerializeField] PlayerSettingsSO _playerSettings;
+        [SerializeField] CoroutineSwapper _coroutineSwapper;
 
-        public void Awake()
+        public override void RegisterToContainer()
         {
-            Init(new InitParameters());
-        }
-
-        public void Init(InitParameters initParameters)
-        {
-            // CompositionRoot
-            DollyCartCompositionRoot dollyCartCompositionRoot = GetComponent<DollyCartCompositionRoot>();
-
-            // Self
-            var dollyCart = GetComponent<CinemachineDollyCart>();
-
-            // Child
-            var dollyCartController = GetComponentInChildren<DollyCartController>();
-
-            // Creation of InitParameters
-            var dollyCartCompositionRootInitParameters = new DollyCartCompositionRoot.InitParameters();
-            dollyCartCompositionRootInitParameters.DollyCart = dollyCart;
-            dollyCartCompositionRootInitParameters.DollyCartController = dollyCartController;
-            dollyCartCompositionRootInitParameters.DollyCartSettings = _playerSettings.DollyCartSettings;
-
-            dollyCartCompositionRoot.Init(dollyCartCompositionRootInitParameters);
-
-        }
-
-        public class InitParameters
-        {
-
+            DIContainer.Instance.RegisterGameObject(gameObject)
+                .RegisterComponent<CinemachineDollyCart>()
+                .RegisterComponent<DollyCartController>()
+                .RegisterComponent<PlayerController>()
+                .RegisterWhenInjectTo<SpeedChanger, DollyCartController>();
         }
     }
 }

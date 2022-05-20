@@ -11,12 +11,12 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Couple
+  - Enemy
+  - Item
+  - Collector
+  - EnemyDetector
+  - EndTrigger
   - 
   - 
   - 

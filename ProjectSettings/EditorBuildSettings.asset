@@ -14,13 +14,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Rooster Hub/Scenes/MainMenu.unity
     guid: c07b3a110f9e442148af29863bfb9451
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Rooster Hub/Scenes/GameScene.unity
     guid: 21326fa43207c4024bcc6586220fff9c
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Rooster Hub/Scenes/GameScene 1.unity
     guid: a7be12d26edd74dd3a7fd7f9a2c2fb6b
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Rooster Hub/Scenes/GameScene 2.unity
     guid: e1226bf5145364aa9aa4dab0df34deab
+  - enabled: 1
+    path: Assets/Mesut/MesutSceneNew.unity
+    guid: e34600f45a2a6400e98fccdc1710fd67
   m_configObjects: {}

@@ -1,8 +1,10 @@
 using System;
+using System.Data.Common;
+using Packages.Rider.Editor.UnitTesting;
 using RG.Handlers;
 using RG.Loader;
+using RoosterHub;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace RG.Core
 {
@@ -14,15 +16,25 @@ namespace RG.Core
             LoadScene();
         }
 
+        private void Start()
+        {
+            
+        }
+
         private void OnEnable()
         {
             RoosterEventHandler.OnClickedNextLevelButton += LoadNewLevel;
             RoosterEventHandler.OnClickedRestartLevelButton += RestartLevel;
             RoosterEventHandler.OnCollectCoin += CollectCoin;
             RoosterEventHandler.OnWinGame += WinLevel;
-            RoosterEventHandler.OnFailGame += FailLevel; 
+            RoosterEventHandler.OnFailGame += FailLevel;
+
         }
 
+        void Test()
+        {
+          RoosterHub.Scoreboard.SetScore(500);
+        }
         private void OnDisable()
         {
             RoosterEventHandler.OnClickedNextLevelButton -= LoadNewLevel;
@@ -30,36 +42,47 @@ namespace RG.Core
             RoosterEventHandler.OnCollectCoin -= CollectCoin;
             RoosterEventHandler.OnWinGame -= WinLevel;
             RoosterEventHandler.OnFailGame -= FailLevel;
-
-            
         }
-
+        
+        
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.W))
             {
-                RoosterHub.Central.Win();
+                Central.Win();
             }
+
             if (Input.GetKeyDown(KeyCode.F))
             {
-                RoosterHub.Central.Fail();
+                Central.Fail();
             }
+
             if (Input.GetKeyDown(KeyCode.C))
             {
-                RoosterHub.Central.SetCoin(100,false);
-                
-                GameObject x = RoosterParticle.SpawnCustomParticle(0,4f);
-                x.transform.position=Vector3.zero;
-                
-                RoosterSound.PlayButtonSound();
+                Central.SetIncome(100, true);
             }
+
+            if (Input.GetKeyDown(KeyCode.V))
+            {
+                Debug.LogError(Central.SpendIncome(30));
+            }
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                Test();
+            }
+            
+            
+           
+            
+            
         }
+
         void WinLevel()
         {
             RoosterAnalyticSender.SendWinEvent();
 
             IncreaseLevel();
-            
+
             UI_Loop.OnChangeUI?.Invoke(true);
             RoosterEventHandler.OnEndGameHandler?.Invoke(true);
         }
@@ -67,12 +90,12 @@ namespace RG.Core
         void FailLevel()
         {
             RoosterAnalyticSender.SendFailEvent();
-            
+
             UI_Loop.OnChangeUI?.Invoke(true);
             RoosterEventHandler.OnEndGameHandler?.Invoke(false);
         }
 
-        void CollectCoin(int coin,bool realtimeUpdate)
+        void CollectCoin(int coin, bool realtimeUpdate)
         {
             if (realtimeUpdate)
             {
@@ -84,6 +107,7 @@ namespace RG.Core
                 GamePrefs.CollectedCoin += coin;
             }
         }
+
         private void LoadScene()
         {
             var _loadType = GetComponent<ILoader>();
