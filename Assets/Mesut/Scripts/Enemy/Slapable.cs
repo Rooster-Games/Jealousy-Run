@@ -37,6 +37,7 @@ namespace JR
         {
             if (_isSlapped) return;
             _isSlapped = true;
+            _closeObject.GetComponent<DynamicBone>().enabled = false;
             _closeObject.SetActive(false);
             _ragdoll.SetActive(true);
             _boxCollider.isTrigger = false;

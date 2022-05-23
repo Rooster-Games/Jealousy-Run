@@ -14,6 +14,8 @@ public class DynamicBoneActivator : MonoBehaviour
     {
         FindAndEnableDB(other, false);
         FindAndEnableRagDool(other, false);
+        other.gameObject.SetActive(false);
+
     }
 
     private void FindAndEnableDB(Collider other, bool state)

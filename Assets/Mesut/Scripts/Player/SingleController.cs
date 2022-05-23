@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using GameCores;
 using GameCores.CoreEvents;
 using UnityEngine;
@@ -104,6 +105,40 @@ namespace JR
             _isSlapping = true;
             _animatorController.SetLayerWeight(1, 1f);
             _animatorController.SetTrigger("slap");
+
+            ResetEndSlapTweens();
+            TryToEndSlapAnimation();
+        }
+
+        Tween _endCheckerTween;
+        Tween _weightDecreaserTween;
+
+        private void ResetEndSlapTweens()
+        {
+            ResetTween(ref _endCheckerTween);
+            ResetTween(ref _weightDecreaserTween);
+        }
+
+        private void ResetTween(ref Tween tween)
+        {
+            if(tween != null)
+            {
+                tween.Kill();
+                tween = null;
+            }
+        }
+
+        private void TryToEndSlapAnimation()
+        {
+            float timer = 0f;
+            _endCheckerTween = DOTween.To(() => timer, (x) => timer = x, 1f, 0.5f)
+                .OnComplete(SetLayerWeight);
+        }
+
+        private void SetLayerWeight()
+        {
+            float weight = 1f;
+            _weightDecreaserTween = DOTween.To(() => weight, (x) => { weight = x; _animatorController.SetLayerWeight(1, x); }, 0f, 0.35f);
         }
 
         bool _isProtecting;

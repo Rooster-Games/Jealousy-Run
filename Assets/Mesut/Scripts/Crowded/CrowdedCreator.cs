@@ -30,6 +30,12 @@ namespace JR
                 _creationGender = (Gender)(((int)initParameters.GenderToCreate + 1) % 2);
                 Debug.Log("Creation Gender: " + _creationGender.ToString());
             }
+            else if (Mathf.Approximately(transform.localPosition.x, -1.6f))
+            {
+                _creationGender = (Gender)(((int)_creationGender + 1) % 2);
+            }
+                    
+
             Init();
         }
 

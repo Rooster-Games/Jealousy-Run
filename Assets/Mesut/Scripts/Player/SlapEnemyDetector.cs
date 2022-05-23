@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using GameCores;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace JR
 {
@@ -23,6 +24,7 @@ namespace JR
         IProtector _protector;
         //PlayerAnimationEvents _playerAnimationEvents;
 
+
         public void Init(InitParameters initParameters)
         {
             _protectorGender = initParameters.ProtectorGender;
@@ -35,6 +37,7 @@ namespace JR
 
         private void OnTriggerEnter(Collider other)
         {
+
             var otherGenderInfo = other.GetComponent<GenderInfo>();
             if(otherGenderInfo == null)
             {
@@ -49,9 +52,10 @@ namespace JR
                 var slapable = other.GetComponent<Slapable>();
                 if (slapable == null) return;
 
-                other.enabled = false;
+                if (_slapableToSlapDataMap.ContainsKey(slapable)) return;
+                    //other.enabled = false;
 
-                var dir = (other.transform.position - transform.position).normalized;
+                    var dir = (other.transform.position - transform.position).normalized;
                 dir.y = _yDir;
                 _forceAmount = Random.Range(_minMaxForceAmount.x, _minMaxForceAmount.y);
 
