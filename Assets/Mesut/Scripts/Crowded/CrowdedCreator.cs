@@ -25,12 +25,22 @@ namespace JR
 
         public void Init(InitParameters initParameters)
         {
-            _creationGender = initParameters.GenderToCreate;
+            if (Mathf.Approximately(transform.localPosition.x, 1.6f))
+            {
+                _creationGender = (Gender)(((int)initParameters.GenderToCreate + 1) % 2);
+                Debug.Log("Creation Gender: " + _creationGender.ToString());
+            }
+            else if (Mathf.Approximately(transform.localPosition.x, -1.6f))
+            {
+                _creationGender = (Gender)(((int)_creationGender + 1) % 2);
+            }
+                    
+
             Init();
         }
 
         [Button("Init")]
-        public void Init()
+        private void Init()
         {
             _creationCounter = 0;
             _createdPositions = new List<Vector3>();

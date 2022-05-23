@@ -50,8 +50,8 @@ namespace JR
             Vector3 leftBottomPos = center + new Vector3(-width, 0f, -height);
             Vector3 rightTopPos = center + new Vector3(width, 0f, height);
 
-            Vector3 bottom = center + new Vector3(0f, 0f, -height);
-            Vector3 top = center + new Vector3(0f, 0f, height);
+            Vector3 bottom = center + transform.localRotation * new Vector3(0f, 0f, -height);
+            Vector3 top = center + transform.localRotation * new Vector3(0f, 0f, height);
 
             _boxCollider.size = transform.localScale;
             transform.localScale = Vector3.one;
