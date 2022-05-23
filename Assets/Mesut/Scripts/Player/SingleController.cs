@@ -138,7 +138,7 @@ namespace JR
         private void SetLayerWeight()
         {
             float weight = 1f;
-            _weightDecreaserTween = DOTween.To(() => weight, (x) => { weight = x; _animatorController.SetLayerWeight(1, x); }, 0f, 0.35f);
+            _weightDecreaserTween = DOTween.To(() => weight, (x) => { weight = x; _animatorController.SetLayerWeight(1, x); }, 0f, 0.25f);
         }
 
         bool _isProtecting;
