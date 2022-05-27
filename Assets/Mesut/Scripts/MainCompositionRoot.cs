@@ -77,13 +77,13 @@ namespace JR
             var start = DateTime.Now;
 
             DIContainer.Instance.Register<IEventBus>(sortingOrder: -102)
-                .RegisterConcreteType<EventBus>()
-                .AddDecorator<DebugEventBus>();
+                .RegisterConcreteType<EventBus>();
+                //.AddDecorator<DebugEventBus>();
 
             DIContainer.Instance.RegisterSingle(_inputManager, sortingOrder: -100);
 
-#if UNITY_EDITOR
             GameObject levelPrefab = null;
+#if UNITY_EDITOR
             foreach (var prefab in _levelCollection)
             {
                 var levelTestingSettings = prefab.GetComponent<LevelTestingSettings>();
@@ -101,7 +101,7 @@ namespace JR
             }
 #else
             var levelIndex = RoosterHub.Central.GetLevelNo() % _levelCollection.Length;
-            var levelPefab = _levelCollection[levelIndex];
+            levelPrefab = _levelCollection[levelIndex];
 #endif
 
             var scenePrefabs = FindObjectsOfType<RoadSetter>();
