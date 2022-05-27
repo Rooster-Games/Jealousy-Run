@@ -17,4 +17,28 @@ MonoBehaviour:
       <WhileProtectingGainPerSeconds>k__BackingField: 0.075
       <WhileCollectingAnItemValue>k__BackingField: 0.02
     <DecreaseSettings>k__BackingField:
-      <OnEncounterWithOppsiteGenderDecreaseValue>k__BackingField: 0.045
+      <OnEncounterWithOppsiteGenderDecreaseValue>k__BackingField: 0.075
+  <ParticlePrefabSettings>k__BackingField:
+    <ParticlePrefabCollection>k__BackingField:
+    - {fileID: 8159870903229943304, guid: 3ccd3d536bfe60b42a10a927f8f5e4dc, type: 3}
+    - {fileID: 1491145884227253794, guid: f571fbcf2bf1ad947987fc69d3d96f8a, type: 3}
+    - {fileID: 1335500762791344636, guid: 35569cc54d4c0554885667770633c84c, type: 3}
+    - {fileID: 3608815463002847788, guid: 5d4b08ce3e5e4a842ba483abb64439e7, type: 3}
+    - {fileID: 8995229172416444948, guid: 9913ab4812afb5c4f851d3039b8b1a76, type: 3}
+    - {fileID: 6299777800418987201, guid: ff8cea19ed9e35948b1ea2a05d277050, type: 3}
+    - {fileID: 1113378895081542748, guid: cacd80c7e8f35204b9446eb79fe76765, type: 3}
+    - {fileID: 5088191373221043189, guid: 2b0ff7fc52509304b9a2758b292fe468, type: 3}
+    - {fileID: 376673344277205514, guid: b2089c66df0b4b848be78b2ea4f199ca, type: 3}
+    - {fileID: 8267555225824373135, guid: 73558401ce019574cb371301f1852326, type: 3}
+    - {fileID: 9145080891995210943, guid: 0f1bd26d3bf187149ba2a55ddbc57380, type: 3}
+    - {fileID: 9153375811779704993, guid: 848b2f88810200c43a039d73213c4a67, type: 3}
+    - {fileID: 948424962755071140, guid: 612df8ee690899c458c3e731b4ee4243, type: 3}
+    - {fileID: 6946333433456452847, guid: c8984ab7914b88a429631a103d46f8a9, type: 3}
+    - {fileID: 6517275936020143419, guid: c3984f141c4cd1c4680390b71cf0cbcd, type: 3}
+    - {fileID: 8328823347331401892, guid: 92d8a873e6a5d2549b838f6f2a326746, type: 3}
+    - {fileID: 5846415736138572841, guid: 5d62f46fa2856194ab3e729c76ffe930, type: 3}
+    - {fileID: 2628847195049620226, guid: ec31ad0d96156e04787418dbff64c236, type: 3}
+    - {fileID: 1654678705339044446, guid: af3f9ab38f7750046b318096474443a8, type: 3}
+    - {fileID: 305274029023971158, guid: b29635603e8aa0d41ae9d52dce91fad3, type: 3}
+    - {fileID: 8357065299815313737, guid: 767d5a49a218145ca8a2338f84b9f8fd, type: 3}
+    - {fileID: 8357065299815313737, guid: 391e5c33f7fbe48aca492e7af1d3dd8b, type: 3}

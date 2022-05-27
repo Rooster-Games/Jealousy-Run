@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 5, y: 8}
+  _minMaxPeopleCount: {x: 26, y: 26}
   _creationGender: 0
 --- !u!1 &6586096494727223015
 GameObject:
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 26, y: 26}
   _creationGender: 0
 --- !u!1 &6586096495310328749
 GameObject:
@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 26, y: 26}
   _creationGender: 0
 --- !u!1 &6586096495344325866
 GameObject:
@@ -554,7 +554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 26, y: 26}
   _creationGender: 1
 --- !u!1 &6586096495624729677
 GameObject:
@@ -1185,7 +1185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 26, y: 26}
   _creationGender: 1
 --- !u!1 &6586096496405017629
 GameObject:
@@ -1331,7 +1331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 26, y: 26}
   _creationGender: 0
 --- !u!1 &7003770657850256056
 GameObject:
@@ -1442,7 +1442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 8, y: 10}
+  _minMaxPeopleCount: {x: 26, y: 26}
   _creationGender: 0
 --- !u!1 &8289979786610787284
 GameObject:
@@ -1553,5 +1553,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 12, y: 15}
+  _minMaxPeopleCount: {x: 26, y: 26}
   _creationGender: 0

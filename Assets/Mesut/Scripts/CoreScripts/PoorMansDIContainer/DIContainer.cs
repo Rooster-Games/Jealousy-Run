@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.Design;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using JR;
 using UnityEngine;
 
@@ -36,6 +37,12 @@ namespace DIC
         Dictionary<IChecker, (Type DependentType, Type DependencyType, object Dependency)> _checkerToDependentTypeToDependencyInstanceMap;
         SortedDictionary<int, List<object>> _sortedForInitingObjectListMap;
 
+        List<IBindingData> _bindingDataList;
+
+        bool _isInitingStarted;
+
+        List<GameObjectInjector> _afterInitingCreatedGOInjectors;
+
         DIContainer()
         {
             _forInitingObjectList = new List<object>();
@@ -46,13 +53,23 @@ namespace DIC
             _checkerList = new List<IChecker>();
             _checkerToDependentTypeToDependencyInstanceMap = new Dictionary<IChecker, (Type DependentType, Type DependencyType, object Dependency)>();
             _sortedForInitingObjectListMap = new SortedDictionary<int, List<object>>();
+            _bindingDataList = new List<IBindingData>();
+            _afterInitingCreatedGOInjectors = new List<GameObjectInjector>();
         }
 
-        public void RegisterSingle<T>(T instance, bool checkForIniting = true, Type registerType = null, int sortingIndex = 0)
+        public BindingData<T> Register<T>(int sortingOrder = 0)
+        {
+            var bindingData = new BindingData<T>(sortingOrder);
+
+            _bindingDataList.Add(bindingData);
+            return bindingData;
+        }
+
+        public void RegisterSingle<T>(T instance, bool checkForIniting = true, Type registerType = null, int sortingOrder = 0, [CallerMemberName] string callerName = "", [CallerFilePath] string callerFilePath = "")
         {
             // instance.CheckForIniting();
             if(checkForIniting)
-                CheckForIniting(instance, sortingIndex);
+                CheckForIniting(instance, sortingOrder);
 
             var t = typeof(T);
             if (registerType != null)
@@ -61,6 +78,8 @@ namespace DIC
             if(_registeredTypeToInstance.ContainsKey(t))
             {
                 Debug.Log($"=== {t.Name} Has Been Already Registered As Single. ===");
+                Debug.Log($"=== Caller File Path: {callerFilePath}");
+                Debug.Log($"=== Caller Name: {callerName}");
             }
 
             _registeredTypeToInstance.Add(t, instance);
@@ -112,7 +131,8 @@ namespace DIC
         public GameObjectInjector RegisterGameObject(GameObject gameObject)
         {
             var goInjector = new GameObjectInjector(gameObject);
-            _createdGOInjectors.Add(goInjector);
+                _createdGOInjectors.Add(goInjector);
+
             return goInjector;
         }
 
@@ -145,6 +165,12 @@ namespace DIC
 
         public void Resolve()
         {
+            _isInitingStarted = true;
+            foreach (var bindingData in _bindingDataList)
+            {
+                bindingData.Resolve();
+            }
+
             //Debug.Log("Resolve");
             foreach (var goInjector in _createdGOInjectors)
             {
@@ -251,6 +277,93 @@ namespace DIC
             }
 
             Reset();
+        }
+    }
+
+    public interface IBindingData
+    {
+        void Resolve();
+    }
+
+    public class BindingData<T> : IBindingData
+    {
+        private Type _registerType; // interace Type
+        private Type _actualType;  // class self Type
+
+        int _sortingOrder;
+
+        bool _registeredConcreteType;
+        bool _hasDecorator;
+
+        List<Type> _decoratorTypeList;
+
+        public BindingData(int sortingOrder)
+        {
+            _registerType = typeof(T);
+            _sortingOrder = sortingOrder;
+        }
+
+        public BindingData<T> AddDecorator<DecoratorType>() where DecoratorType : T
+        {
+            _hasDecorator = true;
+
+            if (_decoratorTypeList == null) _decoratorTypeList = new List<Type>();
+
+            _decoratorTypeList.Add(typeof(DecoratorType));
+
+            return this;
+        }
+
+        public BindingData<T> RegisterConcreteType<RegisteredType>() where RegisteredType: T
+        {
+            _registeredConcreteType = true;
+
+            _actualType = typeof(RegisteredType);
+
+            return this;
+        }
+
+        public void Resolve()
+        {
+            if (_registeredConcreteType)
+            {
+                if (!_registerType.IsAssignableFrom(_actualType))
+                {
+                    throw new Exception($"=== {_actualType.Name} is not subclass or implementation of {_registerType} ===");
+                }
+
+                var instance = (T)Activator.CreateInstance(_actualType);
+
+                if (_hasDecorator)
+                {
+                    //Debug.Log($"=== Registered Type: {_registerType.Name} ===");
+                    //Debug.Log($"=== Concrete Type: {_actualType.Name} ===");
+                    T beforeCreated = instance;
+
+                    foreach (var decoratorType in _decoratorTypeList)
+                    {
+                        beforeCreated = (T)Activator.CreateInstance(decoratorType, new object[] { beforeCreated });
+                        //Debug.Log($"=== Decorated With type of {decoratorType.Name} ===");
+                    }
+
+                    DIContainer.Instance.RegisterSingle<T>(beforeCreated, sortingOrder: _sortingOrder);
+
+                    //Debug.Log("==============");
+                }
+                else
+                {
+                    DIContainer.Instance.RegisterSingle<T>(instance, sortingOrder: _sortingOrder);
+
+                    //Debug.Log($"Registered Type: {_registerType}");
+                    //Debug.Log($"Actual Type: {_actualType}");
+                }
+            }
+            else
+            {
+                var instance = (T)Activator.CreateInstance(_registerType);
+                DIContainer.Instance.RegisterSingle(instance, sortingOrder: _sortingOrder);
+                //Debug.Log($"=== Registered Type: {_registerType.Name} ===");
+            }
         }
     }
 }

@@ -3,6 +3,7 @@ using System;
 using Cinemachine;
 using DIC;
 using GameCores;
+using RG.Loader;
 using UnityEngine;
 
 namespace JR
@@ -19,6 +20,41 @@ namespace JR
 
         [SerializeField] GameObject[] _levelCollection;
 
+        private GameObject FindAndDisableTapToPlay(bool state)
+        {
+            if (_tapToPlayGO != null)
+            {
+                _tapToPlayGO.SetActive(state);
+                return _tapToPlayGO;
+            }
+
+            var mainMenuUIs = FindObjectsOfType<MainMenuUI>(true);
+            if (mainMenuUIs == null || mainMenuUIs.Length == 0) { Debug.Log("MMUI couldn't found"); return null; }
+            foreach (var mainMenuUI in mainMenuUIs)
+            {
+                var childCount = mainMenuUI.transform.childCount;
+                for (int i = 0; i < childCount; i++)
+                {
+                    var child = mainMenuUI.transform.GetChild(i);
+                    var cchildCount = child.childCount;
+
+                    for (int j = 0; j < cchildCount; j++)
+                    {
+                        var cchild = child.GetChild(j);
+                        if (cchild.name == "TapToPlay")
+                        {
+                            Debug.Log("Found TapToPlay");
+                            cchild.gameObject.SetActive(state);
+                            return cchild.gameObject;
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        GameObject _tapToPlayGO;
         private void Awake()
         {
             _genderSelectionController.Init();
@@ -28,23 +64,23 @@ namespace JR
                 RegisterToContainer();
             }
             else
+            {
+                _tapToPlayGO = FindAndDisableTapToPlay(false);
                 _genderSelectionController.OnGenderSelected += RegisterToContainer;
-            //Init();
+            }
         }
 
         public void RegisterToContainer()
         {
+            _tapToPlayGO = FindAndDisableTapToPlay(true);
+
             var start = DateTime.Now;
 
-            //var assemblyInstanceCreator = new AssemblyInstanceCreator(typeof(MainCompositionRoot));
-            var eventBus = new DebugEventBus(new EventBus());
-            var coreEventBusCompositionRoot = new CoreEventBusCompositionRoot();
+            DIContainer.Instance.Register<IEventBus>(sortingOrder: -102)
+                .RegisterConcreteType<EventBus>()
+                .AddDecorator<DebugEventBus>();
 
-
-            DIContainer.Instance.RegisterSingle<IEventBus>(eventBus, sortingIndex: -100);
-            //DIContainer.Instance.RegisterSingle(assemblyInstanceCreator, sortingIndex: -100);
-            DIContainer.Instance.RegisterSingle(coreEventBusCompositionRoot, sortingIndex: -100);
-            DIContainer.Instance.RegisterSingle(_inputManager, sortingIndex: -100);
+            DIContainer.Instance.RegisterSingle(_inputManager, sortingOrder: -100);
 
 #if UNITY_EDITOR
             GameObject levelPrefab = null;
@@ -59,7 +95,8 @@ namespace JR
 
             if(levelPrefab == null)
             {
-                var levelIndex = RoosterHub.Central.GetLevelNo() % _levelCollection.Length;
+                var levelIndex = (RoosterHub.Central.GetLevelNo() - 1) % _levelCollection.Length;
+
                 levelPrefab = _levelCollection[levelIndex];
             }
 #else
@@ -73,15 +110,15 @@ namespace JR
                 setter.gameObject.SetActive(false);
             }
 
-            DIContainer.Instance.RegisterSingle(_genderSelectionController.GameTypeGender, sortingIndex: -100);
+            DIContainer.Instance.RegisterSingle(_genderSelectionController.GameTypeGender, sortingOrder: -100);
             DIContainer.Instance.RegisterWhenInjectTo(_gameType, levelPrefab);
-            DIContainer.Instance.RegisterSingle(_gameManager, sortingIndex: -100);
+            DIContainer.Instance.RegisterSingle(_gameManager, sortingOrder: -100);
 
-            DIContainer.Instance.RegisterSingle(_gameType, sortingIndex: -100);
-            DIContainer.Instance.RegisterSingle(_roleSelector, sortingIndex: -100);
+            DIContainer.Instance.RegisterSingle(_gameType, sortingOrder: -100);
+            DIContainer.Instance.RegisterSingle(_roleSelector, sortingOrder: -100);
 
             // Buradan sonrasi degistirilecek
-            DIContainer.Instance.RegisterSingle(_cameraToChangeFov, sortingIndex: -100);
+            DIContainer.Instance.RegisterSingle(_cameraToChangeFov, sortingOrder: -100);
 
             DIContainer.Instance.RegisterSingle(_endTrigger);
 

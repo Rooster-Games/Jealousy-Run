@@ -27,12 +27,11 @@ namespace JR
         {
             if (Mathf.Approximately(transform.localPosition.x, 1.6f))
             {
-                _creationGender = (Gender)(((int)initParameters.GenderToCreate + 1) % 2);
-                Debug.Log("Creation Gender: " + _creationGender.ToString());
+                _creationGender = (Gender)(((int)initParameters.ProtectorGender + 1) % 2);
             }
             else if (Mathf.Approximately(transform.localPosition.x, -1.6f))
             {
-                _creationGender = (Gender)(((int)_creationGender + 1) % 2);
+                _creationGender = (Gender)(((int)_creationGender + (int)initParameters.ProtectorGender + 1) % 2);
             }
                     
 
@@ -136,7 +135,7 @@ namespace JR
 
         public class InitParameters
         {
-            public Gender GenderToCreate { get; set; }
+            public Gender ProtectorGender { get; set; }
         }
 
         //private void OnTriggerExit(Collider other)

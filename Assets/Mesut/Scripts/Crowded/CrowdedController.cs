@@ -33,7 +33,7 @@ namespace JR
 
         private void EventBus_OnBarEmpty(OnBarEmpty eventData)
         {
-            _dollyCartController.StopMoving();
+            // _dollyCartController.StopMoving();
         }
 
         public class InitParameters

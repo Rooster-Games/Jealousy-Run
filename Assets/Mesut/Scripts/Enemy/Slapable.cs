@@ -37,7 +37,7 @@ namespace JR
         {
             if (_isSlapped) return;
             _isSlapped = true;
-            _closeObject.GetComponent<DynamicBone>().enabled = false;
+            //_closeObject.GetComponent<DynamicBone>().enabled = false;
             _closeObject.SetActive(false);
             _ragdoll.SetActive(true);
             _boxCollider.isTrigger = false;
@@ -52,21 +52,21 @@ namespace JR
             _myBody.AddForce(dir * forceAmount, forceMode);
             _myBody.AddTorque(dir * forceAmount, forceMode);
 
-            StartCoroutine(AddFoceCO(dir, forceAmount, forceMode));
+            AddFoceCO(dir, forceAmount, forceMode);
 
             float timer = 0f;
             DOTween.To(() => timer, (x) => timer = x, 1f, _otherDetectorOpenAfterSeconds)
                 .OnComplete(() => _slapDetector.gameObject.SetActive(true));
             _myBody.useGravity = true;
-            _dynamicBone.m_Stiffness = 0.15f;
+            // _dynamicBone.m_Stiffness = 0.15f;
         }
 
-        IEnumerator AddFoceCO(Vector3 dir, float forceAmount, ForceMode forceMode)
+        public void AddFoceCO(Vector3 dir, float forceAmount, ForceMode forceMode)
         {
             for (int i = 0; i < 2; i++)
             {
                 AddForce(dir, forceAmount, forceMode);
-                yield return null;
+                
             }
         }
 

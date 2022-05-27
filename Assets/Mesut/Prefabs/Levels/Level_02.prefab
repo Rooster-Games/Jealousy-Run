@@ -32,7 +32,7 @@ Transform:
   m_LocalScale: {x: 3.4740071, y: 4.9804, z: 16.90633}
   m_Children: []
   m_Father: {fileID: 8961848465583230953}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8310290878077608102
 MeshFilter:
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 12, y: 15}
+  _minMaxPeopleCount: {x: 26, y: 26}
   _creationGender: 0
 --- !u!1 &1120711220474590717
 GameObject:
@@ -143,7 +143,7 @@ Transform:
   m_LocalScale: {x: 3.4740071, y: 4.9804, z: 5.1345987}
   m_Children: []
   m_Father: {fileID: 8961848465583230953}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6984120718619858039
 MeshFilter:
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 8, y: 10}
+  _minMaxPeopleCount: {x: 26, y: 26}
   _creationGender: 0
 --- !u!1 &2168417859008369380
 GameObject:
@@ -254,7 +254,7 @@ Transform:
   m_LocalScale: {x: 3.4740071, y: 4.9804, z: 9.629846}
   m_Children: []
   m_Father: {fileID: 8961848465583230953}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7265124876660055897
 MeshFilter:
@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 8, y: 10}
+  _minMaxPeopleCount: {x: 26, y: 26}
   _creationGender: 0
 --- !u!1 &2478814948477105149
 GameObject:
@@ -365,7 +365,7 @@ Transform:
   m_LocalScale: {x: 3.4740071, y: 4.9804, z: 9.629846}
   m_Children: []
   m_Father: {fileID: 8961848465583230953}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8264849828371421329
 MeshFilter:
@@ -442,7 +442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 12, y: 15}
+  _minMaxPeopleCount: {x: 26, y: 26}
   _creationGender: 0
 --- !u!1 &3442754080882891812
 GameObject:
@@ -777,7 +777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 26, y: 26}
   _creationGender: 0
 --- !u!1 &3442754081570626938
 GameObject:
@@ -888,7 +888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 26, y: 26}
   _creationGender: 1
 --- !u!1 &3442754082267107019
 GameObject:
@@ -1034,7 +1034,7 @@ Transform:
   m_LocalScale: {x: 3.4740071, y: 4.9804, z: 9.629846}
   m_Children: []
   m_Father: {fileID: 8961848465583230953}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5840080586465755037
 MeshFilter:
@@ -1111,7 +1111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 12, y: 15}
+  _minMaxPeopleCount: {x: 26, y: 26}
   _creationGender: 0
 --- !u!1 &8961848465296996703
 GameObject:
@@ -1373,12 +1373,12 @@ Transform:
   - {fileID: 8961848466235551662}
   - {fileID: 3442754081277844623}
   - {fileID: 3442754081570626933}
-  - {fileID: 8961848466165433848}
   - {fileID: 8785030487879278208}
   - {fileID: 3504262073273230134}
   - {fileID: 3857528129086193648}
   - {fileID: 920619075437726286}
   - {fileID: 1910686962356944700}
+  - {fileID: 8961848466165433848}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1634,7 +1634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 26, y: 26}
   _creationGender: 0
 --- !u!1 &8961848466165433849
 GameObject:
@@ -1672,7 +1672,7 @@ Transform:
   - {fileID: 3442754080882891815}
   - {fileID: 3442754080999317696}
   m_Father: {fileID: 8961848465583230953}
-  m_RootOrder: 7
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8961848466235551663
 GameObject:
@@ -1783,7 +1783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 26, y: 26}
   _creationGender: 1
 --- !u!1 &8961848466635007747
 GameObject:
@@ -1894,7 +1894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 26, y: 26}
   _creationGender: 0
 --- !u!1 &8961848466983623206
 GameObject:
@@ -2005,7 +2005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 26, y: 26}
   _creationGender: 1
 --- !u!1 &8961848466995791273
 GameObject:
@@ -2228,7 +2228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 26, y: 26}
   _creationGender: 1
 --- !u!1 &8961848467252077838
 GameObject:

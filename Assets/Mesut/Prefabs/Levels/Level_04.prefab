@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 359641679}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.6, y: 0.8636582, z: -263.131}
+  m_LocalPosition: {x: 1.6, y: 0.8636582, z: -253.44461}
   m_LocalScale: {x: 3.4740071, y: 4.9804, z: 23.6839}
   m_Children: []
   m_Father: {fileID: 6191940162432964274}
@@ -49,7 +49,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 359641679}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 22, y: 22}
   _creationGender: 0
 --- !u!1 &448710678
 GameObject:
@@ -139,8 +139,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 448710678}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.6, y: 0.8636582, z: -227.6864}
-  m_LocalScale: {x: 3.4740071, y: 4.9804, z: 5.540659}
+  m_LocalPosition: {x: 1.6, y: 0.8636582, z: -217.7}
+  m_LocalScale: {x: 3.4740071, y: 4.9804, z: 7.4830284}
   m_Children: []
   m_Father: {fileID: 6191940162432964274}
   m_RootOrder: 1
@@ -160,7 +160,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 448710678}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 8, y: 10}
+  _minMaxPeopleCount: {x: 22, y: 22}
   _creationGender: 0
 --- !u!1 &477231261
 GameObject:
@@ -250,8 +250,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 477231261}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.6, y: 0.8636582, z: -205.21}
-  m_LocalScale: {x: 3.4740071, y: 4.9804, z: 6.320899}
+  m_LocalPosition: {x: 1.6, y: 0.8636582, z: -197.5}
+  m_LocalScale: {x: 3.4740071, y: 4.9804, z: 9.711571}
   m_Children: []
   m_Father: {fileID: 6191940162432964274}
   m_RootOrder: 2
@@ -271,7 +271,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 477231261}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 8, y: 10}
+  _minMaxPeopleCount: {x: 22, y: 22}
   _creationGender: 0
 --- !u!1 &572563018
 GameObject:
@@ -361,8 +361,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 572563018}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.6, y: 0.8636582, z: -120.0379}
-  m_LocalScale: {x: 3.4740071, y: 4.9804, z: 14.7385845}
+  m_LocalPosition: {x: 1.6, y: 0.8636582, z: -110.3515}
+  m_LocalScale: {x: 3.4740071, y: 4.9804, z: 10.92866}
   m_Children: []
   m_Father: {fileID: 6191940162432964274}
   m_RootOrder: 5
@@ -382,7 +382,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 572563018}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -442,7 +442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 8, y: 10}
+  _minMaxPeopleCount: {x: 22, y: 22}
   _creationGender: 1
 --- !u!1 &797102451
 GameObject:
@@ -472,7 +472,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 797102451}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.6, y: 0.8636582, z: -53.7877}
+  m_LocalPosition: {x: 1.6, y: 0.8636582, z: -44.1013}
   m_LocalScale: {x: 3.4740071, y: 4.9804, z: 13.823286}
   m_Children: []
   m_Father: {fileID: 6191940162432964274}
@@ -493,7 +493,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 797102451}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -553,7 +553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 10, y: 12}
+  _minMaxPeopleCount: {x: 22, y: 22}
   _creationGender: 0
 --- !u!1 &834992541
 GameObject:
@@ -583,7 +583,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 834992541}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.6, y: 0.8636582, z: -37.35}
+  m_LocalPosition: {x: 1.6, y: 0.8636582, z: -27.663597}
   m_LocalScale: {x: 3.4740071, y: 4.9804, z: 13.823286}
   m_Children: []
   m_Father: {fileID: 6191940162432964274}
@@ -604,7 +604,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 834992541}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -664,7 +664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 10, y: 12}
+  _minMaxPeopleCount: {x: 22, y: 22}
   _creationGender: 0
 --- !u!1 &986976300
 GameObject:
@@ -694,8 +694,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 986976300}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.6, y: 0.8636582, z: -100.2554}
-  m_LocalScale: {x: 3.4740071, y: 4.9804, z: 8.1872835}
+  m_LocalPosition: {x: 1.6, y: 0.8636582, z: -92.4136}
+  m_LocalScale: {x: 3.4740071, y: 4.9804, z: 13.517205}
   m_Children: []
   m_Father: {fileID: 6191940162432964274}
   m_RootOrder: 6
@@ -715,7 +715,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 986976300}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -775,7 +775,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 8, y: 10}
+  _minMaxPeopleCount: {x: 22, y: 22}
   _creationGender: 0
 --- !u!1 &1152932833
 GameObject:
@@ -805,8 +805,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1152932833}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.6, y: 0.8636582, z: -144.87}
-  m_LocalScale: {x: 3.4740071, y: 4.9804, z: 6.320899}
+  m_LocalPosition: {x: 1.6, y: 0.8636582, z: -136.16}
+  m_LocalScale: {x: 3.4740071, y: 4.9804, z: 9.322694}
   m_Children: []
   m_Father: {fileID: 6191940162432964274}
   m_RootOrder: 4
@@ -826,7 +826,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1152932833}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -886,7 +886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 8, y: 10}
+  _minMaxPeopleCount: {x: 22, y: 22}
   _creationGender: 0
 --- !u!1 &2141806854
 GameObject:
@@ -916,8 +916,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2141806854}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.6, y: 0.8636582, z: -161.28}
-  m_LocalScale: {x: 3.4740071, y: 4.9804, z: 6.320899}
+  m_LocalPosition: {x: 1.6, y: 0.8636582, z: -152.9}
+  m_LocalScale: {x: 3.4740071, y: 4.9804, z: 8.529206}
   m_Children: []
   m_Father: {fileID: 6191940162432964274}
   m_RootOrder: 3
@@ -937,7 +937,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2141806854}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -997,7 +997,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 8, y: 10}
+  _minMaxPeopleCount: {x: 22, y: 22}
   _creationGender: 0
 --- !u!1 &466069711981107088
 GameObject:
@@ -1130,7 +1130,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &466069712610411566
 Transform:
   m_ObjectHideFlags: 0
@@ -1139,7 +1139,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 466069712610411553}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -131.49998}
+  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -121.81358}
   m_LocalScale: {x: 3.4740071, y: 4.9804, z: 15.731}
   m_Children: []
   m_Father: {fileID: 6191940162432964274}
@@ -1220,7 +1220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 22, y: 22}
   _creationGender: 0
 --- !u!1 &466069712970368471
 GameObject:
@@ -1241,7 +1241,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &466069712970368468
 Transform:
   m_ObjectHideFlags: 0
@@ -1250,7 +1250,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 466069712970368471}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -153.99997}
+  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -144.31357}
   m_LocalScale: {x: 3.4740071, y: 4.9804, z: 15.731}
   m_Children: []
   m_Father: {fileID: 6191940162432964274}
@@ -1331,7 +1331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 22, y: 22}
   _creationGender: 1
 --- !u!1 &466069713793907098
 GameObject:
@@ -1589,7 +1589,7 @@ Transform:
   m_LocalScale: {x: 0.50920784, y: 1, z: 4.296763}
   m_Children: []
   m_Father: {fileID: 6191940161842371747}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
 --- !u!33 &609454191409449605
 MeshFilter:
@@ -1688,7 +1688,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &609454191424947496
 Transform:
   m_ObjectHideFlags: 0
@@ -1697,7 +1697,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 609454191424947497}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -20.199986}
+  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -10.513584}
   m_LocalScale: {x: 3.4740071, y: 4.9804, z: 15.731}
   m_Children: []
   m_Father: {fileID: 6191940162432964274}
@@ -1778,7 +1778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 22, y: 22}
   _creationGender: 0
 --- !u!1 &609454191590538827
 GameObject:
@@ -1799,7 +1799,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &609454191590538826
 Transform:
   m_ObjectHideFlags: 0
@@ -1808,7 +1808,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 609454191590538827}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -42.2}
+  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -32.5136}
   m_LocalScale: {x: 3.4740071, y: 4.9804, z: 15.731}
   m_Children: []
   m_Father: {fileID: 6191940162432964274}
@@ -1889,7 +1889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 22, y: 22}
   _creationGender: 1
 --- !u!1 &609454192333361518
 GameObject:
@@ -1923,7 +1923,7 @@ Transform:
   m_LocalScale: {x: 0.50920784, y: 1, z: 20.335855}
   m_Children: []
   m_Father: {fileID: 6191940161842371747}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &609454192333361813
 MeshFilter:
@@ -2022,7 +2022,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6191940160495371106
 Transform:
   m_ObjectHideFlags: 0
@@ -2031,7 +2031,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6191940160495371133}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -240.91997}
+  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -231.23357}
   m_LocalScale: {x: 3.4740071, y: 4.9804, z: 15.731}
   m_Children: []
   m_Father: {fileID: 6191940162432964274}
@@ -2112,7 +2112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 22, y: 22}
   _creationGender: 0
 --- !u!1 &6191940160541990130
 GameObject:
@@ -2357,7 +2357,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6191940160865073939
 Transform:
   m_ObjectHideFlags: 0
@@ -2366,7 +2366,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6191940160865073938}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -262.39}
+  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -252.70361}
   m_LocalScale: {x: 3.4740071, y: 4.9804, z: 15.731}
   m_Children: []
   m_Father: {fileID: 6191940162432964274}
@@ -2447,7 +2447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 22, y: 22}
   _creationGender: 1
 --- !u!1 &6191940161372552792
 GameObject:
@@ -2468,7 +2468,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6191940161372552793
 Transform:
   m_ObjectHideFlags: 0
@@ -2477,8 +2477,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6191940161372552792}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -216.583}
-  m_LocalScale: {x: 3.4740071, y: 4.9804, z: 10.896864}
+  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -207.9}
+  m_LocalScale: {x: 3.4740071, y: 4.9804, z: 9.944587}
   m_Children: []
   m_Father: {fileID: 6191940162432964274}
   m_RootOrder: 11
@@ -2558,7 +2558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 22, y: 22}
   _creationGender: 0
 --- !u!1 &6191940161616726501
 GameObject:
@@ -2579,7 +2579,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6191940161616726506
 Transform:
   m_ObjectHideFlags: 0
@@ -2588,8 +2588,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6191940161616726501}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -197.09999}
-  m_LocalScale: {x: 3.4740071, y: 4.9804, z: 15.731}
+  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -185.5}
+  m_LocalScale: {x: 3.4740071, y: 4.9804, z: 13.187454}
   m_Children: []
   m_Father: {fileID: 6191940162432964274}
   m_RootOrder: 12
@@ -2669,7 +2669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 22, y: 22}
   _creationGender: 1
 --- !u!1 &6191940161780332276
 GameObject:
@@ -2690,7 +2690,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6191940161780332277
 Transform:
   m_ObjectHideFlags: 0
@@ -2699,7 +2699,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6191940161780332276}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -174.59998}
+  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -164.91357}
   m_LocalScale: {x: 3.4740071, y: 4.9804, z: 15.731}
   m_Children: []
   m_Father: {fileID: 6191940162432964274}
@@ -2780,7 +2780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 22, y: 22}
   _creationGender: 0
 --- !u!1 &6191940161842371746
 GameObject:
@@ -2806,7 +2806,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6191940161842371746}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -236.99}
+  m_LocalPosition: {x: 0, y: 0, z: -227.3036}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6191940162118136320}
@@ -2817,7 +2817,6 @@ Transform:
   - {fileID: 466069711981107089}
   - {fileID: 466069713834755452}
   - {fileID: 466069713793907099}
-  - {fileID: 8496072889917157728}
   - {fileID: 8496072889753854530}
   - {fileID: 609454192333361809}
   - {fileID: 609454191409449601}
@@ -3264,7 +3263,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8496072888017371819
 Transform:
   m_ObjectHideFlags: 0
@@ -3273,7 +3272,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8496072888017371820}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -108.88999}
+  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -99.20359}
   m_LocalScale: {x: 3.4740071, y: 4.9804, z: 15.731}
   m_Children: []
   m_Father: {fileID: 6191940162432964274}
@@ -3354,7 +3353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 22, y: 22}
   _creationGender: 1
 --- !u!1 &8496072888350935746
 GameObject:
@@ -3375,7 +3374,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8496072888350935745
 Transform:
   m_ObjectHideFlags: 0
@@ -3384,7 +3383,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8496072888350935746}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -64.08998}
+  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -54.40358}
   m_LocalScale: {x: 3.4740071, y: 4.9804, z: 15.731}
   m_Children: []
   m_Father: {fileID: 6191940162432964274}
@@ -3465,7 +3464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 22, y: 22}
   _creationGender: 1
 --- !u!1 &8496072889753854531
 GameObject:
@@ -3499,7 +3498,7 @@ Transform:
   m_LocalScale: {x: 0.50920784, y: 1, z: 3.4306417}
   m_Children: []
   m_Father: {fileID: 6191940161842371747}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8496072889753854590
 MeshFilter:
@@ -3579,118 +3578,6 @@ MonoBehaviour:
   _peopleCount: 50
   _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
   _itemRadius: 1
---- !u!1 &8496072889917157729
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8496072889917157728}
-  - component: {fileID: 8496072889917157660}
-  - component: {fileID: 8496072889917157661}
-  - component: {fileID: 8496072889917157662}
-  - component: {fileID: 8496072889917157663}
-  m_Layer: 8
-  m_Name: ItemCreator_09
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8496072889917157728
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8496072889917157729}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.6, y: 0, z: 128.1}
-  m_LocalScale: {x: 0.50920784, y: 1, z: 14.280655}
-  m_Children: []
-  m_Father: {fileID: 6191940161842371747}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8496072889917157660
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8496072889917157729}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &8496072889917157661
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8496072889917157729}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8496072889917157662
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8496072889917157729}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8496072889917157663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8496072889917157729}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e805af3baf68246a3b2ba18e0ac5c92c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _peopleCount: 50
-  _collectablePrefab: {fileID: 8657758156459329567, guid: 13f8502b3528540b194ea6bc84599afe, type: 3}
-  _itemRadius: 1
 --- !u!1 &8496072889955398987
 GameObject:
   m_ObjectHideFlags: 0
@@ -3710,7 +3597,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8496072889955398986
 Transform:
   m_ObjectHideFlags: 0
@@ -3719,7 +3606,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8496072889955398987}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -86.08999}
+  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -76.40359}
   m_LocalScale: {x: 3.4740071, y: 4.9804, z: 15.731}
   m_Children: []
   m_Father: {fileID: 6191940162432964274}
@@ -3800,5 +3687,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 22, y: 22}
   _creationGender: 0

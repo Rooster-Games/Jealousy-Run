@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 10, y: 12}
+  _minMaxPeopleCount: {x: 23, y: 23}
   _creationGender: 0
 --- !u!1 &1620318679624511620
 GameObject:
@@ -444,7 +444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 23, y: 23}
   _creationGender: 1
 --- !u!1 &1620318680278954458
 GameObject:
@@ -555,7 +555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 23, y: 23}
   _creationGender: 1
 --- !u!1 &1620318680991752811
 GameObject:
@@ -778,7 +778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 10, y: 12}
+  _minMaxPeopleCount: {x: 23, y: 23}
   _creationGender: 0
 --- !u!1 &4996865066303854181
 GameObject:
@@ -889,7 +889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 10, y: 12}
+  _minMaxPeopleCount: {x: 23, y: 23}
   _creationGender: 0
 --- !u!1 &5036564159258940927
 GameObject:
@@ -1195,7 +1195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5912f03cf3c15428e86ecbcc298326db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <TestThisLevel>k__BackingField: 1
+  <TestThisLevel>k__BackingField: 0
 --- !u!1 &5036564159612187432
 GameObject:
   m_ObjectHideFlags: 0
@@ -1417,7 +1417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 23, y: 23}
   _creationGender: 0
 --- !u!1 &5036564160135326041
 GameObject:
@@ -1568,7 +1568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 23, y: 23}
   _creationGender: 0
 --- !u!1 &5036564160605277091
 GameObject:
@@ -1679,7 +1679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 23, y: 23}
   _creationGender: 1
 --- !u!1 &5036564160927757958
 GameObject:
@@ -1790,7 +1790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 23, y: 23}
   _creationGender: 0
 --- !u!1 &5036564160982690057
 GameObject:
@@ -2013,7 +2013,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 23, y: 23}
   _creationGender: 1
 --- !u!1 &5036564161196165550
 GameObject:
@@ -2236,7 +2236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 10, y: 12}
+  _minMaxPeopleCount: {x: 23, y: 23}
   _creationGender: 0
 --- !u!1 &7341806277046305946
 GameObject:
@@ -2459,7 +2459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 23, y: 23}
   _creationGender: 1
 --- !u!1 &7341806277294053304
 GameObject:
@@ -2682,7 +2682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 23, y: 23}
   _creationGender: 0
 --- !u!1 &7341806278701662009
 GameObject:
@@ -2793,7 +2793,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 13, y: 18}
+  _minMaxPeopleCount: {x: 23, y: 23}
   _creationGender: 0
 --- !u!1 &8763480289733185172
 GameObject:
@@ -2904,7 +2904,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 10, y: 12}
+  _minMaxPeopleCount: {x: 23, y: 23}
   _creationGender: 0
 --- !u!1 &8898849593970143680
 GameObject:
@@ -3015,7 +3015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 10, y: 12}
+  _minMaxPeopleCount: {x: 23, y: 23}
   _creationGender: 0
 --- !u!1 &9063687768956570931
 GameObject:
@@ -3126,5 +3126,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 10, y: 12}
+  _minMaxPeopleCount: {x: 23, y: 23}
   _creationGender: 0

@@ -148,7 +148,10 @@ namespace JR
             else
             {
                 _protectorController.SetTrigger("normalRun");
-                _timerTween.Kill();
+                if(_timerTween != null)
+                    _timerTween.Kill();
+
+                _timerTween = DOTween.To(() => _timer, (x) => _timer = x, 0f, _timer);
             }
 
             return _isExhausted;

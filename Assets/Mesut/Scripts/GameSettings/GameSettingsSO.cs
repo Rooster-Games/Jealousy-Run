@@ -8,5 +8,7 @@ namespace JR
     public class GameSettingsSO : ScriptableObject
     {
         [field: SerializeField] public BarChangingSettings BarChangingSettings { get; private set; }
+        [field: SerializeField] public ParticlePool.ParticlePrefabSettings ParticlePrefabSettings { get; private set; }
+
     }
 }

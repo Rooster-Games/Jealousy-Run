@@ -22,17 +22,17 @@ namespace JR
 
         Gender _protectorGender;
         IProtector _protector;
-        //PlayerAnimationEvents _playerAnimationEvents;
+        PlayerAnimationEvents _playerAnimationEvents;
 
 
         public void Init(InitParameters initParameters)
         {
             _protectorGender = initParameters.ProtectorGender;
             _protector = initParameters.Protector;
-            // _playerAnimationEvents = initParameters.PlayerAnimationEvents;
+             _playerAnimationEvents = initParameters.PlayerAnimationEvents;
             //_singleController = initParameters.SingleController;
 
-            //_playerAnimationEvents.RgisterOnSlap(Slap);
+           // _playerAnimationEvents.RgisterOnSlap(Slap);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -59,11 +59,13 @@ namespace JR
                 dir.y = _yDir;
                 _forceAmount = Random.Range(_minMaxForceAmount.x, _minMaxForceAmount.y);
 
-                _slapableList.Add(slapable);
-                _slapableToSlapDataMap.Add(slapable, (Dir: dir, ForceAmount: _forceAmount));
+                //_slapableList.Add(slapable);
+                //_slapableToSlapDataMap.Add(slapable, (Dir: dir, ForceAmount: _forceAmount));
                 float timer = 0f;
                 DOTween.To(() => timer, (x) => timer = x, 1f, _slapDelayDuration)
                     .OnComplete(() => slapable.Slap(dir, _forceAmount, _forceMode));
+
+                //Slap();
 
                 _protector.Slap();
             }
@@ -93,7 +95,7 @@ namespace JR
             // public SingleController SingleController { get; set; }
             public Gender ProtectorGender { get; set; }
             public IProtector Protector { get; set; }
-            //public PlayerAnimationEvents PlayerAnimationEvents { get; set; }
+            public PlayerAnimationEvents PlayerAnimationEvents { get; set; }
         }
     }
 }

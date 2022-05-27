@@ -2,6 +2,7 @@
 using System.Collections;
 using DIC;
 using GameCores;
+using GameCores.CoreEvents;
 
 namespace JR
 {
@@ -35,6 +36,8 @@ namespace JR
                     DIContainer.Instance.RegisterSingle(guarded);
                     _guardedTransform = singleController.transform;
                 }
+
+                singleController.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
             }
 
             DIContainer.Instance.RegisterSingle(_barCompositionSettings.BarController);
@@ -65,13 +68,13 @@ namespace JR
                 if (animationGenderSetting.Gender == _protectorGender)
                 {
                     _protectorTransform.GetComponentInChildren<Animator>().runtimeAnimatorController = animationGenderSetting.ProtectorRunTimeAnimatorController;
-                    _protectorTransform.GetComponentInChildren<ItemTriggerDetector>(true).gameObject.SetActive(true);
+                    initParameters.EventBus.Register<OnGameStarted>( (e) => _protectorTransform.GetComponentInChildren<ItemTriggerDetector>(true).gameObject.SetActive(true));
                 }
                 else
                 {
 
                     _guardedTransform.GetComponentInChildren<Animator>().runtimeAnimatorController = animationGenderSetting.GuardedAnimatorController;
-                    _guardedTransform.GetComponentInChildren<ItemTriggerDetector>(true).gameObject.SetActive(false);
+                    // _guardedTransform.GetComponentInChildren<ItemTriggerDetector>(true).gameObject.SetActive(false);
                 }
             }
         }
@@ -80,6 +83,7 @@ namespace JR
         {
             public CoupleTransformSettings CoupleTransformSettings { get; set; }
             public SingleController.AnimatorGenderSettings[] AnimationGenderSettings { get; set; }
+            public IEventBus EventBus { get; set; }
         }
     }
 }

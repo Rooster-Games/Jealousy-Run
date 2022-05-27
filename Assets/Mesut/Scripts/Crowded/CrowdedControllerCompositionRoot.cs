@@ -25,7 +25,7 @@ namespace JR
             var crowdedCreatorCollection = GetComponentsInChildren<CrowdedCreator>();
 
             var crowdedCreatorInitParameters = new CrowdedCreator.InitParameters();
-            crowdedCreatorInitParameters.GenderToCreate = initParameters.ProtectorGender;
+            crowdedCreatorInitParameters.ProtectorGender = initParameters.ProtectorGender;
 
             foreach (var crowdedCreator in crowdedCreatorCollection)
             {
@@ -37,8 +37,15 @@ namespace JR
 
             var pcInitParameters = new PersonController.InitParameters();
             pcInitParameters.EventBus = initParameters.EventBus;
+
+            var emojiMarkerInitParameters = new EmojiRootMarker.InitParameters();
+            emojiMarkerInitParameters.ParticlePool = initParameters.ParticlePool;
+
             foreach (var personController in personControllerCollection)
             {
+                var emojiMarker = personController.GetComponentInChildren<EmojiRootMarker>();
+                emojiMarker.Init(emojiMarkerInitParameters);
+
                 personController.Init(pcInitParameters);
             }
         }
@@ -47,6 +54,7 @@ namespace JR
         {
             public IEventBus EventBus { get; set; }
             public Gender ProtectorGender { get; set; }
+            public ParticlePool ParticlePool { get; set; }
         }
     }
 }

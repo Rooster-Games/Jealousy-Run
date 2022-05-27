@@ -20,6 +20,8 @@ namespace JR
                 .RegisterComponent<CinemachineDollyCart>()
                 .RegisterComponent<DollyCartController>()
                 .RegisterComponent<PlayerController>()
+                .RegisterComponent<DynamicBoneActivator>()
+                .RegisterComponent<AnimatorActivator>()
                 .RegisterWhenInjectTo<SpeedChanger, DollyCartController>();
         }
     }

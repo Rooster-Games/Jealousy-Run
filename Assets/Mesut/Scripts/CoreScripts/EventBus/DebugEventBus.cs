@@ -11,9 +11,11 @@ using System.Linq;
 
 namespace GameCores
 {
+#if UNITY_EDITOR
     public class DebugEventBus : IEventBus
     {
-        private string INFO_DATA_PATH = Application.dataPath + "/Mesut/Scripts/CoreScripts/Info";
+        private string[] pathCollection = new string[] { "/Mesut", "/Scripts/", "/CoreScripts", "/Info" };
+        //private string INFO_DATA_PATH = Application.dataPath + "/Mesut/Scripts/CoreScripts/Info";
         private string INFO_OBJ_PATH = "Assets/Mesut/Scripts/CoreScripts/Info/EventBusInfo.asset";
         IEventBus _eventBus;
 
@@ -35,14 +37,9 @@ namespace GameCores
                 var endIndex = targetStr.LastIndexOf(')');
                 className = targetStr.Substring(startIndex, endIndex - startIndex);
             }
-            
-            // UnityEngine.Debug.Log(className);
 
             var methodName = action.Method.Name;
-            // UnityEngine.Debug.Log("Action Method Name: " + action.Method.Name);
-
             _infoSO.AddRegisterInfo(typeof(T).Name, className, methodName);
-
             _eventBus.Register(action);
         }
 
@@ -70,12 +67,18 @@ namespace GameCores
 
         private void CreateInfo()
         {
-            if (!Directory.Exists(INFO_DATA_PATH))
-                Directory.CreateDirectory(INFO_DATA_PATH);
+            var startingPath = Application.dataPath;
+            foreach (var path in pathCollection)
+            {
+                startingPath += path;
+
+                if (!Directory.Exists(startingPath))
+                    Directory.CreateDirectory(startingPath);
+            }
 
             _infoSO = (EventBusInfoSO)AssetDatabase.LoadAssetAtPath(INFO_OBJ_PATH, typeof(EventBusInfoSO));
 
-            if(_infoSO == null)
+            if (_infoSO == null)
             {
                 _infoSO = ScriptableObject.CreateInstance<EventBusInfoSO>();
 
@@ -116,4 +119,5 @@ namespace GameCores
             return fullName;
         }
     }
+#endif
 }

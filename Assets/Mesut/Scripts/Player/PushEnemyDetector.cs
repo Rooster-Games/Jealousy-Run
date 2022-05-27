@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using DG.Tweening;
+using GameCores;
+using GameCores.CoreEvents;
 using UnityEngine;
 
 namespace JR
@@ -24,20 +26,44 @@ namespace JR
         [SerializeField] Gender _gender;
 
         float _barChangeValue = 0.033f;
+        Dictionary<Collider, int> _colliderMap = new Dictionary<Collider, int>();
 
+        BoxCollider _myCollider;
         public void Init(InitParameters initParameters)
         {
             _barChangeValue = initParameters.BarChangingSettings.DecreaseSettings.OnEncounterWithOppsiteGenderDecreaseValue;
+            _myCollider = initParameters.MyBoxCollider;
+            _myCollider.enabled = false;
+
+            initParameters.EventBus.Register<OnGameStarted>(EventBus_OnGameStarted);
+            initParameters.EventBus.Register<OnBarEmpty>(EventBus_OnBarEmpty);
+        }
+
+        private void EventBus_OnGameStarted(OnGameStarted eventData)
+        {
+            _myCollider.enabled = true;
+        }
+
+        bool _isGameEnd;
+        private void EventBus_OnBarEmpty(OnBarEmpty eventData)
+        {
+            _isGameEnd = true;
         }
 
         private void OnTriggerEnter(Collider other)
         {
+            if (_colliderMap.ContainsKey(other)) return;
+
+            _colliderMap.Add(other, 0);
+
             var pushable = other.GetComponent<Pushable>();
             var otherGenderInfo = other.GetComponent<GenderInfo>();
             if (pushable == null) return;
 
             if (_gender != otherGenderInfo.Gender)
+            {
                 _barController.ChangeAmount(-_barChangeValue);
+            }
 
             var otherPos = other.transform.position;
             var myPos = transform.position;
@@ -75,8 +101,11 @@ namespace JR
             //if(!_isReturning)
             //    StartCoroutine(ReturnBackWeight());
 
-            if (!_isChanging)
-                StartCoroutine(IndexChange());
+            // if (!_isChanging)
+            //StartCoroutine(IndexChange());
+
+            if (_isGameEnd)
+                other.transform.DOLocalRotate(Vector3.up * 180f, 0.25f).SetDelay(0.75f);
         }
 
         Tween _backTween;
@@ -108,6 +137,8 @@ namespace JR
         public class InitParameters
         {
             public BarChangingSettings BarChangingSettings { get; set; }
+            public IEventBus EventBus { get; set; }
+            public BoxCollider MyBoxCollider { get; set; }
         }
     }
 }
