@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using DG.Tweening;
 using GameCores;
 using GameCores.CoreEvents;
@@ -16,10 +17,11 @@ namespace JR
 
         [SerializeField] float _testingValue = 0.1f;
 
-        EventBus _eventBus;
+        IEventBus _eventBus;
         Tween _increaseTween;
         float _totalIncreaseAmount;
         float _prevIncreaseAmount;
+        bool _isBarEmpty;
         BarAnimation _barAnimation;
         // 1
         // 0.1 degisti, current 0.9 oldu,
@@ -45,13 +47,19 @@ namespace JR
             ChangeAmount(_testingValue);
         }
 
-        public void ChangeAmount(float amount)
+        public void ChangeAmount(float amount, [CallerMemberName] string callerName = "")
         {
             if (amount > 0f)
                 _barAnimation.PlayAnimation();
 
             _loveData.CurrentValue += amount;
             _bar.ChangeAmount(_loveData.CurrentPercent);
+
+            if (_loveData.CurrentValue <= 0f && !_isBarEmpty)
+            {
+                _isBarEmpty = true;
+                _eventBus.Fire<OnBarEmpty>();
+            }
 
             //_totalIncreaseAmount += amount;
             //_prevIncreaseAmount = _totalIncreaseAmount;
@@ -81,7 +89,7 @@ namespace JR
         {
             public BaseBar Bar { get; set; }
             public LoveData LoveData { get; set; }
-            public EventBus EventBus { get; set; }
+            public IEventBus EventBus { get; set; }
         }
 
         [System.Serializable]

@@ -1,60 +1,58 @@
 using System.Collections;
 using System.Collections.Generic;
+using DIC;
+using GameCores;
 using TMPro;
 using UnityEngine;
 
 namespace JR
 {
-    public class SingleControllerCompositionRoot : MonoBehaviour
+    public class SingleControllerCompositionRoot : BaseCompRootGO
     {
-        public void Init(InitParameters initParameters)
+        public override void RegisterToContainer()
         {
-            // self
-            var singleController = GetComponent<SingleController>();
-
-            // child
-            var animator = GetComponentInChildren<Animator>();
-            var triggerDetector = GetComponentInChildren<SlapEnemyDetector>();
-
-            var animatorController = new AnimatorControllerFactory().Create(animator);
-
-            // animation evetns init
-
-            var pAEInitParameters = new PlayerAnimationEvents.InitParameters();
-            pAEInitParameters.AnimatorController = animatorController;
-            var playerAnimationEvents = GetComponentInChildren<PlayerAnimationEvents>();
-            playerAnimationEvents.Init(pAEInitParameters);
-
-            // singlecontroller init
-            var singleControllerInitParameters = new SingleController.InitParameters();
-            singleControllerInitParameters.AnimatorController = animatorController;
-            singleControllerInitParameters.MoveSettings = initParameters.MoveSettings;
-            singleControllerInitParameters.ExhaustCheckerSettings = initParameters.ExhaustCheckerSettings;
-            singleControllerInitParameters.AnimationEvents = playerAnimationEvents;
-            singleControllerInitParameters.Swapper = initParameters.Swapper;
-
-            singleController.Init(singleControllerInitParameters);
-
-            // trigger detector init
-            if (triggerDetector != null)
-            {
-                var triggerDetectorInitParameters = new SlapEnemyDetector.InitParameters();
-                triggerDetectorInitParameters.SingleController = singleController;
-
-                triggerDetector.Init(triggerDetectorInitParameters);
-            }
-
-            animator.runtimeAnimatorController = initParameters.RuntimeAnimatorController;
-
-        }
-
-        public class InitParameters
-        {
-            public GameType GameType { get; set; }
-            public DoTweenSwapper.MoveSettings MoveSettings { get; set; }
-            public ExhaustChecker.Settings ExhaustCheckerSettings { get; set; }
-            public RuntimeAnimatorController RuntimeAnimatorController { get; set; }
-            public ISwapper Swapper { get; set; }
+            DIContainer.Instance.RegisterGameObject(gameObject)
+                .RegisterComponent<GenderInfo>()
+                .RegisterComponent<SingleController>()
+                .RegisterComponent<Animator>()
+                .RegisterComponent<PlayerAnimationEvents>()
+                .RegisterComponent<SlapEnemyDetector>(true)
+                .RegisterComponent<PushEnemyDetector>(true)
+                .RegisterComponent<ItemTriggerDetector>(true)
+                .RegisterFactoryFor<IAnimatorController, AnimatorControllerFactory>()
+                .RegisterWithCheck<ExhaustChecker, IAnimatorController, ProtectorChecker>(new ProtectorChecker());
         }
     }
+
+    public interface IChecker
+    {
+        bool Check();
+    }
+
+    public class ProtectorChecker : IChecker
+    {
+        Gender _protectorGender;
+        GenderInfo _genderInfo;
+
+        public void Init(InitParameters initParameters)
+        {
+            _protectorGender = initParameters.ProtectorGender;
+            _genderInfo = initParameters.GenderInfo;
+        }
+
+        public bool Check()
+        {
+            bool check = _protectorGender == _genderInfo.Gender;
+
+            return _protectorGender == _genderInfo.Gender;
+        }
+
+
+        public class InitParameters 
+        {
+            public GenderInfo GenderInfo { get; set; }
+            public Gender ProtectorGender { get; set; }
+        }
+    }
+
 }

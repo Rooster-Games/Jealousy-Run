@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class ParticlePool : MonoBehaviour
+public class OldParticlePool : MonoBehaviour
 {
     [SerializeField]
     List<Particle> particles = new List<Particle>();

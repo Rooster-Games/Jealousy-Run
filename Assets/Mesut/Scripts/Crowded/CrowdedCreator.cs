@@ -25,12 +25,21 @@ namespace JR
 
         public void Init(InitParameters initParameters)
         {
-            _creationGender = initParameters.GenderToCreate;
+            if (Mathf.Approximately(transform.localPosition.x, 1.6f))
+            {
+                _creationGender = (Gender)(((int)initParameters.ProtectorGender + 1) % 2);
+            }
+            else if (Mathf.Approximately(transform.localPosition.x, -1.6f))
+            {
+                _creationGender = (Gender)(((int)_creationGender + (int)initParameters.ProtectorGender + 1) % 2);
+            }
+                    
+
             Init();
         }
 
         [Button("Init")]
-        public void Init()
+        private void Init()
         {
             _creationCounter = 0;
             _createdPositions = new List<Vector3>();
@@ -126,20 +135,19 @@ namespace JR
 
         public class InitParameters
         {
-            public Gender GenderToCreate { get; set; }
+            public Gender ProtectorGender { get; set; }
         }
 
-        private void OnTriggerExit(Collider other)
-        {
-            var animator = other.GetComponentInChildren<Animator>();
+        //private void OnTriggerExit(Collider other)
+        //{
+        //    var animator = other.GetComponentInChildren<Animator>();
 
-            if (animator != null)
-            {
-                float timer = 1f;
-                DOTween.To(() => timer, (x) => { timer = x; animator.SetLayerWeight(1, x); }, 0f, 0.15f);
-                animator.ResetTrigger("slap");
-            }
-        }
-
+        //    if (animator != null)
+        //    {
+        //        float timer = 1f;
+        //        // DOTween.To(() => timer, (x) => { timer = x; animator.SetLayerWeight(1, x); }, 0f, 0.15f);
+        //        animator.ResetTrigger("slap");
+        //    }
+        //}
     }
 }

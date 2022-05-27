@@ -23,10 +23,8 @@ namespace JR
             _animator.SetLayerWeight(layerIndex, weight);
         }
 
-        public void SetTrigger(string triggerName, [CallerMemberName] string callerName = "")
+        public void SetTrigger(string triggerName, [CallerMemberName] string calerName ="")
         {
-            if(triggerName == "normalRun")
-                Debug.Log("Caller Name: " + callerName);
             _animator.SetTrigger(triggerName);
         }
 
@@ -45,9 +43,14 @@ namespace JR
             return _animator.GetCurrentAnimatorStateInfo(layerIndex).length;
         }
 
-        public void ResetTrigger(string stateName)
+        public void ResetTrigger(string stateName, [CallerMemberName] string calerName = "")
         {
             _animator.ResetTrigger(stateName);
+        }
+
+        public float GetFloat(string parameterName)
+        {
+            return _animator.GetFloat(parameterName);
         }
 
         public class InitParameters
@@ -60,31 +63,36 @@ namespace JR
     {
         void SetBool(string stateName, bool state);
         void SetFloat(string parameterName, float value);
-        void SetTrigger(string triggerName, [CallerMemberName] string CallerName = "");
+        float GetFloat(string parameterName);
+        void SetTrigger(string triggerName, [CallerMemberName] string callerName ="");
         void SetLayerWeight(int layerIndex, float weight);
         void SetAnimatorSpeed(float speed);
         float TestLength(int layerIndex);
-        void ResetTrigger(string stateName);
+        void ResetTrigger(string stateName, [CallerMemberName] string calerName = "");
     }
 
     public class AnimatorControllerFactory
     {
-        public IAnimatorController Create(params Animator[] _animators)
+        public IAnimatorController Create(FactoryCreateParameters createParameters)
         {
-            CompositeAnimatorController _compositeController = new CompositeAnimatorController();
-            for(int i = 0; i < _animators.Length; i++)
-            {
-                var animControllerInitParameters = new AnimatorController.InitParameters();
-                animControllerInitParameters.Animator = _animators[i];
-                var animController = new AnimatorController();
-                animController.Init(animControllerInitParameters);
-                if (_animators.Length == 1)
-                    return animController;
+            var animControllerInitParameters = new AnimatorController.InitParameters();
 
-                _compositeController.Add(animController);
-            }
+            //Debug.Log("Is Animator Null: " + (createParameters.Animator == null));
+            // Debug.Log("Is RunTimeAnimatorcontroller Null: " + (createParameters.RuntimeAnimatorController == null));
 
-            return _compositeController;
+            animControllerInitParameters.Animator = createParameters.Animator;
+            // createParameters.Animator.runtimeAnimatorController = createParameters.RuntimeAnimatorController;
+
+            var animController = new AnimatorController();
+            animController.Init(animControllerInitParameters);
+
+            return animController;
+        }
+
+        public class FactoryCreateParameters
+        {
+            public Animator Animator { get; set; }
+            // public RuntimeAnimatorController RuntimeAnimatorController { get; set; }
         }
     }
 
@@ -97,7 +105,12 @@ namespace JR
             _animationControllerList.Add(controller);
         }
 
-        public void ResetTrigger(string stateName)
+        public float GetFloat(string parameterName)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void ResetTrigger(string stateName, [CallerMemberName] string calerName = "")
         {
             foreach (var controller in _animationControllerList)
             {
@@ -137,10 +150,8 @@ namespace JR
             }
         }
 
-        public void SetTrigger(string triggerName, [CallerMemberName] string callerName = "")
+        public void SetTrigger(string triggerName, [CallerMemberName] string calerName = "")
         {
-            if (triggerName == "normalRun")
-                Debug.Log("CallerName: " + callerName);
             foreach (var controller in _animationControllerList)
             {
                 controller.SetTrigger(triggerName);

@@ -27,6 +27,11 @@ namespace JR
             _animator.SetFloat(name, value);
         }
 
+        public void EnableAnimator(bool state)
+        {
+            _animator.enabled = state;
+        }
+
         public class InitParameters
         {
 

@@ -396,9 +396,5 @@ PrefabInstance:
       propertyPath: levelList.Array.data[0].levelScene
       value: MesutSceneNew
       objectReference: {fileID: 0}
-    - target: {fileID: 3590989980063810167, guid: cafe40d54132148f18738f07dd72b272, type: 3}
-      propertyPath: winPanelDelay
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cafe40d54132148f18738f07dd72b272, type: 3}

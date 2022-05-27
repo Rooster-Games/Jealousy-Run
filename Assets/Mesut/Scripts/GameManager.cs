@@ -1,4 +1,5 @@
 
+using System.Collections;
 using GameCores;
 using GameCores.CoreEvents;
 using UnityEngine;
@@ -11,7 +12,7 @@ namespace JR
         [SerializeField] bool _developmentMode;
         bool _isGameStarted;
 
-        EventBus _eventbus;
+        IEventBus _eventbus;
 
         bool _isInitialized;
 
@@ -21,8 +22,26 @@ namespace JR
             _isInitialized = true;
 
             RoosterHub.Central.OnGameStartedHandler += StartGame;
+            _eventbus.Register<OnBarEmpty>(EventBus_OnBarEmpty);
+            _eventbus.Register<OnGameWin>(EventBus_OnGameWin);
         }
 
+        private void EventBus_OnBarEmpty(OnBarEmpty eventData)
+        {
+            StartCoroutine(Fail());
+        }
+
+        IEnumerator Fail()
+        {
+            yield return new WaitForSeconds(1f);
+            RoosterHub.Central.Fail();
+        }
+
+
+        private void EventBus_OnGameWin(OnGameWin eventData)
+        {
+            RoosterHub.Central.Win();
+        }
 
         private void StartGame()
         {
@@ -60,7 +79,7 @@ namespace JR
 
         public class InitParameters
         {
-            public EventBus EventBus { get; set; }
+            public IEventBus EventBus { get; set; }
         }
     }
 }

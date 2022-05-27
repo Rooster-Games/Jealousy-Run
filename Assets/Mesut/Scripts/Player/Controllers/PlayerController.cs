@@ -3,10 +3,6 @@ using UnityEngine;
 using GameCores;
 using GameCores.CoreEvents;
 using DG.Tweening;
-using NaughtyAttributes;
-using DI;
-using System.Collections;
-using Unity.Profiling.LowLevel;
 using System;
 
 namespace JR
@@ -16,8 +12,7 @@ namespace JR
         [SerializeField] Transform[] _coupleTransform;
         [SerializeField] GameObject _speedUpParticle;
         DollyCartController _dollyCartController;
-        IAnimatorController _animatorController;
-        EventBus _eventBus;
+        IEventBus _eventBus;
         InputManager _inputManager;
 
         IProtector _protector;
@@ -30,8 +25,9 @@ namespace JR
 
         public void Init(InitParameters initParameters)
         {
+            initParameters.CheckNullField();
+
             _dollyCartController = initParameters.DollyCartController;
-            _animatorController = initParameters.AnimatorController;
             _eventBus = initParameters.EventBus;
             _inputManager = initParameters.InputManager;
             _protector = initParameters.Protector;
@@ -40,14 +36,16 @@ namespace JR
 
             _isInitialized = true;
 
-            var speedChangerInitParameters = new SpeedChanger.InitParameters();
-            speedChangerInitParameters.DollyCartController = _dollyCartController;
-            speedChangerInitParameters.Settings = initParameters.SpeedChangerSettings;
+            //var speedChangerInitParameters = new SpeedChanger.InitParameters();
+            //speedChangerInitParameters.DollyCartController = _dollyCartController;
+            //speedChangerInitParameters.Settings = initParameters.SpeedChangerSettings;
 
-            _speedChanger = new SpeedChanger();
-            _speedChanger.Init(speedChangerInitParameters);
+            //_speedChanger = new SpeedChanger();
+            //_speedChanger.Init(speedChangerInitParameters);
+            _speedChanger = initParameters.SpeedChanger;
 
             _eventBus.Register<OnGameStarted>(EventBus_OnGameStarted);
+            _eventBus.Register<OnBarEmpty>(EventBus_OnBarEmpty);
 
             _protector.MakeHandsBigger();
         }
@@ -55,7 +53,12 @@ namespace JR
         private void EventBus_OnGameStarted(OnGameStarted eventData)
         {
             _dollyCartController.StartMoving();
-            _animatorController.SetTrigger("normalRun");
+            // _animatorController.SetTrigger("normalRun");
+        }
+
+        private void EventBus_OnBarEmpty(OnBarEmpty eventData)
+        {
+            _dollyCartController.StopMoving();
         }
 
         private void Update()
@@ -99,14 +102,13 @@ namespace JR
         public class InitParameters
         {
             public DollyCartController DollyCartController { get; set; }
-            public IAnimatorController AnimatorController { get; set; }
-            //public Settings Settings { get; set; }
-            public EventBus EventBus { get; set; }
+            public IEventBus EventBus { get; set; }
             public InputManager InputManager { get; set; }
             public IProtector Protector { get; set; }
             public IGuarded Guarded { get; set; }
             public SpeedChanger.Settings SpeedChangerSettings { get; set; }
             public CameraFovChanger CameraFovChanger { get; set; }
+            public SpeedChanger SpeedChanger { get; set; }
         }
     }
 
@@ -131,30 +133,38 @@ namespace JR
             if (_becomeExhaust != null)
                 _becomeExhaust.Kill();
 
+            if (_timerTween != null)
+                _timerTween.Kill();
+
             float timer = _timer;
             _timerTween = DOTween.To(() => timer, (x) => { timer = x; _timer = x; }, _settings.BecomeExhaustSeconds, _settings.BecomeExhaustSeconds)
                 .OnComplete(() => { _isExhausted = true;});
         }
 
-        public void CheckForExhaust()
+        public bool CheckForExhaust()
         {
             if (_isExhausted)
                 BecomeExhaust();
             else
             {
-                _protectorController.SetTrigger("turnRight");
                 _protectorController.SetTrigger("normalRun");
-                _timerTween.Kill();
+                if(_timerTween != null)
+                    _timerTween.Kill();
+
+                _timerTween = DOTween.To(() => _timer, (x) => _timer = x, 0f, _timer);
             }
+
+            return _isExhausted;
         }
 
         private void BecomeExhaust()
         {
             _protectorController.SetTrigger("turnRight");
             _protectorController.SetTrigger("yorgun");
+            _protectorController.ResetTrigger("normalRun");
 
-            float timer = _timer;
-            _becomeExhaust = DOTween.To(() => timer, (x) => { timer = x; _timer = x; }, 0f, _settings.ExhaustDuration)
+            float timer2 = _timer;
+            _becomeExhaust = DOTween.To(() => timer2, (x) => { timer2 = x; _timer = x; }, 0f, _settings.ExhaustDuration)
                 .OnComplete(CoolDown);
         }
 
@@ -196,6 +206,8 @@ namespace JR
 
         private bool _isSpeedUpStarted;
 
+        IEventBus _eventBus;
+
         public void Init(InitParameters initParameters)
         {
             _settings = initParameters.Settings;
@@ -204,6 +216,16 @@ namespace JR
             _initialSpeed = _dollyCartController.StartingSpeed;
             _targetSpeed = _initialSpeed + _initialSpeed * _settings.SpeedUpPercent;
             _initialDeltaChange = _targetSpeed - _initialSpeed;
+            _eventBus = initParameters.EventBus;
+
+            _eventBus.Register<OnBarEmpty>(EventBus_OnBarEmpty);
+        }
+
+        private void EventBus_OnBarEmpty(OnBarEmpty eventData)
+        {
+            if(_speedChangeTween != null)
+                _speedChangeTween.Kill();
+
         }
 
         public void SpeedUp()
@@ -229,7 +251,6 @@ namespace JR
                 _speedChangeTween.Kill();
 
             float durationPercent = (_currentSpeed - _initialSpeed) / _initialDeltaChange;
-
             _speedChangeTween = DOTween.To(() => _currentSpeed, (x) => _currentSpeed = x, _initialSpeed, _settings.ReturnBackDuration * durationPercent)
                 .SetEase(_settings.RetrunBackCurve)
                 .OnUpdate(ChangeCurrentSpeed);
@@ -252,6 +273,7 @@ namespace JR
         {
             public DollyCartController DollyCartController { get; set; }
             public Settings Settings { get; set; }
+            public IEventBus EventBus { get; set; }
         }
 
         [System.Serializable]
@@ -295,6 +317,8 @@ namespace JR
 
         public Tween SideMoveTween => _sideMoveTween;
         public Tween ForwardMoveTween => _forwardMoveTween;
+
+        public float WayPercent => throw new NotImplementedException();
 
         public void Init(ISwapper.InitParameters initParameters)
         {
@@ -418,12 +442,13 @@ namespace JR
         void Init(InitParameters initParameters);
         void Swap();
         void ReturnBack();
+        float WayPercent { get; }
 
         public class InitParameters
         {
             public Transform TransformToSwap { get; set; }
             public DoTweenSwapper.MoveSettings MoveSettings { get; set; }
-            public Vector3 ProtectorLocalStartingPosition { get; set; }
+            public CoupleTransformSettings CoupleTransformSettings { get; set; }
         }
     }
 }

@@ -1,6 +1,9 @@
 
+using System;
 using Cinemachine;
+using DIC;
 using GameCores;
+using RG.Loader;
 using UnityEngine;
 
 namespace JR
@@ -9,149 +12,129 @@ namespace JR
     {
         [SerializeField] GameManager _gameManager;
         [SerializeField] InputManager _inputManager;
-        [SerializeField] PlayerCompositionRoot _playerCompositionRoot;
-        [SerializeField] CrowdedControllerCompositionRoot _crowdedControllerCompositionRoot;
         [SerializeField] GameType _gameType;
-        [SerializeField] BarCompositionSettings _barCompositionSettings;
         [SerializeField] GenderSelectionController _genderSelectionController;
         [SerializeField] CinemachineVirtualCamera _cameraToChangeFov;
+        [SerializeField] RoleSelector _roleSelector;
+        [SerializeField] EndTrigger _endTrigger;
 
         [SerializeField] GameObject[] _levelCollection;
 
+        private GameObject FindAndDisableTapToPlay(bool state)
+        {
+            if (_tapToPlayGO != null)
+            {
+                _tapToPlayGO.SetActive(state);
+                return _tapToPlayGO;
+            }
+
+            var mainMenuUIs = FindObjectsOfType<MainMenuUI>(true);
+            if (mainMenuUIs == null || mainMenuUIs.Length == 0) { Debug.Log("MMUI couldn't found"); return null; }
+            foreach (var mainMenuUI in mainMenuUIs)
+            {
+                var childCount = mainMenuUI.transform.childCount;
+                for (int i = 0; i < childCount; i++)
+                {
+                    var child = mainMenuUI.transform.GetChild(i);
+                    var cchildCount = child.childCount;
+
+                    for (int j = 0; j < cchildCount; j++)
+                    {
+                        var cchild = child.GetChild(j);
+                        if (cchild.name == "TapToPlay")
+                        {
+                            Debug.Log("Found TapToPlay");
+                            cchild.gameObject.SetActive(state);
+                            return cchild.gameObject;
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        GameObject _tapToPlayGO;
         private void Awake()
         {
             _genderSelectionController.Init();
 
             if (_genderSelectionController.IsGenderSelected)
             {
-                Init();
+                RegisterToContainer();
             }
             else
-                _genderSelectionController.OnGenderSelected += Init;
-            //Init();
+            {
+                _tapToPlayGO = FindAndDisableTapToPlay(false);
+                _genderSelectionController.OnGenderSelected += RegisterToContainer;
+            }
         }
 
-        public void Init()
+        public void RegisterToContainer()
         {
-            var assemblyInstanceCreator = new AssemblyInstanceCreator(typeof(MainCompositionRoot));
-            var eventBus = new EventBus();
+            _tapToPlayGO = FindAndDisableTapToPlay(true);
 
-            // eventBus composition root initing
-            var coreEventBusCompositionRoot = new CoreEventBusCompositionRoot();
-            var coreEventBusCompositionRootInitParameters = new CoreEventBusCompositionRoot.InitParameters();
-            coreEventBusCompositionRootInitParameters.EventBus = eventBus;
-            coreEventBusCompositionRootInitParameters.AssemblyInstanceCreator = assemblyInstanceCreator;
+            var start = DateTime.Now;
 
-            coreEventBusCompositionRoot.Init(coreEventBusCompositionRootInitParameters);
+            DIContainer.Instance.Register<IEventBus>(sortingOrder: -102)
+                .RegisterConcreteType<EventBus>()
+                .AddDecorator<DebugEventBus>();
 
-            // input manager Initing
-            var inputManagerInitParameters = new InputManager.InitParameters();
-            inputManagerInitParameters.EventBus = eventBus;
+            DIContainer.Instance.RegisterSingle(_inputManager, sortingOrder: -100);
 
-            _inputManager.Init(inputManagerInitParameters);
+#if UNITY_EDITOR
+            GameObject levelPrefab = null;
+            foreach (var prefab in _levelCollection)
+            {
+                var levelTestingSettings = prefab.GetComponent<LevelTestingSettings>();
+                if (!levelTestingSettings.TestThisLevel) continue;
 
-            // level settings
+                levelPrefab = prefab;
+                break;
+            }
+
+            if(levelPrefab == null)
+            {
+                var levelIndex = (RoosterHub.Central.GetLevelNo() - 1) % _levelCollection.Length;
+
+                levelPrefab = _levelCollection[levelIndex];
+            }
+#else
             var levelIndex = RoosterHub.Central.GetLevelNo() % _levelCollection.Length;
             var levelPefab = _levelCollection[levelIndex];
+#endif
 
-            // Game Type Init
-            var gameTypeInitParameters = new GameType.InitParameters();
-            gameTypeInitParameters.ProtectorsGender = _genderSelectionController.GameTypeGender;
-            gameTypeInitParameters.LevelPrefab = levelPefab;
-            _gameType.Init(gameTypeInitParameters);
-
-            // player composition root init
-            var pcrInitParameters = new PlayerCompositionRoot.InitParameters();
-            pcrInitParameters.EventBus = eventBus;
-            pcrInitParameters.InputManager = _inputManager;
-            pcrInitParameters.GameType = _gameType;
-            pcrInitParameters.BarController = _barCompositionSettings.BarController;
-            pcrInitParameters.CameraToFovChange = _cameraToChangeFov;
-
-            _playerCompositionRoot.Init(pcrInitParameters);
-
-            // crowded composition root init
-            var ccrInitparameters = new CrowdedControllerCompositionRoot.InitParameters();
-            ccrInitparameters.EventBus = eventBus;
-            _crowdedControllerCompositionRoot.Init(ccrInitparameters);
-
-
-            // game manager init
-            var gmInitParameters = new GameManager.InitParameters();
-            gmInitParameters.EventBus = eventBus;
-
-            _gameManager.Init(gmInitParameters);
-
-            // BarController Init
-            var loveDataInitParameters = new LoveData.InitParameters();
-            loveDataInitParameters.StartingValue = _barCompositionSettings.StartingPercent;
-            _barCompositionSettings.LoveData.Init(loveDataInitParameters);
-
-            var barInitParameters = new BaseBar.InitParameters();
-            barInitParameters.StartingPercent = _barCompositionSettings.StartingPercent;
-
-            BaseBar gameTypeBar = null;
-
-            foreach (var bar in _barCompositionSettings.Bars)
+            var scenePrefabs = FindObjectsOfType<RoadSetter>();
+            foreach (var setter in scenePrefabs)
             {
-                bar.Init(barInitParameters);
-                bar.gameObject.SetActive(false);
-                if (_gameType.ProtectorGender == bar.BoundedGender)
-                {
-                    gameTypeBar = bar;
-                }
+                setter.gameObject.SetActive(false);
             }
 
-            var barControllerInitParameters = new BarController.InitParameters();
-            barControllerInitParameters.Bar = gameTypeBar;
-            barControllerInitParameters.LoveData = _barCompositionSettings.LoveData;
-            barControllerInitParameters.EventBus = eventBus;
-            _barCompositionSettings.BarController.Init(barControllerInitParameters);
+            DIContainer.Instance.RegisterSingle(_genderSelectionController.GameTypeGender, sortingOrder: -100);
+            DIContainer.Instance.RegisterWhenInjectTo(_gameType, levelPrefab);
+            DIContainer.Instance.RegisterSingle(_gameManager, sortingOrder: -100);
 
+            DIContainer.Instance.RegisterSingle(_gameType, sortingOrder: -100);
+            DIContainer.Instance.RegisterSingle(_roleSelector, sortingOrder: -100);
 
-            // item creator
-            var collectCreatorCollection = _gameType.GetComponentsInChildren<CollectableCreator>();
-            foreach (var collectCreator in collectCreatorCollection)
-            {
-                collectCreator.Init();
-            }
+            // Buradan sonrasi degistirilecek
+            DIContainer.Instance.RegisterSingle(_cameraToChangeFov, sortingOrder: -100);
 
+            DIContainer.Instance.RegisterSingle(_endTrigger);
 
-            // Item collection
-            var itemCRCollection= _gameType.GetComponentsInChildren<ItemCompositionRoot>();
-            var itemCRInitParameters = new ItemCompositionRoot.InitParameters();
-            itemCRInitParameters.WhoIsProtecting = _gameType.ProtectorGender;
+            _roleSelector.RegisterToContainer(_genderSelectionController.GameTypeGender);
 
-            foreach (var itemCR in itemCRCollection)
-            {
-                itemCR.Init(itemCRInitParameters);
-            }
+            var compRootCollection = FindObjectsOfType<BaseCompRootGO>();
+            for (int i = 0; i < compRootCollection.Length; i++)
+                compRootCollection[i].RegisterToContainer();
+
+            DIContainer.Instance.Resolve();
+
+            var end = DateTime.Now;
+            var diff = end.Subtract(start);
+
+            Debug.Log("Seconds: " + diff.Seconds.ToString());
+            Debug.Log("MiliSeconds: " + diff.Milliseconds.ToString());
         }
-        //public void Init()
-        //{
-        //    // singletons
-        //    var assemblyInstanceCreator = new AssemblyInstanceCreator(typeof(MainCompositionRoot));
-        //    var eventBus = new EventBus();
-
-        //    // register singletons
-
-        //    PMContainer.Instance.RegisterSingle(eventBus);
-        //    PMContainer.Instance.RegisterSingle(assemblyInstanceCreator);
-        //    PMContainer.Instance.RegisterSingle(_inputManager);
-
-        //    // for initing
-        //    var coreEventBusCompositionRoot = new CoreEventBusCompositionRoot();
-
-        //    // register for initing
-        //    PMContainer.Instance.RegisterForIniting(_gameManager);
-        //    PMContainer.Instance.RegisterForIniting(coreEventBusCompositionRoot);
-        //    PMContainer.Instance.RegisterForIniting(_playerCompositionRoot);
-        //    PMContainer.Instance.RegisterForIniting(_inputManager);
-
-        //    _playerCompositionRoot.RegisterToContainer();
-        //    _crowdedControllerCompositionRoot.RegisterToContainer();
-
-        //    PMContainer.Instance.Resolve();
-        //}
     }
 }

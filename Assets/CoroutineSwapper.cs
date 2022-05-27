@@ -18,17 +18,21 @@ namespace JR
         Vector3 _targetPosition;
         float _percent;
         float _timer;
+
+
         public void Init(ISwapper.InitParameters initParameters)
         {
             _transformToSwap = initParameters.TransformToSwap;
             _moveSettings = initParameters.MoveSettings;
 
-            _initialPosition = initParameters.ProtectorLocalStartingPosition;
+            _initialPosition = initParameters.CoupleTransformSettings.ProtectorStartingPosition;
 
             _targetPosition = new Vector3(_moveSettings.MoveSideDistance, _transformToSwap.localPosition.y, _moveSettings.MoveForwardDistance);
         }
 
         Coroutine _swap;
+
+        public float WayPercent => _percent;
 
         public void Swap()
         {

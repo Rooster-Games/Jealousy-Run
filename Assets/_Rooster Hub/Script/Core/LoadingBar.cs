@@ -16,9 +16,7 @@ public class LoadingBar : MonoBehaviour
 
     private void OnEnable()
     {
-        
         RoosterEventHandler.OnLoading += OnBarValueChange;
-        
     }
     private void OnDisable()
     {

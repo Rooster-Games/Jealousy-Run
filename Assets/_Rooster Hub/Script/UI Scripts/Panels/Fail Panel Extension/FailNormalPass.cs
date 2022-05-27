@@ -6,15 +6,16 @@ using UnityEngine.UI;
 
 public class FailNormalPass : MonoBehaviour,IExtension
 {
-    public Button RestartButton;
+    public Button restartButton;
 
     private void OnEnable()
     {
-        RestartButton.onClick.AddListener(RestartGame);
+        restartButton.interactable = true;
+        restartButton.onClick.AddListener(RestartGame);
     }
     private void OnDisable()
     {
-        RestartButton.onClick.RemoveListener(RestartGame);
+        restartButton.onClick.RemoveListener(RestartGame);
     }
     private void RestartGame()
     {
@@ -31,6 +32,7 @@ public class FailNormalPass : MonoBehaviour,IExtension
             UI_Loop.OnChangeUI?.Invoke(true);
             RoosterEventHandler.OnClickedNextLevelButton?.Invoke();    
         }
+        restartButton.interactable = false;
     }
 
     void TransitionTrigger()
@@ -40,6 +42,6 @@ public class FailNormalPass : MonoBehaviour,IExtension
     }
     public void RunExtension()
     {
-        RestartButton.gameObject.SetActive(true);
+        restartButton.gameObject.SetActive(true);
     }
 }

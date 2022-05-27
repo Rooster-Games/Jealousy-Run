@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+
 public class PlayerGenerator : MonoBehaviour
 {
     public static PlayerGenerator Instance;
@@ -22,7 +23,7 @@ public class PlayerGenerator : MonoBehaviour
         RoosterPlayer player = new RoosterPlayer
         {
             playerName =GetPlayerName(),
-            flag = null
+            flag = GetPlayerFlag()
         };
         return player;
     }

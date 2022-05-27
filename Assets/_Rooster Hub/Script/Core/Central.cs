@@ -7,6 +7,8 @@ namespace RoosterHub
     public static class Central
     {
         public static Action OnGameStartedHandler;
+        public static Action OnTransectionStart;
+        public static Action OnTransectionComplete;
 
         public static int GetLevelNo()
         {
