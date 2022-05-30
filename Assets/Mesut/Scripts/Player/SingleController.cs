@@ -38,6 +38,7 @@ namespace JR
         IEventBus _eventBus;
 
         [SerializeField] SlapParticleRootMarker[] _slapParticleRootMarker;
+        SlapAnimationSettings _slapAnimationSettings;
 
         WaitForSeconds _gainLoveWaitForSeconds;
         public void Init(InitParameters initParameters)
@@ -58,6 +59,8 @@ namespace JR
 
             _eventBus.Register<OnGameStarted>(EventBus_OnGameStarted);
             _eventBus.Register<OnBarEmpty>(EventBus_OnBarEmpty);
+
+            _slapAnimationSettings = initParameters.SlapAnimationSettings;
 
             initParameters.CheckNullField();
         }
@@ -114,6 +117,23 @@ namespace JR
                 .OnComplete(() => _hitStopped = false);
         }
 
+        //Coroutine _curveValueSetCO;
+        //IEnumerator SetCurveValue()
+        //{
+        //    int slapAnimationIndex = Mathf.CeilToInt(_animatorController.GetFloat("tokatIndex"));
+        //    var animationCurve = _slapAnimationSettings.IndexToAnimationCurveCollection[slapAnimationIndex];
+        //    while(_animatorController.GetNormalizedTime(1) <= 1f)
+        //    {
+        //        var curveValue = animationCurve.Evaluate(_animatorController.GetNormalizedTime(1));
+        //        _animatorController.SetFloat("Curve2", curveValue);
+
+
+        //        Debug.Log("Normalized Time: " + _animatorController.GetNormalizedTime(1));
+        //        Debug.Log("Curve: " + _animatorController.GetFloat("Curve2"));
+        //        yield return null;
+        //    }
+        //}
+
         public void Slap()
         {
             //if(!_hitStopped)
@@ -126,6 +146,11 @@ namespace JR
 
             ResetEndSlapTweens();
             TryToEndSlapAnimation();
+
+            //if (_curveValueSetCO != null)
+            //    StopCoroutine(_curveValueSetCO);
+
+            //_curveValueSetCO = StartCoroutine(SetCurveValue());
         }
 
         Tween _endCheckerTween;
@@ -269,6 +294,7 @@ namespace JR
             public GenderInfo GenderInfo { get; set; }
             public ExhaustChecker ExhaustChecker { get; set; }
             public BarChangingSettings BarChangingSettings { get; set; }
+            public SlapAnimationSettings SlapAnimationSettings { get; set; }
         }
 
         [System.Serializable]
@@ -281,6 +307,12 @@ namespace JR
             public Gender Gender => _gender;
             public RuntimeAnimatorController GuardedAnimatorController => _guardedRuntimeAnimatorController;
             public RuntimeAnimatorController ProtectorRunTimeAnimatorController => _protecterRunTimeAnimatorController;
+        }
+
+        [System.Serializable]
+        public class SlapAnimationSettings
+        {
+            [field: SerializeField] public AnimationCurve[] IndexToAnimationCurveCollection { get; private set; }
         }
     }
 

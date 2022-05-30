@@ -17,7 +17,7 @@ MonoBehaviour:
       <WhileProtectingGainPerSeconds>k__BackingField: 0.075
       <WhileCollectingAnItemValue>k__BackingField: 0.02
     <DecreaseSettings>k__BackingField:
-      <OnEncounterWithOppsiteGenderDecreaseValue>k__BackingField: 0.075
+      <OnEncounterWithOppsiteGenderDecreaseValue>k__BackingField: 0.045
   <ParticlePrefabSettings>k__BackingField:
     <ParticlePrefabCollection>k__BackingField:
     - {fileID: 8159870903229943304, guid: 3ccd3d536bfe60b42a10a927f8f5e4dc, type: 3}
@@ -42,3 +42,5 @@ MonoBehaviour:
     - {fileID: 305274029023971158, guid: b29635603e8aa0d41ae9d52dce91fad3, type: 3}
     - {fileID: 8357065299815313737, guid: 767d5a49a218145ca8a2338f84b9f8fd, type: 3}
     - {fileID: 8357065299815313737, guid: 391e5c33f7fbe48aca492e7af1d3dd8b, type: 3}
+  <SlapableParentSettings>k__BackingField:
+    _justTest: Testing

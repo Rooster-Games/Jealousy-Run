@@ -18,7 +18,7 @@ namespace JR
             _animatorController = GetComponentInChildren<PersonAnimatorController>();
             _eventBus = initParameters.EventBus;
             _eventBus.Register<OnBarEmpty>(EventBus_OnBarEmpty);
-            _animatorController.SetTrigger("Idle");
+            _animatorController.SetTrigger("idle");
             StartCoroutine(DisableAnimator());
         }
 

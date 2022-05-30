@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using DG.Tweening;
 using UnityEngine;
 
@@ -23,6 +24,13 @@ namespace JR
 
         float maxMass = 24f;
 
+        ParentSettings _parentSettings;
+
+        public void Init(InitParameters initParameters)
+        {
+            _parentSettings = initParameters.ParentSettings;
+        }
+
         private void Awake()
         {
             _anim = GetComponentInChildren<Animator>();
@@ -40,6 +48,11 @@ namespace JR
             //_closeObject.GetComponent<DynamicBone>().enabled = false;
             _closeObject.SetActive(false);
             _ragdoll.SetActive(true);
+
+            float timer = 0f;
+            DOTween.To(() => timer, (x) => timer = x, 1f, 1f)
+                .OnComplete(() => _ragdoll.SetActive(false));
+
             _boxCollider.isTrigger = false;
             _myBody.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
@@ -52,21 +65,26 @@ namespace JR
             _myBody.AddForce(dir * forceAmount, forceMode);
             _myBody.AddTorque(dir * forceAmount, forceMode);
 
-            AddFoceCO(dir, forceAmount, forceMode);
+            StartCoroutine(AddFoceCO(dir, forceAmount, forceMode));
 
-            float timer = 0f;
+            timer = 0f;
             DOTween.To(() => timer, (x) => timer = x, 1f, _otherDetectorOpenAfterSeconds)
                 .OnComplete(() => _slapDetector.gameObject.SetActive(true));
+
+            DOTween.To(() => timer, (x) => timer = x, 10f, _otherDetectorOpenAfterSeconds + 0.5f)
+                .OnComplete(() => _slapDetector.gameObject.SetActive(false));
             _myBody.useGravity = true;
+
+            transform.SetParent(_parentSettings.ParentTransform);
             // _dynamicBone.m_Stiffness = 0.15f;
         }
 
-        public void AddFoceCO(Vector3 dir, float forceAmount, ForceMode forceMode)
+        IEnumerator AddFoceCO(Vector3 dir, float forceAmount, ForceMode forceMode)
         {
             for (int i = 0; i < 2; i++)
             {
                 AddForce(dir, forceAmount, forceMode);
-                
+                yield return null;
             }
         }
 
@@ -76,6 +94,29 @@ namespace JR
             {
                 rb.AddForce(dir * forceAmount * (rb.mass / maxMass), forceMode);
                 //rb.AddTorque(dir * forceAmount, forceMode);
+            }
+        }
+
+        public class InitParameters
+        {
+            public ParentSettings ParentSettings { get; set; } 
+        }
+
+        [System.Serializable]
+        public class ParentSettings
+        {
+            [SerializeField] string _justTest;
+            Transform _parentTransform;
+
+            public Transform ParentTransform
+            {
+                get
+                {
+                    if (_parentTransform == null)
+                        _parentTransform = new GameObject("RagDoll_Parent").transform;
+
+                    return _parentTransform;
+                }
             }
         }
     }

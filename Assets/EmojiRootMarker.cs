@@ -113,6 +113,7 @@ namespace JR
                 return GetObject(prefab);
             }
 
+            Debug.LogError($"Returning null: {prefab.name}");
             return null;
         }
 

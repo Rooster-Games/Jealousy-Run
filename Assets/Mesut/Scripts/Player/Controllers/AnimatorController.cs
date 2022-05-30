@@ -53,6 +53,11 @@ namespace JR
             return _animator.GetFloat(parameterName);
         }
 
+        public float GetNormalizedTime(int layerIndex)
+        {
+            return _animator.GetCurrentAnimatorStateInfo(layerIndex).normalizedTime;
+        }
+
         public class InitParameters
         {
             public Animator Animator { get; set; }
@@ -69,6 +74,7 @@ namespace JR
         void SetAnimatorSpeed(float speed);
         float TestLength(int layerIndex);
         void ResetTrigger(string stateName, [CallerMemberName] string calerName = "");
+        float GetNormalizedTime(int layerIndex);
     }
 
     public class AnimatorControllerFactory
@@ -106,6 +112,11 @@ namespace JR
         }
 
         public float GetFloat(string parameterName)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public float GetNormalizedTime(int layerIndex)
         {
             throw new System.NotImplementedException();
         }

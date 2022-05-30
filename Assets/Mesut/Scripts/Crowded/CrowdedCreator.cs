@@ -94,6 +94,8 @@ namespace JR
             }
 
             //Debug.Log($"Creation Counter: {_creationCounter}");
+
+            _boxCollider.enabled = false;
         }
 
         private Vector3 GetRandomPosition(Vector3 leftBottomPos, Vector3 rightTopPos)

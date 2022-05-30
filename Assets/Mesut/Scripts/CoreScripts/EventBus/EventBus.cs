@@ -31,8 +31,6 @@ namespace GameCores
             Raise<OnItemCollected>();
             Raise<OnSlap>();
             Raise<OnEncounterOppositeGender>();
-
-            Debug.Log("Event Bus Ctor End");
         }
 
         Dictionary<Type, IActionData> _typeToActionMap = new Dictionary<Type, IActionData>();

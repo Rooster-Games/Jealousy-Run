@@ -50,6 +50,8 @@ namespace JR
             _isGameEnd = true;
         }
 
+        Vector3 _lastPos = Vector3.zero;
+        bool _firstTime = true;
         private void OnTriggerEnter(Collider other)
         {
             if (_colliderMap.ContainsKey(other)) return;
@@ -84,16 +86,30 @@ namespace JR
                 dir = new Vector3(dir.z * signX, 0, dir.x * signX);
             }
 
+            pushable.Push(dir, _forceAmount, _forceMode, _gender, otherGenderInfo.Gender);
+
+
             List<Collider> colliders = Physics.OverlapSphere(myPos, 2f, _emojiMask).ToList();
 
             if (colliders.Contains(other))
                 colliders.Remove(other);
 
-            var emojiRootMarker = other.gameObject.GetComponentInChildren<EmojiRootMarker>();
-            _emojiController.CreateEmoji(EmojiType.Medium, emojiRootMarker, _gender, otherGenderInfo.Gender);
-            _emojiController.CreateEmojiAtCrowded(EmojiType.Low, colliders, _gender, otherGenderInfo.Gender);
+            if (_firstTime)
+            {
+                _lastPos = transform.position;
 
-            pushable.Push(dir, _forceAmount, _forceMode, _gender, otherGenderInfo.Gender);
+
+                var emojiRootMarker = other.gameObject.GetComponentInChildren<EmojiRootMarker>();
+                _emojiController.CreateEmoji(EmojiType.Medium, emojiRootMarker, _gender, otherGenderInfo.Gender);
+                _emojiController.CreateEmojiAtCrowded(EmojiType.Low, colliders, _gender, otherGenderInfo.Gender);
+
+                _firstTime = false;
+            }
+
+            if (Vector3.Distance(transform.position, _lastPos) > 10f && !_firstTime)
+            {
+                _firstTime = true;
+            }
 
             //_anim.SetLayerWeight(1, _weight);
             //_anim.ResetTrigger("hit");

@@ -17,6 +17,7 @@ namespace JR
         [SerializeField] CinemachineVirtualCamera _cameraToChangeFov;
         [SerializeField] RoleSelector _roleSelector;
         [SerializeField] EndTrigger _endTrigger;
+        [SerializeField] TutorialController _tutorialController;
 
         [SerializeField] GameObject[] _levelCollection;
 
@@ -70,6 +71,8 @@ namespace JR
             }
         }
 
+        bool _showTutorial = true;
+
         public void RegisterToContainer()
         {
             _tapToPlayGO = FindAndDisableTapToPlay(true);
@@ -83,6 +86,10 @@ namespace JR
             DIContainer.Instance.RegisterSingle(_inputManager, sortingOrder: -100);
 
             GameObject levelPrefab = null;
+            int levelIndex = RoosterHub.Central.GetLevelNo() - 1;
+
+            Debug.Log("LevelIndex: " + levelIndex);
+
 #if UNITY_EDITOR
             foreach (var prefab in _levelCollection)
             {
@@ -93,15 +100,26 @@ namespace JR
                 break;
             }
 
-            if(levelPrefab == null)
+            if (levelIndex < 2)
             {
-                var levelIndex = (RoosterHub.Central.GetLevelNo() - 1) % _levelCollection.Length;
-
+                levelPrefab = _tutorialController.GetTutorial(levelIndex);
+            }
+            else if (levelPrefab == null)
+            {
+                levelIndex = (levelIndex - 2) % _levelCollection.Length;
                 levelPrefab = _levelCollection[levelIndex];
             }
+
 #else
-            var levelIndex = RoosterHub.Central.GetLevelNo() % _levelCollection.Length;
-            levelPrefab = _levelCollection[levelIndex];
+            if (levelIndex < 2)
+            {
+                levelPrefab = _tutorialController.GetTutorial(levelIndex);
+            }
+            else
+            {
+                levelIndex = (levelIndex - 2) % _levelCollection.Length;
+                levelPrefab = _levelCollection[levelIndex];
+            }
 #endif
 
             var scenePrefabs = FindObjectsOfType<RoadSetter>();

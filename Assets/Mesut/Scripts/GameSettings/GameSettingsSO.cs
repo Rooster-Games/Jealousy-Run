@@ -9,6 +9,6 @@ namespace JR
     {
         [field: SerializeField] public BarChangingSettings BarChangingSettings { get; private set; }
         [field: SerializeField] public ParticlePool.ParticlePrefabSettings ParticlePrefabSettings { get; private set; }
-
+        [field: SerializeField] public Slapable.ParentSettings SlapableParentSettings { get; private set; }
     }
 }

@@ -275,12 +275,11 @@ namespace JR
             public Settings Settings { get; set; }
             public IEventBus EventBus { get; set; }
         }
-
         [System.Serializable]
         public class Settings
         {
             [Header("=== % Speed Up Settings ===")]
-            [Range(0f, 1f)]
+            [Range(0f, 5f)]
             [SerializeField] float _speedUpPercent = 0.5f;
             [SerializeField] float _speedUpDuration = 1f;
             [SerializeField] AnimationCurve _speedUpCurve;

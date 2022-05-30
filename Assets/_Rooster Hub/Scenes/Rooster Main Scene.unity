@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
+  m_IndirectSpecularColor: {r: 0.18026263, g: 0.22567914, b: 0.3068796, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -340,6 +340,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1905151066133747210, guid: cafe40d54132148f18738f07dd72b272, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3590989980063810154, guid: cafe40d54132148f18738f07dd72b272, type: 3}
       propertyPath: m_Name
       value: Loop
@@ -390,11 +394,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3590989980063810165, guid: cafe40d54132148f18738f07dd72b272, type: 3}
       propertyPath: mainLevel.levelScene
-      value: MesutSceneNew
+      value: GameScene_Bu
       objectReference: {fileID: 0}
     - target: {fileID: 3590989980063810165, guid: cafe40d54132148f18738f07dd72b272, type: 3}
       propertyPath: levelList.Array.data[0].levelScene
-      value: MesutSceneNew
+      value: GameScene_Bu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cafe40d54132148f18738f07dd72b272, type: 3}

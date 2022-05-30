@@ -16,6 +16,8 @@ namespace JR
 
         public Gender ProtectorGender => _protectorsGender;
 
+        public CinemachineSmoothPath SmoothPath { get => _smoothpath; set => _smoothpath = value; }
+
         public void Init(InitParameters initParameters)
         {
             _protectorsGender = initParameters.ProtectorsGender;

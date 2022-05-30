@@ -41,12 +41,16 @@ namespace JR
             var emojiMarkerInitParameters = new EmojiRootMarker.InitParameters();
             emojiMarkerInitParameters.ParticlePool = initParameters.ParticlePool;
 
+            var slapableInitParameters = new Slapable.InitParameters();
+            slapableInitParameters.ParentSettings = initParameters.SlapableParentSettings;
+
             foreach (var personController in personControllerCollection)
             {
                 var emojiMarker = personController.GetComponentInChildren<EmojiRootMarker>();
                 emojiMarker.Init(emojiMarkerInitParameters);
 
                 personController.Init(pcInitParameters);
+                personController.GetComponent<Slapable>().Init(slapableInitParameters);
             }
         }
 
@@ -55,6 +59,7 @@ namespace JR
             public IEventBus EventBus { get; set; }
             public Gender ProtectorGender { get; set; }
             public ParticlePool ParticlePool { get; set; }
+            public Slapable.ParentSettings SlapableParentSettings { get; set; }
         }
     }
 }

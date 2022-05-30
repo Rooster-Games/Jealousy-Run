@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
-using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +11,8 @@ namespace UIThings
 
         [SerializeField] CursorClickSettings _settings;
 
+
+        [field: SerializeField] public bool InverseScale { get; set; }
 
         bool _isScaling;
         float _startingScale;
@@ -32,11 +32,10 @@ namespace UIThings
             if(_settings.CanMove)
                 _settings.CursorTransform.position = Input.mousePosition + _settings.CursorPositionOffset;
 
-            if(Input.GetMouseButtonDown(0) && !_isScaling)
+            if((Input.GetMouseButtonDown(0) || _settings.AutoAnimation ) && !_isScaling)
             {
                 StartCoroutine(OnClick());
             }
-
         }
 
         //private void OnClick()
@@ -57,9 +56,13 @@ namespace UIThings
 
             while (timer < _settings.ScaleDuration)
             {
-                timer += Time.deltaTime;
+                timer += Time.unscaledDeltaTime;
 
                 float percent = timer / _settings.ScaleDuration;
+
+                if (InverseScale)
+                    percent = 1 - percent;
+
                 float curvePercent = _settings.ScaleCurve.Evaluate(percent);
                 float scale = Mathf.Lerp(_startingScale, _settings.TargetScale, curvePercent);
 
@@ -71,6 +74,12 @@ namespace UIThings
             _isScaling = false;
         }
 
+        private void OnDisable()
+        {
+            StopCoroutine(OnClick());
+            _isScaling  = false;
+        }
+
         [System.Serializable]
         public class CursorClickSettings
         {
@@ -80,6 +89,7 @@ namespace UIThings
             [field: SerializeField] public float TargetScale { get; private set; } = 0.45f;
             [field: SerializeField] public Vector3 CursorPositionOffset { get; private set; }
             [field: SerializeField] public AnimationCurve ScaleCurve { get; private set; }
+            [field: SerializeField] public bool AutoAnimation { get; private set; }
         }
     }
 }
