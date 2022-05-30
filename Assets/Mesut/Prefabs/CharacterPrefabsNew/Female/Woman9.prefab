@@ -5447,11 +5447,11 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 1e2c1daa1f2bbc541928d2d8f4a81024, type: 2}
-  - {fileID: 2100000, guid: 322ecdb4b4ded2442bbe473305db2e44, type: 2}
-  - {fileID: 2100000, guid: 31b8826ffe237624aad7217df1a7bcb9, type: 2}
-  - {fileID: 2100000, guid: 1e2c1daa1f2bbc541928d2d8f4a81024, type: 2}
+  - {fileID: 2100000, guid: bd6d49528916b934b8d6165278894bf3, type: 2}
+  - {fileID: 2100000, guid: d7833154d4809254d9f422d21a307be7, type: 2}
+  - {fileID: 2100000, guid: 5f7670d73fe7c594ba769b2a4ee4cd1c, type: 2}
   - {fileID: 2100000, guid: fb1e74007ba2139408d6fdffd9fd862a, type: 2}
-  - {fileID: 2100000, guid: d37984c678055bc4294598dbfbfcc7f6, type: 2}
+  - {fileID: 2100000, guid: 5f7670d73fe7c594ba769b2a4ee4cd1c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

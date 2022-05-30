@@ -15,11 +15,11 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_FogColor: {r: 0.62767, g: 0.7688048, b: 0.8584906, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
-  m_LinearFogStart: 0
-  m_LinearFogEnd: 300
+  m_FogDensity: 0.003
+  m_LinearFogStart: 190
+  m_LinearFogEnd: 190.01
   m_AmbientSkyColor: {r: 1, g: 1, b: 1, a: 1}
   m_AmbientEquatorColor: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -2156,7 +2156,7 @@ MonoBehaviour:
   m_Waypoints:
   - position: {x: 0, y: 0, z: 0}
     roll: 0
-  - position: {x: 0, y: 0, z: 170}
+  - position: {x: 0, y: 0, z: 236.9}
     roll: 0
 --- !u!114 &317059702
 MonoBehaviour:
@@ -3346,7 +3346,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 459936835}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.0000001}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 122011500}
@@ -5551,7 +5551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 9.35, z: -11.69}
+  m_FollowOffset: {x: -0.2364991, y: 9.460859, z: -11.46828}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
@@ -7023,7 +7023,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077404300}
   m_LocalRotation: {x: 0.22835083, y: 0, z: 0, w: 0.97357893}
-  m_LocalPosition: {x: 0, y: 9.35, z: -11.69}
+  m_LocalPosition: {x: -0.2364991, y: 9.460859, z: -11.46828}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -12572,7 +12572,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2092658357}
   m_LocalRotation: {x: 0.22835083, y: 0, z: 0, w: 0.97357893}
-  m_LocalPosition: {x: 0, y: 9.35, z: -11.69}
+  m_LocalPosition: {x: -0.2364991, y: 9.460859, z: -11.46828}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 870050323}
