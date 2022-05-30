@@ -55,8 +55,8 @@ namespace JR
 
         private void CreateEmoji(EmojiType type, EmojiRootMarker emojiRootMarker)
         {
-            var prefab = GetRandomEmoji(type);
-            emojiRootMarker.AddEmoji(prefab, _destroySeconds);
+             var prefab = GetRandomEmoji(type);
+             emojiRootMarker.AddEmoji(prefab, _destroySeconds);
         }    
 
         public void CreateEmojiAtCrowded(EmojiType type, List<Collider> _crowdedCollection, Gender myGender, Gender otherGender)

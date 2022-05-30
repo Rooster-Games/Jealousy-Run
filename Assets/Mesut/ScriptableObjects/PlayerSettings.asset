@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerSettings
   m_EditorClassIdentifier: 
   _dollyCartSettings:
-    _speed: 7
+    _speed: 10
   _coupleTransformSettings:
     _protectorStartingPosition: {x: 1.6, y: 0, z: 0}
     _defendedStartingPosition: {x: -1.6, y: 0, z: 0}
@@ -70,8 +70,8 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   _speedChangerSettings:
-    _speedUpPercent: 0.75
-    _speedUpDuration: 1
+    _speedUpPercent: 1.1
+    _speedUpDuration: 0.65
     _speedUpCurve:
       serializedVersion: 2
       m_Curve:
@@ -211,3 +211,5 @@ MonoBehaviour:
   - _gender: 0
     _guardedRuntimeAnimatorController: {fileID: 9100000, guid: d0cfb6aaf46c84699be6f6d88bbaf84a, type: 2}
     _protecterRunTimeAnimatorController: {fileID: 9100000, guid: 7f8dd00b066dd44b9bfbe4d2361cab25, type: 2}
+  _animationSettings:
+    <SlapAnimationCount>k__BackingField: 6

@@ -42,3 +42,5 @@ MonoBehaviour:
     - {fileID: 305274029023971158, guid: b29635603e8aa0d41ae9d52dce91fad3, type: 3}
     - {fileID: 8357065299815313737, guid: 767d5a49a218145ca8a2338f84b9f8fd, type: 3}
     - {fileID: 8357065299815313737, guid: 391e5c33f7fbe48aca492e7af1d3dd8b, type: 3}
+  <SlapableParentSettings>k__BackingField:
+    _justTest: Testing

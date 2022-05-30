@@ -725,13 +725,13 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: fbc47fbf06ff94edfbb4d62f6ff14891, type: 3}
+  m_Motion: {fileID: -4791504522942941401, guid: f27bbaa733bae4cd48c68d4d523013d3, type: 3}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: Curve
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 

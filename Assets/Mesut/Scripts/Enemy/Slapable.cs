@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using DG.Tweening;
 using UnityEngine;
 
@@ -22,6 +23,13 @@ namespace JR
         public Rigidbody[] _ragdollBodies;
 
         float maxMass = 24f;
+
+        ParentSettings _parentSettings;
+
+        public void Init(InitParameters initParameters)
+        {
+            _parentSettings = initParameters.ParentSettings;
+        }
 
         private void Awake()
         {
@@ -58,6 +66,8 @@ namespace JR
             DOTween.To(() => timer, (x) => timer = x, 1f, _otherDetectorOpenAfterSeconds)
                 .OnComplete(() => _slapDetector.gameObject.SetActive(true));
             _myBody.useGravity = true;
+
+            transform.SetParent(_parentSettings.ParentTransform);
             // _dynamicBone.m_Stiffness = 0.15f;
         }
 
@@ -76,6 +86,29 @@ namespace JR
             {
                 rb.AddForce(dir * forceAmount * (rb.mass / maxMass), forceMode);
                 //rb.AddTorque(dir * forceAmount, forceMode);
+            }
+        }
+
+        public class InitParameters
+        {
+            public ParentSettings ParentSettings { get; set; } 
+        }
+
+        [System.Serializable]
+        public class ParentSettings
+        {
+            [SerializeField] string _justTest;
+            Transform _parentTransform;
+
+            public Transform ParentTransform
+            {
+                get
+                {
+                    if (_parentTransform == null)
+                        _parentTransform = new GameObject("RagDoll_Parent").transform;
+
+                    return _parentTransform;
+                }
             }
         }
     }
