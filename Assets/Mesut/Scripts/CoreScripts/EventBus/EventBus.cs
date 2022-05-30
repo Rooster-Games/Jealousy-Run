@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+using System.Linq;
 using UnityEngine;
+using GameCores.CoreEvents;
+using JR;
 
 namespace GameCores
 {
@@ -10,6 +12,25 @@ namespace GameCores
         public EventBus()
         {
             Debug.Log("EventBus Created");
+            //var assembly = typeof(IEventData).Assembly;
+            //var eventTypes = assembly.GetTypes().Where(x => (x.IsClass || x.IsValueType) && typeof(IEventData).IsAssignableFrom(x));
+
+            //var t = typeof(IEventBus);
+            //var methodInfo = t.GetMethod("Raise");
+
+            //foreach (var eventType in eventTypes)
+            //{
+            //    var genericMethod = methodInfo.MakeGenericMethod(new Type[] { eventType });
+            //    genericMethod.Invoke(this, null);
+            //}
+
+            Raise<OnGameStarted>();
+            Raise<OnGameWin>();
+            Raise<OnGameFail>();
+            Raise<OnBarEmpty>();
+            Raise<OnItemCollected>();
+            Raise<OnSlap>();
+            Raise<OnEncounterOppositeGender>();
         }
 
         Dictionary<Type, IActionData> _typeToActionMap = new Dictionary<Type, IActionData>();

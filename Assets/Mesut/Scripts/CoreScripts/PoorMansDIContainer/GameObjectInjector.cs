@@ -216,12 +216,15 @@ namespace DIC
             {
                 var dependentTypeList = _dependencyTypeToDependentTypeMap[dependencyType];
 
+
                 foreach (var dependentType in dependentTypeList)
                 {
-                    if(_typeToComponentMap.TryGetValue(dependentType, out var dependentComponent))
+                    if (_typeToComponentMap.TryGetValue(dependentType, out var dependentComponent))
                     {
+
                         if (_typeToFactoryMap.TryGetValue(dependencyType, out var factoryObj))
                         {
+
                             ResolveFactory(dependencyType, dependentComponent, factoryObj);
                         }
                         else if (_typeToComponentMap.TryGetValue(dependencyType, out var dependencyComponent))
@@ -233,8 +236,27 @@ namespace DIC
                             DIContainer.Instance.RegisterWhenInjectTo(dependencyComponent, dependencyCollectionComponent);
                         }
                         else if (_whenInjecToDependencyTypeMap.TryGetValue(dependentType, out var dependencyTypeToInstanceMap))
+                        {
                             if (dependencyTypeToInstanceMap.TryGetValue(dependencyType, out var dependency))
                                 DIContainer.Instance.RegisterWhenInjectTo(dependentComponent, dependency);
+                        }
+                        else if(typeof(Component).IsAssignableFrom(dependencyType))
+                        {
+                            // Debug.Log("Dependency Type: " + dependencyType.Name);
+                            // Debug.Log("Dependent Type: " + dependentComponent.name);
+                            var selfComponent = dependentComponent.GetComponentInChildren(dependencyType, true);
+
+                            if(dependencyType.Name == "Animator")
+                            {
+                                Debug.Log("=== Animator ====");
+                                Debug.Log("dependntComponent name: " + dependentComponent.name);
+
+                            }
+
+                            // Debug.Log("Is SelfComponent Null: " + (selfComponent == null));
+                            if (selfComponent != null)
+                                DIContainer.Instance.RegisterWhenInjectTo(dependentComponent, selfComponent);
+                        }
                     }
                 }
             }

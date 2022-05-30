@@ -12,8 +12,9 @@ public class ServicesCompositionRoot : BaseCompRootGO
     public override void RegisterToContainer()
     {
         DIContainer.Instance.RegisterSingle<ISwapper>(_swapper);
-        DIContainer.Instance.RegisterSingle(new CameraFovChanger());
-        DIContainer.Instance.RegisterSingle(new ExhaustChecker());
-        DIContainer.Instance.RegisterSingle(new SpeedChanger());
+        DIContainer.Instance.Register<CameraFovChanger>();
+        DIContainer.Instance.Register<ExhaustChecker>();
+        DIContainer.Instance.Register<SpeedChanger>();
+        DIContainer.Instance.Register<ParticlePool>();
     }
 }

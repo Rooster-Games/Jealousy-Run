@@ -99,8 +99,26 @@ namespace JR
             _eventBus.Fire<OnSlap>();
         }
 
+        bool _hitStopped;
+        IEnumerator HitStop()
+        {
+            _hitStopped = true;
+
+            //Time.timeScale = 0.25f;
+
+            DOTween.To(() => Time.timeScale, (x) => Time.timeScale = x, 0.25f, 0.1f);
+
+            yield return new WaitForSecondsRealtime(0.15f);
+
+            DOTween.To(() => Time.timeScale, (x) => Time.timeScale = x, 1f, 0.1f)
+                .OnComplete(() => _hitStopped = false);
+        }
+
         public void Slap()
         {
+            //if(!_hitStopped)
+            //    StartCoroutine(HitStop());
+
             _isAnimationEnded = false;
             _isSlapping = true;
             _animatorController.SetLayerWeight(1, 1f);
@@ -131,7 +149,7 @@ namespace JR
         private void TryToEndSlapAnimation()
         {
             float timer = 0f;
-            _endCheckerTween = DOTween.To(() => timer, (x) => timer = x, 1f, 0.5f)
+            _endCheckerTween = DOTween.To(() => timer, (x) => timer = x, 1f, 0.35f)
                 .OnComplete(SetLayerWeight);
         }
 
@@ -228,6 +246,7 @@ namespace JR
 
         public void EndOfProtection()
         {
+            _animatorController.ResetTrigger("protectRun");
             _animatorController.SetTrigger("normalRun");
             _whileProtectedParticle.SetActive(false);
             _pushDetector.SetActive(true);

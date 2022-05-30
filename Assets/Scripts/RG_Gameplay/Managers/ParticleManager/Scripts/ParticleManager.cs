@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-[RequireComponent(typeof(ParticlePool))]
+[RequireComponent(typeof(OldParticlePool))]
 public class ParticleManager : Singleton<ParticleManager>
 {
-    ParticlePool particlePool;
+    OldParticlePool particlePool;
 
     public override void Awake()
     {
         base.Awake();
-        particlePool = GetComponent<ParticlePool>();
+        particlePool = GetComponent<OldParticlePool>();
     }
 
    public void PlayParticle(string name,Vector3 worldPosition,Quaternion rotation)

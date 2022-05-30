@@ -12,10 +12,12 @@ namespace JR
         Action OnAnimationEnd;
         Action OnSlap;
         IAnimatorController _animatorController;
+        Settings _settings;
 
         public void Init(InitParameters initParameters)
         {
             _animatorController = initParameters.AnimatorController;
+            _settings = initParameters.Settings;
         }
 
         int _slapCounter;
@@ -36,6 +38,7 @@ namespace JR
         public class InitParameters
         {
             public IAnimatorController AnimatorController { get; set; }
+            public Settings Settings { get; set; }
         }
 
         public void RegisterOnAnimationEnd(Action action)
@@ -50,41 +53,19 @@ namespace JR
         bool _isSetting;
         private void SetSlapIndex()
         {
-            if (_isSetting) return;
-            _isSetting = true;
+            //if (_isSetting) return;
+            //_isSetting = true;
             float timer = _animatorController.GetFloat("tokatIndex");
+            // _animatorController.SetFloat("tokatIndex", (timer + 1f) % 6);
             float y = timer;
-            DOTween.To(() => timer, (x) => { timer = x; _animatorController.SetFloat("tokatIndex", timer); y = timer; }, (timer + 1f) % 6, 0.1f)
+            DOTween.To(() => timer, (x) => { timer = x; _animatorController.SetFloat("tokatIndex", timer); y = timer; }, (timer + 1f) % _settings.SlapAnimationCount, 0.25f)
                 .OnComplete(() => { _animatorController.SetFloat("tokatIndex", Mathf.Ceil(y)); _isSetting = false; });
         }
 
-        private void CheckIsThereEnemy()
+        [System.Serializable]
+        public class Settings
         {
-            Debug.Log("Checking");
-            var colliders = Physics.OverlapSphere(transform.position, 5f, (int)Mathf.Pow(2, 7));
-
-            bool hasMale = false;
-            foreach (var collider in colliders)
-            {
-                var genderInfo = collider.GetComponent<GenderInfo>();
-                if (genderInfo == null) continue;
-
-                var gender = genderInfo.Gender;
-                hasMale |= gender == Gender.Male;
-                if (hasMale)
-                    break;
-            }
-
-            Debug.Log("HasMale: " + hasMale);
-
-            if(!hasMale)
-            {
-                Debug.Log("Reseting");
-                float timer = 0f;
-                DOTween.To(() => timer, (x) => { timer = x; _animatorController.SetLayerWeight(1, x); }, 0f, 0.15f);
-                _animatorController.ResetTrigger("slap");
-            }
+            [field: SerializeField] public int SlapAnimationCount { get; private set; }
         }
     }
-
 }

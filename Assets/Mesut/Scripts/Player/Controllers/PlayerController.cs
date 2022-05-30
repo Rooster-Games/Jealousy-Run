@@ -148,7 +148,10 @@ namespace JR
             else
             {
                 _protectorController.SetTrigger("normalRun");
-                _timerTween.Kill();
+                if(_timerTween != null)
+                    _timerTween.Kill();
+
+                _timerTween = DOTween.To(() => _timer, (x) => _timer = x, 0f, _timer);
             }
 
             return _isExhausted;
@@ -272,12 +275,11 @@ namespace JR
             public Settings Settings { get; set; }
             public IEventBus EventBus { get; set; }
         }
-
         [System.Serializable]
         public class Settings
         {
             [Header("=== % Speed Up Settings ===")]
-            [Range(0f, 1f)]
+            [Range(0f, 5f)]
             [SerializeField] float _speedUpPercent = 0.5f;
             [SerializeField] float _speedUpDuration = 1f;
             [SerializeField] AnimationCurve _speedUpCurve;

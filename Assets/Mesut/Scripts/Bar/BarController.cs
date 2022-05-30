@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using DG.Tweening;
 using GameCores;
 using GameCores.CoreEvents;
@@ -46,7 +47,7 @@ namespace JR
             ChangeAmount(_testingValue);
         }
 
-        public void ChangeAmount(float amount)
+        public void ChangeAmount(float amount, [CallerMemberName] string callerName = "")
         {
             if (amount > 0f)
                 _barAnimation.PlayAnimation();

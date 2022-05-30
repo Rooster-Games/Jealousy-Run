@@ -50,8 +50,6 @@ namespace JR
             {
                 itemCR.Init(itemCRInitParameters);
             }
-
-            
         }
 
         public class InitParameters
