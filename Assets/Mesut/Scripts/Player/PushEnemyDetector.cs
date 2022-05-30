@@ -86,6 +86,7 @@ namespace JR
                 dir = new Vector3(dir.z * signX, 0, dir.x * signX);
             }
 
+            pushable.Push(dir, _forceAmount, _forceMode, _gender, otherGenderInfo.Gender);
 
 
             List<Collider> colliders = Physics.OverlapSphere(myPos, 2f, _emojiMask).ToList();
@@ -102,14 +103,12 @@ namespace JR
                 _emojiController.CreateEmoji(EmojiType.Medium, emojiRootMarker, _gender, otherGenderInfo.Gender);
                 _emojiController.CreateEmojiAtCrowded(EmojiType.Low, colliders, _gender, otherGenderInfo.Gender);
 
-                pushable.Push(dir, _forceAmount, _forceMode, _gender, otherGenderInfo.Gender);
                 _firstTime = false;
             }
 
             if (Vector3.Distance(transform.position, _lastPos) > 10f && !_firstTime)
             {
                 _firstTime = true;
-                Debug.Log("First Time");
             }
 
             //_anim.SetLayerWeight(1, _weight);

@@ -117,22 +117,22 @@ namespace JR
                 .OnComplete(() => _hitStopped = false);
         }
 
-        Coroutine _curveValueSetCO;
-        IEnumerator SetCurveValue()
-        {
-            int slapAnimationIndex = Mathf.CeilToInt(_animatorController.GetFloat("tokatIndex"));
-            var animationCurve = _slapAnimationSettings.IndexToAnimationCurveCollection[slapAnimationIndex];
-            while(_animatorController.GetNormalizedTime(1) <= 1f)
-            {
-                var curveValue = animationCurve.Evaluate(_animatorController.GetNormalizedTime(1));
-                _animatorController.SetFloat("Curve2", curveValue);
+        //Coroutine _curveValueSetCO;
+        //IEnumerator SetCurveValue()
+        //{
+        //    int slapAnimationIndex = Mathf.CeilToInt(_animatorController.GetFloat("tokatIndex"));
+        //    var animationCurve = _slapAnimationSettings.IndexToAnimationCurveCollection[slapAnimationIndex];
+        //    while(_animatorController.GetNormalizedTime(1) <= 1f)
+        //    {
+        //        var curveValue = animationCurve.Evaluate(_animatorController.GetNormalizedTime(1));
+        //        _animatorController.SetFloat("Curve2", curveValue);
 
 
-                Debug.Log("Normalized Time: " + _animatorController.GetNormalizedTime(1));
-                Debug.Log("Curve: " + _animatorController.GetFloat("Curve2"));
-                yield return null;
-            }
-        }
+        //        Debug.Log("Normalized Time: " + _animatorController.GetNormalizedTime(1));
+        //        Debug.Log("Curve: " + _animatorController.GetFloat("Curve2"));
+        //        yield return null;
+        //    }
+        //}
 
         public void Slap()
         {
@@ -144,15 +144,13 @@ namespace JR
             _animatorController.SetLayerWeight(1, 1f);
             _animatorController.SetTrigger("slap");
 
-            Debug.Log("Slap");
-
             ResetEndSlapTweens();
             TryToEndSlapAnimation();
 
-            if (_curveValueSetCO != null)
-                StopCoroutine(_curveValueSetCO);
+            //if (_curveValueSetCO != null)
+            //    StopCoroutine(_curveValueSetCO);
 
-            _curveValueSetCO = StartCoroutine(SetCurveValue());
+            //_curveValueSetCO = StartCoroutine(SetCurveValue());
         }
 
         Tween _endCheckerTween;

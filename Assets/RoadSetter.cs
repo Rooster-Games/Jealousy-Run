@@ -22,9 +22,16 @@ public class RoadSetter : MonoBehaviour
         cinemachineWayPoints[1].position = _settings.EndPosition;
 
         _smoothPath = initParameters.CinemachineSmoothPath;
-        initParameters.CinemachineSmoothPath.m_Waypoints = cinemachineWayPoints;
+        var pathGameObject = initParameters.CinemachineSmoothPath.gameObject;
 
-        initParameters.DollyCart.m_Position = initParameters.CinemachineSmoothPath.PathLength;
+        DestroyImmediate(initParameters.CinemachineSmoothPath);
+        var newSmoothPath = pathGameObject.AddComponent<CinemachineSmoothPath>();
+
+        newSmoothPath.m_Waypoints = cinemachineWayPoints;
+
+        initParameters.DollyCart.m_Position = newSmoothPath.PathLength;
+
+        pathGameObject.GetComponent<PathInjector>().InjectPath(newSmoothPath);
 
         var renderer = _roadTransform.GetComponent<MeshRenderer>();
         var materials = renderer.materials;

@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -20,11 +21,14 @@ namespace JR
         [SerializeField] GameObject _xButton;
         [SerializeField] GameObject _xOutLine;
         [SerializeField] GameObject _xImageObject;
+        [SerializeField] float _waitBeforeShowPanelDuration = 1f;
 
         public event Action OnGenderSelected;
 
         public Gender GameTypeGender => _gameTypeGender;
         public bool IsGenderSelected => _isGenderSelected;
+
+        Tween _openTween;
 
         public void Init()
         {
@@ -39,6 +43,11 @@ namespace JR
 
         private void CloseShowPanelButton()
         {
+            if(_openTween != null)
+            {
+                _openTween.Kill();
+                _openTween = null;
+            }
             _showPanelButton.gameObject.SetActive(false);
             ActivateSelectionButtons(false);
         }
@@ -53,7 +62,16 @@ namespace JR
                 _isGenderSelected = true;
             }
 
-            _showPanelButton.gameObject.SetActive(hasKey);
+            if (hasKey)
+            {
+                float timer = 0f;
+                _openTween = DOTween.To(() => timer, (x) => timer = x, 1f, _waitBeforeShowPanelDuration)
+                    .OnComplete(() => _showPanelButton.gameObject.SetActive(hasKey));
+            }
+            else
+                _showPanelButton.gameObject.SetActive(hasKey);
+
+
             ActivateSelectionButtons(!hasKey);
 
             if(!hasKey)
