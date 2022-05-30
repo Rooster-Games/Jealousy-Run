@@ -17,7 +17,7 @@ MonoBehaviour:
       <WhileProtectingGainPerSeconds>k__BackingField: 0.075
       <WhileCollectingAnItemValue>k__BackingField: 0.02
     <DecreaseSettings>k__BackingField:
-      <OnEncounterWithOppsiteGenderDecreaseValue>k__BackingField: 0.075
+      <OnEncounterWithOppsiteGenderDecreaseValue>k__BackingField: 0.045
   <ParticlePrefabSettings>k__BackingField:
     <ParticlePrefabCollection>k__BackingField:
     - {fileID: 8159870903229943304, guid: 3ccd3d536bfe60b42a10a927f8f5e4dc, type: 3}

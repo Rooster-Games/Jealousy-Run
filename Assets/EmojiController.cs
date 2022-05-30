@@ -57,17 +57,18 @@ namespace JR
         {
              var prefab = GetRandomEmoji(type);
              emojiRootMarker.AddEmoji(prefab, _destroySeconds);
-        }    
+        }
 
-        public void CreateEmojiAtCrowded(EmojiType type, List<Collider> _crowdedCollection, Gender myGender, Gender otherGender)
+        public void CreateEmojiAtCrowded(EmojiType type, List<Collider> crowdedCollection, Gender myGender, Gender otherGender)
         {
-            int iteration = _crowdedEmojiCountMax < _crowdedCollection.Count ? _crowdedEmojiCountMax : _crowdedCollection.Count;
+
+            int iteration = _crowdedEmojiCountMax < crowdedCollection.Count ? _crowdedEmojiCountMax : crowdedCollection.Count;
 
             for(int i = 0; i < iteration; i++)
             {
-                int randomIndex = Random.Range(0, _crowdedCollection.Count);
-                var col = _crowdedCollection[randomIndex];
-                _crowdedCollection.RemoveAt(randomIndex);
+                int randomIndex = Random.Range(0, crowdedCollection.Count);
+                var col = crowdedCollection[randomIndex];
+                crowdedCollection.RemoveAt(randomIndex);
 
                 var emojiRootMarker = col.gameObject.GetComponentInChildren<EmojiRootMarker>();
                 CreateEmoji(type, emojiRootMarker, myGender, otherGender);

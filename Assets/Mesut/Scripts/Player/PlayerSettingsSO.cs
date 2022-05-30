@@ -16,6 +16,7 @@ namespace JR
         [SerializeField] ExhaustChecker.Settings _exhaustCheckerSettings;
         [SerializeField] SingleController.AnimatorGenderSettings[] _animatorGenderSettingsCollection;
         [SerializeField] PlayerAnimationEvents.Settings _animationSettings;
+        [SerializeField] SingleController.SlapAnimationSettings _slapAnimationSettings;
 
         public DollyCartController.Settings DollyCartSettings => _dollyCartSettings;
         public DoTweenSwapper.MoveSettings SwapMoveSettings => _swapMoveSettings;
@@ -26,6 +27,7 @@ namespace JR
         public ExhaustChecker.Settings ExhaustChecketSettings => _exhaustCheckerSettings;
         public SingleController.AnimatorGenderSettings[] AnimatorGenderSettingsCollection => _animatorGenderSettingsCollection;
         public PlayerAnimationEvents.Settings AnimationSettings => _animationSettings;
+        public SingleController.SlapAnimationSettings SlapAnimationSettings => _slapAnimationSettings;
 
     }
 
