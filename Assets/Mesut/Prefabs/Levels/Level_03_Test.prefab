@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 135953226627007683}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.3791, y: 0.8636582, z: -90.6}
+  m_LocalPosition: {x: 1.6, y: 0.8636582, z: -90.6}
   m_LocalScale: {x: 2.9942815, y: 4.9804, z: 28.99341}
   m_Children: []
   m_Father: {fileID: 5036564159509570377}
@@ -109,8 +109,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 19, y: 19}
-  _creationGender: 0
+  _minMaxPeopleCount: {x: 15, y: 15}
+  _creationGender: 1
 --- !u!1 &1200474723723343578
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,7 +475,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1620318679967756332}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3791, y: 0.8636582, z: -162.1}
+  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -162.1}
   m_LocalScale: {x: 2.9942815, y: 4.9804, z: 15.731}
   m_Children: []
   m_Father: {fileID: 5036564159509570377}
@@ -556,7 +556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 19, y: 19}
+  _minMaxPeopleCount: {x: 15, y: 15}
   _creationGender: 1
 --- !u!1 &1620318680278954458
 GameObject:
@@ -586,7 +586,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1620318680278954458}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3791, y: 0.8636582, z: -96.14}
+  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -96.14}
   m_LocalScale: {x: 2.9942815, y: 4.9804, z: 15.731}
   m_Children: []
   m_Father: {fileID: 5036564159509570377}
@@ -667,7 +667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 19, y: 19}
+  _minMaxPeopleCount: {x: 15, y: 15}
   _creationGender: 1
 --- !u!1 &3033973684583080901
 GameObject:
@@ -697,7 +697,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3033973684583080901}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.3791, y: 0.8636582, z: -183.73001}
+  m_LocalPosition: {x: 1.6, y: 0.8636582, z: -183.73001}
   m_LocalScale: {x: 2.9942815, y: 4.9804, z: 10.974664}
   m_Children: []
   m_Father: {fileID: 5036564159509570377}
@@ -778,8 +778,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 19, y: 19}
-  _creationGender: 0
+  _minMaxPeopleCount: {x: 15, y: 15}
+  _creationGender: 1
 --- !u!1 &4488235248950783218
 GameObject:
   m_ObjectHideFlags: 0
@@ -1032,7 +1032,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4996865066303854181}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.3791, y: 0.8636582, z: -206.5354}
+  m_LocalPosition: {x: 1.6, y: 0.8636582, z: -206.5354}
   m_LocalScale: {x: 2.9942815, y: 4.9804, z: 10.974664}
   m_Children: []
   m_Father: {fileID: 5036564159509570377}
@@ -1113,8 +1113,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 19, y: 19}
-  _creationGender: 0
+  _minMaxPeopleCount: {x: 15, y: 15}
+  _creationGender: 1
 --- !u!1 &5036564159258940927
 GameObject:
   m_ObjectHideFlags: 0
@@ -1603,7 +1603,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5036564160199426831}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3791, y: 0.8636582, z: -147.5}
+  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -147.5}
   m_LocalScale: {x: 2.9942815, y: 4.9804, z: 5.061686}
   m_Children: []
   m_Father: {fileID: 5036564159509570377}
@@ -1684,7 +1684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 19, y: 19}
+  _minMaxPeopleCount: {x: 15, y: 15}
   _creationGender: 0
 --- !u!1 &5036564160605277091
 GameObject:
@@ -1714,7 +1714,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5036564160605277091}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3791, y: 0.8636582, z: -179.5}
+  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -179.5}
   m_LocalScale: {x: 2.9942815, y: 4.9804, z: 15.731}
   m_Children: []
   m_Father: {fileID: 5036564159509570377}
@@ -1795,7 +1795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 19, y: 19}
+  _minMaxPeopleCount: {x: 15, y: 15}
   _creationGender: 1
 --- !u!1 &5036564160927757958
 GameObject:
@@ -1825,7 +1825,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5036564160927757958}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3791, y: 0.8636582, z: -195.04999}
+  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -195.04999}
   m_LocalScale: {x: 2.9942815, y: 4.9804, z: 4.5276136}
   m_Children: []
   m_Father: {fileID: 5036564159509570377}
@@ -1906,7 +1906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 19, y: 19}
+  _minMaxPeopleCount: {x: 15, y: 15}
   _creationGender: 0
 --- !u!1 &5036564161162956521
 GameObject:
@@ -1936,7 +1936,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5036564161162956521}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3791, y: 0.8636582, z: -212.19003}
+  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -212.19003}
   m_LocalScale: {x: 2.9942815, y: 4.9804, z: 15.731}
   m_Children: []
   m_Father: {fileID: 5036564159509570377}
@@ -2017,7 +2017,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 19, y: 19}
+  _minMaxPeopleCount: {x: 15, y: 15}
   _creationGender: 1
 --- !u!1 &5036564161196165550
 GameObject:
@@ -2159,7 +2159,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5130680720924589567}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.3791, y: 0.8636582, z: -169.7}
+  m_LocalPosition: {x: 1.6, y: 0.8636582, z: -169.7}
   m_LocalScale: {x: 2.9942815, y: 4.9804, z: 10.974664}
   m_Children: []
   m_Father: {fileID: 5036564159509570377}
@@ -2240,8 +2240,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 19, y: 19}
-  _creationGender: 0
+  _minMaxPeopleCount: {x: 15, y: 15}
+  _creationGender: 1
 --- !u!1 &5263313424883065919
 GameObject:
   m_ObjectHideFlags: 0
@@ -2270,7 +2270,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5263313424883065919}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.3791, y: 0.8636582, z: -24.8}
+  m_LocalPosition: {x: 1.6, y: 0.8636582, z: -24.8}
   m_LocalScale: {x: 2.9942815, y: 4.9804, z: 10.974664}
   m_Children: []
   m_Father: {fileID: 5036564159509570377}
@@ -2351,8 +2351,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 19, y: 19}
-  _creationGender: 0
+  _minMaxPeopleCount: {x: 15, y: 15}
+  _creationGender: 1
 --- !u!1 &7312604825181470973
 GameObject:
   m_ObjectHideFlags: 0
@@ -2381,7 +2381,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7312604825181470973}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.3791, y: 0.8636582, z: -0.7}
+  m_LocalPosition: {x: 1.6, y: 0.8636582, z: -0.7}
   m_LocalScale: {x: 2.9942815, y: 4.9804, z: 10.974664}
   m_Children: []
   m_Father: {fileID: 5036564159509570377}
@@ -2462,8 +2462,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 19, y: 19}
-  _creationGender: 0
+  _minMaxPeopleCount: {x: 15, y: 15}
+  _creationGender: 1
 --- !u!1 &7341806277046305946
 GameObject:
   m_ObjectHideFlags: 0
@@ -2604,7 +2604,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7341806277092999344}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3791, y: 0.8636582, z: -54}
+  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -54}
   m_LocalScale: {x: 2.9942815, y: 4.9804, z: 15.731}
   m_Children: []
   m_Father: {fileID: 5036564159509570377}
@@ -2685,7 +2685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 19, y: 19}
+  _minMaxPeopleCount: {x: 15, y: 15}
   _creationGender: 1
 --- !u!1 &7341806277294053304
 GameObject:
@@ -2827,7 +2827,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7341806278376224599}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3791, y: 0.8636582, z: -69.61}
+  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -69.61}
   m_LocalScale: {x: 2.9942815, y: 4.9804, z: 7.683154}
   m_Children: []
   m_Father: {fileID: 5036564159509570377}
@@ -2908,7 +2908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 19, y: 19}
+  _minMaxPeopleCount: {x: 15, y: 15}
   _creationGender: 0
 --- !u!1 &7341806278701662009
 GameObject:
@@ -2938,7 +2938,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7341806278701662009}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3791, y: 0.8636582, z: -36.5}
+  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -36.5}
   m_LocalScale: {x: 2.9942815, y: 4.9804, z: 7.680346}
   m_Children: []
   m_Father: {fileID: 5036564159509570377}
@@ -3019,7 +3019,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 19, y: 19}
+  _minMaxPeopleCount: {x: 15, y: 15}
   _creationGender: 0
 --- !u!1 &8134240899687370472
 GameObject:
@@ -3049,7 +3049,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8134240899687370472}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3791, y: 0.8636582, z: -12.400002}
+  m_LocalPosition: {x: -1.6, y: 0.8636582, z: -12.400002}
   m_LocalScale: {x: 2.9942815, y: 4.9804, z: 7.680346}
   m_Children: []
   m_Father: {fileID: 5036564159509570377}
@@ -3130,7 +3130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 19, y: 19}
+  _minMaxPeopleCount: {x: 15, y: 15}
   _creationGender: 0
 --- !u!1 &8763480289733185172
 GameObject:
@@ -3160,7 +3160,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8763480289733185172}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3791, y: 0.8636582, z: -134.8}
+  m_LocalPosition: {x: 1.6, y: 0.8636582, z: -134.8}
   m_LocalScale: {x: 2.9942815, y: 4.9804, z: 10.974664}
   m_Children: []
   m_Father: {fileID: 5036564159509570377}
@@ -3241,8 +3241,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 19, y: 19}
-  _creationGender: 0
+  _minMaxPeopleCount: {x: 15, y: 15}
+  _creationGender: 1
 --- !u!1 &8898849593970143680
 GameObject:
   m_ObjectHideFlags: 0
@@ -3271,7 +3271,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8898849593970143680}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.3791, y: 0.8636582, z: -54.8}
+  m_LocalPosition: {x: 1.6, y: 0.8636582, z: -54.8}
   m_LocalScale: {x: 2.9942815, y: 4.9804, z: 10.974664}
   m_Children: []
   m_Father: {fileID: 5036564159509570377}
@@ -3352,8 +3352,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 19, y: 19}
-  _creationGender: 0
+  _minMaxPeopleCount: {x: 15, y: 15}
+  _creationGender: 1
 --- !u!1 &9063687768956570931
 GameObject:
   m_ObjectHideFlags: 0
@@ -3382,7 +3382,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9063687768956570931}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3791, y: 0.8636582, z: -114.9}
+  m_LocalPosition: {x: 1.6, y: 0.8636582, z: -114.9}
   m_LocalScale: {x: 2.9942815, y: 4.9804, z: 10.974664}
   m_Children: []
   m_Father: {fileID: 5036564159509570377}
@@ -3463,5 +3463,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnSettings: {fileID: 11400000, guid: c0593c3670d4e422ba584ed22de37aa7, type: 2}
-  _minMaxPeopleCount: {x: 19, y: 19}
-  _creationGender: 0
+  _minMaxPeopleCount: {x: 15, y: 15}
+  _creationGender: 1

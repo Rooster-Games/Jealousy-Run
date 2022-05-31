@@ -50,7 +50,7 @@ namespace JR
             //if(otherGenderInfo.Gender == _gender)
             {
                 var slapable = other.GetComponent<Slapable>();
-                if (slapable == null) return;
+                if (slapable == null || !slapable.CanSlap) return;
 
                 if (_slapableToSlapDataMap.ContainsKey(slapable)) return;
                     //other.enabled = false;

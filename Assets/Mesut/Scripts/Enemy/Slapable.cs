@@ -21,6 +21,7 @@ namespace JR
         BoxCollider _boxCollider;
 
         public Rigidbody[] _ragdollBodies;
+        [field: SerializeField] public bool CanSlap { get; set; } = true;
 
         float maxMass = 24f;
 
