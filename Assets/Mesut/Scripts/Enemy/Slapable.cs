@@ -98,6 +98,12 @@ namespace JR
             }
         }
 
+        public void AddRagdollBodies(Rigidbody[] ragdollBodies, RagdollMarker marker)
+        {
+            _ragdollBodies = ragdollBodies;
+            _ragdoll = marker.gameObject;
+        }
+
         public class InitParameters
         {
             public ParentSettings ParentSettings { get; set; } 

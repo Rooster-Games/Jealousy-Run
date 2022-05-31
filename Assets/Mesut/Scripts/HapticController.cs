@@ -26,10 +26,6 @@ public class HapticController : MonoBehaviour
         _eventbus.Register<OnSlap>((e) => Execute(HapticType.Medium));
     }
 
-    private void ExecuteWithTimer(HapticType hapticType, TimeControl control)
-    {
-
-    }
 
     private void Execute(HapticType hapticType)
     {
@@ -69,15 +65,25 @@ public class HapticController : MonoBehaviour
 
     private class HapticExecuter
     {
+        int _onSlapCounter;
+        int _onItemCounter;
+
+        bool _failed;
+        bool _win;
+
         public void Execute(HapticType type)
         {
             switch (type)
             {
                 case HapticType.Success:
-                    RoosterHaptic.Success();
+                    if(!_win)
+                        RoosterHaptic.Success();
+                    _win = true;
                     break;
                 case HapticType.Fail:
-                    RoosterHaptic.Fail();
+                    if(!_failed)
+                        RoosterHaptic.Fail();
+                    _failed = true;
                     break;
                 case HapticType.Selection:
                     RoosterHaptic.Selection();
@@ -86,14 +92,26 @@ public class HapticController : MonoBehaviour
                     RoosterHaptic.Warning();
                     break;
                 case HapticType.Soft:
-                    RoosterHaptic.SoftImpact();
-                    break;
+                    {
+                        if (_onItemCounter == 0)
+                            RoosterHaptic.SoftImpact();
+
+                        _onItemCounter++;
+                        _onItemCounter = _onItemCounter % 3;
+                        
+                        break;
+                    }
                 case HapticType.Light:
                     RoosterHaptic.LightImpact();
                     break;
                 case HapticType.Medium:
-                    RoosterHaptic.MediumImpact();
-                    break;
+                    {
+                        if(_onSlapCounter == 0)
+                            RoosterHaptic.MediumImpact();
+                        _onSlapCounter++;
+                        _onSlapCounter = _onSlapCounter % 3; 
+                        break;
+                    }
                 case HapticType.Hard:
                     RoosterHaptic.HardImpact();
                     break;

@@ -18,6 +18,7 @@ namespace JR
         [SerializeField] RoleSelector _roleSelector;
         [SerializeField] EndTrigger _endTrigger;
         [SerializeField] TutorialController _tutorialController;
+        [SerializeField] HapticController _hapticController;
 
         [SerializeField] GameObject[] _levelCollection;
 
@@ -134,6 +135,7 @@ namespace JR
 
             DIContainer.Instance.RegisterSingle(_gameType, sortingOrder: -100);
             DIContainer.Instance.RegisterSingle(_roleSelector, sortingOrder: -100);
+            DIContainer.Instance.RegisterSingle(_hapticController);
 
             // Buradan sonrasi degistirilecek
             DIContainer.Instance.RegisterSingle(_cameraToChangeFov, sortingOrder: -100);
