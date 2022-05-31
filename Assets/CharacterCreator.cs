@@ -10,56 +10,40 @@ using UnityEngine;
 
 public class CharacterCreator : MonoBehaviour
 {
-    [SerializeField] GameObject _baseObject;
-    [SerializeField] GameObject[] _prefabCol;
-    [SerializeField] DynamicBone _dynamicBone;
-    [SerializeField] RuntimeAnimatorController _runtimeAnimatorController; 
+    [SerializeField] GameObject[] _prefabs;
+    [SerializeField] GameObject _ragdollPrefab;
+
 
     [Button("Create")]
     public void Create()
     {
-        foreach (var prefab in _prefabCol)
+        foreach (var prefab in _prefabs)
         {
-            GameObject root = Instantiate(_baseObject);
-            root.transform.position = Vector3.zero;
-            root.name = prefab.name;
+            var animatorGO = prefab.GetComponentInChildren<Animator>();
+            GameObject ragdollGO = Instantiate(_ragdollPrefab);
+            ragdollGO.transform.localPosition = Vector3.zero;
 
-            var obj = Instantiate(prefab);
-            obj.transform.SetParent(root.transform);
-            obj.transform.position = Vector3.zero;
-            obj.transform.eulerAngles = Vector3.zero;
-            obj.transform.localScale = Vector3.one;
-            obj.GetComponent<Animator>().runtimeAnimatorController = _runtimeAnimatorController;
+            ragdollGO.transform.SetParent(animatorGO.transform.parent);
+            ragdollGO.transform.localEulerAngles= Vector3.zero;
+            ragdollGO.transform.localScale = Vector3.one;
 
-            var dynamicbone = obj.AddComponent<DynamicBone>();
-            dynamicbone.m_Damping = _dynamicBone.m_Damping;
-            dynamicbone.m_Elasticity = _dynamicBone.m_Elasticity;
-            dynamicbone.m_Stiffness = _dynamicBone.m_Stiffness;
+            DestroyImmediate(prefab.GetComponentInChildren<RagdollMarker>(true).gameObject);
+            ragdollGO.AddComponent<RagdollMarker>();
 
-            var dynamicBoneTransform = FindInChilds(obj.transform, "mixamorig:Hips");
-            dynamicbone.m_Root = dynamicBoneTransform;
-
-            var ragdoll = Instantiate(prefab);
-            ragdoll.transform.SetParent(root.transform);
-            ragdoll.transform.position = Vector3.zero;
-            ragdoll.transform.localEulerAngles = Vector3.zero;
-            ragdoll.transform.localScale = Vector3.one;
-            DestroyImmediate(ragdoll.GetComponent<Animator>());
-            var ragdollCreator = ragdoll.AddComponent<BipedRagdollCreator>();
+            var ragdollCreator = ragdollGO.AddComponent<BipedRagdollCreator>();
 
             CheckRagdollCreator(ragdollCreator);
 
             BipedRagdollCreator.Create(ragdollCreator.references, ragdollCreator.options);
             DestroyImmediate(ragdollCreator);
 
-            var slapable = root.GetComponent<Slapable>();
-            slapable._closeObject = obj;
-            slapable._ragdoll = ragdoll;
+            var slapable = prefab.GetComponent<Slapable>();
+            slapable._ragdoll = ragdollGO;
 
-            var hips = FindInChilds(ragdoll.transform, "mixamorig:Hips");
-            var spine = FindInChilds(ragdoll.transform, "mixamorig:Spine2");
-            var leftArm = FindInChilds(ragdoll.transform, "mixamorig:LeftArm");
-            var rightArm = FindInChilds(ragdoll.transform, "mixamorig:RightArm");
+            var hips = FindInChilds(ragdollGO.transform, "mixamorig:Hips");
+            var spine = FindInChilds(ragdollGO.transform, "mixamorig:Spine2");
+            var leftArm = FindInChilds(ragdollGO.transform, "mixamorig:LeftArm");
+            var rightArm = FindInChilds(ragdollGO.transform, "mixamorig:RightArm");
 
             var rigidBodies = new Rigidbody[4];
             rigidBodies[0] = hips.GetComponent<Rigidbody>();
@@ -69,7 +53,13 @@ public class CharacterCreator : MonoBehaviour
 
             slapable._ragdollBodies = rigidBodies;
 
-            ragdoll.gameObject.SetActive(false);
+            ragdollGO.gameObject.SetActive(false);
+
+            var animatorGORenderer = animatorGO.GetComponentInChildren<SkinnedMeshRenderer>();
+            var ragdolRenderer = ragdollGO.GetComponentInChildren<SkinnedMeshRenderer>();
+
+            ragdolRenderer.sharedMaterials = new Material[animatorGORenderer.sharedMaterials.Length];
+            animatorGORenderer.sharedMaterials.CopyTo(ragdolRenderer.sharedMaterials, 0);
         }
     }
 
