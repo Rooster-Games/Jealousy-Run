@@ -22,16 +22,21 @@ namespace JR
         //}
 
         List<Vector3> _createdPositions;
-
+        bool _canSlap;
         public void Init(InitParameters initParameters)
         {
             if (Mathf.Approximately(transform.localPosition.x, 1.6f))
             {
                 _creationGender = (Gender)(((int)initParameters.ProtectorGender + 1) % 2);
+                _canSlap = false;
+                Debug.Log("Right CanSlap: " + _canSlap);
             }
             else if (Mathf.Approximately(transform.localPosition.x, -1.6f))
             {
                 _creationGender = (Gender)(((int)_creationGender + (int)initParameters.ProtectorGender + 1) % 2);
+                _canSlap = true;
+
+                Debug.Log("Left CanSlap: " + _canSlap);
             }
                     
 
@@ -116,6 +121,8 @@ namespace JR
             go.transform.position = pos;
             go.transform.localEulerAngles = _spawnSettings.EulerRotation;
             go.layer = gameObject.layer;
+            go.GetComponent<Slapable>().CanSlap = _canSlap;
+
         }
 
         private bool CheckIfCanSpawn(Vector3 spawnPos)
