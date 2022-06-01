@@ -65,8 +65,8 @@ public class HapticController : MonoBehaviour
 
     private class HapticExecuter
     {
-        int _onSlapCounter;
-        int _onItemCounter;
+        bool _onSlapCounter;
+        bool _onItemCounter;
 
         bool _failed;
         bool _win;
@@ -93,12 +93,7 @@ public class HapticController : MonoBehaviour
                     break;
                 case HapticType.Soft:
                     {
-                        if (_onItemCounter == 0)
-                            RoosterHaptic.SoftImpact();
-
-                        _onItemCounter++;
-                        _onItemCounter = _onItemCounter % 3;
-                        
+                        RoosterHaptic.SoftImpact();
                         break;
                     }
                 case HapticType.Light:
@@ -106,10 +101,7 @@ public class HapticController : MonoBehaviour
                     break;
                 case HapticType.Medium:
                     {
-                        if(_onSlapCounter == 0)
-                            RoosterHaptic.MediumImpact();
-                        _onSlapCounter++;
-                        _onSlapCounter = _onSlapCounter % 3; 
+                        RoosterHaptic.MediumImpact();
                         break;
                     }
                 case HapticType.Hard:
@@ -120,7 +112,7 @@ public class HapticController : MonoBehaviour
             }
         }
     }
-
+    
     [System.Serializable]
     public class Settings
     {
